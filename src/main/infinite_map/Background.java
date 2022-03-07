@@ -38,24 +38,29 @@ public class Background extends Movable {
 	public void animate(Graphics2D canvas) {
 
 	}
-	
+
 	private void updatePosition(int movingFactor) {
 		final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		
-		//Checking the width of the screen to decide if to use double the movingFactor or not
-		if(screenSize.getWidth() > 2000) {
+
+		// Checking the width of the screen to decide if to use double the movingFactor
+		// or not
+		if (screenSize.getWidth() > 2000) {
 			movingFactor *= 2;
 		}
-		
+
 		this.position.setX(this.position.getX() - 5 * movingFactor);
 	}
-	
+
 	private boolean isOffStageLeft() {
 		if (this.position.getX() <= -1 * image.getWidth(null)) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+	private void moveToSideOfSecondBackground() {
+		this.position.setX(this.position.getX() + image.getWidth(null) * 2);
 	}
 
 }
