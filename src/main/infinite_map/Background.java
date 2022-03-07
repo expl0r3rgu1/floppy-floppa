@@ -42,11 +42,12 @@ public class Background extends Movable {
 	private void updatePosition(int movingFactor) {
 		final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		
-		if(screenSize.getWidth() < 2000) {
-			this.position.setX(this.position.getX() - 5 * movingFactor);
-		} else {
-			this.position.setX(this.position.getX() - 10 * movingFactor);
+		//Checking the width of the screen to decide if to use double the movingFactor or not
+		if(screenSize.getWidth() > 2000) {
+			movingFactor *= 2;
 		}
+		
+		this.position.setX(this.position.getX() - 5 * movingFactor);
 	}
 	
 	private boolean isOffStageLeft() {
