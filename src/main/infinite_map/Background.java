@@ -33,7 +33,7 @@ public class Background extends Movable {
 	}
 
 	@Override
-	public void animate(Graphics2D g2d) {
+	public void animate(Graphics2D canvas) {
 		
 	}
 
