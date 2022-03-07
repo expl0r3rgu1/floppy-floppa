@@ -1,5 +1,5 @@
 package main.utilities;
 
-public interface Movable {
+public class Movable {
 
 }
