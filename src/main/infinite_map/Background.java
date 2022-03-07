@@ -1,7 +1,9 @@
 package main.infinite_map;
 
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Toolkit;
 
 import main.utilities.Movable;
 import main.utilities.Position;
@@ -34,7 +36,17 @@ public class Background extends Movable {
 
 	@Override
 	public void animate(Graphics2D canvas) {
+
+	}
+	
+	private void updatePosition(int movingFactor) {
+		final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		
+		if(screenSize.getWidth() < 2000) {
+			this.position.setX(this.position.getX() - 5 * movingFactor);
+		} else {
+			this.position.setX(this.position.getX() - 10 * movingFactor);
+		}
 	}
 
 }
