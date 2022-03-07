@@ -36,7 +36,12 @@ public class Background extends Movable {
 
 	@Override
 	public void animate(Graphics2D canvas) {
+		// Drawing the background on the canvas to fill it completely
+		canvas.drawImage(image, position.getX(), position.getY(), image.getWidth(null), image.getHeight(null), null);
 
+		if (isOffStageLeft()) {
+			moveToSideOfSecondBackground();
+		}
 	}
 
 	private void updatePosition(int movingFactor) {
