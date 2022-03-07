@@ -48,5 +48,13 @@ public class Background extends Movable {
 			this.position.setX(this.position.getX() - 10 * movingFactor);
 		}
 	}
+	
+	private boolean isOffStageLeft() {
+		if (this.position.getX() <= -1 * image.getWidth(null)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }
