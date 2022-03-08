@@ -5,7 +5,7 @@ import java.awt.*;
 public abstract class Movable {
 	Position position;
 	
-	Movable(Position position) {
+	public Movable(Position position) {
 		this.position=position;
 	}
 	

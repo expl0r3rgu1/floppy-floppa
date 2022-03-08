@@ -9,9 +9,9 @@ public class Character extends Movable {
 	private boolean dead; //true if the character is alive
 	private boolean hit; //true if the character is hit by an obstacle
 	
-	Character(Skin skin, Position position) {
+	Character(Position position, Skin skin) {
+		super(position);
 		this.skin=skin;
-		//
 		this.dead=false;
 		this.hit=false;
 	}
