@@ -11,6 +11,12 @@ import main.utilities.Position;
 public class Background extends Movable {
 	private String name;
 	private Image image;
+	
+	public Background(String name, Image image) {
+		super(new Position(0,0));
+		this.name = name;
+		this.image = image;
+	}
 
 	public Background(String name, Image image, Position position) {
 		super(position);
