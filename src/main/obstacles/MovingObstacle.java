@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 
 public class MovingObstacle extends Obstacle {
 
+	
 	int height = Toolkit.getDefaultToolkit().getScreenSize().height;
 
 	public MovingObstacle() {
@@ -13,18 +14,26 @@ public class MovingObstacle extends Obstacle {
 	public void movingPattern() {
 		this.position = height / 2;
 		int j = 0;
-		while (j < 5) {
-			for (int i = 1; i <= 5; i++) {
-				this.position = this.updateView(this.position, 1);
-				System.out.println(position);
-			}
-			this.sleep(1000);
+		while (j < 3) {
+			if(position == height/2) {
+				for (int i = 1; i <= 5; i++) {
+					this.position = this.updateView(this.position, 1);
+					System.out.println(position);
+				}
+				this.sleep(750);
+			}else {
+				for (int i = 1; i <= 10; i++) {
+					this.position = this.updateView(this.position, -1);
+					System.out.println(position);
+				}
+				this.sleep(750);
 
-			for (int i = 1; i <= 5; i++) {
-				this.position = this.updateView(this.position, -1);
-				System.out.println(position);
+				for (int i = 1; i <= 10; i++) {
+					this.position = this.updateView(this.position, +1);
+					System.out.println(position);
+				}
+				this.sleep(750);
 			}
-			this.sleep(1000);
 			j++;
 		}
 	}
