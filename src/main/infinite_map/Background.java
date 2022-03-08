@@ -37,7 +37,10 @@ public class Background extends Movable {
 	@Override
 	public void animate(Graphics2D canvas) {
 		// Drawing the background on the canvas to fill it completely
-		canvas.drawImage(image, position.getX(), position.getY(), image.getWidth(null), image.getHeight(null), null);
+		canvas.drawImage(image, getPosition().getX(), getPosition().getY(), image.getWidth(null), image.getHeight(null),
+				null);
+
+		updatePosition(1);
 
 		if (isOffStageLeft()) {
 			moveToSideOfSecondBackground();
@@ -53,11 +56,11 @@ public class Background extends Movable {
 			movingFactor *= 2;
 		}
 
-		this.position.setX(this.position.getX() - 5 * movingFactor);
+		getPosition().setX(getPosition().getX() - 5 * movingFactor);
 	}
 
 	private boolean isOffStageLeft() {
-		if (this.position.getX() <= -1 * image.getWidth(null)) {
+		if (getPosition().getX() <= -1 * image.getWidth(null)) {
 			return true;
 		} else {
 			return false;
@@ -65,7 +68,7 @@ public class Background extends Movable {
 	}
 
 	private void moveToSideOfSecondBackground() {
-		this.position.setX(this.position.getX() + image.getWidth(null) * 2);
+		getPosition().setX(getPosition().getX() + image.getWidth(null) * 2);
 	}
 
 }
