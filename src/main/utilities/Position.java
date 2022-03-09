@@ -20,7 +20,7 @@ public class Position {
 		int maxWidth = gd.getDisplayMode().getWidth();
 		int maxHeight = gd.getDisplayMode().getHeight();
 		
-		if(x==maxWidth && y==maxHeight) {
+		if(x<=maxWidth && y<=maxHeight) {
 			return true;
 		}
 		else {
