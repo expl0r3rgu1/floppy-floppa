@@ -42,4 +42,13 @@ public class Character extends Movable {
 		this.hit=true;
 	}
 	
+	private Position jump() {
+		//to-do
+		return this.getPosition();
+	}
+	
+	private void collide() {
+		//to-do
+	}
+	
 }
