@@ -11,17 +11,34 @@ import main.utilities.Position;
 public class Background extends Movable {
 	private String name;
 	private Image image;
-	
+	private int movingFactor; // Makes the background skip movingFactor pixels at each update
+
 	public Background(String name, Image image) {
-		super(new Position(0,0));
+		super(new Position(0, 0));
 		this.name = name;
 		this.image = image;
+		this.movingFactor = 1;
 	}
 
 	public Background(String name, Image image, Position position) {
 		super(position);
 		this.name = name;
 		this.image = image;
+		this.movingFactor = 1;
+	}
+
+	public Background(String name, Image image, int movingFactor) {
+		super(new Position(0, 0));
+		this.name = name;
+		this.image = image;
+		this.movingFactor = movingFactor;
+	}
+
+	public Background(String name, Image image, Position position, int movingFactor) {
+		super(position);
+		this.name = name;
+		this.image = image;
+		this.movingFactor = movingFactor;
 	}
 
 	public String getName() {
@@ -43,10 +60,11 @@ public class Background extends Movable {
 	@Override
 	public void animate(Graphics2D canvas) {
 		// Drawing the background on the canvas to fill it completely
-		canvas.drawImage(image, getPosition().getX(), getPosition().getY(), image.getWidth(null), image.getHeight(null),
-				null);
+		canvas.drawImage(image, getPosition().getX(), getPosition().getY(),
+				(int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(),
+				(int) Toolkit.getDefaultToolkit().getScreenSize().getHeight(), null);
 
-		updatePosition(1);
+		updatePosition(movingFactor);
 
 		if (isOffStageLeft()) {
 			moveToSideOfSecondBackground();
@@ -62,11 +80,11 @@ public class Background extends Movable {
 			movingFactor *= 2;
 		}
 
-		getPosition().setX(getPosition().getX() - 5 * movingFactor);
+		getPosition().setX(getPosition().getX() - movingFactor);
 	}
 
 	private boolean isOffStageLeft() {
-		if (getPosition().getX() <= -1 * image.getWidth(null)) {
+		if (getPosition().getX() <= -1 * Toolkit.getDefaultToolkit().getScreenSize().getWidth()) {
 			return true;
 		} else {
 			return false;
@@ -74,7 +92,6 @@ public class Background extends Movable {
 	}
 
 	private void moveToSideOfSecondBackground() {
-		getPosition().setX(getPosition().getX() + image.getWidth(null) * 2);
+		getPosition().setX(getPosition().getX() + (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 2);
 	}
-
 }
