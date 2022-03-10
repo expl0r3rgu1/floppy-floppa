@@ -3,52 +3,50 @@ package main.obstacles;
 import java.awt.Toolkit;
 
 public class MovingObstacle extends Obstacle {
-	
-	int height = Toolkit.getDefaultToolkit().getScreenSize().height;
 
 	public MovingObstacle() {
 		super();
-		this.position = height/2;
-		this.skin;
+		this.x = (Toolkit.getDefaultToolkit().getScreenSize().width)+1;
+		this.y = (Toolkit.getDefaultToolkit().getScreenSize().height)/2;
 	}
 
 	public void movingPattern() {
 		while (true) {
-			if(position == height/2) {
+			if(y == (Toolkit.getDefaultToolkit().getScreenSize().height)/2) {
 				for (int i = 1; i <= 5; i++) {
-					this.position = this.updateView(this.position, 1);
-					System.out.println(position);
+					this.y = this.updateView(this.y, 1);
+					System.out.println(y);
 				}
 				this.sleep(800);
 			}else {
 				for (int i = 1; i <= 10; i++) {
-					this.position = this.updateView(this.position, -1);
-					System.out.println(position);
+					this.y = this.updateView(this.y, -1);
+					System.out.println(y);
 				}
 				this.sleep(800);
 
 				for (int i = 1; i <= 0; i++) {
-					this.position = this.updateView(this.position, +1);
-					System.out.println(position);
+					this.y = this.updateView(this.y, +1);
+					System.out.println(y);
 				}
 				this.sleep(800);
 			}
 		}
 	}
-	public boolean validPosition(int pos) {
+	public boolean validPositionY(int y) {
 		int maxHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 		
-		if(pos <= maxHeight && pos >= 0) {
+		if(y <= maxHeight && y >= 0) {
 			return true;
 		}else {
 			return false;
 		}
 	}
 
-	private int updateView(int position, int increment) {
+	private int updateView(int y, int increment) {
 		this.sleep(250);
-		if(validPosition(position+increment)) {
-			return position + increment;
+		if(validPositionY(y+increment)) {
+			return y + increment;
 		}
 		return 0;
 	}
