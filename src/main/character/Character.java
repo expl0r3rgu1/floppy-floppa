@@ -3,6 +3,7 @@ package main.character;
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
+import java.awt.*;
 
 public class Character extends Movable {
 	private Skin skin;
@@ -38,6 +39,10 @@ public class Character extends Movable {
 	}
 	
 	private void collide() {
+		//to-do
+	}
+	
+	public void animate(Graphics2D g) {
 		//to-do
 	}
 	
