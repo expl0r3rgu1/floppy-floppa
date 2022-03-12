@@ -16,9 +16,8 @@ public class Position {
 	
 	private boolean validPosition(int x, int y) {
 		//I get the screen size to check if the position is in the right range
-		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-		int maxWidth = gd.getDisplayMode().getWidth();
-		int maxHeight = gd.getDisplayMode().getHeight();
+		int maxWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+		int maxHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 		
 		if(x<=maxWidth && y<=maxHeight) {
 			return true;
