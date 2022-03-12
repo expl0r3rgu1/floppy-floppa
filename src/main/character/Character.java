@@ -20,12 +20,12 @@ public class Character extends Movable {
 		return this.dead;
 	}
 	
-	public void die() {
-		this.dead=true;
-	}
-	
 	public boolean isHit() {
 		return this.hit;
+	}
+	
+	public void die() {
+		this.dead=true;
 	}
 	
 	public void hit() {
