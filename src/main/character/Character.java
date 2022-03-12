@@ -17,12 +17,7 @@ public class Character extends Movable {
 	}
 	
 	public boolean isDead() {
-		if (dead) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return this.dead;
 	}
 	
 	public void die() {
@@ -30,12 +25,7 @@ public class Character extends Movable {
 	}
 	
 	public boolean isHit() {
-		if (hit) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return this.hit;
 	}
 	
 	public void hit() {
