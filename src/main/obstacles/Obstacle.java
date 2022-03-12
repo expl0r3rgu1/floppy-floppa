@@ -3,13 +3,18 @@ package main.obstacles;
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
+import java.awt.Graphics2D;
 
-public class Obstacle extends Movable{
+public abstract class Obstacle extends Movable{
 	private Skin skin;
 	
-	public Obstacle factoryObstacle(Skin skin, Position position) {
-		final Obstacle obs = new Obstacle();
-		return obs;
+	private Obstacle(Position position, Skin skin) {
+		super(position);
+		this.skin=skin;
+	}
+	
+	public static Obstacle factoryObstacle(Skin skin, Position position) {
+		return new Obstacle(position, skin) {};
 	}
 	
 	public Skin getSkin() {
@@ -18,5 +23,9 @@ public class Obstacle extends Movable{
 	
 	public void setSkin(Skin skin) {
 		this.skin=skin;
+	}
+	
+	public void animate(Graphics2D a) {
+		
 	}
 }
