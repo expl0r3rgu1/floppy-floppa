@@ -1,15 +1,17 @@
 package main.infinite_map;
 
 import java.awt.Graphics2D;
+import java.util.List;
 import java.util.Set;
 
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
+import main.obstacles.Obstacle;
 
 public class Map {
 	private ScrollingBackground scrollingBackground;
 	private FixedObstacle fixedObstacle;
-	private Set<MovingObstacle> movingObstacles;
+	private List<MovingObstacle> movingObstacles;
 	private Set<FixedObstacle> paintedFixedObstacles;
 	private Set<MovingObstacle> paintedMovingObstacles;
 	private TimedFixedObstacleGenerator timedFixedObstacleGenerator;
@@ -17,7 +19,7 @@ public class Map {
 	protected int speed = 100;
 
 	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle,
-			Set<MovingObstacle> movingObstacles) {
+			List<MovingObstacle> movingObstacles) {
 		this.scrollingBackground = scrollingBackground;
 		this.fixedObstacle = fixedObstacle;
 		this.movingObstacles = movingObstacles;
@@ -41,12 +43,29 @@ public class Map {
 		this.fixedObstacle = fixedObstacle;
 	}
 
-	public Set<MovingObstacle> getMovingObstacles() {
+	public List<MovingObstacle> getMovingObstacles() {
 		return movingObstacles;
 	}
 
-	public void setMovingObstacles(Set<MovingObstacle> movingObstacles) {
+	public void setMovingObstacles(List<MovingObstacle> movingObstacles) {
 		this.movingObstacles = movingObstacles;
+	}
+
+	protected void addFixedObstacle() {
+		this.paintedFixedObstacles
+				.add(Obstacle.factoryObstacle(this.fixedObstacle.getSkin(), this.fixedObstacle.getPoisition()));
+	}
+
+	private int getRandomNumber(int min, int max) {
+		return (int) ((Math.random() * (max - min)) + min);
+	}
+
+	protected void addMovingObstacle() {
+		int randomMovingObstacleIndex = getRandomNumber(0, this.movingObstacles.size() - 1);
+
+		this.paintedMovingObstacles
+				.add(Obstacle.factoryObstacle(this.movingObstacles.get(randomMovingObstacleIndex).getSkin(),
+						this.movingObstacles.get(randomMovingObstacleIndex).getPosition()));
 	}
 
 	public void animate(Graphics2D canvas) {
