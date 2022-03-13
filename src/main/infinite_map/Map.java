@@ -10,6 +10,8 @@ public class Map {
 	private ScrollingBackground scrollingBackground;
 	private FixedObstacle fixedObstacle;
 	private Set<MovingObstacle> movingObstacles;
+	private Set<FixedObstacle> paintedFixedObstacles;
+	private Set<MovingObstacle> paintedMovingObstacles;
 	
 	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle, Set<MovingObstacle> movingObstacles) {
 		this.scrollingBackground = scrollingBackground;
@@ -42,6 +44,6 @@ public class Map {
 	}
 	
 	public void animate(Graphics2D canvas) {
-		
+		this.scrollingBackground.animate(canvas);
 	}
 }
