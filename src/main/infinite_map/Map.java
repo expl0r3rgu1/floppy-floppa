@@ -12,8 +12,10 @@ public class Map {
 	private Set<MovingObstacle> movingObstacles;
 	private Set<FixedObstacle> paintedFixedObstacles;
 	private Set<MovingObstacle> paintedMovingObstacles;
-	
-	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle, Set<MovingObstacle> movingObstacles) {
+	private int speed = 100;
+
+	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle,
+			Set<MovingObstacle> movingObstacles) {
 		this.scrollingBackground = scrollingBackground;
 		this.fixedObstacle = fixedObstacle;
 		this.movingObstacles = movingObstacles;
@@ -42,7 +44,7 @@ public class Map {
 	public void setMovingObstacles(Set<MovingObstacle> movingObstacles) {
 		this.movingObstacles = movingObstacles;
 	}
-	
+
 	public void animate(Graphics2D canvas) {
 		this.scrollingBackground.animate(canvas);
 	}
