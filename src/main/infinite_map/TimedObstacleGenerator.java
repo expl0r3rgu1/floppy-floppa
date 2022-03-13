@@ -11,6 +11,7 @@ public abstract class TimedObstacleGenerator implements ActionListener {
 
 	public TimedObstacleGenerator(Map map, double obstacleSpeed) {
 		this.map = map;
+		this.obstacleSpeed = obstacleSpeed;
 		this.timer = new Timer((int) (1000 / (map.speed * obstacleSpeed)), this);
 		this.timer.start();
 	}
