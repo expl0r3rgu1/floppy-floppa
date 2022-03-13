@@ -9,8 +9,9 @@ public class TimedFixedObstacleGenerator implements ActionListener {
 	private Timer timer;
 	private double fixedObstacleSpeed = 0.004; //Every 2.375 seconds a fixedObstacle spawns
 	
-	public TimedFixedObstacleGenerator(int speed) {
-		this.timer = new Timer((int) (1000 / (speed * fixedObstacleSpeed)), this);
+	public TimedFixedObstacleGenerator(Map map) {
+		this.timer = new Timer((int) (1000 / (map.speed * fixedObstacleSpeed)), this);
+		this.timer.start();
 	}
 
 	@Override

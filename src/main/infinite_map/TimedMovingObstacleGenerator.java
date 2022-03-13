@@ -9,8 +9,9 @@ public class TimedMovingObstacleGenerator implements ActionListener{
 	private Timer timer;
 	private double movingObstacleSpeed = 0.001; //Every 10 seconds a movingObstacle spawns
 
-	public TimedMovingObstacleGenerator(int speed) {
-		this.timer = new Timer((int) (1000 / (speed * movingObstacleSpeed)), this);
+	public TimedMovingObstacleGenerator(Map map) {
+		this.timer = new Timer((int) (1000 / (map.speed * movingObstacleSpeed)), this);
+		this.timer.start();
 	}
 
 	@Override
