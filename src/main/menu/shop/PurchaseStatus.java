@@ -21,7 +21,7 @@ public class PurchaseStatus<X> {
 		return this.purchased;
 	}
 
-	public void purchase(boolean purchased) {
+	public void purchase() {
 		this.purchased = true;
 	}
 	
