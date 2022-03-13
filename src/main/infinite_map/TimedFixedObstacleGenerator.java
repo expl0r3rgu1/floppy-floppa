@@ -5,20 +5,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-public class TimedFixedObstacleGenerator implements ActionListener {
-	private Timer timer;
-	private double fixedObstacleSpeed = 0.004; // Every 2.375 seconds a fixedObstacle spawns
-	private Map map;
+public class TimedFixedObstacleGenerator extends TimedObstacleGenerator {
 
 	public TimedFixedObstacleGenerator(Map map) {
-		this.map = map;
-		this.timer = new Timer((int) (1000 / (map.speed * fixedObstacleSpeed)), this);
-		this.timer.start();
+		super(map, 0.004); // Every 2.375 seconds a fixedObstacle spawns
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.map.addFixedObstacle();
+		this.getMap().addFixedObstacle();
 	}
 
 }

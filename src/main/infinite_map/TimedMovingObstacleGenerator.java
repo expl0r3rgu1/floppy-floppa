@@ -5,19 +5,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-public class TimedMovingObstacleGenerator implements ActionListener {
-	private Timer timer;
-	private double movingObstacleSpeed = 0.001; // Every 10 seconds a movingObstacle spawns
-	private Map map;
+public class TimedMovingObstacleGenerator extends TimedObstacleGenerator {
 
 	public TimedMovingObstacleGenerator(Map map) {
-		this.map = map;
-		this.timer = new Timer((int) (1000 / (map.speed * movingObstacleSpeed)), this);
-		this.timer.start();
+		super(map, 0.001);// Every 10 seconds a movingObstacle spawns
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.map.addMovingObstacle();
+		this.getMap().addMovingObstacle();
 	}
 }
