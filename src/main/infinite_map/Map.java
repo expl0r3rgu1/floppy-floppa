@@ -7,23 +7,22 @@ import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
 
 public class Map {
-	private Background background;
+	private ScrollingBackground scrollingBackground;
 	private FixedObstacle fixedObstacle;
 	private Set<MovingObstacle> movingObstacles;
 	
-	public Map(Background background, FixedObstacle fixedObstacle, Set<MovingObstacle> movingObstacles) {
-		super();
-		this.background = background;
+	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle, Set<MovingObstacle> movingObstacles) {
+		this.scrollingBackground = scrollingBackground;
 		this.fixedObstacle = fixedObstacle;
 		this.movingObstacles = movingObstacles;
 	}
 
-	public Background getBackground() {
-		return background;
+	public ScrollingBackground getScrollingBackground() {
+		return scrollingBackground;
 	}
 
-	public void setBackground(Background background) {
-		this.background = background;
+	public void setScrollingBackground(ScrollingBackground scrollingBackground) {
+		this.scrollingBackground = scrollingBackground;
 	}
 
 	public FixedObstacle getFixedObstacle() {
