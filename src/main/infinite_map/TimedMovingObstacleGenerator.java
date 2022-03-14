@@ -6,9 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 public class TimedMovingObstacleGenerator extends TimedObstacleGenerator {
+	private static final double movingObstacleSpeed = 0.001; // Every 10 seconds a movingObstacle spawns
 
 	public TimedMovingObstacleGenerator(Map map) {
-		super(map, 0.001);// Every 10 seconds a movingObstacle spawns
+		super(map, movingObstacleSpeed);
 	}
 
 	@Override
