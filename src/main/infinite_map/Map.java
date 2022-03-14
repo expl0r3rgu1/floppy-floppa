@@ -1,8 +1,10 @@
 package main.infinite_map;
 
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
@@ -70,5 +72,13 @@ public class Map {
 
 	public void animate(Graphics2D canvas) {
 		this.scrollingBackground.animate(canvas);
+		
+		//Removing obstacles off-screen from set
+		this.paintedFixedObstacles.removeIf(obstacle -> obstacle.getPosition().getX() + obstacle.getSkin().getImage().getWidth(null) < 0);
+		this.paintedMovingObstacles.removeIf(obstacle -> obstacle.getPosition().getX() + obstacle.getSkin().getImage().getWidth(null) < 0);
+		
+		//Repainting on-screen obstacles
+		this.paintedFixedObstacles.forEach(obstacle -> obstacle.animate(canvas));
+		this.paintedMovingObstacles.forEach(obstacle -> obstacle.animate(canvas));
 	}
 }
