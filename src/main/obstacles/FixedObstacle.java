@@ -21,8 +21,8 @@ public class FixedObstacle extends Obstacle{
 	
 	public void animate(Graphics2D a) {
 		a.drawImage(image, getPosition().getX(), getPosition().getY(),
-				(int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(),
-				(int) Toolkit.getDefaultToolkit().getScreenSize().getHeight(), null);
+				(int) image.getWidth(null),
+				(int) image.getHeight(null), null);
 
 		updatePosition(movingFactor);
 	}
@@ -35,18 +35,6 @@ public class FixedObstacle extends Obstacle{
 		}
 
 		getPosition().setX(getPosition().getX() - movingFactor);
-	}
-	
-	private boolean isOffStageLeft() {
-		if (getPosition().getX() <= -1 * Toolkit.getDefaultToolkit().getScreenSize().getWidth()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	private void moveToSideOfSecondBackground() {
-		getPosition().setX(getPosition().getX() + (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 2);
 	}
 	
 }
