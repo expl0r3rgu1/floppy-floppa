@@ -25,7 +25,4 @@ public abstract class Obstacle extends Movable{
 		this.skin=skin;
 	}
 	
-	public void animate(Graphics2D a) {
-		
-	}
 }
