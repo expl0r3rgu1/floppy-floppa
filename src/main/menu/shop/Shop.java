@@ -17,7 +17,7 @@ public class Shop {
 	private Set<PurchaseStatus<Skin>> skins;
 	private Set<PurchaseStatus<Background>> sceneries;
 
-	public Shop(Integer coins, Set<PurchaseStatus<Skin>> skins, Set<PurchaseStatus<Background>> sceneries) {
+	public Shop() {
 		skins = new HashSet<>();
 		sceneries = new HashSet<>();
 		getFileInfo();
