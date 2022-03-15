@@ -19,11 +19,13 @@ public class ScrollingBackground {
 				new Position((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(), 0));
 	}
 
+	//Animates the two backgrounds
 	public void animate(Graphics2D canvas) {
 		backOne.animate(canvas);
 		backTwo.animate(canvas);
 	}
 
+	//Utility method to get image resource (might move this function to reduce code duplication)
 	public Image getImageResource(String imageName) {
 		try {
 			return ImageIO.read(getClass().getResource("/resources/images/" + imageName));
