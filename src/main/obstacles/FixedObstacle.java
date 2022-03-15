@@ -10,12 +10,8 @@ public class FixedObstacle extends Obstacle{
 		super();
 		this.position=position;
 		this.skin=skin;
-		this.x=(Toolkit.getDefaultToolkit().getScreenSize().width)+1;
+		this.x=(Toolkit.getDefaultToolkit().getScreenSize().width)+2;
 		this.y=(Toolkit.getDefaultToolkit().getScreenSize().height);
-	}
-	
-	private FixedObstacle spawnFixedObstacle() {
-		
 	}
 	
 	public void animate(Graphics2D a) {
