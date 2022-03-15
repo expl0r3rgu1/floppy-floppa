@@ -14,6 +14,6 @@ public class TimedMovingObstacleGenerator extends TimedObstacleGenerator {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.getMap().addMovingObstacle();
+		this.getMap().addMovingObstacle(); //Spawns a MovingObstacle
 	}
 }
