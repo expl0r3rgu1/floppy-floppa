@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -17,6 +18,8 @@ public class Shop {
 	private Set<PurchaseStatus<Background>> sceneries;
 
 	public Shop(Integer coins, Set<PurchaseStatus<Skin>> skins, Set<PurchaseStatus<Background>> sceneries) {
+		skins = new HashSet<>();
+		sceneries = new HashSet<>();
 		getFileInfo();
 	}
 
