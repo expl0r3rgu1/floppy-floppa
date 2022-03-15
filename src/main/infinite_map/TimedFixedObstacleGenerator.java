@@ -14,7 +14,7 @@ public class TimedFixedObstacleGenerator extends TimedObstacleGenerator {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.getMap().addFixedObstacle();
+		this.getMap().addFixedObstacle(); //Spawns a FixedObstacle
 	}
 
 }
