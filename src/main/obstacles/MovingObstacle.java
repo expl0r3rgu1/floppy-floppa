@@ -1,11 +1,18 @@
 package main.obstacles;
 
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import java.awt.Graphics2D;
 
 public class MovingObstacle extends Obstacle {
+	
+//	private int x;
+//	private int y;
+//	private ImageIcon skin;
 
-	public MovingObstacle() {
+	public MovingObstacle(ImageIcon skin) {
 		super();
+		this.skin = skin;
 		this.x = (Toolkit.getDefaultToolkit().getScreenSize().width)+1;
 		this.y = (Toolkit.getDefaultToolkit().getScreenSize().height)/2;
 	}
@@ -33,6 +40,11 @@ public class MovingObstacle extends Obstacle {
 			}
 		}
 	}
+	
+	public void animate(Graphics2D g) {
+		
+	}
+	
 	public boolean validPositionY(int y) {
 		int maxHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
 		
