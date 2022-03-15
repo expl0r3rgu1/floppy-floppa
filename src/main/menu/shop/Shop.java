@@ -21,12 +21,8 @@ public class Shop {
 	}
 
 	private void getFileInfo() {
-		Scanner scanner = null;
-		try {
-			scanner = new Scanner("file.txt");
-		} finally {
-			
-		}
+		Scanner scanner = new Scanner("file.txt");
+		
 		int counter = 0;
 		while (scanner.hasNextLine()) {
 			Scanner nextscanner = new Scanner(scanner.nextLine());
