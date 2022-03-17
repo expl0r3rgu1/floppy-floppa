@@ -24,7 +24,7 @@ public class Shop {
 	}
 	
 	private void buy(Object o) {
-		if(o.getClass().equals("Skin")) {
+		if(o.getClass().equals(Skin.class)) {
 			findAndBuy(o, this.skins);
 		}else {
 			findAndBuy(o, this.sceneries);
