@@ -25,14 +25,20 @@ public class Shop {
 	
 	private void buy(Object o) {
 		if(o.getClass().equals("Skin")) {
-			skins.forEach(status -> {
-				if(status.getX.equals(o)) {
-					if(!status.isPurchased && status.getX.getPrice <= coins) {
-						status.purchase();
-					}
-				}
-			});
+			findAndBuy(o, this.skins);
+		}else {
+			findAndBuy(o, this.sceneries);
 		}
+	}
+	
+	private <X> void findAndBuy (Object o, Set<PurchaseStatus<X>> set) {
+		set.forEach(status -> {
+			if(status.getX.equals(o)) {
+				if(!status.isPurchesed && status.getX.getPrice <= this.coins) {
+					status.purchase();
+				}
+			}
+		});
 	}
 
 	private void getFileInfo() {
