@@ -22,6 +22,18 @@ public class Shop {
 		sceneries = new HashSet<>();
 		getFileInfo();
 	}
+	
+	private void buy(Object o) {
+		if(o.getClass().equals("Skin")) {
+			skins.forEach(status -> {
+				if(status.getX.equals(o)) {
+					if(!status.isPurchased && status.getX.getPrice <= coins) {
+						status.purchase();
+					}
+				}
+			});
+		}
+	}
 
 	private void getFileInfo() {
 		Scanner scanner = new Scanner("file.txt");
