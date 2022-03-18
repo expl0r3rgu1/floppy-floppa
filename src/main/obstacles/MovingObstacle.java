@@ -21,19 +21,19 @@ public class MovingObstacle extends Obstacle {
 
 	public void movingPattern() {
 		while (true) {
-			if(y == (Toolkit.getDefaultToolkit().getScreenSize().height)/2) {
+			if(this.position.getY() == (Toolkit.getDefaultToolkit().getScreenSize().height)/2) {
 				for (int i = 1; i <= 5; i++) {
-					this.y = this.updateView(this.y, 1);
+					this.position.setY(this.updateView(this.position.getY(), 1));
 				}
 				this.sleep(800);
 			}else {
 				for (int i = 1; i <= 10; i++) {
-					this.y = this.updateView(this.y, -1);
+					this.position.setY(this.updateView(this.position.getY(), -1));
 				}
 				this.sleep(800);
 
 				for (int i = 1; i <= 0; i++) {
-					this.y = this.updateView(this.y, +1);
+					this.position.setY(this.updateView(this.position.getY(), 1));
 				}
 				this.sleep(800);
 			}
