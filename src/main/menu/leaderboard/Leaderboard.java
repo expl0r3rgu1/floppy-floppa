@@ -1,38 +1,62 @@
 package main.menu.leaderboard;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Leaderboard {
 	private final File leaderboardFile = new File("savings");
 	private ArrayList<Player> leaderboard;
-	
+
 	public Leaderboard() {
-		
+		try {
+			Scanner leaderboardFileScanner = new Scanner(leaderboardFile);
+			this.skipToLeaderboardStart(leaderboardFileScanner);
+
+			leaderboard = new ArrayList<>();
+
+			while (leaderboardFileScanner.hasNextLine()) {
+				var line = leaderboardFileScanner.nextLine();
+
+				// Preventing wrong player to be added due to blank line
+				if (!line.isBlank()) {
+					leaderboard.add(new Player(line.split(",")[0], Integer.parseInt(line.split(",")[1])));
+				}
+			}
+			
+			leaderboardFileScanner.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public Player getBestPlayer() {
-		this.sortLeaderboard();
 		return leaderboard.get(0);
 	}
 
 	public ArrayList<Player> getLeaderboard() {
-		this.sortLeaderboard();
 		return leaderboard;
 	}
 
-	public void sortLeaderboard() {
-		leaderboard.sort((a, b) -> a.getPersonalBest() - b.getPersonalBest());
+	private void skipToLeaderboardStart(Scanner scanner) {
+		for (int i = 0; i < 2 && scanner.hasNextLine(); i++) {
+			scanner.nextLine();
+		}
 	}
 
-	public void update(Player player) {
-		int index = Collections.binarySearch(this.leaderboard, player,
+	public void update(Player newPlayer) {
+		int index = Collections.binarySearch(this.leaderboard, newPlayer,
 				(a, b) -> a.getPersonalBest() - b.getPersonalBest());
 
 		if (index < 0)
 			index = ~index; // Converting negative index to positive index = (-index) - 1
 
-		this.leaderboard.add(index, player);
+		if (this.leaderboard.get(index).equals(newPlayer)) {
+			this.leaderboard.get(index).setPersonalBest(newPlayer.getPersonalBest());
+		} else {
+			this.leaderboard.add(index, newPlayer);
+		}
 	}
 }
