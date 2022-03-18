@@ -41,7 +41,7 @@ public class MovingObstacle extends Obstacle {
 	}
 	
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(this.skin, this.x, this.y, 
+		canvas.drawImage(this.skin, this.position.getX(), this.getY(), 
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().width)/20, 
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().width)/10, null);
 		
