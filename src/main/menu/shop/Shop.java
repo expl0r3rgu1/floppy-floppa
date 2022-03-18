@@ -26,7 +26,7 @@ public class Shop {
 	}
 
 	public void show(Graphics2D canvas) {
-		
+
 	}
 
 	private void buy(Object o) {
@@ -48,41 +48,45 @@ public class Shop {
 	}
 
 	private void getFileInfo() {
-		FileInputStream fileStream = new FileInputStream(this.file);
-		Scanner scanner = new Scanner(fileStream);
+		try {
+			FileInputStream fileStream = new FileInputStream(this.file);
+			Scanner scanner = new Scanner(fileStream);
 
-		int counter = 0;
-		while (scanner.hasNextLine()) {
-			Scanner nextscanner = new Scanner(scanner.nextLine());
-			if (counter == 0) {
-				while (nextscanner.hasNext()) {
-					String word = nextscanner.next();
-					this.coins = Integer.parseInt(word);
-				}
-				counter++;
-				continue;
-			} else if (counter == 1) {
-				while (nextscanner.hasNext()) {
-					PurchaseStatus<Skin> purchaseStatus = new PurchaseStatus<>();
-					String word = nextscanner.next();
-					if (word.equals("1")) {
-						purchaseStatus.purchase();
+			int counter = 0;
+			while (scanner.hasNextLine()) {
+				Scanner nextscanner = new Scanner(scanner.nextLine());
+				if (counter == 0) {
+					while (nextscanner.hasNext()) {
+						String word = nextscanner.next();
+						this.coins = Integer.parseInt(word);
 					}
-					this.skins.add(purchaseStatus);
-				}
-				counter++;
-				continue;
-			} else if (counter == 2) {
-				while (nextscanner.hasNext()) {
-					PurchaseStatus<Background> purchaseStatus = new PurchaseStatus<>();
-					String word = nextscanner.next();
-					if (word.equals("1")) {
-						purchaseStatus.purchase();
+					counter++;
+					continue;
+				} else if (counter == 1) {
+					while (nextscanner.hasNext()) {
+						PurchaseStatus<Skin> purchaseStatus = new PurchaseStatus<>();
+						String word = nextscanner.next();
+						if (word.equals("1")) {
+							purchaseStatus.purchase();
+						}
+						this.skins.add(purchaseStatus);
 					}
-					this.sceneries.add(purchaseStatus);
+					counter++;
+					continue;
+				} else if (counter == 2) {
+					while (nextscanner.hasNext()) {
+						PurchaseStatus<Background> purchaseStatus = new PurchaseStatus<>();
+						String word = nextscanner.next();
+						if (word.equals("1")) {
+							purchaseStatus.purchase();
+						}
+						this.sceneries.add(purchaseStatus);
+					}
 				}
+				break;
 			}
-			break;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 
