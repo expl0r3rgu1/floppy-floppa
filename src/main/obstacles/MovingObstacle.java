@@ -38,8 +38,12 @@ public class MovingObstacle extends Obstacle {
 		}
 	}
 	
-	public void animate(Graphics2D g) {
+	public void animate(Graphics2D canvas) {
+		canvas.drawImage(this.skin, this.x, this.y, 
+				(int) (Toolkit.getDefaultToolkit().getScreenSize().width)/20, 
+				(int) (Toolkit.getDefaultToolkit().getScreenSize().width)/10, null);
 		
+		this.movingPattern();
 	}
 	
 	public boolean validPositionY(int y) {
