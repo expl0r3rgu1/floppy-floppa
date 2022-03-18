@@ -84,6 +84,7 @@ public class Shop {
 				}
 				break;
 			}
+			scanner.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
