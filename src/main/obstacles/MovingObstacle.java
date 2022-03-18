@@ -4,19 +4,19 @@ import java.awt.Image;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 
+import main.utilities.Position;
 import main.utilities.Skin;
 
 public class MovingObstacle extends Obstacle {
 	
-	private int x;
-	private int y;
+	private Position position;
 	private Skin skin;
 
 	public MovingObstacle(Skin skin) {
 		super();
 		this.skin = skin;
-		this.x = (Toolkit.getDefaultToolkit().getScreenSize().width)+1;
-		this.y = (Toolkit.getDefaultToolkit().getScreenSize().height)/2;
+		this.position.setX((Toolkit.getDefaultToolkit().getScreenSize().width)+1);
+		this.position.setY((Toolkit.getDefaultToolkit().getScreenSize().height)/2);
 	}
 
 	public void movingPattern() {
