@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Leaderboard {
-	private File leaderboardRecord;
+	private final File leaderboardFile = new File("savings");
 	private ArrayList<Player> leaderboard;
+	
+	public Leaderboard() {
+		
+	}
 
 	public Player getBestPlayer() {
 		this.sortLeaderboard();
