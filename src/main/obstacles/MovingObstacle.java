@@ -1,16 +1,18 @@
 package main.obstacles;
 
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
+
+import main.utilities.Skin;
 
 public class MovingObstacle extends Obstacle {
 	
-//	private int x;
-//	private int y;
-//	private Image skin;
+	private int x;
+	private int y;
+	private Skin skin;
 
-	public MovingObstacle(Image skin) {
+	public MovingObstacle(Skin skin) {
 		super();
 		this.skin = skin;
 		this.x = (Toolkit.getDefaultToolkit().getScreenSize().width)+1;
