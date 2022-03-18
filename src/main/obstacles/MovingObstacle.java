@@ -22,19 +22,16 @@ public class MovingObstacle extends Obstacle {
 			if(y == (Toolkit.getDefaultToolkit().getScreenSize().height)/2) {
 				for (int i = 1; i <= 5; i++) {
 					this.y = this.updateView(this.y, 1);
-					System.out.println(y);
 				}
 				this.sleep(800);
 			}else {
 				for (int i = 1; i <= 10; i++) {
 					this.y = this.updateView(this.y, -1);
-					System.out.println(y);
 				}
 				this.sleep(800);
 
 				for (int i = 1; i <= 0; i++) {
 					this.y = this.updateView(this.y, +1);
-					System.out.println(y);
 				}
 				this.sleep(800);
 			}
