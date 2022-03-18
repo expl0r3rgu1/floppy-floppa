@@ -1,10 +1,9 @@
 package main.menu.shop;
 
 import java.awt.*;
-import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Scanner;
@@ -17,6 +16,7 @@ public class Shop {
 	private Integer coins;
 	private Set<PurchaseStatus<Skin>> skins;
 	private Set<PurchaseStatus<Background>> sceneries;
+	private File file;
 
 	public Shop() {
 		skins = new HashSet<>();
@@ -38,8 +38,8 @@ public class Shop {
 
 	private <X> void findAndBuy(Object o, Set<PurchaseStatus<X>> set) {
 		set.forEach(status -> {
-			if (status.getX.equals(o)) {
-				if (!status.isPurchesed && status.getX.getPrice <= this.coins) {
+			if (status.getX().equals(o)) {
+				if (!status.isPurchesed() && status.getX().getPrice() <= this.coins) {
 					status.purchase();
 				}
 			}
@@ -47,7 +47,8 @@ public class Shop {
 	}
 
 	private void getFileInfo() {
-		Scanner scanner = new Scanner("file.txt");
+		FileInputStream fileStream = new FileInputStream(this.file);
+		Scanner scanner = new Scanner(fileStream);
 
 		int counter = 0;
 		while (scanner.hasNextLine()) {
