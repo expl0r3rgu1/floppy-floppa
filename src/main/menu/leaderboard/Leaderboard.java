@@ -2,6 +2,8 @@ package main.menu.leaderboard;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -25,7 +27,7 @@ public class Leaderboard {
 					leaderboard.add(new Player(line.split(",")[0], Integer.parseInt(line.split(",")[1])));
 				}
 			}
-			
+
 			leaderboardFileScanner.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -43,6 +45,14 @@ public class Leaderboard {
 	private void skipToLeaderboardStart(Scanner scanner) {
 		for (int i = 0; i < 2 && scanner.hasNextLine(); i++) {
 			scanner.nextLine();
+		}
+	}
+
+	public void writeToFile() throws IOException {
+		FileWriter leaderboardFileWriter = new FileWriter(leaderboardFile);
+
+		for (var player : leaderboard) {
+			leaderboardFileWriter.append(player.toString());
 		}
 	}
 
