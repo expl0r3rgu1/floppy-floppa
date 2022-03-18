@@ -23,6 +23,12 @@ public class Leaderboard {
 	}
 
 	public void update(Player player) {
-		
+		int index = Collections.binarySearch(this.leaderboard, player,
+				(a, b) -> a.getPersonalBest() - b.getPersonalBest());
+
+		if (index < 0)
+			index = ~index; // Converting negative index to positive index = (-index) - 1
+
+		this.leaderboard.add(index, player);
 	}
 }
