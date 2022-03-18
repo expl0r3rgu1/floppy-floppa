@@ -47,47 +47,44 @@ public class Shop {
 		});
 	}
 
-	private void getFileInfo() {
-		try {
-			Scanner scanner = new Scanner(this.file);
+	private void getFileInfo() throws FileNotFoundException{
 
-			int counter = 0;
-			while (scanner.hasNextLine()) {
-				Scanner nextscanner = new Scanner(scanner.nextLine());
-				if (counter == 0) {
-					while (nextscanner.hasNext()) {
-						String word = nextscanner.next();
-						this.coins = Integer.parseInt(word);
-					}
-					counter++;
-					continue;
-				} else if (counter == 1) {
-					while (nextscanner.hasNext()) {
-						PurchaseStatus<Skin> purchaseStatus = new PurchaseStatus<>();
-						String word = nextscanner.next();
-						if (word.equals("1")) {
-							purchaseStatus.purchase();
-						}
-						this.skins.add(purchaseStatus);
-					}
-					counter++;
-					continue;
-				} else if (counter == 2) {
-					while (nextscanner.hasNext()) {
-						PurchaseStatus<Background> purchaseStatus = new PurchaseStatus<>();
-						String word = nextscanner.next();
-						if (word.equals("1")) {
-							purchaseStatus.purchase();
-						}
-						this.sceneries.add(purchaseStatus);
-					}
+		Scanner scanner = new Scanner(this.file);
+
+		int counter = 0;
+		while (scanner.hasNextLine()) {
+			Scanner nextscanner = new Scanner(scanner.nextLine());
+			if (counter == 0) {
+				while (nextscanner.hasNext()) {
+					String word = nextscanner.next();
+					this.coins = Integer.parseInt(word);
 				}
-				break;
+				counter++;
+				continue;
+			} else if (counter == 1) {
+				while (nextscanner.hasNext()) {
+					PurchaseStatus<Skin> purchaseStatus = new PurchaseStatus<>();
+					String word = nextscanner.next();
+					if (word.equals("1")) {
+						purchaseStatus.purchase();
+					}
+					this.skins.add(purchaseStatus);
+				}
+				counter++;
+				continue;
+			} else if (counter == 2) {
+				while (nextscanner.hasNext()) {
+					PurchaseStatus<Background> purchaseStatus = new PurchaseStatus<>();
+					String word = nextscanner.next();
+					if (word.equals("1")) {
+						purchaseStatus.purchase();
+					}
+					this.sceneries.add(purchaseStatus);
+				}
 			}
-			scanner.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			break;
 		}
+		scanner.close();
 	}
 
 }
