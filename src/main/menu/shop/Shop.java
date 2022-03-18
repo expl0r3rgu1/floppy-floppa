@@ -1,5 +1,6 @@
 package main.menu.shop;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,19 +23,23 @@ public class Shop {
 		sceneries = new HashSet<>();
 		getFileInfo();
 	}
-	
+
+	public void show(Graphics2D canvas) {
+		
+	}
+
 	private void buy(Object o) {
-		if(o.getClass().equals(Skin.class)) {
+		if (o.getClass().equals(Skin.class)) {
 			findAndBuy(o, this.skins);
-		}else {
+		} else {
 			findAndBuy(o, this.sceneries);
 		}
 	}
-	
-	private <X> void findAndBuy (Object o, Set<PurchaseStatus<X>> set) {
+
+	private <X> void findAndBuy(Object o, Set<PurchaseStatus<X>> set) {
 		set.forEach(status -> {
-			if(status.getX.equals(o)) {
-				if(!status.isPurchesed && status.getX.getPrice <= this.coins) {
+			if (status.getX.equals(o)) {
+				if (!status.isPurchesed && status.getX.getPrice <= this.coins) {
 					status.purchase();
 				}
 			}
@@ -43,7 +48,7 @@ public class Shop {
 
 	private void getFileInfo() {
 		Scanner scanner = new Scanner("file.txt");
-		
+
 		int counter = 0;
 		while (scanner.hasNextLine()) {
 			Scanner nextscanner = new Scanner(scanner.nextLine());
