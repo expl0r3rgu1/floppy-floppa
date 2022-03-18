@@ -49,8 +49,7 @@ public class Shop {
 
 	private void getFileInfo() {
 		try {
-			FileInputStream fileStream = new FileInputStream(this.file);
-			Scanner scanner = new Scanner(fileStream);
+			Scanner scanner = new Scanner(this.file);
 
 			int counter = 0;
 			while (scanner.hasNextLine()) {
