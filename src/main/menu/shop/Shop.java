@@ -21,6 +21,7 @@ public class Shop {
 	public Shop() {
 		skins = new HashSet<>();
 		sceneries = new HashSet<>();
+		this.file = new File("file.txt");
 		getFileInfo();
 	}
 
