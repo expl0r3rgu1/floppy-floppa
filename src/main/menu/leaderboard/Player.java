@@ -28,4 +28,15 @@ public class Player {
 			this.personalBest = personalBest;
 		}
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Player other = (Player) obj;
+		return this.nickname.equals(other.getNickname());
+	}
+	
+	@Override
+	public String toString() {
+		return nickname + "," + personalBest;
+	}
 }
