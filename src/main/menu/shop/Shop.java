@@ -96,7 +96,7 @@ public class Shop {
 
 	private void fileUpdate() {
 		Path path = this.file.toPath();
-		List<String> fileContent = new ArrayList<>(Files.readAllLines(path));
+		List<String> fileContent = new ArrayList<>(Files.readAllLines(path, StandardCharsets.UTF_8));
 
 		for (int i = 0; i < fileContent.size(); i++) {
 			if (i == 0) {
@@ -110,7 +110,7 @@ public class Shop {
 				break;
 			}
 		}
-		Files.write(path, fileContent, StandardCharsets.US_ASCII);
+		Files.write(path, fileContent, StandardCharsets.UTF_8);
 	}
 	
 	private <X> String overwritePurchaseStatusLine(Set<X> set) {
