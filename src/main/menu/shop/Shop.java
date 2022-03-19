@@ -47,7 +47,7 @@ public class Shop {
 		});
 	}
 
-	private void getFileInfo() throws FileNotFoundException{
+	private void getFileInfo() throws FileNotFoundException {
 
 		Scanner scanner = new Scanner(this.file);
 
@@ -87,4 +87,7 @@ public class Shop {
 		scanner.close();
 	}
 
+	private void fileUpdate() {
+
+	}
 }
