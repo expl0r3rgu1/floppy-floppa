@@ -23,12 +23,12 @@ public class Shop {
 	private Integer coins;
 	private Set<PurchaseStatus<Skin>> skins;
 	private Set<PurchaseStatus<Background>> sceneries;
-	private File file;
+	private File savingFile;
 
 	public Shop() {
 		skins = new HashSet<>();
 		sceneries = new HashSet<>();
-		this.file = new File("file.txt");
+		this.savingFile = new File("file.txt");
 		getFileInfo();
 	}
 
@@ -56,7 +56,7 @@ public class Shop {
 
 	private void getFileInfo() throws FileNotFoundException {
 
-		Scanner scanner = new Scanner(this.file);
+		Scanner scanner = new Scanner(this.savingFile);
 
 		int counter = 0;
 		while (scanner.hasNextLine()) {
@@ -95,7 +95,7 @@ public class Shop {
 	}
 
 	private void fileUpdate() {
-		Path path = this.file.toPath();
+		Path path = this.savingFile.toPath();
 		List<String> fileContent = new ArrayList<>(Files.readAllLines(path, StandardCharsets.UTF_8));
 
 		for (int i = 0; i < fileContent.size(); i++) {
