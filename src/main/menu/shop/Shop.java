@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -109,6 +110,7 @@ public class Shop {
 				break;
 			}
 		}
+		Files.write(path, fileContent, StandardCharsets.US_ASCII);
 	}
 	
 	private <X> String overwritePurchaseStatusLine(Set<X> set) {
