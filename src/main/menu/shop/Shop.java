@@ -1,11 +1,17 @@
 package main.menu.shop;
 
 import java.awt.*;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -88,6 +94,51 @@ public class Shop {
 	}
 
 	private void fileUpdate() {
+		Path path = this.file.toPath();
+		List<String> fileContent = new ArrayList<>(Files.readAllLines(path));
+
+		for (int i = 0; i < fileContent.size(); i++) {
+			if (i == 0) {
+				fileContent.set(i, this.coins.toString());
+			} else if (i == 1) {
+				String newLine = null;
+				skins.forEach(status -> {
+					if (status.isPurchased()) {
+						if (newLine.isEmpty()) {
+							newLine.concat("1");
+						} else {
+							newLine.concat(" 1");
+						}
+					} else {
+						if (newLine.isEmpty()) {
+							newLine.concat("0");
+						} else {
+							newLine.concat(" 0");
+						}
+					}
+				});
+				fileContent.set(i, newLine);
+			} else {
+				String newLine = null;
+				sceneries.forEach(status -> {
+					if (status.isPurchased()) {
+						if (newLine.isEmpty()) {
+							newLine.concat("1");
+						} else {
+							newLine.concat(" 1");
+						}
+					} else {
+						if (newLine.isEmpty()) {
+							newLine.concat("0");
+						} else {
+							newLine.concat(" 0");
+						}
+					}
+				});
+				fileContent.set(i, newLine);
+				break;
+			}
+		}
 
 	}
 }
