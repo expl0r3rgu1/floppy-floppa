@@ -101,44 +101,33 @@ public class Shop {
 			if (i == 0) {
 				fileContent.set(i, this.coins.toString());
 			} else if (i == 1) {
-				String newLine = null;
-				skins.forEach(status -> {
-					if (status.isPurchased()) {
-						if (newLine.isEmpty()) {
-							newLine.concat("1");
-						} else {
-							newLine.concat(" 1");
-						}
-					} else {
-						if (newLine.isEmpty()) {
-							newLine.concat("0");
-						} else {
-							newLine.concat(" 0");
-						}
-					}
-				});
+				String newLine = this.overwritePurchaseStatusLine(this.skins);
 				fileContent.set(i, newLine);
 			} else {
-				String newLine = null;
-				sceneries.forEach(status -> {
-					if (status.isPurchased()) {
-						if (newLine.isEmpty()) {
-							newLine.concat("1");
-						} else {
-							newLine.concat(" 1");
-						}
-					} else {
-						if (newLine.isEmpty()) {
-							newLine.concat("0");
-						} else {
-							newLine.concat(" 0");
-						}
-					}
-				});
+				String newLine = this.overwritePurchaseStatusLine(sceneries);
 				fileContent.set(i, newLine);
 				break;
 			}
 		}
-
+	}
+	
+	private <X> String overwritePurchaseStatusLine(Set<X> set) {
+		String line = null;
+		set.forEach(status -> {
+			if (status.isPurchased()) {
+				if (line.isEmpty()) {
+					line.concat("1");
+				} else {
+					line.concat(" 1");
+				}
+			} else {
+				if (line.isEmpty()) {
+					line.concat("0");
+				} else {
+					line.concat(" 0");
+				}
+			}
+		});
+		return line;
 	}
 }
