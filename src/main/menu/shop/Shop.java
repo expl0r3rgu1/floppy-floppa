@@ -1,11 +1,18 @@
 package main.menu.shop;
 
 import java.awt.*;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -47,7 +54,7 @@ public class Shop {
 		});
 	}
 
-	private void getFileInfo() throws FileNotFoundException{
+	private void getFileInfo() throws FileNotFoundException {
 
 		Scanner scanner = new Scanner(this.file);
 
@@ -87,4 +94,42 @@ public class Shop {
 		scanner.close();
 	}
 
+	private void fileUpdate() {
+		Path path = this.file.toPath();
+		List<String> fileContent = new ArrayList<>(Files.readAllLines(path, StandardCharsets.UTF_8));
+
+		for (int i = 0; i < fileContent.size(); i++) {
+			if (i == 0) {
+				fileContent.set(i, this.coins.toString());
+			} else if (i == 1) {
+				String newLine = this.overwritePurchaseStatusLine(this.skins);
+				fileContent.set(i, newLine);
+			} else {
+				String newLine = this.overwritePurchaseStatusLine(sceneries);
+				fileContent.set(i, newLine);
+				break;
+			}
+		}
+		Files.write(path, fileContent, StandardCharsets.UTF_8);
+	}
+	
+	private <X> String overwritePurchaseStatusLine(Set<X> set) {
+		String line = null;
+		set.forEach(status -> {
+			if (status.isPurchased()) {
+				if (line.isEmpty()) {
+					line.concat("1");
+				} else {
+					line.concat(" 1");
+				}
+			} else {
+				if (line.isEmpty()) {
+					line.concat("0");
+				} else {
+					line.concat(" 0");
+				}
+			}
+		});
+		return line;
+	}
 }
