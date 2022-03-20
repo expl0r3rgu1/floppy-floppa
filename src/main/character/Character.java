@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class Character extends Movable {
 	private Skin skin;
-	private boolean dead; //true if the character is alive
+	private boolean dead; //true if the character is dead
 	private boolean hit; //true if the character is hit by an obstacle
 	
 	Character(Position position, Skin skin) {
@@ -42,7 +42,8 @@ public class Character extends Movable {
 		//to-do
 	}
 	
-	public void animate(Graphics2D g) {
+	@Override
+	public void animate(Graphics2D canvas) {
 		//to-do
 	}
 	
