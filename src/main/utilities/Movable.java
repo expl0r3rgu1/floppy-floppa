@@ -17,5 +17,5 @@ public abstract class Movable {
 		this.position=position;
 	}
 	
-	public void animate(Graphics2D g) {}
+	public abstract void animate(Graphics2D canvas);
 }
