@@ -32,10 +32,6 @@ public class Shop {
 		getFileInfo();
 	}
 
-	public void show(Graphics2D canvas) {
-
-	}
-
 	private void buy(Object o) {
 		if (o.getClass().equals(Skin.class)) {
 			findAndBuy(o, this.skins);
@@ -131,5 +127,9 @@ public class Shop {
 			}
 		});
 		return line;
+	}
+	
+	public void show(Graphics2D canvas) {
+
 	}
 }
