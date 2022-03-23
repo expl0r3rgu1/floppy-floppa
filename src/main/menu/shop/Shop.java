@@ -65,29 +65,26 @@ public class Shop {
 				counter++;
 				continue;
 			} else if (counter == 1) {
-				while (nextscanner.hasNext()) {
-					PurchaseStatus<Skin> purchaseStatus = new PurchaseStatus<>();
-					String word = nextscanner.next();
-					if (word.equals("1")) {
-						purchaseStatus.purchase();
-					}
-					this.skins.add(purchaseStatus);
-				}
+				this.getFileInfoSupport(nextscanner, this.skins);
 				counter++;
 				continue;
 			} else if (counter == 2) {
-				while (nextscanner.hasNext()) {
-					PurchaseStatus<Background> purchaseStatus = new PurchaseStatus<>();
-					String word = nextscanner.next();
-					if (word.equals("1")) {
-						purchaseStatus.purchase();
-					}
-					this.sceneries.add(purchaseStatus);
-				}
+				this.getFileInfoSupport(nextscanner, this.sceneries);
 			}
 			break;
 		}
 		scanner.close();
+	}
+	
+	private <X> void getFileInfoSupport(Scanner scanner, Set<PurchaseStatus<X>> set) {
+		while (scanner.hasNext()) {
+			PurchaseStatus<X> purchaseStatus = new PurchaseStatus<>();
+			String word = scanner.next();
+			if (word.equals("1")) {
+				purchaseStatus.purchase();
+			}
+			set.add(purchaseStatus);
+		}
 	}
 
 	private void fileUpdate() {
@@ -130,6 +127,6 @@ public class Shop {
 	}
 	
 	public void show(Graphics2D canvas) {
-
+		
 	}
 }
