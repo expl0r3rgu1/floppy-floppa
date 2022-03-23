@@ -32,6 +32,18 @@ public class Shop {
 		getFileInfo();
 	}
 
+	public Integer getCoins() {
+		return this.coins;
+	}
+
+	public Set<PurchaseStatus<Skin>> getSkins() {
+		return this.skins;
+	}
+
+	public Set<PurchaseStatus<Background>> getSceneries() {
+		return this.sceneries;
+	}
+
 	private void buy(Object o) {
 		if (o.getClass().equals(Skin.class)) {
 			findAndBuy(o, this.skins);
