@@ -22,20 +22,14 @@ public class MovingObstacle extends Obstacle {
 	public void movingPattern() {
 		while (true) {
 			if (this.position.getY() == (Toolkit.getDefaultToolkit().getScreenSize().height) / 2) {
-				for (int i = 1; i <= 5; i++) {
-					this.position.setY(this.updateView(this.position.getY(), 1));
-				}
-				this.sleep(800);
+				
+				this.movingPatternSupport(1, 5, 1, 800);
+				
 			} else {
-				for (int i = 1; i <= 10; i++) {
-					this.position.setY(this.updateView(this.position.getY(), -1));
-				}
-				this.sleep(800);
+				
+				this.movingPatternSupport(1, 10, -1, 800);
 
-				for (int i = 1; i <= 0; i++) {
-					this.position.setY(this.updateView(this.position.getY(), 1));
-				}
-				this.sleep(800);
+				this.movingPatternSupport(1, 10, 1, 800);
 			}
 		}
 	}
@@ -47,6 +41,13 @@ public class MovingObstacle extends Obstacle {
 				(int) (Toolkit.getDefaultToolkit().getScreenSize().width) / 10, null);
 
 		this.movingPattern();
+	}
+
+	private void movingPatternSupport(int start, int end, int shift, int sleepTime) {
+		for (int i = start; i <= end; i++) {
+			this.position.setY(this.updateView(this.position.getY(), shift));
+		}
+		this.sleep(sleepTime);
 	}
 
 	public boolean validPositionY(int y) {
