@@ -30,17 +30,13 @@ public class ShopGUI extends JPanel {
 		JLabel coins = new JLabel(/* Shop.getCoins() + "" */ "0");
 		JLabel skinTitle = new JLabel("Skins");
 		JLabel sceneriesTitle = new JLabel("Backgrounds");
-		coins.setOpaque(true);
-		skinTitle.setOpaque(true);
-		sceneriesTitle.setOpaque(true);
-		coins.setBackground(Color.yellow);
-		skinTitle.setBackground(Color.yellow);
-		sceneriesTitle.setBackground(Color.yellow);
+		
+		this.labelSetting(coins, true, Color.yellow);
+		this.labelSetting(skinTitle, true, Color.yellow);
+		this.labelSetting(sceneriesTitle, true, Color.yellow);
 
 		this.gridSetting(2, 0, 1, 1, coins);
-
 		this.gridSetting(0, 1, 2, 1, skinTitle);
-		
 		this.gridSetting(0, 2, 2, 1, sceneriesTitle);
 	}
 
@@ -60,5 +56,10 @@ public class ShopGUI extends JPanel {
 		gbc.gridwidth = width;
 		gbc.gridheight = height;
 		this.add(label, gbc);
+	}
+	
+	private void labelSetting(JLabel label,Boolean opaqueness, Color backgroundColor) {
+		label.setOpaque(opaqueness);
+		label.setBackground(backgroundColor);
 	}
 }
