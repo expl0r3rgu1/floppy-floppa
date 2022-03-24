@@ -37,23 +37,11 @@ public class ShopGUI extends JPanel {
 		skinTitle.setBackground(Color.yellow);
 		sceneriesTitle.setBackground(Color.yellow);
 
-		gbc.gridx = 2;
-		gbc.gridy = 0;
-		gbc.gridwidth = 1;
-		gbc.gridheight = 1;
-		this.add(coins, gbc);
+		this.gridSetting(2, 0, 1, 1, coins);
 
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		gbc.gridwidth = 2;
-		gbc.gridheight = 1;
-		this.add(skinTitle, gbc);
+		this.gridSetting(0, 1, 2, 1, skinTitle);
 		
-		gbc.gridx = 0;
-		gbc.gridy = 2;
-		gbc.gridwidth = 2;
-		gbc.gridheight = 1;
-		this.add(sceneriesTitle, gbc);
+		this.gridSetting(0, 2, 2, 1, sceneriesTitle);
 	}
 
 	@Override
@@ -64,5 +52,13 @@ public class ShopGUI extends JPanel {
 
 	private Image scale(Image image) {
 		return image.getScaledInstance((int) SIZE.getWidth(), (int) SIZE.getHeight(), Image.SCALE_DEFAULT);
+	}
+	
+	private void gridSetting(int x, int y, int width, int height, JLabel label) {
+		gbc.gridx = x;
+		gbc.gridy = y;
+		gbc.gridwidth = width;
+		gbc.gridheight = height;
+		this.add(label, gbc);
 	}
 }
