@@ -15,12 +15,12 @@ public class ShopGUI extends JPanel {
 	private static final long serialVersionUID = -7631305128085484196L;
 	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private Image background;
-//	private GridBagLayout grid = new GridBagLayout();
-//	private GridBagConstraints gbc = new GridBagConstraints();
-//	private GridBagLayout gLayout = new GridBagLayout();
+	private GridBagLayout grid = new GridBagLayout();
+	private GridBagConstraints gbc = new GridBagConstraints();
+	private GridBagLayout gLayout = new GridBagLayout();
 
 	public ShopGUI() {
-//		this.setLayout(grid);
+		this.setLayout(grid);
 		
 		try {
 			background = ImageIO.read(getClass().getResource("/resources/images/shopBackground.jpg"));
@@ -28,21 +28,17 @@ public class ShopGUI extends JPanel {
 			e.printStackTrace();
 		}
 		
-		this.setLayout(null);
+		JLabel coins = new JLabel(/*Shop.getCoins() + ""*/ "0");
+		JLabel skinTitle = new JLabel("Skins");
+//		coins.setBorder(BorderFactory.createLineBorder(Color.black));
 		
-		JLabel coins = new JLabel("0", SwingConstants.CENTER);
-		coins.setBorder(BorderFactory.createLineBorder(Color.black));
-		this.add(coins);
+		gbc.gridx = 1;
+	    gbc.gridy = 0;
+	    this.add(coins, gbc);
 		
-//		gbc.gridx = 0;
-//	    gbc.gridy = 0;
-//	    gLayout.setConstraints(coins, gbc);
-		
-		
-		coins.setBounds((int) SIZE.getWidth() - ((int) SIZE.getWidth() / 100 * 7), ((int) SIZE.getHeight() / 100 * 3),
-				((int) SIZE.getWidth() / 100 * 4), ((int) SIZE.getHeight() / 100 * 5));
-		coins.setBorder(BorderFactory.createLineBorder(Color.black));
-
+		gbc.gridx = 0;
+	    gbc.gridy = 0;
+	    this.add(skinTitle, gbc);
 	}
 
 	@Override
