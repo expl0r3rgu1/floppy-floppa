@@ -8,25 +8,25 @@ import main.utilities.Position;
 import main.utilities.Skin;
 
 public class MovingObstacle extends Obstacle {
-	
+
 	private Position position;
 	private Skin skin;
 
 	public MovingObstacle(Skin skin) {
 		super();
 		this.skin = skin;
-		this.position.setX((Toolkit.getDefaultToolkit().getScreenSize().width)+1);
-		this.position.setY((Toolkit.getDefaultToolkit().getScreenSize().height)/2);
+		this.position.setX((Toolkit.getDefaultToolkit().getScreenSize().width) + 1);
+		this.position.setY((Toolkit.getDefaultToolkit().getScreenSize().height) / 2);
 	}
 
 	public void movingPattern() {
 		while (true) {
-			if(this.position.getY() == (Toolkit.getDefaultToolkit().getScreenSize().height)/2) {
+			if (this.position.getY() == (Toolkit.getDefaultToolkit().getScreenSize().height) / 2) {
 				for (int i = 1; i <= 5; i++) {
 					this.position.setY(this.updateView(this.position.getY(), 1));
 				}
 				this.sleep(800);
-			}else {
+			} else {
 				for (int i = 1; i <= 10; i++) {
 					this.position.setY(this.updateView(this.position.getY(), -1));
 				}
@@ -39,29 +39,25 @@ public class MovingObstacle extends Obstacle {
 			}
 		}
 	}
-	
+
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(this.skin, this.position.getX(), this.getY(), 
-				(int) (Toolkit.getDefaultToolkit().getScreenSize().width)/20, 
-				(int) (Toolkit.getDefaultToolkit().getScreenSize().width)/10, null);
-		
+		canvas.drawImage(this.skin, this.position.getX(), this.getY(),
+				(int) (Toolkit.getDefaultToolkit().getScreenSize().width) / 20,
+				(int) (Toolkit.getDefaultToolkit().getScreenSize().width) / 10, null);
+
 		this.movingPattern();
 	}
-	
+
 	public boolean validPositionY(int y) {
 		int maxHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
-		
-		if(y <= maxHeight && y >= 0) {
-			return true;
-		}else {
-			return false;
-		}
+
+		return y <= maxHeight && y >= 0;
 	}
 
 	private int updateView(int y, int increment) {
 		this.sleep(250);
-		if(validPositionY(y+increment)) {
+		if (validPositionY(y + increment)) {
 			return y + increment;
 		}
 		return 0;
