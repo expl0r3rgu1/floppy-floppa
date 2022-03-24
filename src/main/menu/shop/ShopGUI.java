@@ -3,8 +3,11 @@ package main.menu.shop;
 import java.awt.*;
 import java.io.IOException;
 import java.rmi.activation.ActivationGroupID;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.imageio.ImageIO;
+import javax.print.attribute.HashAttributeSet;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,6 +20,8 @@ public class ShopGUI extends JPanel {
 	private Image background;
 	private GridBagLayout grid = new GridBagLayout();
 	private GridBagConstraints gbc = new GridBagConstraints();
+	private int numSkins;
+	private int numBackgrounds;
 
 	public ShopGUI() {
 		this.setLayout(grid);
@@ -25,6 +30,23 @@ public class ShopGUI extends JPanel {
 			background = ImageIO.read(getClass().getResource("/resources/images/shopBackground.jpg"));
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+		
+//		numSkins = Shop.getSkins().size();
+//		numBackgrounds = Shop.getSceneries().size();
+		numSkins = 5;
+		numBackgrounds = 5;
+		
+		for(int i = 0; i < numSkins; i++) {
+			JLabel image = new JLabel("Skin n. " + i);
+			this.labelSetting(image, true, Color.green);
+			this.gridSetting(i*2, 3, 2, 2, image);
+		}
+		
+		for(int i = 0; i < numBackgrounds; i++) {
+			JLabel scenery = new JLabel("Background n. " + i);
+			this.labelSetting(scenery, true, Color.green);
+			this.gridSetting(i*2, 7, 2, 2, scenery);
 		}
 
 		JLabel coins = new JLabel(/* Shop.getCoins() + "" */ "0");
@@ -35,9 +57,9 @@ public class ShopGUI extends JPanel {
 		this.labelSetting(skinTitle, true, Color.yellow);
 		this.labelSetting(sceneriesTitle, true, Color.yellow);
 
-		this.gridSetting(2, 0, 1, 1, coins);
+		this.gridSetting(4, 0, 1, 1, coins);
 		this.gridSetting(0, 1, 2, 1, skinTitle);
-		this.gridSetting(0, 2, 2, 1, sceneriesTitle);
+		this.gridSetting(0, 5, 2, 1, sceneriesTitle);
 	}
 
 	@Override
