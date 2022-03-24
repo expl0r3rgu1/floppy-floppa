@@ -17,28 +17,43 @@ public class ShopGUI extends JPanel {
 	private Image background;
 	private GridBagLayout grid = new GridBagLayout();
 	private GridBagConstraints gbc = new GridBagConstraints();
-	private GridBagLayout gLayout = new GridBagLayout();
 
 	public ShopGUI() {
 		this.setLayout(grid);
-		
+
 		try {
 			background = ImageIO.read(getClass().getResource("/resources/images/shopBackground.jpg"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		JLabel coins = new JLabel(/*Shop.getCoins() + ""*/ "0");
+
+		JLabel coins = new JLabel(/* Shop.getCoins() + "" */ "0");
 		JLabel skinTitle = new JLabel("Skins");
-//		coins.setBorder(BorderFactory.createLineBorder(Color.black));
-		
-		gbc.gridx = 1;
-	    gbc.gridy = 0;
-	    this.add(coins, gbc);
+		JLabel sceneriesTitle = new JLabel("Backgrounds");
+		coins.setOpaque(true);
+		skinTitle.setOpaque(true);
+		sceneriesTitle.setOpaque(true);
+		coins.setBackground(Color.yellow);
+		skinTitle.setBackground(Color.yellow);
+		sceneriesTitle.setBackground(Color.yellow);
+
+		gbc.gridx = 2;
+		gbc.gridy = 0;
+		gbc.gridwidth = 1;
+		gbc.gridheight = 1;
+		this.add(coins, gbc);
+
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		gbc.gridwidth = 2;
+		gbc.gridheight = 1;
+		this.add(skinTitle, gbc);
 		
 		gbc.gridx = 0;
-	    gbc.gridy = 0;
-	    this.add(skinTitle, gbc);
+		gbc.gridy = 2;
+		gbc.gridwidth = 2;
+		gbc.gridheight = 1;
+		this.add(sceneriesTitle, gbc);
 	}
 
 	@Override
