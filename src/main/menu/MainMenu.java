@@ -11,9 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import main.utilities.Stages;
-
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -83,7 +81,7 @@ public class MainMenu implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		Object obj = e.getSource();
+		/*Object obj = e.getSource();
 	    if (obj == button1) {
 	      index--;
 	    } else if (obj == button2) {
@@ -93,7 +91,7 @@ public class MainMenu implements ActionListener{
 	      index = 0;
 	    else if (index < 0) {
 	      index = 2;
-	    }
+	    }*/
 		
 	}
 	
