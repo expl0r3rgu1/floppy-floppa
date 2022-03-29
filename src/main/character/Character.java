@@ -33,12 +33,11 @@ public class Character extends Movable {
 		this.hit=true;
 	}
 	
-	private Position jump() {
+	public void jump() {
 		//to-do
-		return this.getPosition();
 	}
 	
-	private void collide() {
+	public void collide() {
 		//to-do
 	}
 	
