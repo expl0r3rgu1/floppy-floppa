@@ -43,6 +43,7 @@ public class ShopGUI extends JPanel {
 			JButton buy = new JButton("BUY");
 			this.add(buy);
 			this.labelSetting(image, true, Color.green);
+			this.buttonSetting(buy, Color.yellow);
 			this.gridSettingLabel(i*2, 11, 2, 2, image);
 			this.gridSettingButton(i*2, 13, 2, 1, buy);
 		}
@@ -52,6 +53,7 @@ public class ShopGUI extends JPanel {
 			JButton buy = new JButton("BUY");
 			this.add(buy);
 			this.labelSetting(scenery, true, Color.green);
+			this.buttonSetting(buy, Color.yellow);
 			this.gridSettingLabel(i*2, 18, 2, 2, scenery);
 			this.gridSettingButton(i*2, 20, 2, 1, buy);
 		}
@@ -100,5 +102,9 @@ public class ShopGUI extends JPanel {
 	private void labelSetting(JLabel label,Boolean opaqueness, Color backgroundColor) {
 		label.setOpaque(opaqueness);
 		label.setBackground(backgroundColor);
+	}
+	
+	private void buttonSetting(JButton button, Color backgroundColor) {
+		button.setBackground(backgroundColor);
 	}
 }
