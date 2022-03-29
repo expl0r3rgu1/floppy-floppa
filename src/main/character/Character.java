@@ -37,7 +37,8 @@ public class Character extends Movable {
 				gravity += DELAY;
 				velocity += gravity;
 				
-				repaint(); //to show the changes
+				repaint(); /* to show the changes, but it seems I can't call it here,
+							  to-do: find a solution */
 			}});
 	}
 	
@@ -58,7 +59,8 @@ public class Character extends Movable {
 	}
 	
 	public void jump() {
-		//to-do
+		this.gravity = Character.GO_UP;
+		//to-do: add rotation
 	}
 	
 	public void collide() {
