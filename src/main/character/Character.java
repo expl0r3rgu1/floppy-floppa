@@ -67,11 +67,11 @@ public class Character extends Movable {
 
 	@Override
 	public void animate(Graphics2D canvas) {
-		this.timer.start();
 		canvas.drawImage(this.skin.getImage(), this.getPosition().getX(),
 												this.getPosition().getY() + this.velocity,
 												(int) this.skin.getImage().getWidth(null),
 												(int) this.skin.getImage().getHeight(null),	null);
+		this.timer.start();
 	}
 	
 
