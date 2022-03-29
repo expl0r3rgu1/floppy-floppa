@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.imageio.ImageIO;
 import javax.print.attribute.HashAttributeSet;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -39,15 +40,21 @@ public class ShopGUI extends JPanel {
 		
 		for(int i = 0; i < numSkins; i++) {
 			JLabel image = new JLabel("Skin n. " + i);
+			JButton buy = new JButton("BUY");
+			this.add(buy);
 			this.labelSetting(image, true, Color.green);
 			this.gridSetting(i*2, 3, 2, 2, image);
 		}
 		
 		for(int i = 0; i < numBackgrounds; i++) {
 			JLabel scenery = new JLabel("Background n. " + i);
+			JButton buy = new JButton("BUY");
+			this.add(buy);
 			this.labelSetting(scenery, true, Color.green);
 			this.gridSetting(i*2, 7, 2, 2, scenery);
 		}
+		
+		
 
 		JLabel coins = new JLabel(/* Shop.getCoins() + "" */ "0");
 		JLabel skinTitle = new JLabel("Skins");
