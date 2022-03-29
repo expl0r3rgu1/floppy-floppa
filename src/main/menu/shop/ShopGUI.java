@@ -43,7 +43,8 @@ public class ShopGUI extends JPanel {
 			JButton buy = new JButton("BUY");
 			this.add(buy);
 			this.labelSetting(image, true, Color.green);
-			this.gridSetting(i*2, 3, 2, 2, image);
+			this.gridSettingLabel(i*2, 11, 2, 2, image);
+			this.gridSettingButton(i*2, 13, 2, 1, buy);
 		}
 		
 		for(int i = 0; i < numBackgrounds; i++) {
@@ -51,7 +52,8 @@ public class ShopGUI extends JPanel {
 			JButton buy = new JButton("BUY");
 			this.add(buy);
 			this.labelSetting(scenery, true, Color.green);
-			this.gridSetting(i*2, 7, 2, 2, scenery);
+			this.gridSettingLabel(i*2, 18, 2, 2, scenery);
+			this.gridSettingButton(i*2, 20, 2, 1, buy);
 		}
 		
 		
@@ -64,9 +66,9 @@ public class ShopGUI extends JPanel {
 		this.labelSetting(skinTitle, true, Color.yellow);
 		this.labelSetting(sceneriesTitle, true, Color.yellow);
 
-		this.gridSetting(4, 0, 1, 1, coins);
-		this.gridSetting(0, 1, 2, 1, skinTitle);
-		this.gridSetting(0, 5, 2, 1, sceneriesTitle);
+		this.gridSettingLabel(20, 0, 3, 3, coins);
+		this.gridSettingLabel(0, 8, 2, 1, skinTitle);
+		this.gridSettingLabel(0, 15, 2, 1, sceneriesTitle);
 	}
 
 	@Override
@@ -79,12 +81,20 @@ public class ShopGUI extends JPanel {
 		return image.getScaledInstance((int) SIZE.getWidth(), (int) SIZE.getHeight(), Image.SCALE_DEFAULT);
 	}
 	
-	private void gridSetting(int x, int y, int width, int height, JLabel label) {
+	private void gridSettingLabel(int x, int y, int width, int height, JLabel label) {
 		gbc.gridx = x;
 		gbc.gridy = y;
 		gbc.gridwidth = width;
 		gbc.gridheight = height;
 		this.add(label, gbc);
+	}
+	
+	private void gridSettingButton(int x, int y, int width, int height, JButton button) {
+		gbc.gridx = x;
+		gbc.gridy = y;
+		gbc.gridwidth = width;
+		gbc.gridheight = height;
+		this.add(button, gbc);
 	}
 	
 	private void labelSetting(JLabel label,Boolean opaqueness, Color backgroundColor) {
