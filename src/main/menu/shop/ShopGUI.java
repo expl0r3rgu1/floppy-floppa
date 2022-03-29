@@ -42,8 +42,8 @@ public class ShopGUI extends JPanel {
 			JLabel image = new JLabel("Skin n. " + i);
 			JButton buy = new JButton("BUY");
 			this.add(buy);
-			this.labelSetting(image, true, Color.green);
-			this.buttonSetting(buy, Color.yellow);
+			this.labelSetting(image, true, Color.decode("#77DD77"));
+			this.buttonSetting(buy, Color.decode("#FDFD96"));
 			this.gridSettingLabel(i*2, 11, 2, 2, image);
 			this.gridSettingButton(i*2, 13, 2, 1, buy);
 		}
@@ -52,8 +52,8 @@ public class ShopGUI extends JPanel {
 			JLabel scenery = new JLabel("Background n. " + i);
 			JButton buy = new JButton("BUY");
 			this.add(buy);
-			this.labelSetting(scenery, true, Color.green);
-			this.buttonSetting(buy, Color.yellow);
+			this.labelSetting(scenery, true, Color.decode("#77DD77"));
+			this.buttonSetting(buy, Color.decode("#FDFD96"));
 			this.gridSettingLabel(i*2, 18, 2, 2, scenery);
 			this.gridSettingButton(i*2, 20, 2, 1, buy);
 		}
@@ -64,9 +64,9 @@ public class ShopGUI extends JPanel {
 		JLabel skinTitle = new JLabel("Skins");
 		JLabel sceneriesTitle = new JLabel("Backgrounds");
 		
-		this.labelSetting(coins, true, Color.yellow);
-		this.labelSetting(skinTitle, true, Color.yellow);
-		this.labelSetting(sceneriesTitle, true, Color.yellow);
+		this.labelSetting(coins, true, Color.decode("#FFDD62"));
+		this.labelSetting(skinTitle, true, Color.decode("#FFDD62"));
+		this.labelSetting(sceneriesTitle, true, Color.decode("#FFDD62"));
 
 		this.gridSettingLabel(20, 0, 3, 3, coins);
 		this.gridSettingLabel(0, 8, 2, 1, skinTitle);
