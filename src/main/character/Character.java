@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
-public class Character extends Movable {
+public class Character extends Movable implements ActionListener {
 	private Skin skin;
 	private boolean dead; //true if the character is dead
 	private boolean hit; //true if the character is hit by an obstacle
@@ -30,16 +30,8 @@ public class Character extends Movable {
 		this.hit=false;
 		this.velocity=0;
 		this.gravity=Character.GO_DOWN;
-		this.timer = new Timer(Character.TIMER_DELAY, new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				gravity += DELAY;
-				velocity += gravity;
-				
-				repaint(); /* to show the changes, but it seems I can't call it here,
-							  to-do: find a solution */
-			}});
+		this.timer = new Timer(Character.TIMER_DELAY, this);
+		this.timer.start();
 	}
 	
 	public boolean isDead() {
@@ -73,9 +65,15 @@ public class Character extends Movable {
 												this.getPosition().getY() + this.velocity,
 												(int) this.skin.getImage().getWidth(null),
 												(int) this.skin.getImage().getHeight(null),	null);
-		this.timer.start();
 	}
 	
-
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		gravity += DELAY;
+		velocity += gravity;
+		
+		repaint(); /* to show the changes, but it seems I can't call it here,
+					  to-do: find a solution */
+	}
 	
 }
