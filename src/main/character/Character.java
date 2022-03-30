@@ -72,8 +72,8 @@ public class Character extends Movable implements ActionListener {
 		gravity += DELAY;
 		velocity += gravity;
 		
-		repaint(); /* to show the changes, but it seems I can't call it here,
-					  to-do: find a solution */
+		repaint(); /* to show the changes, I'll need to call this method on the
+		 				game GUI*/
 	}
 	
 }
