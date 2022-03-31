@@ -12,7 +12,7 @@ public class BuyButton extends JButton {
 		this.object = object;
 	}
 
-	public Object getIndex() {
+	public Object getObject() {
 		return this.object;
 	}
 
