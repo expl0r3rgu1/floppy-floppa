@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.rmi.activation.ActivationGroupID;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,41 +34,39 @@ public class ShopGUI extends JPanel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-//		numSkins = Shop.getSkins().size();
-//		numBackgrounds = Shop.getSceneries().size();
-		numSkins = 5;
-		numBackgrounds = 5;
-		
-		for(int i = 0; i < numSkins; i++) {
+
+		numSkins = Shop.getSkins().size();
+		numBackgrounds = Shop.getSceneries().size();
+
+		for (int i = 0; i < numSkins; i++) {
 			JLabel label = new JLabel("Skin n. " + i);
-			JButton buy = new JButton("BUY");
-			this.add(buy);
+			BuyButton buyButton = new BuyButton("BUY", Shop.getSkins().get(i).getX());
+			this.add(buyButton);
 			this.labelSetting(label, true, Color.decode("#77DD77"));
-			this.buttonSetting(buy, Color.decode("#FDFD96"));
-			this.gridSettingLabel(i*2, 11, 2, 2, label);
-			this.gridSettingButton(i*2, 13, 2, 1, buy);
+			this.buttonSetting(buyButton, Color.decode("#FDFD96"));
+			this.gridSettingLabel(i * 2, 11, 2, 2, label);
+			this.gridSettingButton(i * 2, 13, 2, 1, buyButton);
 		}
-		
-		for(int i = 0; i < numBackgrounds; i++) {
+
+		for (int i = 0; i < numBackgrounds; i++) {
 			JLabel label = new JLabel("Background n. " + i);
-			JButton buy = new JButton("BUY");
-			this.add(buy);
+			BuyButton buyButton = new BuyButton("BUY", Shop.getSceneries().get(i).getX());
+			this.add(buyButton);
 			this.labelSetting(label, true, Color.decode("#77DD77"));
-			this.buttonSetting(buy, Color.decode("#FDFD96"));
-			this.gridSettingLabel(i*2, 18, 2, 2, label);
-			this.gridSettingButton(i*2, 20, 2, 1, buy);
+			this.buttonSetting(buyButton, Color.decode("#FDFD96"));
+			this.gridSettingLabel(i * 2, 18, 2, 2, label);
+			this.gridSettingButton(i * 2, 20, 2, 1, buyButton);
 		}
-		
-		ActionListener al = e ->{
-			var button = (JButton)e.getSource();
-        	Shop.buy();
+
+		ActionListener al = e -> {
+			var button = (BuyButton) e.getSource();
+			Shop.buy();
 		};
 
-		JLabel coins = new JLabel(/* Shop.getCoins() + "" */ "0");
+		JLabel coins = new JLabel(Shop.getCoins() + "");
 		JLabel skinTitle = new JLabel("Skins");
 		JLabel sceneriesTitle = new JLabel("Backgrounds");
-		
+
 		this.labelSetting(coins, true, Color.decode("#FFDD62"));
 		this.labelSetting(skinTitle, true, Color.decode("#FFDD62"));
 		this.labelSetting(sceneriesTitle, true, Color.decode("#FFDD62"));
@@ -86,7 +85,7 @@ public class ShopGUI extends JPanel {
 	private Image scale(Image image) {
 		return image.getScaledInstance((int) SIZE.getWidth(), (int) SIZE.getHeight(), Image.SCALE_DEFAULT);
 	}
-	
+
 	private void gridSettingLabel(int x, int y, int width, int height, JLabel label) {
 		gbc.gridx = x;
 		gbc.gridy = y;
@@ -94,7 +93,7 @@ public class ShopGUI extends JPanel {
 		gbc.gridheight = height;
 		this.add(label, gbc);
 	}
-	
+
 	private void gridSettingButton(int x, int y, int width, int height, JButton button) {
 		gbc.gridx = x;
 		gbc.gridy = y;
@@ -102,12 +101,12 @@ public class ShopGUI extends JPanel {
 		gbc.gridheight = height;
 		this.add(button, gbc);
 	}
-	
-	private void labelSetting(JLabel label,Boolean opaqueness, Color backgroundColor) {
+
+	private void labelSetting(JLabel label, Boolean opaqueness, Color backgroundColor) {
 		label.setOpaque(opaqueness);
 		label.setBackground(backgroundColor);
 	}
-	
+
 	private void buttonSetting(JButton button, Color backgroundColor) {
 		button.setBackground(backgroundColor);
 	}
