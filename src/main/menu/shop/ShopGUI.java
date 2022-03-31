@@ -60,7 +60,7 @@ public class ShopGUI extends JPanel {
 
 		ActionListener al = e -> {
 			var button = (BuyButton) e.getSource();
-			Shop.buy();
+			Shop.buy(button.getObject());
 		};
 
 		JLabel coins = new JLabel(Shop.getCoins() + "");
