@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class LeaderboardPanel extends JPanel {
+	private static final long serialVersionUID = -2850654943551437120L;
 	private Leaderboard leaderboard;
 	Image background;
 
@@ -19,6 +20,8 @@ public class LeaderboardPanel extends JPanel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		
 	}
 
 	@Override
