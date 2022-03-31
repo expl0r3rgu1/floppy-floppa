@@ -11,23 +11,21 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 import main.infinite_map.Background;
 import main.utilities.Skin;
 
 public class Shop {
 	private Integer coins;
-	private Set<PurchaseStatus<Skin>> skins;
-	private Set<PurchaseStatus<Background>> sceneries;
+	private List<PurchaseStatus<Skin>> skins;
+	private List<PurchaseStatus<Background>> sceneries;
 	private File savingFile;
 
 	public Shop() {
-		skins = new HashSet<>();
-		sceneries = new HashSet<>();
+		skins = new ArrayList<>();
+		sceneries = new ArrayList<>();
 		this.savingFile = new File("file.txt");
 		getFileInfo();
 	}
@@ -36,11 +34,11 @@ public class Shop {
 		return this.coins;
 	}
 
-	public Set<PurchaseStatus<Skin>> getSkins() {
+	public List<PurchaseStatus<Skin>> getSkins() {
 		return this.skins;
 	}
 
-	public Set<PurchaseStatus<Background>> getSceneries() {
+	public List<PurchaseStatus<Background>> getSceneries() {
 		return this.sceneries;
 	}
 
@@ -52,8 +50,8 @@ public class Shop {
 		}
 	}
 
-	private <X> void findAndBuy(Object o, Set<PurchaseStatus<X>> set) {
-		set.forEach(status -> {
+	private <X> void findAndBuy(Object o, List<PurchaseStatus<X>> list) {
+		list.forEach(status -> {
 			if (status.getX().equals(o)) {
 				if (!status.isPurchesed() && status.getX().getPrice() <= this.coins) {
 					status.purchase();
@@ -87,15 +85,15 @@ public class Shop {
 		}
 		scanner.close();
 	}
-	
-	private <X> void getFileInfoSupport(Scanner scanner, Set<PurchaseStatus<X>> set) {
+
+	private <X> void getFileInfoSupport(Scanner scanner, List<PurchaseStatus<X>> list) {
 		while (scanner.hasNext()) {
 			PurchaseStatus<X> purchaseStatus = new PurchaseStatus<>();
 			String word = scanner.next();
 			if (word.equals("1")) {
 				purchaseStatus.purchase();
 			}
-			set.add(purchaseStatus);
+			list.add(purchaseStatus);
 		}
 	}
 
@@ -117,10 +115,10 @@ public class Shop {
 		}
 		Files.write(path, fileContent, StandardCharsets.UTF_8);
 	}
-	
-	private <X> String overwritePurchaseStatusLine(Set<X> set) {
+
+	private <X> String overwritePurchaseStatusLine(List<X> list) {
 		String line = null;
-		set.forEach(status -> {
+		list.forEach(status -> {
 			if (status.isPurchased()) {
 				if (line.isEmpty()) {
 					line.concat("1");
@@ -137,8 +135,8 @@ public class Shop {
 		});
 		return line;
 	}
-	
+
 	public void show(Graphics2D canvas) {
-		
+
 	}
 }
