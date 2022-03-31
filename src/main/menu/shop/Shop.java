@@ -42,7 +42,7 @@ public class Shop {
 		return this.sceneries;
 	}
 
-	private void buy(Object o) {
+	protected void buy(Object o) {
 		if (o.getClass().equals(Skin.class)) {
 			findAndBuy(o, this.skins);
 		} else {
