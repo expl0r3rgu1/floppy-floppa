@@ -1,6 +1,7 @@
 package main.menu.shop;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.rmi.activation.ActivationGroupID;
 import java.util.HashSet;
@@ -58,7 +59,10 @@ public class ShopGUI extends JPanel {
 			this.gridSettingButton(i*2, 20, 2, 1, buy);
 		}
 		
-		
+		ActionListener al = e ->{
+			var button = (JButton)e.getSource();
+        	Shop.buy();
+		};
 
 		JLabel coins = new JLabel(/* Shop.getCoins() + "" */ "0");
 		JLabel skinTitle = new JLabel("Skins");
