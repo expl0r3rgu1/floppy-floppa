@@ -5,24 +5,22 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
 import main.utilities.Skin;
+import test.Position;
 
 public class FixedObstacle extends Obstacle{
-	
-	private Image image;
-	private int movingFactor;
+
+	private int movingFactor=1;
 
 	public FixedObstacle(Position position, Skin skin) {
-		super();
-		this.position=position;
-		this.skin=skin;
-		this.x=(Toolkit.getDefaultToolkit().getScreenSize().width)+2;
+		super(position, skin);
+		this.x=(Toolkit.getDefaultToolkit().getScreenSize().width)+1;
 		this.y=(Toolkit.getDefaultToolkit().getScreenSize().height);
 	}
 	
-	public void animate(Graphics2D a) {
-		a.drawImage(image, getPosition().getX(), getPosition().getY(),
-				(int) image.getWidth(null),
-				(int) image.getHeight(null), null);
+	public void animate(Graphics2D canvas) {
+		canvas.drawImage(getSkin().getImage(), position.getX(), position.getY(),
+				(int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth())/10,
+				(int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight())/10, null);
 
 		updatePosition(movingFactor);
 	}
