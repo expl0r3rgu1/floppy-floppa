@@ -139,8 +139,4 @@ public class Shop {
 		});
 		return line;
 	}
-
-	public void show(Graphics2D canvas) {
-
-	}
 }
