@@ -41,7 +41,6 @@ public class ShopGUI extends JPanel {
 		for (int i = 0; i < numSkins; i++) {
 			JLabel label = new JLabel("Skin n. " + i);
 			BuyButton buyButton = new BuyButton("BUY", Shop.getSkins().get(i).getX());
-			this.add(buyButton);
 			this.labelSetting(label, true, Color.decode("#77DD77"));
 			this.buttonSetting(buyButton, Color.decode("#FDFD96"));
 			this.gridSettingLabel(i * 2, 11, 2, 2, label);
@@ -51,7 +50,6 @@ public class ShopGUI extends JPanel {
 		for (int i = 0; i < numBackgrounds; i++) {
 			JLabel label = new JLabel("Background n. " + i);
 			BuyButton buyButton = new BuyButton("BUY", Shop.getSceneries().get(i).getX());
-			this.add(buyButton);
 			this.labelSetting(label, true, Color.decode("#77DD77"));
 			this.buttonSetting(buyButton, Color.decode("#FDFD96"));
 			this.gridSettingLabel(i * 2, 18, 2, 2, label);
