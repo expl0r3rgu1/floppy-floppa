@@ -96,6 +96,10 @@ public class Shop {
 			list.add(purchaseStatus);
 		}
 	}
+	
+	public void coinsUpdate(Integer coinsWon) {
+		this.coins += coinsWon;
+	}
 
 	private void fileUpdate() {
 		Path path = this.savingFile.toPath();
