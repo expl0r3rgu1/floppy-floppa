@@ -1,33 +1,32 @@
 package main.menu.shop;
 
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.rmi.activation.ActivationGroupID;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
-import javax.print.attribute.HashAttributeSet;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 public class ShopGUI extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
 	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private Image background;
-	private GridBagLayout grid = new GridBagLayout();
-	private GridBagConstraints gbc = new GridBagConstraints();
 	private int numSkins;
 	private int numBackgrounds;
+	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
+			"Buding", "Vintage", "Beach", "Woods", "Space", "NeonCity"));
+	private ArrayList<String> prices = new ArrayList<>(
+			Arrays.asList("0", "50", "100", "200", "500", "0", "50", "100", "200", "500"));
 
 	public ShopGUI() {
-		this.setLayout(grid);
+		this.setLayout(new GridBagLayout());
+
+		numSkins = Shop.getSkins().size();
+		numBackgrounds = Shop.getSceneries().size();
 
 		try {
 			background = ImageIO.read(getClass().getResource("/resources/images/shopBackground.jpg"));
@@ -35,77 +34,110 @@ public class ShopGUI extends JPanel {
 			e.printStackTrace();
 		}
 
-		numSkins = Shop.getSkins().size();
-		numBackgrounds = Shop.getSceneries().size();
-
-		for (int i = 0; i < numSkins; i++) {
-			JLabel label = new JLabel("Skin n. " + i);
-			BuyButton buyButton = new BuyButton("BUY", Shop.getSkins().get(i).getX());
-			this.labelSetting(label, true, Color.decode("#77DD77"));
-			this.buttonSetting(buyButton, Color.decode("#FDFD96"));
-			this.gridSettingLabel(i * 2, 11, 2, 2, label);
-			this.gridSettingButton(i * 2, 13, 2, 1, buyButton);
-		}
-
-		for (int i = 0; i < numBackgrounds; i++) {
-			JLabel label = new JLabel("Background n. " + i);
-			BuyButton buyButton = new BuyButton("BUY", Shop.getSceneries().get(i).getX());
-			this.labelSetting(label, true, Color.decode("#77DD77"));
-			this.buttonSetting(buyButton, Color.decode("#FDFD96"));
-			this.gridSettingLabel(i * 2, 18, 2, 2, label);
-			this.gridSettingButton(i * 2, 20, 2, 1, buyButton);
-		}
-
-		ActionListener al = e -> {
-			var button = (BuyButton) e.getSource();
-			Shop.buy(button.getObject());
-		};
-
-		JLabel coins = new JLabel(Shop.getCoins() + "");
-		JLabel skinTitle = new JLabel("Skins");
-		JLabel sceneriesTitle = new JLabel("Backgrounds");
-
-		this.labelSetting(coins, true, Color.decode("#FFDD62"));
-		this.labelSetting(skinTitle, true, Color.decode("#FFDD62"));
-		this.labelSetting(sceneriesTitle, true, Color.decode("#FFDD62"));
-
-		this.gridSettingLabel(20, 0, 3, 3, coins);
-		this.gridSettingLabel(0, 8, 2, 1, skinTitle);
-		this.gridSettingLabel(0, 15, 2, 1, sceneriesTitle);
+		this.placeGUIComponents();
 	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(scale(background), 0, 0, this);
+		g.drawImage(this.scale(background, SIZE), 0, 0, this);
 	}
 
-	private Image scale(Image image) {
-		return image.getScaledInstance((int) SIZE.getWidth(), (int) SIZE.getHeight(), Image.SCALE_DEFAULT);
+	private Image scale(Image image, Dimension dim) {
+		return image.getScaledInstance((int) dim.getWidth(), (int) dim.getHeight(), Image.SCALE_DEFAULT);
 	}
 
-	private void gridSettingLabel(int x, int y, int width, int height, JLabel label) {
-		gbc.gridx = x;
-		gbc.gridy = y;
-		gbc.gridwidth = width;
-		gbc.gridheight = height;
-		this.add(label, gbc);
+	private JLabel imageCreation(String fileName) {
+		JLabel label = null;
+		try {
+			Image image = ImageIO.read(getClass().getResource("/test/" + fileName));
+			ImageIcon imageIcon = new ImageIcon(this.scale(image,
+					new Dimension((int) (SIZE.getWidth() * 8 / 100), (int) (SIZE.getWidth() * 8 / 100))));
+			label = new JLabel(imageIcon);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return label;
 	}
 
-	private void gridSettingButton(int x, int y, int width, int height, JButton button) {
-		gbc.gridx = x;
-		gbc.gridy = y;
-		gbc.gridwidth = width;
-		gbc.gridheight = height;
-		this.add(button, gbc);
+	private void placeGUIComponents() {
+
+		for (int i = 0; i < numBackgrounds + numSkins; i++) {
+			if (i == 0) {
+
+				CustomJLabel coins = new CustomJLabel(Shop.getCoins() + "", Color.decode("#FFDD62"),
+						Color.decode("#FF971A"), "Arial", Font.BOLD);
+				this.placeCustomLabels(i, /* Shop.getCoins() + "" */ "COINS: 100", "#FFDD62", "#FF971A", 4, i, 0, 0,
+						0.9, 0);
+
+			} else if (i == 1) {
+
+				CustomJLabel skins = this.placeCustomLabels(i, "SKINS", "#FFDD62", "#FF971A", 0, i,
+						(int) SIZE.getWidth() * 2 / 100, 0, 1, 1);
+				skins.setPreferredSize(
+						new Dimension((int) SIZE.getWidth() * 10 / 100, (int) SIZE.getHeight() * 5 / 100));
+
+			} else if (i == 5) {
+
+				CustomJLabel backgrounds = this.placeCustomLabels(i, "BACKGROUNDS", "#FFDD62", "#FF971A", 0, i,
+						(int) SIZE.getWidth() * 2 / 100, 0, 1, 1);
+				backgrounds.setPreferredSize(
+						new Dimension((int) SIZE.getWidth() * 10 / 100, (int) SIZE.getHeight() * 5 / 100));
+
+			} else if (i == numBackgrounds + numSkins - 1) {
+
+				CustomJButton backMenu = new CustomJButton("MENU", null, Color.decode("#FFDD62"),
+						Color.decode("#FF971A"), "Arial", Font.BOLD);
+				this.add(backMenu, setDimensionObject(4, i, 0, 0, 1, 1));
+				backMenu.addActionListener(e -> {
+//					frame.cardLayout.show(frame.panel, "menu");
+					System.exit(0);
+				});
+
+			} else if (i == 2 || i == 6) {
+				i = this.placeGUIComponentsSupport(i);
+			}
+		}
 	}
 
-	private void labelSetting(JLabel label, Boolean opaqueness, Color backgroundColor) {
-		label.setOpaque(opaqueness);
-		label.setBackground(backgroundColor);
+	private int placeGUIComponentsSupport(int i) {
+		for (int j = 0; j < numSkins; j++) {
+			Object o = new Object(); // non mettere in ShopGUI effettiva
+			CustomJLabel label = new CustomJLabel(
+					(i == 2 ? labelNames.get(j) + " : " + prices.get(j)
+							: labelNames.get(j + 5) + " : " + prices.get(j + 5)),
+					Color.decode("#77DD77"), Color.decode("#007542"), "Arial", Font.PLAIN);
+			this.add(label, setDimensionObject(j, i, 0, 0, 1, 1));
+			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)) + ".png"),
+					setDimensionObject(j, i + 1, 0, 0, 1, 1));
+			CustomJButton buyButton = new CustomJButton("BUY",
+					(i == 2 ? Shop.getSkins().get(j).getX() : Shop.getSceneries().get(j).getX()),
+					Color.decode("#FDFD96"), Color.decode("#FFDD62"), "Arial", Font.PLAIN);
+			buyButton.addActionListener(e -> {
+				Shop.buy(buyButton.getObject());
+			});
+			this.add(buyButton, setDimensionObject(j, i + 2, (int) SIZE.getWidth() * 3 / 100, 0, 1, 1));
+		}
+		return i + 2;
 	}
 
-	private void buttonSetting(JButton button, Color backgroundColor) {
-		button.setBackground(backgroundColor);
+	private CustomJLabel placeCustomLabels(int i, String name, String backgroundColor, String BorderColor, int gridx,
+			int gridy, int ipadx, int ipady, double weightx, double weighty) {
+		CustomJLabel customLabel = new CustomJLabel(name, Color.decode(backgroundColor), Color.decode(BorderColor),
+				"Arial", Font.BOLD);
+		this.add(customLabel, setDimensionObject(gridx, gridy, ipadx, ipady, weightx, weighty));
+		return customLabel;
+	}
+
+	private GridBagConstraints setDimensionObject(int gridx, int gridy, int ipadx, int ipady, double weightx,
+			double weighty) {
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = gridx;
+		c.gridy = gridy;
+		c.ipadx = ipadx;
+		c.ipady = ipady;
+		c.weightx = weightx;
+		c.weighty = weighty;
+		return c;
 	}
 }
