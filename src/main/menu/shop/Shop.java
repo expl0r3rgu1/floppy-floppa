@@ -42,19 +42,20 @@ public class Shop {
 		return this.sceneries;
 	}
 
-	protected void buy(Object o) {
+	protected boolean buy(Object o) {
 		if (o.getClass().equals(Skin.class)) {
-			findAndBuy(o, this.skins);
+			return findAndBuy(o, this.skins);
 		} else {
-			findAndBuy(o, this.sceneries);
+			return findAndBuy(o, this.sceneries);
 		}
 	}
 
-	private <X> void findAndBuy(Object o, List<PurchaseStatus<X>> list) {
+	private <X> boolean findAndBuy(Object o, List<PurchaseStatus<X>> list) {
 		list.forEach(status -> {
 			if (status.getX().equals(o)) {
 				if (!status.isPurchesed() && status.getX().getPrice() <= this.coins) {
 					status.purchase();
+					return status.getX().isPurchased();
 				}
 			}
 		});
