@@ -29,7 +29,7 @@ public class ShopGUI extends JPanel {
 		numBackgrounds = Shop.getSceneries().size();
 
 		try {
-			background = ImageIO.read(getClass().getResource("/resources/images/shopBackground.jpg"));
+			background = ImageIO.read(getClass().getResource("/resources/images/ShopBackground.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -50,7 +50,7 @@ public class ShopGUI extends JPanel {
 	private JLabel imageCreation(String fileName) {
 		JLabel label = null;
 		try {
-			Image image = ImageIO.read(getClass().getResource("/test/" + fileName));
+			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
 			ImageIcon imageIcon = new ImageIcon(this.scale(image,
 					new Dimension((int) (SIZE.getWidth() * 8 / 100), (int) (SIZE.getWidth() * 8 / 100))));
 			label = new JLabel(imageIcon);
