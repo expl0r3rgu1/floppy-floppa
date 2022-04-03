@@ -101,8 +101,8 @@ public class ShopGUI extends JPanel {
 	}
 
 	private int placeGUIComponentsSupport(int i) {
+		boolean bought = false;
 		for (int j = 0; j < numSkins; j++) {
-			Object o = new Object(); // non mettere in ShopGUI effettiva
 			GraphicJLabel label = new GraphicJLabel(
 					(i == 2 ? labelNames.get(j) + " : " + prices.get(j)
 							: labelNames.get(j + 5) + " : " + prices.get(j + 5)),
@@ -114,7 +114,8 @@ public class ShopGUI extends JPanel {
 					(i == 2 ? Shop.getSkins().get(j).getX() : Shop.getSceneries().get(j).getX()),
 					Color.decode("#FDFD96"), Color.decode("#FFDD62"), "Arial", Font.PLAIN);
 			buyButton.addActionListener(e -> {
-				Shop.buy(buyButton.getObject());
+				bought = Shop.buy(buyButton.getObject());
+				buyButton.setEnabled(!bought);
 			});
 			this.add(buyButton, setDimensionObject(j, i + 2, (int) SIZE.getWidth() * 3 / 100, 0, 1, 1));
 		}
