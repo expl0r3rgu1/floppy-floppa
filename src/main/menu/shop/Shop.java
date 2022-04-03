@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import main.infinite_map.Background;
-import main.utilities.Skin;
+import main.infinite_map.PricedBackground;
+import main.utilities.PricedSkin;
 
 public class Shop {
 	private Integer coins;
-	private List<PurchaseStatus<Skin>> skins;
-	private List<PurchaseStatus<Background>> sceneries;
+	private List<PurchaseStatus<PricedSkin>> skins;
+	private List<PurchaseStatus<PricedBackground>> sceneries;
 	private File savingFile;
 
 	public Shop() {
@@ -34,16 +34,16 @@ public class Shop {
 		return this.coins;
 	}
 
-	public List<PurchaseStatus<Skin>> getSkins() {
+	public List<PurchaseStatus<PricedSkin>> getSkins() {
 		return this.skins;
 	}
 
-	public List<PurchaseStatus<Background>> getSceneries() {
+	public List<PurchaseStatus<PricedBackground>> getSceneries() {
 		return this.sceneries;
 	}
 
 	protected boolean buy(Object o) {
-		if (o.getClass().equals(Skin.class)) {
+		if (o.getClass().equals(PricedSkin.class)) {
 			return findAndBuy(o, this.skins);
 		} else {
 			return findAndBuy(o, this.sceneries);
