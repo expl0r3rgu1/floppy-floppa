@@ -18,7 +18,7 @@ public class ShopGUI extends JPanel {
 	private int numSkins;
 	private int numBackgrounds;
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
-			"Buding", "Vintage", "Beach", "Woods", "Space", "NeonCity"));
+			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 	private ArrayList<String> prices = new ArrayList<>(
 			Arrays.asList("0", "50", "100", "200", "500", "0", "50", "100", "200", "500"));
 
