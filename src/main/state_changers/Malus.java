@@ -1,20 +1,17 @@
 package main.state_changers;
 
-public abstract class Malus {
+import main.utilities.Position;
+import main.utilities.Skin;
+
+public class Malus extends StateChanger {
 	
-	//Lose coins
-	private Integer coins;
-	public Malus1;
 	
-	public Integer getCoins() {
-		return this.coins;
+	protected Malus(Position position, Skin skin) {
+		super(position, skin);
 	}
 	
-	Malus1{
-		
+	public static Malus factoryMalus(Position position, Skin skin) {
+		return new Malus(position, skin);
 	}
-	
-	//animate
-	
-	//random number
+
 }
