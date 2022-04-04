@@ -17,6 +17,7 @@ public class ShopGUI extends JPanel {
 	private Image background;
 	private int numSkins;
 	private int numBackgrounds;
+	private boolean bought = false;
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
 			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 	private ArrayList<String> prices = new ArrayList<>(
@@ -98,7 +99,6 @@ public class ShopGUI extends JPanel {
 	}
 
 	private int placeGUIComponentsSupport(int i) {
-		boolean bought = false;
 		for (int j = 0; j < numSkins; j++) {
 			GraphicJLabel label = new GraphicJLabel(
 					(i == 2 ? labelNames.get(j) + " : " + prices.get(j)

@@ -18,9 +18,9 @@ import main.infinite_map.PricedBackground;
 import main.utilities.PricedSkin;
 
 public class Shop {
-	private Integer coins;
-	private List<PurchaseStatus<PricedSkin>> skins;
-	private List<PurchaseStatus<PricedBackground>> sceneries;
+	private static Integer coins;
+	private static List<PurchaseStatus<PricedSkin>> skins;
+	private static List<PurchaseStatus<PricedBackground>> sceneries;
 	private File savingFile;
 
 	public Shop() {
@@ -30,35 +30,36 @@ public class Shop {
 		getFileInfo();
 	}
 
-	public Integer getCoins() {
-		return this.coins;
+	public static Integer getCoins() {
+		return coins;
 	}
 
 	public void setCoins(Integer coins) {
-		this.coins = coins;
+		Shop.coins = coins;
 	}
 
-	public List<PurchaseStatus<PricedSkin>> getSkins() {
-		return this.skins;
+	public static List<PurchaseStatus<PricedSkin>> getSkins() {
+		return skins;
 	}
 
-	public List<PurchaseStatus<PricedBackground>> getSceneries() {
-		return this.sceneries;
+	public static List<PurchaseStatus<PricedBackground>> getSceneries() {
+		return sceneries;
 	}
 
-	protected boolean buy(Object o) {
+	protected static boolean buy(Object o) {
 		if (o.getClass().equals(PricedSkin.class)) {
-			return findAndBuy(o, this.skins);
+			return findAndBuy(o, Shop.skins);
 		} else {
-			return findAndBuy(o, this.sceneries);
+			return findAndBuy(o, Shop.sceneries);
 		}
 	}
 
-	private <X> boolean findAndBuy(Object o, List<PurchaseStatus<X>> list) {
+	private static <X> boolean findAndBuy(Object o, List<PurchaseStatus<X>> list) {
 		list.forEach(status -> {
 			if(status.getX().equals(o)) {
-				if(!status.isPurchased() && status.getX().getPrice() <= this.coins) {
+				if(!status.isPurchased() && status.getX().getPrice() <= Shop.coins) {
 					status.purchase();
+					return status.isPurchased();
 				}
 			}
 		});
@@ -74,16 +75,16 @@ public class Shop {
 			if (counter == 0) {
 				while (nextscanner.hasNext()) {
 					String word = nextscanner.next();
-					this.coins = Integer.parseInt(word);
+					Shop.coins = Integer.parseInt(word);
 				}
 				counter++;
 				continue;
 			} else if (counter == 1) {
-				this.getFileInfoSupport(nextscanner, this.skins, PricedSkin);
+				this.getFileInfoSupport(nextscanner, Shop.skins, PricedSkin);
 				counter++;
 				continue;
 			} else if (counter == 2) {
-				this.getFileInfoSupport(nextscanner, this.sceneries, PricedBackground);
+				this.getFileInfoSupport(nextscanner, Shop.sceneries, PricedBackground);
 			}
 			break;
 		}
@@ -102,7 +103,7 @@ public class Shop {
 	}
 	
 	public void coinsUpdate(Integer coinsWon) {
-		this.coins += coinsWon;
+		Shop.coins += coinsWon;
 	}
 
 	private void fileUpdate() {
@@ -111,12 +112,12 @@ public class Shop {
 
 		for (int i = 0; i < fileContent.size(); i++) {
 			if (i == 0) {
-				fileContent.set(i, this.coins.toString());
+				fileContent.set(i, Shop.coins.toString());
 			} else if (i == 1) {
-				String newLine = this.overwritePurchaseStatusLine(this.skins);
+				String newLine = this.overwritePurchaseStatusLine(Shop.skins);
 				fileContent.set(i, newLine);
 			} else {
-				String newLine = this.overwritePurchaseStatusLine(this.sceneries);
+				String newLine = this.overwritePurchaseStatusLine(Shop.sceneries);
 				fileContent.set(i, newLine);
 				break;
 			}
