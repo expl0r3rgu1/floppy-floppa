@@ -56,10 +56,9 @@ public class Shop {
 
 	private <X> boolean findAndBuy(Object o, List<PurchaseStatus<X>> list) {
 		list.forEach(status -> {
-			if (status.getX().equals(o)) {
-				if (!status.isPurchesed() && status.getX().getPrice() <= this.coins) {
+			if(status.getX().equals(o)) {
+				if(!status.isPurchased() && status.getX().getPrice() <= this.coins) {
 					status.purchase();
-					return status.getX().isPurchased();
 				}
 			}
 		});
@@ -80,20 +79,20 @@ public class Shop {
 				counter++;
 				continue;
 			} else if (counter == 1) {
-				this.getFileInfoSupport(nextscanner, this.skins);
+				this.getFileInfoSupport(nextscanner, this.skins, PricedSkin);
 				counter++;
 				continue;
 			} else if (counter == 2) {
-				this.getFileInfoSupport(nextscanner, this.sceneries);
+				this.getFileInfoSupport(nextscanner, this.sceneries, PricedBackground);
 			}
 			break;
 		}
 		scanner.close();
 	}
 
-	private <X> void getFileInfoSupport(Scanner scanner, List<PurchaseStatus<X>> list) {
+	private <X> void getFileInfoSupport(Scanner scanner, List<PurchaseStatus<X>> list, X x) {
 		while (scanner.hasNext()) {
-			PurchaseStatus<X> purchaseStatus = new PurchaseStatus<>();
+			PurchaseStatus<X> purchaseStatus = new PurchaseStatus<X>(x, false);
 			String word = scanner.next();
 			if (word.equals("1")) {
 				purchaseStatus.purchase();
@@ -117,7 +116,7 @@ public class Shop {
 				String newLine = this.overwritePurchaseStatusLine(this.skins);
 				fileContent.set(i, newLine);
 			} else {
-				String newLine = this.overwritePurchaseStatusLine(sceneries);
+				String newLine = this.overwritePurchaseStatusLine(this.sceneries);
 				fileContent.set(i, newLine);
 				break;
 			}
@@ -125,7 +124,7 @@ public class Shop {
 		Files.write(path, fileContent, StandardCharsets.UTF_8);
 	}
 
-	private <X> String overwritePurchaseStatusLine(List<X> list) {
+	private <X> String overwritePurchaseStatusLine(List<PurchaseStatus<X>> list) {
 		String line = null;
 		list.forEach(status -> {
 			if (status.isPurchased()) {
