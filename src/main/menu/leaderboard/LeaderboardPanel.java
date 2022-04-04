@@ -1,5 +1,6 @@
 package main.menu.leaderboard;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
@@ -17,9 +18,11 @@ import javax.swing.JPanel;
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
 	private Leaderboard leaderboard;
+	private final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	Image background;
 
 	public LeaderboardPanel() {
+		this.setPreferredSize();
 		try {
 			background = ImageIO.read(getClass().getResource("/resources/images/shopBackground.jpg"));
 		} catch (IOException e) {
