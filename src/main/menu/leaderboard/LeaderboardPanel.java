@@ -2,7 +2,9 @@ package main.menu.leaderboard;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.io.IOException;
 
@@ -20,8 +22,7 @@ public class LeaderboardPanel extends JPanel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 	@Override
@@ -32,5 +33,18 @@ public class LeaderboardPanel extends JPanel {
 
 		canvas.drawImage(background, 0, 0, (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(),
 				(int) Toolkit.getDefaultToolkit().getScreenSize().getHeight(), null);
+	}
+
+	public GridBagConstraints getConstraints(int gridx, int gridy, Insets insets, int ipadx, int ipady, int anchor) {
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.insets = insets;
+		constraints.anchor = anchor;
+		constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.gridx = gridx;
+		constraints.gridy = gridy;
+		constraints.ipadx = ipadx;
+		constraints.ipady = ipady;
+
+		return constraints;
 	}
 }
