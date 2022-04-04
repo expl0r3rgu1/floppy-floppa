@@ -54,8 +54,8 @@ public class LeaderboardPanel extends JPanel {
 			JLabel score = new JLabel(
 					placeNumber + " - " + player.getNickname() + " - " + player.getPersonalBest() + " m",
 					SwingConstants.CENTER);
-			score.setFont(getFontResource("arcade.ttf").deriveFont(20f));
-			score.setForeground(Color.white);
+			score.setFont(getFontResource("fipps.otf").deriveFont(20f));
+			score.setForeground(Color.lightGray);
 			scoresPanel.add(score);
 
 			placeNumber++;
