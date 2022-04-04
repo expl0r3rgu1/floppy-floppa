@@ -66,8 +66,9 @@ public class EOGMenuGUI extends JPanel {
 
 			} else if (i == 1) {
 				CustomJLabel coins = new CustomJLabel(
-						"<html><center> Old coins: &emsp &emsp New coins: </center> <br> <center> " + EOGMenu.getPreviousCoins()
-								+ "&emsp &emsp &emsp " + EOGMenu.updateCoins(meters) + " 1348 </center> </html>",
+						"<html><center> Old coins: &emsp &emsp New coins: </center> <br> <center> "
+								+ EOGMenu.getPreviousCoins() + "&emsp &emsp &emsp " + EOGMenu.updateCoins(meters)
+								+ " 1348 </center> </html>",
 						Color.decode("#77DD77"), Color.decode("#007542"), "arcade.ttf");
 				this.add(coins, setDimensionObject(1, i, (int) SIZE.getWidth() * 25 / 100,
 						(int) SIZE.getWidth() * 15 / 100, new Insets(80, 0, 80, 0)));
@@ -76,17 +77,29 @@ public class EOGMenuGUI extends JPanel {
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
 				this.add(menuButton, setDimensionObject(2, i, (int) SIZE.getWidth() * 3 / 100,
 						(int) SIZE.getWidth() * 2 / 100, new Insets(0, 100, 0, 0)));
+				menuButton.addActionListener(e -> {
+//					frame.cardLayout.show(frame.panel, "menu");
+					System.exit(0);
+				});
 
 				TestBuyButton shopButton = new TestBuyButton("SHOP", null, Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
 				this.add(shopButton, setDimensionObject(0, i, (int) SIZE.getWidth() * 3 / 100,
 						(int) SIZE.getWidth() * 2 / 100, new Insets(0, 0, 0, 100)));
+				shopButton.addActionListener(e -> {
+//					frame.cardLayout.show(frame.panel, "shop");
+					System.exit(0);
+				});
 
 			} else if (i == 2) {
 				TestBuyButton leaderboardButton = new TestBuyButton("LEADERBOARD", null, Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
 				this.add(leaderboardButton, setDimensionObject(1, i, (int) SIZE.getWidth() * 3 / 100,
 						(int) SIZE.getWidth() * 2 / 100, new Insets(30, 0, 30, 0)));
+				leaderboardButton.addActionListener(e -> {
+//					frame.cardLayout.show(frame.panel, "leaderboard");
+					System.exit(0);
+				});
 			}
 		}
 	}
