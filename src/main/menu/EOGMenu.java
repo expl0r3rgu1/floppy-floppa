@@ -7,8 +7,8 @@ public class EOGMenu implements Menu {
 	}
 
 	public static int updateCoins(int meters) {
-		int coinsWon = (int) Math.floor(meters / 5);
-
+		int coinsWon = (int) Math.floor(meters/5) - coinsReducer.loseCoins();
+		
 		return coinsWon;
 	}
 }
