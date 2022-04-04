@@ -1,5 +1,6 @@
 package main.obstacles;
 
+
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
