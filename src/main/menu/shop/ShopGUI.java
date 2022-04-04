@@ -10,6 +10,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import main.utilities.GraphicJButton;
+import main.utilities.GraphicJButtonWithObject;
+import main.utilities.GraphicJLabel;
+
 public class ShopGUI extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
@@ -107,9 +111,9 @@ public class ShopGUI extends JPanel {
 			this.add(label, setDimensionObject(j, i, 0, 0, 1, 1));
 			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)) + ".png"),
 					setDimensionObject(j, i + 1, 0, 0, 1, 1));
-			GraphicJButton buyButton = new GraphicJButton("BUY",
-					(i == 2 ? Shop.getSkins().get(j).getX() : Shop.getSceneries().get(j).getX()),
-					Color.decode("#FDFD96"), Color.decode("#FFDD62"), "Arial", Font.PLAIN);
+			GraphicJButtonWithObject buyButton = new GraphicJButtonWithObject("BUY", Color.decode("#FDFD96"),
+					Color.decode("#FFDD62"), "Arial", Font.PLAIN,
+					(i == 2 ? Shop.getSkins().get(j).getX() : Shop.getSceneries().get(j).getX()));
 			buyButton.addActionListener(e -> {
 				bought = Shop.buy(buyButton.getObject());
 				buyButton.setEnabled(!bought);
