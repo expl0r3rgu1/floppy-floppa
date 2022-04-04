@@ -91,6 +91,17 @@ public class Character extends Movable implements ActionListener {
 		}
 	}
 	
+	public void collideBorders() {
+		if (this.getPosition().getX() 
+			== 0 
+			|| this.getPosition().getX() 
+			== (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()) {
+			
+			this.isHit();
+			this.isDead();
+		}
+	}
+	
 	public void setSkin(Skin skin){
 		this.skin = skin;
 	}
