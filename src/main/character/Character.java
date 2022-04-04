@@ -67,6 +67,10 @@ public class Character extends Movable implements ActionListener {
 		this.skin = skin;
 	}
 	
+	public Skin getSkin() {
+		return this.skin;
+	}
+	
 	@Override
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(this.skin.getImage(), this.getPosition().getX(),
