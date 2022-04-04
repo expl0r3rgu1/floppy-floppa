@@ -4,11 +4,15 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import main.obstacles.Obstacle;
+import main.utilities.Position;
 import main.utilities.Skin;
-import test.Position;
+
 
 public class FixedObstacle extends Obstacle{
 
+	public static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final double space = (SIZE.getHeight())/7; //hole the floppa will pass throught
 	private int movingFactor=1;
 
 	public FixedObstacle(Position position, Skin skin) {
@@ -17,10 +21,14 @@ public class FixedObstacle extends Obstacle{
 		this.y=(Toolkit.getDefaultToolkit().getScreenSize().height);
 	}
 	
+	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), position.getX(), position.getY(),
-				(int) (Toolkit.getDefaultToolkit().getScreenSize().getWidth())/10,
-				(int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight())/10, null);
+		canvas.drawImage(getSkin().getImage(),  position.getX(), (position.getY()+(space)/2),
+				(int) (SIZE.getWidth())/10,
+				(int) (SIZE.getHeight()-(position.getY()+(space)/2)), null);
+		canvas.drawImage(getSkin().getImage().rotate, position.getX(), 0,
+				(int) (SIZE.getWidth())/10,
+				(int) (position.getY()-(space)/2), null);
 
 		updatePosition(movingFactor);
 	}
