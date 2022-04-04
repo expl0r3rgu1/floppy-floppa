@@ -1,9 +1,9 @@
 package main.character;
 
+import main.obstacles.MovingObstacle;
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
-import test.FixedObstacle;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -58,22 +58,21 @@ public class Character extends Movable implements ActionListener {
 	}
 	
 	public void collide(FixedObstacle fixedObstacle) {
-		//I'll change it later to make it more readable 
+		//variables to make it more readable
+		int characterPointOfCollisionX = this.getPosition().getX() + (int) this.skin.getImage().getWidth(null);
+		int characterPointOfCollisionY = this.getPosition().getY();
+		int obstacleLeftLimit = fixedObstacle.getPosition().getX();
+		int obstacleRightLimit = fixedObstacle.getPosition().getX() + (int) fixedObstacle.getSkin().getImage().getWidth(null);
+		int upperObstacleRange = fixedObstacle.getPosition().getY() + (int) FixedObstacle.space/2;
+		int lowerObstacleRange = fixedObstacle.getPosition().getY() - (int) FixedObstacle.space/2;
+		
 		//the purpose of this if is to check if the character is in the range of the obstacle
-		if (this.getPosition().getX() 
-			+ (int) this.skin.getImage().getWidth(null) 
-			>= fixedObstacle.getPosition().getX() 
-			&& this.getPosition().getX() 
-			<= fixedObstacle.getPosition().getX() 
-			+ (int) fixedObstacle.getSkin().getImage().getWidth(null)) {
+		if (characterPointOfCollisionX >= obstacleLeftLimit
+			&& characterPointOfCollisionX <= obstacleRightLimit) {
 					
 			//the purpose of this if is to check if the character hits the obstacle
-			if (this.getPosition().getY() 
-				>= fixedObstacle.getPosition().getX() 
-				+ (int) FixedObstacle.space/2
-				|| this.getPosition().getY()
-				<= fixedObstacle.getPosition().getX() 
-				- (int) FixedObstacle.space/2) {
+			if (characterPointOfCollisionY >= upperObstacleRange
+				|| characterPointOfCollisionY <= lowerObstacleRange) {
 						
 				this.isHit();
 				this.isDead();
@@ -82,12 +81,22 @@ public class Character extends Movable implements ActionListener {
 	}
 
 	public void collide(MovingObstacle movingObstacle) {
-		if (this.getPosition().getX() 
-			+ (int) this.skin.getImage().getWidth(null) 
-			== movingObstacle.getPosition().getX()) {
-				
-			this.isHit();
-			this.isDead();
+		
+		//the purpose of this if is to check if the character is in the range of the obstacle
+		if (this.getPosition().getY() 
+			>= movingObstacle.getPosition().getY()
+			&& this.getPosition().getY()
+			<= movingObstacle.getPosition().getY() 
+			+ (int) movingObstacle.getSkin().getImage().getHeight(null)) {
+			
+			//the purpose of this if is to check if the character hits the obstacle
+			if (this.getPosition().getX() 
+				+ (int) this.skin.getImage().getWidth(null) 
+				== movingObstacle.getPosition().getX()) {
+						
+				this.isHit();
+				this.isDead();
+			}
 		}
 	}
 	
