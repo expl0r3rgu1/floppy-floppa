@@ -16,11 +16,11 @@ public class Character extends Movable implements ActionListener {
 	private int gravity; //it will determine if the character goes down (default) or up if it jumps
 	private Timer timer;
 	
-	private final static int DELAY=1; /*a constant used to make the typical effect 
+	private final int DELAY=1; /*a constant used to make the typical effect 
 										of the bird's jump in flappy bird*/
-	private final static int GO_UP=-12; 
-	private final static int GO_DOWN=8;
-	private final static int TIMER_DELAY=60;
+	private final int GO_UP=-12; 
+	private final int GO_DOWN=8;
+	private final int TIMER_DELAY=60;
 	
 	
 	Character(Position position, Skin skin) {
@@ -29,8 +29,8 @@ public class Character extends Movable implements ActionListener {
 		this.dead=false;
 		this.hit=false;
 		this.velocity=0;
-		this.gravity=Character.GO_DOWN;
-		this.timer = new Timer(Character.TIMER_DELAY, this);
+		this.gravity=GO_DOWN;
+		this.timer = new Timer(TIMER_DELAY, this);
 		this.timer.start();
 	}
 	
@@ -51,7 +51,7 @@ public class Character extends Movable implements ActionListener {
 	}
 	
 	public void jump() {
-		this.gravity = Character.GO_UP;
+		this.gravity = GO_UP;
 		//to-do: add rotation
 	}
 	
@@ -61,6 +61,10 @@ public class Character extends Movable implements ActionListener {
 
 	public void collide(MovingObstacle movingObstacle) {
 		//to-do
+	}
+	
+	public void setSkin(Skin skin){
+		this.skin = skin;
 	}
 	
 	@Override
