@@ -3,6 +3,8 @@ package main.character;
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
+import test.FixedObstacle;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,7 +58,27 @@ public class Character extends Movable implements ActionListener {
 	}
 	
 	public void collide(FixedObstacle fixedObstacle) {
-		//to-do
+		//I'll change it later to make it more readable 
+		//the purpose of this if is to check if the character is in the range of the obstacle
+		if (this.getPosition().getX() 
+			+ (int) this.skin.getImage().getWidth(null) 
+			>= fixedObstacle.getPosition().getX() 
+			&& this.getPosition().getX() 
+			<= fixedObstacle.getPosition().getX() 
+			+ (int) fixedObstacle.getSkin().getImage().getWidth(null)) {
+					
+			//the purpose of this if is to check if the character hits the obstacle
+			if (this.getPosition().getY() 
+				>= fixedObstacle.getPosition().getX() 
+				+ (int) FixedObstacle.space/2
+				|| this.getPosition().getY()
+				<= fixedObstacle.getPosition().getX() 
+				- (int) FixedObstacle.space/2) {
+						
+				this.isHit();
+				this.isDead();
+			}
+		}
 	}
 
 	public void collide(MovingObstacle movingObstacle) {
