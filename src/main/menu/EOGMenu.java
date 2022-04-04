@@ -1,5 +1,7 @@
 package main.menu;
 
+import main.menu.shop.Shop;
+
 public class EOGMenu implements Menu {
 
 	private int previousCoins;
