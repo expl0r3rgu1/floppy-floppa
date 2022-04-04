@@ -34,6 +34,10 @@ public class Shop {
 		return this.coins;
 	}
 
+	public void setCoins(Integer coins) {
+		this.coins = coins;
+	}
+
 	public List<PurchaseStatus<PricedSkin>> getSkins() {
 		return this.skins;
 	}
