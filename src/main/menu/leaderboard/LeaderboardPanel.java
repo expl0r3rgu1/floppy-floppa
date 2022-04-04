@@ -16,9 +16,12 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
@@ -58,6 +61,26 @@ public class LeaderboardPanel extends JPanel {
 			placeNumber++;
 		}
 
+		// SCROLLABLE PANE
+		JScrollPane scrollablePane = new JScrollPane(scoresPanel);
+		scrollablePane.setOpaque(false);
+		scrollablePane.getViewport().setBackground(new Color(0, 0, 0, .5f));
+		scrollablePane.getViewport().setOpaque(true);
+		scrollablePane.setBorder(BorderFactory.createEmptyBorder());
+
+		// SCROLLBAR CUSTOMIZATION
+		scrollablePane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+			@Override
+			protected void configureScrollBarColors() {
+				super.configureScrollBarColors();
+
+				this.thumbColor = Color.darkGray;
+				this.trackColor = Color.gray;
+			}
+		});
+		
+		this.add(scrollablePane,
+				getConstraints(0, 1, new Insets(0, 0, 0, 0), (int) (SCREEN_SIZE.getWidth() * 0.7), (int) (SCREEN_SIZE.getHeight() * 0.7), GridBagConstraints.CENTER));
 	}
 
 	@Override
