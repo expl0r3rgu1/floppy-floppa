@@ -15,6 +15,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
@@ -28,11 +29,16 @@ public class LeaderboardPanel extends JPanel {
 	public LeaderboardPanel() {
 		this.setPreferredSize(SCREEN_SIZE);
 		try {
-			background = ImageIO.read(getClass().getResource("/resources/images/shopBackground.jpg"));
+			background = ImageIO.read(getClass().getResource("/resources/images/menuBackground.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
+		title = new JLabel("LEADERBOARD", SwingConstants.CENTER);
+		title.setFont(getFontResource("pixel.TTF").deriveFont(50f));
+		
+		
+		this.add(title);
 	}
 
 	@Override
@@ -60,8 +66,7 @@ public class LeaderboardPanel extends JPanel {
 	
 	public Font getFontResource(String fontName) {
 		try {
-			return Font.createFont(Font.TRUETYPE_FONT,
-					new File(getClass().getResource("/resources/fonts/" + fontName).getFile()));
+			return Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getResource("/resources/fonts/" + fontName).getFile()));
 		} catch (FontFormatException | IOException e) {
 			e.printStackTrace();
 		}
