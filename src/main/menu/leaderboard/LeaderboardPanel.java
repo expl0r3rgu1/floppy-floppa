@@ -36,9 +36,7 @@ public class LeaderboardPanel extends JPanel {
 		
 		title = new JLabel("LEADERBOARD", SwingConstants.CENTER);
 		title.setFont(getFontResource("pixel.TTF").deriveFont(50f));
-		
-		
-		this.add(title);
+		this.add(title, getConstraints(0, 0, new Insets(0, 0, (int) (SCREEN_SIZE.getWidth() * 0.02), 0), 0, 0, GridBagConstraints.PAGE_START));
 	}
 
 	@Override
