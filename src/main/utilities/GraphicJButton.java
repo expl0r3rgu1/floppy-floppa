@@ -8,11 +8,11 @@ import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-public class GraphicJButton extends JButton{
-	
+public class GraphicJButton extends JButton {
+
 	private static final long serialVersionUID = 3550487230752126610L;
 	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-	
+
 	public GraphicJButton(String name, Color backgroundColor, Color borderColor, String font, int fontAppearance) {
 		super(name);
 		this.setBackground(backgroundColor);
