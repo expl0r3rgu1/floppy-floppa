@@ -2,13 +2,20 @@ package main.menu;
 
 public class EOGMenu implements Menu {
 
-	public EOGMenu() {
+	private int previousCoins;
 
+	public EOGMenu() {
+		this.previousCoins = Shop.getCoins();
 	}
 
-	public static int updateCoins(int meters) {
-		int coinsWon = (int) Math.floor(meters/5) - coinsReducer.loseCoins();
-		
-		return coinsWon;
+	public int getPreviousCoins() {
+		return previousCoins;
+	}
+
+	public int updateCoins(int meters) {
+		int newCoins = this.previousCoins + ((int) Math.floor(meters / 5) - coinsReducer.loseCoins());
+		Shop.setCoins(newCoins);
+		this.previousCoins = newCoins;
+		return newCoins;
 	}
 }
