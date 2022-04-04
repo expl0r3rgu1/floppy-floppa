@@ -81,18 +81,19 @@ public class Character extends Movable implements ActionListener {
 	}
 
 	public void collide(MovingObstacle movingObstacle) {
+		//variables to make it more readable
+		int characterY = this.getPosition().getY();
+		int obstacleHeightUpperLimit = movingObstacle.getPosition().getY();
+		int obstacleHeightLowerLimit = characterY + (int) movingObstacle.getSkin().getImage().getHeight(null);
+		int characterPointOfCollision = this.getPosition().getX() + (int) this.skin.getImage().getWidth(null);
+		int obstacleX = movingObstacle.getPosition().getX();
 		
 		//the purpose of this if is to check if the character is in the range of the obstacle
-		if (this.getPosition().getY() 
-			>= movingObstacle.getPosition().getY()
-			&& this.getPosition().getY()
-			<= movingObstacle.getPosition().getY() 
-			+ (int) movingObstacle.getSkin().getImage().getHeight(null)) {
+		if (characterY >= obstacleHeightUpperLimit
+			&& characterY <= obstacleHeightLowerLimit) {
 			
 			//the purpose of this if is to check if the character hits the obstacle
-			if (this.getPosition().getX() 
-				+ (int) this.skin.getImage().getWidth(null) 
-				== movingObstacle.getPosition().getX()) {
+			if (characterPointOfCollision == obstacleX) {
 						
 				this.isHit();
 				this.isDead();
