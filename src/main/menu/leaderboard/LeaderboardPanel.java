@@ -28,6 +28,7 @@ public class LeaderboardPanel extends JPanel {
 
 	public LeaderboardPanel() {
 		this.setPreferredSize(SCREEN_SIZE);
+		
 		try {
 			background = ImageIO.read(getClass().getResource("/resources/images/menuBackground.png"));
 		} catch (IOException e) {
@@ -60,6 +61,16 @@ public class LeaderboardPanel extends JPanel {
 		constraints.ipady = ipady;
 
 		return constraints;
+	}
+	
+	public Image getImageResource(String imageName) {
+		try {
+			return ImageIO.read(getClass().getResource("/resources/images/" + imageName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 	
 	public Font getFontResource(String fontName) {
