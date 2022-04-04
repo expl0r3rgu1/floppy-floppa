@@ -14,8 +14,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import test.CustomJLabel;
-import test.TestBuyButton;
+import main.utilities.GraphicJButton;
+import main.utilities.GraphicJLabel;
 
 public class EOGMenuGUI extends JPanel {
 
@@ -59,13 +59,13 @@ public class EOGMenuGUI extends JPanel {
 	private void placeGUIComponents() {
 		for (int i = 0; i < 3; i++) {
 			if (i == 0) {
-				CustomJLabel EOGtitle = new CustomJLabel("G A M E    O V E R", Color.decode("#FF675F"),
+				GraphicJLabel EOGtitle = new GraphicJLabel("G A M E    O V E R", Color.decode("#FF675F"),
 						Color.decode("#FF392E"), "pixel.TTF");
 				this.add(EOGtitle, setDimensionObject(1, i, (int) SIZE.getWidth() * 10 / 100,
 						(int) SIZE.getWidth() * 5 / 100, new Insets(30, 0, 0, 0)));
 
 			} else if (i == 1) {
-				CustomJLabel coins = new CustomJLabel(
+				GraphicJLabel coins = new GraphicJLabel(
 						"<html><center> Old coins: &emsp &emsp New coins: </center> <br> <center> "
 								+ EOGMenu.getPreviousCoins() + "&emsp &emsp &emsp " + EOGMenu.updateCoins(meters)
 								+ " 1348 </center> </html>",
@@ -73,7 +73,7 @@ public class EOGMenuGUI extends JPanel {
 				this.add(coins, setDimensionObject(1, i, (int) SIZE.getWidth() * 25 / 100,
 						(int) SIZE.getWidth() * 15 / 100, new Insets(80, 0, 80, 0)));
 
-				TestBuyButton menuButton = new TestBuyButton("MENU", null, Color.decode("#FFDD62"),
+				GraphicJButton menuButton = new GraphicJButton("MENU", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
 				this.add(menuButton, setDimensionObject(2, i, (int) SIZE.getWidth() * 3 / 100,
 						(int) SIZE.getWidth() * 2 / 100, new Insets(0, 100, 0, 0)));
@@ -82,7 +82,7 @@ public class EOGMenuGUI extends JPanel {
 					System.exit(0);
 				});
 
-				TestBuyButton shopButton = new TestBuyButton("SHOP", null, Color.decode("#FFDD62"),
+				GraphicJButton shopButton = new GraphicJButton("SHOP", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
 				this.add(shopButton, setDimensionObject(0, i, (int) SIZE.getWidth() * 3 / 100,
 						(int) SIZE.getWidth() * 2 / 100, new Insets(0, 0, 0, 100)));
@@ -92,7 +92,7 @@ public class EOGMenuGUI extends JPanel {
 				});
 
 			} else if (i == 2) {
-				TestBuyButton leaderboardButton = new TestBuyButton("LEADERBOARD", null, Color.decode("#FFDD62"),
+				GraphicJButton leaderboardButton = new GraphicJButton("LEADERBOARD", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
 				this.add(leaderboardButton, setDimensionObject(1, i, (int) SIZE.getWidth() * 3 / 100,
 						(int) SIZE.getWidth() * 2 / 100, new Insets(30, 0, 30, 0)));
