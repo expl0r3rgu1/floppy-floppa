@@ -55,10 +55,14 @@ public class Character extends Movable implements ActionListener {
 		//to-do: add rotation
 	}
 	
-	public void collide() {
+	public void collide(FixedObstacle fixedObstacle) {
 		//to-do
 	}
 
+	public void collide(MovingObstacle movingObstacle) {
+		//to-do
+	}
+	
 	@Override
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(this.skin.getImage(), this.getPosition().getX(),
