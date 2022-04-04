@@ -13,16 +13,20 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
 	private Leaderboard leaderboard;
-	private final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+	private final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+	
 	Image background;
+	JLabel title;
+	
 
 	public LeaderboardPanel() {
-		this.setPreferredSize();
+		this.setPreferredSize(SCREEN_SIZE);
 		try {
 			background = ImageIO.read(getClass().getResource("/resources/images/shopBackground.jpg"));
 		} catch (IOException e) {
