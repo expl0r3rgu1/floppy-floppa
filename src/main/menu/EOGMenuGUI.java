@@ -62,7 +62,7 @@ public class EOGMenuGUI extends JPanel {
 				GraphicJLabel EOGtitle = new GraphicJLabel("G A M E    O V E R", Color.decode("#FF675F"),
 						Color.decode("#FF392E"), "pixel.TTF");
 				this.add(EOGtitle, setDimensionObject(1, i, (int) SIZE.getWidth() * 10 / 100,
-						(int) SIZE.getWidth() * 5 / 100, new Insets(30, 0, 0, 0)));
+						(int) SIZE.getWidth() * 5 / 100, new Insets((int) SIZE.getWidth() * 2 / 100, 0, 0, 0)));
 
 			} else if (i == 1) {
 				GraphicJLabel coins = new GraphicJLabel(
@@ -70,22 +70,23 @@ public class EOGMenuGUI extends JPanel {
 								+ EOGMenu.getPreviousCoins() + "&emsp &emsp &emsp " + EOGMenu.updateCoins(meters)
 								+ " 1348 </center> </html>",
 						Color.decode("#77DD77"), Color.decode("#007542"), "arcade.ttf");
-				this.add(coins, setDimensionObject(1, i, (int) SIZE.getWidth() * 25 / 100,
-						(int) SIZE.getWidth() * 15 / 100, new Insets(80, 0, 80, 0)));
+				this.add(coins,
+						setDimensionObject(1, i, (int) SIZE.getWidth() * 25 / 100, (int) SIZE.getWidth() * 15 / 100,
+								new Insets((int) SIZE.getWidth() * 4 / 100, 0, (int) SIZE.getWidth() * 4 / 100, 0)));
 
-				GraphicJButton menuButton = new GraphicJButton("MENU", Color.decode("#FFDD62"),
-						Color.decode("#FF971A"), "Arial", Font.BOLD);
+				GraphicJButton menuButton = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
+						"Arial", Font.BOLD);
 				this.add(menuButton, setDimensionObject(2, i, (int) SIZE.getWidth() * 3 / 100,
-						(int) SIZE.getWidth() * 2 / 100, new Insets(0, 100, 0, 0)));
+						(int) SIZE.getWidth() * 2 / 100, new Insets(0, (int) SIZE.getWidth() * 5 / 100, 0, 0)));
 				menuButton.addActionListener(e -> {
 //					frame.cardLayout.show(frame.panel, "menu");
 					System.exit(0);
 				});
 
-				GraphicJButton shopButton = new GraphicJButton("SHOP", Color.decode("#FFDD62"),
-						Color.decode("#FF971A"), "Arial", Font.BOLD);
+				GraphicJButton shopButton = new GraphicJButton("SHOP", Color.decode("#FFDD62"), Color.decode("#FF971A"),
+						"Arial", Font.BOLD);
 				this.add(shopButton, setDimensionObject(0, i, (int) SIZE.getWidth() * 3 / 100,
-						(int) SIZE.getWidth() * 2 / 100, new Insets(0, 0, 0, 100)));
+						(int) SIZE.getWidth() * 2 / 100, new Insets(0, 0, 0, (int) SIZE.getWidth() * 5 / 100)));
 				shopButton.addActionListener(e -> {
 //					frame.cardLayout.show(frame.panel, "shop");
 					System.exit(0);
@@ -94,8 +95,9 @@ public class EOGMenuGUI extends JPanel {
 			} else if (i == 2) {
 				GraphicJButton leaderboardButton = new GraphicJButton("LEADERBOARD", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
-				this.add(leaderboardButton, setDimensionObject(1, i, (int) SIZE.getWidth() * 3 / 100,
-						(int) SIZE.getWidth() * 2 / 100, new Insets(30, 0, 30, 0)));
+				this.add(leaderboardButton,
+						setDimensionObject(1, i, (int) SIZE.getWidth() * 3 / 100, (int) SIZE.getWidth() * 2 / 100,
+								new Insets((int) SIZE.getWidth() * 2 / 100, 0, (int) SIZE.getWidth() * 2 / 100, 0)));
 				leaderboardButton.addActionListener(e -> {
 //					frame.cardLayout.show(frame.panel, "leaderboard");
 					System.exit(0);
