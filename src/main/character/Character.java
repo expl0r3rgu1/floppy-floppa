@@ -82,7 +82,13 @@ public class Character extends Movable implements ActionListener {
 	}
 
 	public void collide(MovingObstacle movingObstacle) {
-		//to-do
+		if (this.getPosition().getX() 
+			+ (int) this.skin.getImage().getWidth(null) 
+			== movingObstacle.getPosition().getX()) {
+				
+			this.isHit();
+			this.isDead();
+		}
 	}
 	
 	public void setSkin(Skin skin){
