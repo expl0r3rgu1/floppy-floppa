@@ -41,62 +41,13 @@ public class LeaderboardPanel extends JPanel {
 		background = getImageResource("menuBackground.png");
 
 		// TITLE
-		title = new JLabel("LEADERBOARD", SwingConstants.CENTER);
-		title.setFont(getFontResource("pixel.TTF").deriveFont(50f));
-
-		this.add(title, getConstraints(0, 0, new Insets(0, 0, (int) (SCREEN_SIZE.getWidth() * 0.02), 0), 0, 0,
-				GridBagConstraints.PAGE_START));
-
-		// SCORES PANEL
-		JPanel scoresPanel = new JPanel(new GridLayout(leaderboard.getLeaderboard().size(), 1));
-		scoresPanel.setOpaque(false);
-
-		int placeNumber = 1;
-		for (var player : leaderboard.getLeaderboard()) {
-			JLabel score = new JLabel(
-					placeNumber + " - " + player.getNickname() + " - " + player.getPersonalBest() + " m",
-					SwingConstants.CENTER);
-			score.setFont(getFontResource("fipps.otf").deriveFont(20f));
-			score.setForeground(Color.lightGray);
-			scoresPanel.add(score);
-
-			placeNumber++;
-		}
+		addTitle();
 
 		// SCROLLABLE PANE
-		JScrollPane scrollablePane = new JScrollPane(scoresPanel);
-		scrollablePane.setOpaque(false);
-		scrollablePane.getViewport().setBackground(new Color(0, 0, 0, .5f));
-		scrollablePane.getViewport().setOpaque(true);
-		scrollablePane.setBorder(BorderFactory.createEmptyBorder());
-
-		// SCROLLBAR CUSTOMIZATION
-		scrollablePane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
-			@Override
-			protected void configureScrollBarColors() {
-				super.configureScrollBarColors();
-
-				this.thumbColor = Color.darkGray;
-				this.trackColor = Color.gray;
-			}
-		});
-
-		this.add(scrollablePane, getConstraints(0, 1, new Insets(0, 0, 0, 0), (int) (SCREEN_SIZE.getWidth() * 0.7),
-				(int) (SCREEN_SIZE.getHeight() * 0.7), GridBagConstraints.CENTER));
+		addScrollablePane();
 
 		// MENU BUTTON
-		GraphicJButton menuButton = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
-				"Arial", Font.PLAIN);
-		
-		menuButton.addActionListener(e -> {
-			//TODO: Call MainMenu back to main menu method
-		});
-		
-		this.add(menuButton,
-				getConstraints(0, 2,
-						new Insets((int) (SCREEN_SIZE.getHeight() * 0.03), (int) (SCREEN_SIZE.getWidth() * 0.3), 0,
-								(int) (SCREEN_SIZE.getWidth() * 0.3)),
-						0, (int) (SCREEN_SIZE.getWidth() * 0.02), GridBagConstraints.PAGE_END));
+		addMenuButton();
 	}
 
 	@Override
@@ -141,5 +92,71 @@ public class LeaderboardPanel extends JPanel {
 		}
 
 		return null;
+	}
+
+	// GRAPHIC COMPONENTS
+
+	private void addTitle() {
+		title = new JLabel("LEADERBOARD", SwingConstants.CENTER);
+		title.setFont(getFontResource("pixel.TTF").deriveFont(50f));
+
+		this.add(title, getConstraints(0, 0, new Insets(0, 0, (int) (SCREEN_SIZE.getWidth() * 0.02), 0), 0, 0,
+				GridBagConstraints.PAGE_START));
+	}
+
+	private JPanel getScorePanel() {
+		JPanel scorePanel = new JPanel(new GridLayout(leaderboard.getLeaderboard().size(), 1));
+		scorePanel.setOpaque(false);
+
+		int placeNumber = 1;
+		for (var player : leaderboard.getLeaderboard()) {
+			JLabel score = new JLabel(
+					placeNumber + " - " + player.getNickname() + " - " + player.getPersonalBest() + " m",
+					SwingConstants.CENTER);
+			score.setFont(getFontResource("fipps.otf").deriveFont(20f));
+			score.setForeground(Color.lightGray);
+			scorePanel.add(score);
+
+			placeNumber++;
+		}
+
+		return scorePanel;
+	}
+
+	private void addScrollablePane() {
+		JScrollPane scrollablePane = new JScrollPane(getScorePanel());
+		scrollablePane.setOpaque(false);
+		scrollablePane.getViewport().setBackground(new Color(0, 0, 0, .5f));
+		scrollablePane.getViewport().setOpaque(true);
+		scrollablePane.setBorder(BorderFactory.createEmptyBorder());
+
+		// SCROLLBAR CUSTOMIZATION
+		scrollablePane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+			@Override
+			protected void configureScrollBarColors() {
+				super.configureScrollBarColors();
+
+				this.thumbColor = Color.darkGray;
+				this.trackColor = Color.gray;
+			}
+		});
+
+		this.add(scrollablePane, getConstraints(0, 1, new Insets(0, 0, 0, 0), (int) (SCREEN_SIZE.getWidth() * 0.7),
+				(int) (SCREEN_SIZE.getHeight() * 0.7), GridBagConstraints.CENTER));
+	}
+
+	private void addMenuButton() {
+		GraphicJButton menuButton = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
+				"Arial", Font.PLAIN);
+
+		menuButton.addActionListener(e -> {
+			// TODO: Call MainMenu back to main menu method
+		});
+
+		this.add(menuButton,
+				getConstraints(0, 2,
+						new Insets((int) (SCREEN_SIZE.getHeight() * 0.03), (int) (SCREEN_SIZE.getWidth() * 0.3), 0,
+								(int) (SCREEN_SIZE.getWidth() * 0.3)),
+						0, (int) (SCREEN_SIZE.getWidth() * 0.02), GridBagConstraints.PAGE_END));
 	}
 }
