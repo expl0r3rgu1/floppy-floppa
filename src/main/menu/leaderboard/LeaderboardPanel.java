@@ -7,6 +7,7 @@ import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
@@ -29,6 +30,7 @@ public class LeaderboardPanel extends JPanel {
 
 	public LeaderboardPanel() {
 		this.setPreferredSize(SCREEN_SIZE);
+		this.setLayout(new GridBagLayout());
 
 		leaderboard = new Leaderboard();
 
@@ -40,7 +42,7 @@ public class LeaderboardPanel extends JPanel {
 		this.add(title, getConstraints(0, 0, new Insets(0, 0, (int) (SCREEN_SIZE.getWidth() * 0.02), 0), 0, 0,
 				GridBagConstraints.PAGE_START));
 
-		// SCROLLABLE PANE
+		// SCORES PANEL
 		JPanel scoresPanel = new JPanel(new GridLayout(leaderboard.getLeaderboard().size(), 1));
 		scoresPanel.setOpaque(false);
 
@@ -55,6 +57,7 @@ public class LeaderboardPanel extends JPanel {
 
 			placeNumber++;
 		}
+
 	}
 
 	@Override
