@@ -24,13 +24,13 @@ public class GraphicJLabel extends JLabel{
 		this.setFont(new Font(font, fontAppearance, (int) SIZE.getWidth() / 70));
 	}
 	
-	public GraphicJLabel(String name ,Color backgroundColor, Color borderColor, String font) {
+	public GraphicJLabel(String name ,Color backgroundColor, Color borderColor, String font, float fontSize) {
 		super(name, CENTER);
 		this.setOpaque(true);
 		this.setBackground(backgroundColor);
 		this.setBorder(BorderFactory.createLineBorder(borderColor, 4, true));
 		try {
-			this.setFont(Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getResource("/resources/fonts/" + font).getFile())).deriveFont(50f));
+			this.setFont(Font.createFont(Font.TRUETYPE_FONT, new File(getClass().getResource("/resources/fonts/" + font).getFile())).deriveFont(fontSize));
 		} catch (FontFormatException | IOException e) {
 			e.printStackTrace();
 		}

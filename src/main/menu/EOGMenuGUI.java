@@ -60,7 +60,7 @@ public class EOGMenuGUI extends JPanel {
 		for (int i = 0; i < 3; i++) {
 			if (i == 0) {
 				GraphicJLabel EOGtitle = new GraphicJLabel("G A M E    O V E R", Color.decode("#FF675F"),
-						Color.decode("#FF392E"), "pixel.TTF");
+						Color.decode("#FF392E"), "pixel.TTF", 50f);
 				this.add(EOGtitle, setDimensionObject(1, i, (int) SIZE.getWidth() * 10 / 100,
 						(int) SIZE.getWidth() * 5 / 100, new Insets((int) SIZE.getWidth() * 2 / 100, 0, 0, 0)));
 
@@ -69,7 +69,7 @@ public class EOGMenuGUI extends JPanel {
 						"<html><center> Old coins: &emsp &emsp New coins: </center> <br> <center> "
 								+ EOGMenu.getPreviousCoins() + "&emsp &emsp &emsp " + EOGMenu.updateCoins(meters)
 								+ " 1348 </center> </html>",
-						Color.decode("#77DD77"), Color.decode("#007542"), "arcade.ttf");
+						Color.decode("#77DD77"), Color.decode("#007542"), "flips.otf", 25f);
 				this.add(coins,
 						setDimensionObject(1, i, (int) SIZE.getWidth() * 25 / 100, (int) SIZE.getWidth() * 15 / 100,
 								new Insets((int) SIZE.getWidth() * 4 / 100, 0, (int) SIZE.getWidth() * 4 / 100, 0)));
