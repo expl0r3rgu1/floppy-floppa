@@ -1,6 +1,7 @@
 package main.menu;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -25,4 +26,15 @@ public class EOGMenuGUI extends JPanel{
 		}
 
 	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(this.scale(background, SIZE), 0, 0, null);
+	}
+	
+	private Image scale(Image image, Dimension dim) {
+		return image.getScaledInstance((int) dim.getWidth(), (int) dim.getHeight(), Image.SCALE_DEFAULT);
+	}
+	
 }
