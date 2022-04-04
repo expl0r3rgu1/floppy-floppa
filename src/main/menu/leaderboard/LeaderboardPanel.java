@@ -14,7 +14,6 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -22,6 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.plaf.basic.BasicScrollBarUI;
+
+import test.GraphicJButton;
 
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
@@ -42,6 +43,7 @@ public class LeaderboardPanel extends JPanel {
 		// TITLE
 		title = new JLabel("LEADERBOARD", SwingConstants.CENTER);
 		title.setFont(getFontResource("pixel.TTF").deriveFont(50f));
+
 		this.add(title, getConstraints(0, 0, new Insets(0, 0, (int) (SCREEN_SIZE.getWidth() * 0.02), 0), 0, 0,
 				GridBagConstraints.PAGE_START));
 
@@ -78,9 +80,23 @@ public class LeaderboardPanel extends JPanel {
 				this.trackColor = Color.gray;
 			}
 		});
+
+		this.add(scrollablePane, getConstraints(0, 1, new Insets(0, 0, 0, 0), (int) (SCREEN_SIZE.getWidth() * 0.7),
+				(int) (SCREEN_SIZE.getHeight() * 0.7), GridBagConstraints.CENTER));
+
+		// MENU BUTTON
+		GraphicJButton menuButton = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
+				"Arial", Font.PLAIN);
 		
-		this.add(scrollablePane,
-				getConstraints(0, 1, new Insets(0, 0, 0, 0), (int) (SCREEN_SIZE.getWidth() * 0.7), (int) (SCREEN_SIZE.getHeight() * 0.7), GridBagConstraints.CENTER));
+		menuButton.addActionListener(e -> {
+			//TODO: Call MainMenu back to main menu method
+		});
+		
+		this.add(menuButton,
+				getConstraints(0, 2,
+						new Insets((int) (SCREEN_SIZE.getHeight() * 0.03), (int) (SCREEN_SIZE.getWidth() * 0.3), 0,
+								(int) (SCREEN_SIZE.getWidth() * 0.3)),
+						0, (int) (SCREEN_SIZE.getWidth() * 0.02), GridBagConstraints.PAGE_END));
 	}
 
 	@Override
