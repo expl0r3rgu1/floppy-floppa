@@ -5,7 +5,6 @@ import main.utilities.Skin;
 
 public class Malus extends StateChanger {
 	
-	
 	protected Malus(Position position, Skin skin) {
 		super(position, skin);
 	}
