@@ -111,7 +111,7 @@ public class Character extends Movable implements ActionListener {
 	public void collideBorders() {
 		//variables to make it more readable
 		int characterUpperPointOfCollision = this.getPosition().getY();
-		int characterLowerPointOfCollision = this.getPosition().getY() + this.getSkin().getImage().getHeight(null);
+		int characterLowerPointOfCollision = this.getPosition().getY() + (int) this.getSkin().getImage().getHeight(null);
 		int upperBorder = 0;
 		int lowerBorder = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 		if (characterUpperPointOfCollision >= upperBorder
@@ -135,6 +135,10 @@ public class Character extends Movable implements ActionListener {
 												this.initialY + this.velocity,
 												(int) this.skin.getImage().getWidth(null),
 												(int) this.skin.getImage().getHeight(null),	null);
+		
+		if(this.isHit()) {
+			this.die();
+		}
 	}
 	
 	@Override
