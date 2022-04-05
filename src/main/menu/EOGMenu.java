@@ -15,7 +15,8 @@ public class EOGMenu implements Menu {
 	}
 
 	public int updateCoins(int meters) {
-		int newCoins = this.previousCoins + ((int) Math.floor(meters / 5) - coinsReducer.loseCoins());
+		int newCoins = this.previousCoins + ((int) Math.floor(meters / 5) - CoinsReducer.loseCoins())
+				+ CoinsIncrement.gainCoins();
 		Shop.setCoins(newCoins);
 		this.previousCoins = newCoins;
 		return newCoins;
