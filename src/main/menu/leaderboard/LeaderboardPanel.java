@@ -22,7 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
-import test.GraphicJButton;
+import main.utilities.GraphicJButton;
 
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
