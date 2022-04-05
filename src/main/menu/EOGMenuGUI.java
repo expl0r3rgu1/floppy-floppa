@@ -39,11 +39,11 @@ public class EOGMenuGUI extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(this.scale(background, SIZE), 0, 0, null);
+		g.drawImage(this.scale(background), 0, 0, null);
 	}
 
-	private Image scale(Image image, Dimension dim) {
-		return image.getScaledInstance((int) dim.getWidth(), (int) dim.getHeight(), Image.SCALE_DEFAULT);
+	private Image scale(Image image) {
+		return image.getScaledInstance((int) SIZE.getWidth(), (int) SIZE.getHeight(), Image.SCALE_DEFAULT);
 	}
 
 	private GridBagConstraints setDimensionObject(int gridx, int gridy, int ipadx, int ipady, Insets i) {
