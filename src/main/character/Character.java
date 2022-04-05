@@ -63,7 +63,7 @@ public class Character extends Movable implements ActionListener {
 		//variables to make it more readable
 		int characterPointOfCollisionX = this.getPosition().getX() + (int) this.skin.getImage().getWidth(null);
 		int characterY = this.getPosition().getY();
-		int characterPointOfCollisionY = characterY + (int) movingObstacle.getSkin().getImage().getHeight(null);
+		int characterPointOfCollisionY = characterY + (int) fixedObstacle.getSkin().getImage().getHeight(null);
 		int obstacleLeftLimit = fixedObstacle.getPosition().getX();
 		int obstacleRightLimit = fixedObstacle.getPosition().getX() + (int) fixedObstacle.getSkin().getImage().getWidth(null);
 		int upperObstacleRange = fixedObstacle.getPosition().getY() + (int) FixedObstacle.space/2;
