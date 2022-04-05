@@ -19,6 +19,7 @@ public class Character extends Movable implements ActionListener {
 	private int velocity; //it will be used to move the character
 	private int gravity; //it will determine if the character goes down (default) or up if it jumps
 	private Timer timer;
+	private int initialY;
 	
 	private final int DELAY=1; /*a constant used to make the typical effect 
 										of the bird's jump in flappy bird*/
@@ -29,6 +30,7 @@ public class Character extends Movable implements ActionListener {
 	
 	Character(Position position, Skin skin) {
 		super(position);
+		this.initialY = this.getPosition().getY();
 		this.skin=skin;
 		this.dead=false;
 		this.hit=false;
@@ -133,15 +135,17 @@ public class Character extends Movable implements ActionListener {
 	@Override
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(this.skin.getImage(), this.getPosition().getX(),
-												this.getPosition().getY() + this.velocity,
+												this.initialY + this.velocity,
 												(int) this.skin.getImage().getWidth(null),
 												(int) this.skin.getImage().getHeight(null),	null);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		gravity += DELAY;
-		velocity += gravity;
+		this.gravity += this.DELAY;
+		this.velocity += this.gravity;
+		
+		this.getPosition().setY(this.getPosition().getY() + this.gravity); 
 		
 		repaint(); /* to show the changes, I'll need to call this method on the
 		 				game GUI*/
