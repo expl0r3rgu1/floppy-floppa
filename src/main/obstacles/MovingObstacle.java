@@ -1,27 +1,28 @@
 package main.obstacles;
 
 import java.awt.Image;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+
+import javax.print.attribute.standard.Sides;
 
 import main.utilities.Position;
 import main.utilities.Skin;
 
 public class MovingObstacle extends Obstacle {
+	
+	public final static Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
-	private Position position;
-	private Skin skin;
-
-	public MovingObstacle(Skin skin) {
-		super();
-		this.skin = skin;
-		this.position.setX((Toolkit.getDefaultToolkit().getScreenSize().width) + 1);
-		this.position.setY((Toolkit.getDefaultToolkit().getScreenSize().height) / 2);
+	public MovingObstacle(Position position, Skin skin) {
+		super(position, skin);
+		this.position.setX((SIZE.getWidth()) + 1);
+		this.position.setY((SIZE.getHeight()) / 2);
 	}
 
 	public void movingPattern() {
 		while (true) {
-			if (this.position.getY() == (Toolkit.getDefaultToolkit().getScreenSize().height) / 2) {
+			if (this.position.getY() == (SIZE.getHeight()) / 2) {
 				
 				this.movingPatternSupport(1, 5, 1, 800);
 				
@@ -36,9 +37,9 @@ public class MovingObstacle extends Obstacle {
 
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(this.skin, this.position.getX(), this.getY(),
-				(int) (Toolkit.getDefaultToolkit().getScreenSize().width) / 20,
-				(int) (Toolkit.getDefaultToolkit().getScreenSize().width) / 10, null);
+		canvas.drawImage(this.getSkin().getImage(), this.position.getX(), this.getY(),
+				(int) (SIZE.getWidth()) / 20,
+				(int) (SIZE.getWidth()) / 10, null);
 
 		this.movingPattern();
 	}
@@ -51,7 +52,7 @@ public class MovingObstacle extends Obstacle {
 	}
 
 	public boolean validPositionY(int y) {
-		int maxHeight = Toolkit.getDefaultToolkit().getScreenSize().height;
+		int maxHeight = (int) SIZE.getHeight();
 
 		return y <= maxHeight && y >= 0;
 	}
