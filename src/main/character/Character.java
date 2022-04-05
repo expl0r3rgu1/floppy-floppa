@@ -1,6 +1,8 @@
 package main.character;
 
+import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
+import main.state_changers.Malus;
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
@@ -100,6 +102,10 @@ public class Character extends Movable implements ActionListener {
 				this.isDead();
 			}
 		}
+	}
+	
+	private void collide(Malus malus) {
+		//to-do
 	}
 	
 	public void collideBorders() {
