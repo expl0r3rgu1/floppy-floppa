@@ -79,8 +79,7 @@ public class Character extends Movable implements ActionListener {
 			if (characterY >= upperObstacleRange
 				|| characterPointOfCollisionY <= lowerObstacleRange) {
 						
-				this.isHit();
-				this.isDead();
+				this.hit();
 			}
 		}
 	}
@@ -100,8 +99,7 @@ public class Character extends Movable implements ActionListener {
 			//the purpose of this if is to check if the character hits the obstacle
 			if (characterPointOfCollision == obstacleX) {
 						
-				this.isHit();
-				this.isDead();
+				this.hit();
 			}
 		}
 	}
@@ -119,8 +117,7 @@ public class Character extends Movable implements ActionListener {
 		if (characterUpperPointOfCollision >= upperBorder
 			|| characterLowerPointOfCollision <= lowerBorder) {
 			
-			this.isHit();
-			this.isDead();
+			this.hit();
 		}
 	}
 	
