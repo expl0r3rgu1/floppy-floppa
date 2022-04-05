@@ -14,7 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import test.Stages;
+import main.menu.MainMenu;
+import main.utilities.Stages;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -47,7 +48,7 @@ public class MenuPanel extends JPanel{
 		title.setFont(new Font("Arial", Font.PLAIN, (int) size.getWidth() / 20));
 		this.add(title, setDimensionObj(0, 0.6));
 		this.add(generateButton("Play", "PLAY"), setDimensionObj(1, 0.2));
-		this.add(generateButton("Leaderboard", "LOADERBOARD"), setDimensionObj(3, 0.3));
+		this.add(generateButton("Leaderboard", "LEADERBOARD"), setDimensionObj(3, 0.3));
 		this.add(generateButton("Shop", "SHOP"), setDimensionObj(2, 0.3));
 		this.add(generateButton("Quit", "QUIT"), setDimensionQuit(0, 6, 0.3));
 		this.add(generateButton("Tutorial", "TUTORIAL"), setDimensionObj(5, 0.3));
@@ -67,7 +68,6 @@ public class MenuPanel extends JPanel{
 			jb.setBackground(Color.decode("#FFDD62"));
 			jb.setBorder(BorderFactory.createLineBorder(Color.decode("#FF971A"), 4, true));
 		}
-		//8B0000 #FF0000
 		jb.addActionListener(adHocActionListener(actionListenerName));
 		return jb;
 	}
@@ -92,8 +92,7 @@ public class MenuPanel extends JPanel{
 		if (panelName == "PLAY") {
 			return e -> {
 				condition = Stages.GAME;
-				CardLayout cl = (CardLayout) (this.getLayout());
-				cl.show(this, panelName);
+				MainMenu.cardLayout.show(this, panelName);
 			};
 		}else if(panelName == "QUIT"){
 			return e -> {
@@ -102,8 +101,7 @@ public class MenuPanel extends JPanel{
 		}
 		else {
 			return e -> {
-				CardLayout cl = (CardLayout) (this.getLayout());
-				cl.show(this, panelName);
+				MainMenu.cardLayout.show(this, panelName);
 			};
 		}
 	}

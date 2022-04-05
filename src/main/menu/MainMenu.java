@@ -1,33 +1,17 @@
 package main.menu;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import test.Stages;
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.CardLayout;
 
 public class MainMenu extends JPanel implements Menu {
 
 	//private static Stages condition = Stages.MENU;
-	MenuPanel menu = new MenuPanel();
+	public static final CardLayout cardLayout = new CardLayout();
 
 	public MainMenu() {
 
-		this.setLayout(new CardLayout());
+		MenuPanel menu = new MenuPanel();
+		this.setLayout(cardLayout);
 		
 		this.add("MENU", menu);
 		// this.add("PLAY", play);
@@ -37,6 +21,11 @@ public class MainMenu extends JPanel implements Menu {
 		// this.add("QUIT", quit);
 		// this.add("TUTORIAL", tutorial);
 
+	}
+	
+	public void showCard(String cardName) {
+		CardLayout cl = (CardLayout) (this.getLayout());
+		cl.show(this, cardName);
 	}
 
 }
