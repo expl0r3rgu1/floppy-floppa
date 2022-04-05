@@ -29,8 +29,8 @@ public class LeaderboardPanel extends JPanel {
 	private Leaderboard leaderboard;
 	private final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
-	Image background;
-	JLabel title;
+	private Image background;
+	private JLabel title;
 
 	public LeaderboardPanel() {
 		this.setPreferredSize(SCREEN_SIZE);
