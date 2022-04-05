@@ -23,8 +23,8 @@ public class Character extends Movable implements ActionListener {
 	
 	private final int DELAY=1; /*a constant used to make the typical effect 
 										of the bird's jump in flappy bird*/
-	private final int GO_UP=-12; 
-	private final int GO_DOWN=8;
+	private final int GO_UP=-9; 
+	private final int GO_DOWN=6;
 	private final int TIMER_DELAY=60;
 	
 	
