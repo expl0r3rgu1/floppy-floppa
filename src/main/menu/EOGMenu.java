@@ -14,12 +14,27 @@ public class EOGMenu implements Menu {
 		return previousCoins;
 	}
 
-	//TODO add for
 	public int updateCoins(int meters, int reducerTimes, int incrementTimes) {
-		int newCoins = EOGMenu.previousCoins + ((int) Math.floor(meters / 5) - (CoinsReducer.loseCoins() * reducerTimes)
-				+ (CoinsIncrement.gainCoins()) * incrementTimes);
+		int newCoins = EOGMenu.previousCoins + ((int) Math.floor(meters / 5) - this.updateCoinsReduce(reducerTimes)
+				+ this.updateCoinsIncrease(incrementTimes));
 		Shop.setCoins(newCoins);
 		EOGMenu.previousCoins = newCoins;
 		return newCoins;
+	}
+
+	private int updateCoinsReduce(int times) {
+		int sum;
+		for (int i = 0; i < times; i++) {
+			sum += CoinsReducer.loseCoins();
+		}
+		return sum;
+	}
+	
+	private int updateCoinsIncrease(int times) {
+		int sum;
+		for (int i = 0; i < times; i++) {
+			sum += CoinsIncrement.gainCoins();
+		}
+		return sum;
 	}
 }
