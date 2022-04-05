@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJButtonWithObject;
 import main.utilities.GraphicJLabel;
+import test.CustomJLabel;
+import test.TestBuyButton;
 
 public class ShopGUI extends JPanel {
 
@@ -45,11 +47,11 @@ public class ShopGUI extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(this.scale(background), 0, 0, this);
+		g.drawImage(this.scale(background, SIZE), 0, 0, null);
 	}
 
-	private Image scale(Image image) {
-		return image.getScaledInstance((int) SIZE.getWidth(), (int) SIZE.getHeight(), Image.SCALE_DEFAULT);
+	private Image scale(Image image, Dimension dim) {
+		return image.getScaledInstance((int) dim.getWidth(), (int) dim.getHeight(), Image.SCALE_DEFAULT);
 	}
 
 	private JLabel imageCreation(String fileName) {
@@ -70,27 +72,34 @@ public class ShopGUI extends JPanel {
 		for (int i = 0; i < numBackgrounds + numSkins; i++) {
 			if (i == 0) {
 
-				this.placeCustomLabels(i, Shop.getCoins() + "", "#FFDD62", "#FF971A", 4, i, 0, 0, 0.9, 0);
+				GraphicJLabel coins = new GraphicJLabel(Shop.getCoins() + "", Color.decode("#FFDD62"),
+						Color.decode("#FF971A"), "Arial", Font.BOLD);
+				this.add(coins, setDimensionObject(4, i, 0, 0, new Insets(0, 0, 0, 0)));
 
 			} else if (i == 1) {
 
-				GraphicJLabel skins = this.placeCustomLabels(i, "SKINS", "#FFDD62", "#FF971A", 0, i,
-						(int) SIZE.getWidth() * 2 / 100, 0, 1, 1);
+				GraphicJLabel skins = new GraphicJLabel("SKINS", Color.decode("#FFDD62"), Color.decode("#FF971A"),
+						"Arial", Font.BOLD);
 				skins.setPreferredSize(
 						new Dimension((int) SIZE.getWidth() * 10 / 100, (int) SIZE.getHeight() * 5 / 100));
+				this.add(skins, setDimensionObject(0, i, (int) SIZE.getWidth() * 2 / 100, 0,
+						new Insets((int) SIZE.getWidth() * 1 / 100, 0, (int) SIZE.getWidth() * 2 / 100, 0)));
 
 			} else if (i == 5) {
 
-				GraphicJLabel backgrounds = this.placeCustomLabels(i, "BACKGROUNDS", "#FFDD62", "#FF971A", 0, i,
-						(int) SIZE.getWidth() * 2 / 100, 0, 1, 1);
+				GraphicJLabel backgrounds = new GraphicJLabel("BACKGROUNDS", Color.decode("#FFDD62"),
+						Color.decode("#FF971A"), "Arial", Font.BOLD);
 				backgrounds.setPreferredSize(
 						new Dimension((int) SIZE.getWidth() * 10 / 100, (int) SIZE.getHeight() * 5 / 100));
+				this.add(backgrounds, setDimensionObject(0, i, (int) SIZE.getWidth() * 2 / 100, 0,
+						new Insets((int) SIZE.getWidth() * 3 / 100, 0, (int) SIZE.getWidth() * 1 / 100, 0)));
 
 			} else if (i == numBackgrounds + numSkins - 1) {
 
 				GraphicJButton backMenu = new GraphicJButton("MENU", null, Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
-				this.add(backMenu, setDimensionObject(4, i, 0, 0, 1, 1));
+				this.add(backMenu,
+						setDimensionObject(4, i, 0, 0, new Insets((int) SIZE.getWidth() * 3 / 100, 0, 0, 0)));
 				backMenu.addActionListener(e -> {
 //					frame.cardLayout.show(frame.panel, "menu");
 					System.exit(0);
@@ -108,9 +117,9 @@ public class ShopGUI extends JPanel {
 					(i == 2 ? labelNames.get(j) + " : " + prices.get(j)
 							: labelNames.get(j + 5) + " : " + prices.get(j + 5)),
 					Color.decode("#77DD77"), Color.decode("#007542"), "Arial", Font.PLAIN);
-			this.add(label, setDimensionObject(j, i, 0, 0, 1, 1));
+			this.add(label, setDimensionObject(j, i, 0, 0, new Insets((int) SIZE.getWidth() * 2 / 100, 0, 0, 0)));
 			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)) + ".png"),
-					setDimensionObject(j, i + 1, 0, 0, 1, 1));
+					setDimensionObject(j, i + 1, 0, 0, new Insets((int) SIZE.getWidth() * 2 / 100, 0, 0, 0)));
 			GraphicJButtonWithObject buyButton = new GraphicJButtonWithObject("BUY", Color.decode("#FDFD96"),
 					Color.decode("#FFDD62"), "Arial", Font.PLAIN,
 					(i == 2 ? Shop.getSkins().get(j).getX() : Shop.getSceneries().get(j).getX()));
@@ -118,28 +127,21 @@ public class ShopGUI extends JPanel {
 				bought = Shop.buy(buyButton.getObject());
 				buyButton.setEnabled(!bought);
 			});
-			this.add(buyButton, setDimensionObject(j, i + 2, (int) SIZE.getWidth() * 3 / 100, 0, 1, 1));
+			this.add(buyButton,
+					setDimensionObject(j, i + 2, (int) SIZE.getWidth() * 3 / 100, 0,
+							new Insets((int) SIZE.getWidth() * 2 / 100, (int) SIZE.getWidth() * 5 / 100, 0,
+									(int) SIZE.getWidth() * 5 / 100)));
 		}
 		return i + 2;
 	}
 
-	private GraphicJLabel placeCustomLabels(int i, String name, String backgroundColor, String BorderColor, int gridx,
-			int gridy, int ipadx, int ipady, double weightx, double weighty) {
-		GraphicJLabel customLabel = new GraphicJLabel(name, Color.decode(backgroundColor), Color.decode(BorderColor),
-				"Arial", Font.BOLD);
-		this.add(customLabel, setDimensionObject(gridx, gridy, ipadx, ipady, weightx, weighty));
-		return customLabel;
-	}
-
-	private GridBagConstraints setDimensionObject(int gridx, int gridy, int ipadx, int ipady, double weightx,
-			double weighty) {
+	private GridBagConstraints setDimensionObject(int gridx, int gridy, int ipadx, int ipady, Insets i) {
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = gridx;
 		c.gridy = gridy;
 		c.ipadx = ipadx;
 		c.ipady = ipady;
-		c.weightx = weightx;
-		c.weighty = weighty;
+		c.insets = i;
 		return c;
 	}
 }
