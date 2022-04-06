@@ -176,9 +176,6 @@ public class Character extends Movable implements ActionListener {
 		this.velocity += this.gravity;
 		
 		this.getPosition().setY(this.getPosition().getY() + this.gravity); 
-		
-		repaint(); /* to show the changes, I'll need to call this method on the
-		 				game GUI*/
 	}
 	
 }
