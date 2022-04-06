@@ -2,7 +2,7 @@ package main.utilities;
 
 import java.awt.Image;
 
-public class PricedItem {
+public abstract class PricedItem {
 
 	protected String name;
 	protected Image image;
