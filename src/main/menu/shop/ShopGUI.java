@@ -36,7 +36,7 @@ public class ShopGUI extends JPanel {
 		numBackgrounds = Shop.getSceneries().size();
 
 		try {
-			background = ImageIO.read(getClass().getResource("/resources/images/ShopBackground.png"));
+			background = ImageIO.read(getClass().getResource("/resources/images/Background.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
