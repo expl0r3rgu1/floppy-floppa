@@ -1,4 +1,4 @@
-package main.infinite_map;
+package main.utilities;
 
 import java.awt.Image;
 
