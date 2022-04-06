@@ -4,6 +4,9 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 import main.obstacles.Obstacle;
 import main.utilities.Position;
 import main.utilities.Skin;
@@ -25,7 +28,7 @@ public class FixedObstacle extends Obstacle{
 		canvas.drawImage(getSkin().getImage(),  position.getX(), (position.getY()+(space)/2),
 				(int) (SIZE.getWidth())/10,
 				(int) (SIZE.getHeight()-(position.getY()+(space)/2)), null);
-		canvas.drawImage(getSkin().getImage().rotate, position.getX(), 0,
+		canvas.drawImage(getUpsidedownImage(getSkin().getImage()), position.getX(), 0,
 				(int) (SIZE.getWidth())/10,
 				(int) (position.getY()-(space)/2), null);
 
@@ -40,6 +43,30 @@ public class FixedObstacle extends Obstacle{
 		}
 
 		getPosition().setX(getPosition().getX() - movingFactor);
+	}
+	
+	private Image getUpsidedownImage(Image image) {
+		double rotationRequired = Math.toRadians (180);
+		double locationX = image.getWidth(null) / 2;
+		double locationY = image.getHeight(null) / 2;
+		AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+		
+		return op.filter(toBufferedImage(image), null);
+	}
+	
+	private static BufferedImage toBufferedImage(Image img)
+	{
+	    if (img instanceof BufferedImage){
+	        return (BufferedImage) img;
+	    }
+
+	    BufferedImage bimage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+	    Graphics2D bGr = bimage.createGraphics();
+	    bGr.drawImage(img, 0, 0, null);
+	    bGr.dispose();
+
+	    return bimage;
 	}
 	
 }
