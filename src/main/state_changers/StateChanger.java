@@ -4,19 +4,22 @@ import main.utilities.Skin;
 import main.utilities.Movable;
 import main.utilities.Position;
 
-public abstract class StateChanger extends Movable{
+public abstract class StateChanger extends Movable {
 	Skin skin;
-	
+
 	public StateChanger(Position position, Skin skin) {
 		super(position);
-		this.skin=skin;
+		this.skin = skin;
 	}
-	
+
 	public Skin getSkin() {
 		return this.skin;
 	}
-	
+
 	public void setSkin(Skin s) {
-		this.skin=s;
+		this.skin = s;
 	}
+
+	public abstract void changeState();
+	
 }
