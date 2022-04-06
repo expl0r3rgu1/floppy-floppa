@@ -1,16 +1,16 @@
 package main.obstacles;
 
-
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
 import java.awt.Graphics2D;
 
-public class Obstacle extends Movable{
+public class Obstacle{
 	private Skin skin;
+	private Position position;
 	
 	protected Obstacle(Position position, Skin skin) {
-		super(position);
+		this.position = position;
 		this.skin=skin;
 	}
 	
@@ -24,6 +24,18 @@ public class Obstacle extends Movable{
 	
 	public void setSkin(Skin skin) {
 		this.skin=skin;
+	}
+	
+	public Position getPosition() {
+		return position;
+	}
+
+	public void setPosition(Position position) {
+		this.position = position;
+	}
+
+	public void animate(Graphics2D canvas) {
+		//TO BE IMPLEMENTED IN SUB-CLASSES
 	}
 	
 }
