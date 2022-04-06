@@ -162,10 +162,6 @@ public class Shop {
 		}
 	}
 
-	public void coinsUpdate(Integer coinsWon) {
-		Shop.coins += coinsWon;
-	}
-
 	public void fileUpdate() throws IOException {
 		Path path = this.savingFile.toPath();
 		List<String> fileContent = new ArrayList<>(Files.readAllLines(path, StandardCharsets.UTF_8));
