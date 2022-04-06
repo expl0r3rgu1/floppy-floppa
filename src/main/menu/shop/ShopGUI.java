@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import main.menu.MainMenu;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJButtonWithObject;
 import main.utilities.GraphicJLabel;
@@ -22,12 +23,15 @@ public class ShopGUI extends JPanel {
 	private int numSkins;
 	private int numBackgrounds;
 	private boolean bought = false;
+	private MainMenu mainMenu;
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
 			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 	private ArrayList<String> prices = new ArrayList<>(
 			Arrays.asList("0", "50", "100", "200", "500", "0", "50", "100", "200", "500"));
 
-	public ShopGUI() {
+	public ShopGUI(MainMenu mainMenu) {
+		this.mainMenu = mainMenu;
+
 		this.setLayout(new GridBagLayout());
 
 		numSkins = Shop.getSkins().size();
