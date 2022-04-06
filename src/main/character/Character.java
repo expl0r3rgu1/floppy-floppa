@@ -11,6 +11,8 @@ import main.utilities.Skin;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
+
 import javax.swing.Timer;
 
 public class Character extends Movable implements ActionListener {
@@ -156,18 +158,35 @@ public class Character extends Movable implements ActionListener {
 	
 	@Override
 	public void animate(Graphics2D canvas) {
-		//these variables will be changed with constants
-		int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-		int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 		
-		canvas.drawImage(this.skin.getImage(), this.getPosition().getX(),
-												this.initialY + this.velocity,
-												(int) (screenWidth * 0.035),
-												(int) (screenHeight * 0.045), null);
+		double angle = (((90 * (velocity + 20) / 20) - 90))*Math.PI/180;
+		
+		if(angle > Math.PI) {
+			angle = Math.PI;
+		}
+		
+		this.rotateImage(g2D, angle);
 		
 		if(this.isHit()) {
 			this.die();
 		}
+	}
+	
+	private void rotateImage(Graphics2D g2D, double angle) {
+		//these variables will be changed with constants
+		int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+		int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+		
+		int transformX = this.getPosition().getX() + this.getSkin().getImage().getWidth(null)/2;
+		int transformY = this.getPosition().getY() + this.getSkin().getImage().getHeight(null)/2;
+		int x = this.getPosition().getX();
+		int y = this.initialY + this.velocity;
+		int width = (int) (screenWidth * 0.035);
+		int height = (int) (screenHeight * 0.045);
+		
+		AffineTransform rotatedImage = AffineTransform.getRotateInstance(Math.toRadians(angle), transformX, transformY);
+		g2D.setTransform(rotatedImage);
+		g2D.drawImage(this.getSkin().getImage(), x, y, width, height, null);
 	}
 	
 	@Override
