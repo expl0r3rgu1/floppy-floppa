@@ -94,8 +94,8 @@ public class ShopGUI extends JPanel {
 
 			} else if (i == numBackgrounds + numSkins - 1) {
 
-				GraphicJButton backMenu = new GraphicJButton("MENU", null, Color.decode("#FFDD62"),
-						Color.decode("#FF971A"), "Arial", Font.BOLD);
+				GraphicJButton backMenu = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
+						"Arial", Font.BOLD);
 				this.add(backMenu,
 						setDimensionObject(4, i, 0, 0, new Insets((int) SIZE.getWidth() * 3 / 100, 0, 0, 0)));
 				backMenu.addActionListener(e -> {
