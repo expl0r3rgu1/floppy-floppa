@@ -154,7 +154,7 @@ public class LeaderboardPanel extends JPanel {
 				"Arial", Font.PLAIN);
 
 		menuButton.addActionListener(e -> {
-			// TODO: Call MainMenu back to main menu method
+			mainMenu.showCard("MENU");
 		});
 
 		this.add(menuButton,
