@@ -25,7 +25,7 @@ public class EOGMenu implements Menu {
 	private int updateCoinsReduce(int times) {
 		int sum;
 		for (int i = 0; i < times; i++) {
-			sum += CoinsReducer.loseCoins();
+			sum += CoinsReducer.changeState();
 		}
 		return sum;
 	}
@@ -33,7 +33,7 @@ public class EOGMenu implements Menu {
 	private int updateCoinsIncrease(int times) {
 		int sum;
 		for (int i = 0; i < times; i++) {
-			sum += CoinsIncrement.gainCoins();
+			sum += CoinsIncrement.changeState();
 		}
 		return sum;
 	}
