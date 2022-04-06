@@ -1,9 +1,20 @@
 package main.utilities;
 
-public interface PricedItem {
+public class PricedItem {
 	
-	public int getPrice();
+	protected int price;
 	
-	public void setPrice(int price);
+	
+	public PricedItem(int price) {
+		this.price = price;
+	}
+
+	public int getPrice() {
+		return this.price;
+	}
+	
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	
 }

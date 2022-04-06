@@ -2,15 +2,14 @@ package main.utilities;
 
 import java.awt.Image;
 
-public class PricedSkin implements PricedItem {
+public class PricedSkin extends PricedItem {
 	private String name;
 	private Image image;
-	private int price;
 
 	public PricedSkin(String name, Image image, int price) {
+		super(price);
 		this.name = name;
 		this.image = image;
-		this.price = price;
 	}
 
 	public String getName() {

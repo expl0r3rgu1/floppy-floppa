@@ -3,16 +3,15 @@ package main.utilities;
 import java.awt.Image;
 
 
-public class PricedBackground implements PricedItem {
+public class PricedBackground extends PricedItem {
 	
 	private String name;
 	private Image image;
-	private int price;
 
 	public PricedBackground(String name, Image image, int price) {
+		super(price);
 		this.name = name;
 		this.image = image;
-		this.price = price;
 	}
 
 	public String getName() {
