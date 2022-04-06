@@ -17,8 +17,7 @@ public class FixedObstacle extends Obstacle{
 
 	public FixedObstacle(Position position, Skin skin) {
 		super(position, skin);
-		this.x=(Toolkit.getDefaultToolkit().getScreenSize().width)+1;
-		this.y=(Toolkit.getDefaultToolkit().getScreenSize().height);
+		this.setPosition(new Position((int)(SIZE.width)+1, (int)SIZE.height));
 	}
 	
 	@Override
