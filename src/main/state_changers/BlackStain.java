@@ -25,9 +25,11 @@ public class BlackStain extends Malus implements ActionListener{
 		super(position, skin);
 	}
 
-	public void timeStains() {
+	public Object changeState() {
 		timer.start();
 		play.add(stain);
+		
+		return null;
 	}
 	
 	public void animate(Graphics2D canvas) {

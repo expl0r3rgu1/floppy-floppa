@@ -18,7 +18,7 @@ public class CoinsReducer extends Malus{
 		super(position, skin);
 	}
 
-	public Integer loseCoins() {
+	public Integer changeState() {
 		return malus.get((int) (Math.random()*(malus.size())));
 	}
 	
