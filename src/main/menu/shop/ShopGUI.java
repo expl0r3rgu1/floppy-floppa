@@ -13,8 +13,6 @@ import javax.swing.JPanel;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJButtonWithObject;
 import main.utilities.GraphicJLabel;
-import test.CustomJLabel;
-import test.TestBuyButton;
 
 public class ShopGUI extends JPanel {
 
