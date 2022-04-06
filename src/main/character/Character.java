@@ -3,6 +3,7 @@ package main.character;
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
 import main.state_changers.Malus;
+import main.state_changers.StateChanger;
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
@@ -96,15 +97,15 @@ public class Character extends Movable implements ActionListener {
 		//variables to make it more readable
 		int x = movingObstacle.getPosition().getX();
 		int y = movingObstacle.getPosition().getY();
-		int height = (int) movingObstacle.getSkin().getImage().getHeight(int);
-		int width = (int) movingObstacle.getSkin().getImage().getWidth(int);
+		int height = (int) movingObstacle.getSkin().getImage().getHeight(null);
+		int width = (int) movingObstacle.getSkin().getImage().getWidth(null);
 		
 		if(this.checkCollision(x, y, height, width) {
 			this.hit();
 		}
 	}
 	
-	public void collide(Malus malus) {
+	public void collide(StateChanger sc) {
 		//to-do
 	}
 	
