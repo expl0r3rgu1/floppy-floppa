@@ -6,20 +6,20 @@ public class EOGMenu implements Menu {
 
 	private static int previousCoins;
 
-	public EOGMenu() {
+	public EOGMenu(int metersTravelled, int reducerTimes, int incrementTimes) {
 		EOGMenu.previousCoins = Shop.getCoins();
+		this.updateCoins(metersTravelled, reducerTimes, incrementTimes);
 	}
 
 	public static int getPreviousCoins() {
 		return previousCoins;
 	}
 
-	public int updateCoins(int meters, int reducerTimes, int incrementTimes) {
+	private void updateCoins(int meters, int reducerTimes, int incrementTimes) {
 		int newCoins = EOGMenu.previousCoins + ((int) Math.floor(meters / 5) - this.updateCoinsReduce(reducerTimes)
 				+ this.updateCoinsIncrease(incrementTimes));
 		Shop.setCoins(newCoins);
 		EOGMenu.previousCoins = newCoins;
-		return newCoins;
 	}
 
 	private int updateCoinsReduce(int times) {
@@ -29,7 +29,7 @@ public class EOGMenu implements Menu {
 		}
 		return sum;
 	}
-	
+
 	private int updateCoinsIncrease(int times) {
 		int sum;
 		for (int i = 0; i < times; i++) {
