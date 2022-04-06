@@ -56,6 +56,14 @@ public class Character extends Movable implements ActionListener {
 		this.hit=true;
 	}
 	
+	public void setSkin(Skin skin){
+		this.skin = skin;
+	}
+	
+	public Skin getSkin() {
+		return this.skin;
+	}
+	
 	public void jump() {
 		this.gravity = GO_UP;
 		//to-do: add rotation
@@ -86,25 +94,17 @@ public class Character extends Movable implements ActionListener {
 
 	public void collide(MovingObstacle movingObstacle) {
 		//variables to make it more readable
-		int characterY = this.getPosition().getY();
-		int obstacleHeightUpperLimit = movingObstacle.getPosition().getY();
-		int obstacleHeightLowerLimit = characterY + (int) movingObstacle.getSkin().getImage().getHeight(null);
-		int characterPointOfCollision = this.getPosition().getX() + (int) this.skin.getImage().getWidth(null);
-		int obstacleX = movingObstacle.getPosition().getX();
+		int x = movingObstacle.getPosition().getX();
+		int y = movingObstacle.getPosition().getY();
+		int height = (int) movingObstacle.getSkin().getImage().getHeight(int);
+		int width = (int) movingObstacle.getSkin().getImage().getWidth(int);
 		
-		//the purpose of this if is to check if the character is in the range of the obstacle
-		if (characterY >= obstacleHeightUpperLimit
-			&& characterY <= obstacleHeightLowerLimit) {
-			
-			//the purpose of this if is to check if the character hits the obstacle
-			if (characterPointOfCollision == obstacleX) {
-						
-				this.hit();
-			}
+		if(this.checkCollision(x, y, height, width) {
+			this.hit();
 		}
 	}
 	
-	private void collide(Malus malus) {
+	public void collide(Malus malus) {
 		//to-do
 	}
 	
@@ -121,13 +121,28 @@ public class Character extends Movable implements ActionListener {
 		}
 	}
 	
-	public void setSkin(Skin skin){
-		this.skin = skin;
+	private boolean checkCollision(int x, int y, int height, int width) {
+		int characterY = this.getPosition().getY();
+		int characterPointOfCollision = this.getPosition().getX() + (int) this.skin.getImage().getWidth(null);
+		int obstacleHeightLowerLimit = characterY + height;
+		int obstacleHeightUpperLimit = y;
+		int obstacleWidthLimit= x + width;
+		
+		//the purpose of this if is to check if the character is in the range of the obstacle
+		if (characterY <= obstacleHeightUpperLimit
+			&& characterY >= obstacleHeightLowerLimit) {
+					
+			//the purpose of this if is to check if the character hits the obstacle
+			if (characterPointOfCollision >= x
+				&& characterPointOfCollision <= obstacleWidthLimit) {
+								
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
-	public Skin getSkin() {
-		return this.skin;
-	}
 	
 	@Override
 	public void animate(Graphics2D canvas) {
