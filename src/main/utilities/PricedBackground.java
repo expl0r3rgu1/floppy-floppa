@@ -2,12 +2,14 @@ package main.utilities;
 
 import java.awt.Image;
 
-public class PricedSkin implements PricedItem {
+
+public class PricedBackground implements PricedItem {
+	
 	private String name;
 	private Image image;
 	private int price;
 
-	public PricedSkin(String name, Image image, int price) {
+	public PricedBackground(String name, Image image, int price) {
 		this.name = name;
 		this.image = image;
 		this.price = price;
@@ -38,5 +40,5 @@ public class PricedSkin implements PricedItem {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
+	
 }
