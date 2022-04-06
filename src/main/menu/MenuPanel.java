@@ -32,8 +32,11 @@ public class MenuPanel extends JPanel{
 	public static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private GridBagLayout grid = new GridBagLayout();
 	private Image background;
+	private MainMenu mainMenu;
 	
-	public MenuPanel() {
+	public MenuPanel(MainMenu mainMenu) {
+		
+		this.mainMenu = mainMenu;
 		this.setLayout(grid);
 
 		try {
@@ -94,7 +97,7 @@ public class MenuPanel extends JPanel{
 		if (panelName == "PLAY") {
 			return e -> {
 				condition = Stages.GAME;
-				MainMenu.cardLayout.show(this, panelName);
+				MainMenu.cardLayout.show(this.mainMenu, panelName);
 			};
 		}else if(panelName == "QUIT"){
 			return e -> {
@@ -103,7 +106,7 @@ public class MenuPanel extends JPanel{
 		}
 		else {
 			return e -> {
-				MainMenu.cardLayout.show(this, panelName);
+				MainMenu.cardLayout.show(this.mainMenu, panelName);
 			};
 		}
 	}
