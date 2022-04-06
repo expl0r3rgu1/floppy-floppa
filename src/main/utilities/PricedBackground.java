@@ -2,21 +2,43 @@ package main.utilities;
 
 import java.awt.Image;
 
-import main.infinite_map.Background;
 
-public class PricedBackground extends Background implements PricedItem{
+public class PricedBackground implements PricedItem {
+	
+	private String name;
+	private Image image;
 	private int price;
 
 	public PricedBackground(String name, Image image, int price) {
-		super(name, image);
+		this.name = name;
+		this.image = image;
 		this.price = price;
 	}
 
-	public int getPrice() {
-		return price;
+	public String getName() {
+		return name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+	@Override
+	public int getPrice() {
+		return this.price;
+	}
+
+	@Override
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
 }
