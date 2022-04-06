@@ -153,7 +153,7 @@ public class Character extends Movable implements ActionListener {
 		
 		canvas.drawImage(this.skin.getImage(), this.getPosition().getX(),
 												this.initialY + this.velocity,
-												(int) (screenWidth * 0.03),
+												(int) (screenWidth * 0.035),
 												(int) (screenHeight * 0.045),	null);
 		
 		if(this.isHit()) {
