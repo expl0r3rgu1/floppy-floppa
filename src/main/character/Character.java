@@ -165,14 +165,14 @@ public class Character extends Movable implements ActionListener {
 			angle = Math.PI;
 		}
 		
-		this.rotateImage(canvas, angle);
+		this.rotateAndDrawImage(canvas, angle);
 		
 		if(this.isHit()) {
 			this.die();
 		}
 	}
 	
-	private void rotateImage(Graphics2D g2D, double angle) {
+	private void rotateAndDrawImage(Graphics2D g2D, double angle) {
 		//these variables will be changed with constants
 		int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 		int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
