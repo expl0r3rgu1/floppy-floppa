@@ -28,14 +28,4 @@ public class PricedSkin extends PricedItem {
 		this.image = image;
 	}
 
-	@Override
-	public int getPrice() {
-		return this.price;
-	}
-
-	@Override
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
 }

@@ -2,9 +2,8 @@ package main.utilities;
 
 import java.awt.Image;
 
-
 public class PricedBackground extends PricedItem {
-	
+
 	private String name;
 	private Image image;
 
@@ -30,14 +29,4 @@ public class PricedBackground extends PricedItem {
 		this.image = image;
 	}
 
-	@Override
-	public int getPrice() {
-		return this.price;
-	}
-
-	@Override
-	public void setPrice(int price) {
-		this.price = price;
-	}
-	
 }

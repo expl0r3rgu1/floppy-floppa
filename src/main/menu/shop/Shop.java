@@ -35,9 +35,9 @@ public class Shop {
 
 		skins = new ArrayList<>();
 		sceneries = new ArrayList<>();
-		
+
 		this.savingFile = new File("file.txt");
-		
+
 		try {
 			this.getFileInfo();
 		} catch (FileNotFoundException e) {
