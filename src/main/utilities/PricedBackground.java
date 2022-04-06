@@ -2,7 +2,9 @@ package main.utilities;
 
 import java.awt.Image;
 
-public class PricedBackground extends Background{
+import main.infinite_map.Background;
+
+public class PricedBackground extends Background implements PricedItem{
 	private int price;
 
 	public PricedBackground(String name, Image image, int price) {

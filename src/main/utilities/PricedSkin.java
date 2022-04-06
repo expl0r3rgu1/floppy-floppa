@@ -2,7 +2,7 @@ package main.utilities;
 
 import java.awt.Image;
 
-public class PricedSkin extends Skin {
+public class PricedSkin extends Skin implements PricedItem {
 	private int price;
 
 	public PricedSkin(String name, Image image, int price) {
