@@ -100,7 +100,7 @@ public class Character extends Movable implements ActionListener {
 		int height = (int) movingObstacle.getSkin().getImage().getHeight(null);
 		int width = (int) movingObstacle.getSkin().getImage().getWidth(null);
 		
-		if(this.checkCollision(x, y, height, width) {
+		if(this.checkCollision(x, y, height, width)) {
 			this.hit();
 		}
 	}
@@ -147,10 +147,14 @@ public class Character extends Movable implements ActionListener {
 	
 	@Override
 	public void animate(Graphics2D canvas) {
+		//these variables will be changed with constants
+		int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+		int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+		
 		canvas.drawImage(this.skin.getImage(), this.getPosition().getX(),
 												this.initialY + this.velocity,
-												(int) this.skin.getImage().getWidth(null),
-												(int) this.skin.getImage().getHeight(null),	null);
+												(int) (screenWidth * 0.03),
+												(int) (screenHeight * 0.045),	null);
 		
 		if(this.isHit()) {
 			this.die();
