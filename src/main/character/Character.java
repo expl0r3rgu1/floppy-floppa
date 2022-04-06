@@ -165,7 +165,7 @@ public class Character extends Movable implements ActionListener {
 			angle = Math.PI;
 		}
 		
-		this.rotateImage(g2D, angle);
+		this.rotateImage(canvas, angle);
 		
 		if(this.isHit()) {
 			this.die();
