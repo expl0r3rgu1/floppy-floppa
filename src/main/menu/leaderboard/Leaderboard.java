@@ -54,6 +54,8 @@ public class Leaderboard {
 		for (var player : leaderboard) {
 			leaderboardFileWriter.append(player.toString());
 		}
+
+		leaderboardFileWriter.close();
 	}
 
 	public void update(Player newPlayer) {
