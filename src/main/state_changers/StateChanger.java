@@ -20,6 +20,6 @@ public abstract class StateChanger extends Movable {
 		this.skin = s;
 	}
 
-	public abstract void changeState();
+	public abstract Object changeState();
 	
 }
