@@ -99,8 +99,7 @@ public class ShopGUI extends JPanel {
 				this.add(backMenu,
 						setDimensionObject(4, i, 0, 0, new Insets((int) SIZE.getWidth() * 3 / 100, 0, 0, 0)));
 				backMenu.addActionListener(e -> {
-//					frame.cardLayout.show(frame.panel, "menu");
-					System.exit(0);
+					mainMenu.showCard("MENU");
 				});
 
 			} else if (i == 2 || i == 6) {
