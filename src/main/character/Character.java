@@ -106,7 +106,15 @@ public class Character extends Movable implements ActionListener {
 	}
 	
 	public void collide(StateChanger sc) {
-		//to-do
+		//variables to make it more readable
+		int x = sc.getPosition().getX();
+		int y = sc.getPosition().getY();
+		int height = (int) sc.getSkin().getImage().getHeight(null);
+		int width = (int) sc.getSkin().getImage().getWidth(null);
+		
+		if(this.checkCollision(x, y, height, width)) {
+			sc.changeState();
+		}
 	}
 	
 	public void collideBorders() {
@@ -115,6 +123,7 @@ public class Character extends Movable implements ActionListener {
 		int characterLowerPointOfCollision = this.getPosition().getY() + (int) this.getSkin().getImage().getHeight(null);
 		int upperBorder = 0;
 		int lowerBorder = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+		
 		if (characterUpperPointOfCollision >= upperBorder
 			|| characterLowerPointOfCollision <= lowerBorder) {
 			
@@ -154,7 +163,7 @@ public class Character extends Movable implements ActionListener {
 		canvas.drawImage(this.skin.getImage(), this.getPosition().getX(),
 												this.initialY + this.velocity,
 												(int) (screenWidth * 0.035),
-												(int) (screenHeight * 0.045),	null);
+												(int) (screenHeight * 0.045), null);
 		
 		if(this.isHit()) {
 			this.die();
