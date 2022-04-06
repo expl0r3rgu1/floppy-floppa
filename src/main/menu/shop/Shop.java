@@ -17,6 +17,11 @@ import java.util.Scanner;
 import main.infinite_map.PricedBackground;
 import main.utilities.PricedSkin;
 
+enum TYPE {
+	SKIN,
+	SCENERY
+}
+
 public class Shop {
 	private static Integer coins;
 	private static List<PurchaseStatus<PricedSkin>> skins;
@@ -27,7 +32,11 @@ public class Shop {
 		skins = new ArrayList<>();
 		sceneries = new ArrayList<>();
 		this.savingFile = new File("file.txt");
-		getFileInfo();
+		try {
+			this.getFileInfo();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static Integer getCoins() {
@@ -55,14 +64,13 @@ public class Shop {
 	}
 
 	private static <X> boolean findAndBuy(Object o, List<PurchaseStatus<X>> list) {
-		list.forEach(status -> {
+		for(var status : list) {
 			if(status.getX().equals(o)) {
-				if(!status.isPurchased() && status.getX().getPrice() <= Shop.coins) {
-					status.purchase();
+				if(!status.isPurchased() && status.getX().getPrice() <= Shop.coins) { //TODO
 					return status.isPurchased();
 				}
 			}
-		});
+		}
 	}
 
 	private void getFileInfo() throws FileNotFoundException {
@@ -91,9 +99,9 @@ public class Shop {
 		scanner.close();
 	}
 
-	private <X> void getFileInfoSupport(Scanner scanner, List<PurchaseStatus<X>> list, X x) {
+	private <X> void getFileInfoSupport(Scanner scanner, List<PurchaseStatus<X>> list, String type) {
 		while (scanner.hasNext()) {
-			PurchaseStatus<X> purchaseStatus = new PurchaseStatus<X>(x, false);
+			PurchaseStatus<X> purchaseStatus = new PurchaseStatus<X>(null , false);
 			String word = scanner.next();
 			if (word.equals("1")) {
 				purchaseStatus.purchase();
@@ -106,7 +114,7 @@ public class Shop {
 		Shop.coins += coinsWon;
 	}
 
-	private void fileUpdate() {
+	private void fileUpdate() throws IOException {
 		Path path = this.savingFile.toPath();
 		List<String> fileContent = new ArrayList<>(Files.readAllLines(path, StandardCharsets.UTF_8));
 
@@ -125,6 +133,7 @@ public class Shop {
 		Files.write(path, fileContent, StandardCharsets.UTF_8);
 	}
 
+	@SuppressWarnings("null")
 	private <X> String overwritePurchaseStatusLine(List<PurchaseStatus<X>> list) {
 		String line = null;
 		list.forEach(status -> {
