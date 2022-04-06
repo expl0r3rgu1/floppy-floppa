@@ -18,7 +18,8 @@ public class BlackStain extends Malus implements ActionListener{
 	
 	//Dirty Screen
 	public static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-	StainPanel stain = new StainPanel();
+	private Image blackstains;
+	StainPanel stain = new StainPanel(blackstains);
 	Timer timer = new Timer(300, this);
 	
 	public BlackStain(Position position, Skin skin) {
@@ -43,37 +44,37 @@ public class BlackStain extends Malus implements ActionListener{
 	
 }
 
-class StainPanel extends JPanel{
-	
-	public static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-	private Image blackstains;
-	
-	public StainPanel() {
-		
-		this.setLayout(null);
-
-		//this.setBackground(Color.red);
-		try {
-			blackstains = ImageIO.read(getClass().getResource("/test/blackstains.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		this.setPreferredSize(SIZE);
-		this.setBackground(new Color(0,0,0,0));
-		this.setOpaque(false);
-		
-		this.setVisible(true);
-	}
-	
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		Graphics2D canvas = (Graphics2D) g;
-		canvas.drawImage(scale(blackstains), 0, 0, (int) SIZE.getWidth(), (int) SIZE.getHeight(), null);
-	}
-	
-	private Image scale(Image image) {
-		return image.getScaledInstance((int) SIZE.getWidth(), (int) SIZE.getHeight(), Image.SCALE_DEFAULT);
-	}
-}
+//class StainPanel extends JPanel{
+//	
+//	public static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+//	private Image blackstains;
+//	
+//	public StainPanel() {
+//		
+//		this.setLayout(null);
+//
+//		//this.setBackground(Color.red);
+//		try {
+//			blackstains = ImageIO.read(getClass().getResource("/test/blackstains.png"));
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		this.setPreferredSize(SIZE);
+//		this.setBackground(new Color(0,0,0,0));
+//		this.setOpaque(false);
+//		
+//		this.setVisible(true);
+//	}
+//	
+//	@Override
+//	protected void paintComponent(Graphics g) {
+//		super.paintComponent(g);
+//		Graphics2D canvas = (Graphics2D) g;
+//		canvas.drawImage(scale(blackstains), 0, 0, (int) SIZE.getWidth(), (int) SIZE.getHeight(), null);
+//	}
+//	
+//	private Image scale(Image image) {
+//		return image.getScaledInstance((int) SIZE.getWidth(), (int) SIZE.getHeight(), Image.SCALE_DEFAULT);
+//	}
+//}
