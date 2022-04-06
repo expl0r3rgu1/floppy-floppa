@@ -17,7 +17,7 @@ public class CoinsIncrement extends Booster {
 		super(position, skin);
 	}
 
-	public Integer chnageState() {
+	public Integer changeState() {
 		return (int) rand.nextInt(100);
 	}
 
