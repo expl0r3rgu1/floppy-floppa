@@ -43,7 +43,7 @@ public class Leaderboard {
 	}
 
 	private void skipToLeaderboardStart(Scanner scanner) {
-		for (int i = 0; i < 2 && scanner.hasNextLine(); i++) {
+		for (int i = 0; i < 3 && scanner.hasNextLine(); i++) {
 			scanner.nextLine();
 		}
 	}
@@ -54,6 +54,8 @@ public class Leaderboard {
 		for (var player : leaderboard) {
 			leaderboardFileWriter.append(player.toString());
 		}
+
+		leaderboardFileWriter.close();
 	}
 
 	public void update(Player newPlayer) {

@@ -22,19 +22,23 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
+import main.menu.MainMenu;
 import main.utilities.GraphicJButton;
 
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
 	private Leaderboard leaderboard;
+	private MainMenu mainMenu;
 	private final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
 	private Image background;
 	private JLabel title;
 
-	public LeaderboardPanel() {
+	public LeaderboardPanel(MainMenu mainMenu) {
 		this.setPreferredSize(SCREEN_SIZE);
 		this.setLayout(new GridBagLayout());
+
+		this.mainMenu = mainMenu;
 
 		leaderboard = new Leaderboard();
 
@@ -150,7 +154,7 @@ public class LeaderboardPanel extends JPanel {
 				"Arial", Font.PLAIN);
 
 		menuButton.addActionListener(e -> {
-			// TODO: Call MainMenu back to main menu method
+			mainMenu.showCard("MENU");
 		});
 
 		this.add(menuButton,
