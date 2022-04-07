@@ -22,8 +22,11 @@ public class EOGMenuGUI extends JPanel {
 	private static final long serialVersionUID = -6834009314888626973L;
 	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private Image background;
+	private MainMenu mainMenu;
 
-	public EOGMenuGUI() {
+	public EOGMenuGUI(MainMenu mainMenu) {
+		this.mainMenu = mainMenu;
+
 		this.setLayout(new GridBagLayout());
 
 		try {
