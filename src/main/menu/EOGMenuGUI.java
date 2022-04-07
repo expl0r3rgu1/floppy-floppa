@@ -22,8 +22,11 @@ public class EOGMenuGUI extends JPanel {
 	private static final long serialVersionUID = -6834009314888626973L;
 	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private Image background;
+	private MainMenu mainMenu;
 
-	public EOGMenuGUI() {
+	public EOGMenuGUI(MainMenu mainMenu) {
+		this.mainMenu = mainMenu;
+
 		this.setLayout(new GridBagLayout());
 
 		try {
@@ -79,8 +82,7 @@ public class EOGMenuGUI extends JPanel {
 				this.add(menuButton, setDimensionObject(2, i, (int) SIZE.getWidth() * 3 / 100,
 						(int) SIZE.getWidth() * 2 / 100, new Insets(0, (int) SIZE.getWidth() * 5 / 100, 0, 0)));
 				menuButton.addActionListener(e -> {
-//					frame.cardLayout.show(frame.panel, "menu");
-					System.exit(0);
+					mainMenu.showCard("MENU");
 				});
 
 				GraphicJButton shopButton = new GraphicJButton("SHOP", Color.decode("#FFDD62"), Color.decode("#FF971A"),
@@ -88,8 +90,7 @@ public class EOGMenuGUI extends JPanel {
 				this.add(shopButton, setDimensionObject(0, i, (int) SIZE.getWidth() * 3 / 100,
 						(int) SIZE.getWidth() * 2 / 100, new Insets(0, 0, 0, (int) SIZE.getWidth() * 5 / 100)));
 				shopButton.addActionListener(e -> {
-//					frame.cardLayout.show(frame.panel, "shop");
-					System.exit(0);
+					mainMenu.showCard("SHOP");
 				});
 
 			} else if (i == 2) {
@@ -99,8 +100,7 @@ public class EOGMenuGUI extends JPanel {
 						setDimensionObject(1, i, (int) SIZE.getWidth() * 3 / 100, (int) SIZE.getWidth() * 2 / 100,
 								new Insets((int) SIZE.getWidth() * 2 / 100, 0, (int) SIZE.getWidth() * 2 / 100, 0)));
 				leaderboardButton.addActionListener(e -> {
-//					frame.cardLayout.show(frame.panel, "leaderboard");
-					System.exit(0);
+					mainMenu.showCard("LEADERBOARD");
 				});
 			}
 		}
