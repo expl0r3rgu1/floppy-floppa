@@ -44,30 +44,3 @@ public class BlindBlock extends Malus implements ActionListener{
 	
 }
 
-//class StainPanel extends JPanel{
-//	
-//	public static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-//	private Image blindBlock;
-//	
-//	public StainPanel() {
-//		
-//		this.setLayout(null);
-//		try {
-//			blindBlock = ImageIO.read(getClass().getResource("/test/BlindBlock.png"));
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		this.setPreferredSize(SIZE);
-//		this.setOpaque(false);
-//		
-//		this.setVisible(true);
-//	}
-//	
-//	@Override
-//	protected void paintComponent(Graphics g) {
-//		super.paintComponent(g);
-//		Graphics2D canvas = (Graphics2D) g;
-//		canvas.drawImage(blindBlock, (int) (SIZE.getWidth()-(SIZE.getWidth()/4)), 0, (int) SIZE.getWidth()/4, (int) SIZE.getHeight(), null);
-//	}
-//}
