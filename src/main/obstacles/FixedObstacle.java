@@ -24,10 +24,10 @@ public class FixedObstacle extends Obstacle {
 
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), position.getX(), (int) (position.getY() + (space) / 2),
-				(int) (SIZE.getWidth()) / 10, (int) (SIZE.getHeight() - (position.getY() + (space) / 2)), null);
-		canvas.drawImage(getUpsidedownImage(getSkin().getImage()), position.getX(), 0, (int) (SIZE.getWidth()) / 10,
-				(int) (position.getY() - (space) / 2), null);
+		canvas.drawImage(getSkin().getImage(), getPosition().getX(), (int) (getPosition().getY() + (space) / 2),
+				(int) (SIZE.getWidth()) / 10, (int) (SIZE.getHeight() - (getPosition().getY() + (space) / 2)), null);
+		canvas.drawImage(getUpsidedownImage(getSkin().getImage()), getPosition().getX(), 0,
+				(int) (SIZE.getWidth()) / 10, (int) (getPosition().getY() - (space) / 2), null);
 
 		updatePosition(movingFactor);
 	}
