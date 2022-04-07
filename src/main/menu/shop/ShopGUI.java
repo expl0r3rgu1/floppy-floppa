@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import main.menu.MainMenu;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJButtonWithObject;
 import main.utilities.GraphicJLabel;
@@ -22,12 +23,14 @@ public class ShopGUI extends JPanel {
 	private int numSkins;
 	private int numBackgrounds;
 	private boolean bought = false;
+	private MainMenu mainMenu;
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
 			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 	private ArrayList<String> prices = new ArrayList<>(
 			Arrays.asList("0", "50", "100", "200", "500", "0", "50", "100", "200", "500"));
 
-	public ShopGUI() {
+	public ShopGUI(MainMenu mainMenu) {
+		this.mainMenu = mainMenu;
 		this.setLayout(new GridBagLayout());
 
 		numSkins = Shop.getSkins().size();
@@ -99,8 +102,7 @@ public class ShopGUI extends JPanel {
 				this.add(backMenu,
 						setDimensionObject(4, i, 0, 0, new Insets((int) SIZE.getWidth() * 3 / 100, 0, 0, 0)));
 				backMenu.addActionListener(e -> {
-//					frame.cardLayout.show(frame.panel, "menu");
-					System.exit(0);
+					mainMenu.showCard("MENU");
 				});
 
 			} else if (i == 2 || i == 6) {
