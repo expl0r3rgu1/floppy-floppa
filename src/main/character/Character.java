@@ -31,7 +31,7 @@ public class Character extends Movable implements ActionListener {
 	private final int TIMER_DELAY=60;
 	
 	
-	Character(Position position, Skin skin) {
+	public Character(Position position, Skin skin) {
 		super(position);
 		this.initialY = this.getPosition().getY();
 		this.skin=skin;

@@ -6,7 +6,7 @@ public class Skin {
 	private String name;
 	private Image image;
 	
-	Skin(String name, Image image){
+	public Skin(String name, Image image){
 		this.name = name;
 		this.image = image;
 	}
