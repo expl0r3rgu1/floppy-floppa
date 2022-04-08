@@ -19,30 +19,15 @@ public class Character extends Movable implements ActionListener {
 	private Skin skin;
 	private boolean dead; //true if the character is dead
 	private boolean hit; //true if the character is hit by an obstacle
-	/*private int velocity; //it will be used to move the character
-	private int gravity; //it will determine if the character goes down (default) or up if it jumps
-	private Timer timer;
-	private int initialY;*/
-	
-	//private final int DELAY=1; //a constant used to make the typical effect 
-										//of the bird's jump in flappy bird
-	/*private final int GO_UP=-9; 
-	private final int GO_DOWN=6;
-	private final int TIMER_DELAY=60;*/
 	private boolean falling;
 	
 	
 	public Character(Position position, Skin skin) {
 		super(position);
-		//this.initialY = this.getPosition().getY();
 		this.skin=skin;
 		this.dead=false;
 		this.hit=false;
 		this.falling=true;
-		/*this.velocity=0;
-		this.gravity=GO_DOWN;
-		this.timer = new Timer(TIMER_DELAY, this);
-		this.timer.start();*/
 	}
 	
 	public boolean isDead() {
@@ -70,7 +55,6 @@ public class Character extends Movable implements ActionListener {
 	}
 	
 	public void jump() {
-		//this.gravity = GO_UP;
 		//to-do: add rotation
 		this.falling = false;
 		this.updatePosition(falling);
@@ -206,14 +190,6 @@ public class Character extends Movable implements ActionListener {
 		AffineTransform rotatedImage = AffineTransform.getRotateInstance(Math.toRadians(angle), transformX, transformY);
 		g2D.setTransform(rotatedImage);
 		g2D.drawImage(this.getSkin().getImage(), x, y, width, height, null);
-	}*/
-	
-	/*@Override
-	public void actionPerformed(ActionEvent e) {
-		this.gravity += this.DELAY;
-		this.velocity += this.gravity;
-		
-		this.getPosition().setY(this.getPosition().getY() + this.gravity); 
 	}*/
 	
 	private void updatePosition(boolean falling) {
