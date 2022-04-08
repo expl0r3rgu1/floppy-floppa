@@ -1,6 +1,6 @@
 package main.utilities;
 
-import java.awt.*;
+import java.awt.Graphics2D;
 
 public abstract class Movable {
 	Position position;
