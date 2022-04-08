@@ -15,12 +15,12 @@ class StainPanel extends JPanel{
 	public static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private Image image;
 	
-	public StainPanel(Image image) {
+	public StainPanel(String imageName) {
 		
 		this.setLayout(null);
 		
 		try {
-			image = ImageIO.read(getClass().getResource("/resurces/images/"+image+".png"));
+			image = ImageIO.read(getClass().getResource("/resources/images/"+imageName+".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

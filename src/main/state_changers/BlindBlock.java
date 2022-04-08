@@ -18,12 +18,14 @@ public class BlindBlock extends Malus implements ActionListener{
 	
 	//Black Block
 	public static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-	private Image blindBlock;
-	StainPanel stain = new StainPanel(blindBlock);
+	private String blindBlock;
+	private StainPanel stain;
 	Timer timer = new Timer(300, this);
 	
 	public BlindBlock(Position position, Skin skin) {
 		super(position, skin);
+		blindBlock = "blindBlock";
+		stain = new StainPanel(blindBlock);
 	}
 
 	public Object changeState() {
@@ -34,7 +36,7 @@ public class BlindBlock extends Malus implements ActionListener{
 	}
 	
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), position.getX(), position.getY(), SIZE.getWidth() * 3 / 100, SIZE.getWidth() * 3 / 100, null);
+		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(), SIZE.getWidth() * 3 / 100, SIZE.getWidth() * 3 / 100, null);
 	}
 
 	@Override

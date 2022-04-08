@@ -23,7 +23,7 @@ public class CoinsReducer extends Malus{
 	}
 	
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), position.getX(), position.getY(), SIZE.getWidth() * 3 / 100, SIZE.getWidth() * 3 / 100, null);
+		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(), SIZE.getWidth() * 3 / 100, SIZE.getWidth() * 3 / 100, null);
 	}
 	
 }
