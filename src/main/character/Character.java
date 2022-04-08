@@ -8,9 +8,8 @@ import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 
 import javax.swing.Timer;
@@ -19,7 +18,7 @@ public class Character extends Movable {
 	private Skin skin;
 	private boolean dead; //true if the character is dead
 	private boolean hit; //true if the character is hit by an obstacle
-	private boolean falling;
+	private boolean falling; //true if the character is falling
 	
 	
 	public Character(Position position, Skin skin) {
