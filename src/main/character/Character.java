@@ -164,13 +164,13 @@ public class Character extends Movable implements ActionListener {
 	@Override
 	public void animate(Graphics2D canvas) {
 		
-		double angle = (((90 * (velocity + 20) / 20) - 90))*Math.PI/180;
+		/*double angle = (((90 * (velocity + 20) / 20) - 90))*Math.PI/180;
 		
 		if(angle > Math.PI) {
 			angle = Math.PI;
-		}
+		}*/
 		
-		this.rotateAndDrawImage(canvas, angle);
+		//this.rotateAndDrawImage(canvas, angle);
 		
 		//these variables will be changed with constants
 		int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
@@ -184,15 +184,14 @@ public class Character extends Movable implements ActionListener {
 		
 		canvas.drawImage(this.getSkin().getImage(), x, y, width, height, null);
 		
-		
-		this.updatePosition(falling);
-		
 		if(this.isHit()) {
 			this.die();
 		}
+		
+		this.updatePosition(falling);
 	}
 	
-	private void rotateAndDrawImage(Graphics2D g2D, double angle) {
+	/*private void rotateAndDrawImage(Graphics2D g2D, double angle) {
 		//these variables will be changed with constants
 		int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 		int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
@@ -207,7 +206,7 @@ public class Character extends Movable implements ActionListener {
 		AffineTransform rotatedImage = AffineTransform.getRotateInstance(Math.toRadians(angle), transformX, transformY);
 		g2D.setTransform(rotatedImage);
 		g2D.drawImage(this.getSkin().getImage(), x, y, width, height, null);
-	}
+	}*/
 	
 	/*@Override
 	public void actionPerformed(ActionEvent e) {
