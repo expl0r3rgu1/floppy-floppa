@@ -15,7 +15,7 @@ import java.awt.geom.AffineTransform;
 
 import javax.swing.Timer;
 
-public class Character extends Movable implements ActionListener {
+public class Character extends Movable {
 	private Skin skin;
 	private boolean dead; //true if the character is dead
 	private boolean hit; //true if the character is hit by an obstacle
