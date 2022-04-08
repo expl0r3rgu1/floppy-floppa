@@ -5,7 +5,7 @@ import main.utilities.Movable;
 import main.utilities.Position;
 
 public abstract class StateChanger extends Movable {
-	Skin skin;
+	private Skin skin;
 
 	public StateChanger(Position position, Skin skin) {
 		super(position);
