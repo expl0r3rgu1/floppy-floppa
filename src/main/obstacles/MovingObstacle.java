@@ -16,7 +16,6 @@ public class MovingObstacle extends Obstacle {
 
 	public MovingObstacle(Position position, Skin skin) {
 		super(position, skin);
-		setPosition(((int) SIZE.getWidth()) + 1, ((int) SIZE.getHeight()) / 2);
 	}
 
 	public void movingPattern() {
