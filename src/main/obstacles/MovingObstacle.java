@@ -11,23 +11,22 @@ import main.utilities.Position;
 import main.utilities.Skin;
 
 public class MovingObstacle extends Obstacle {
-	
+
 	public final static Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public MovingObstacle(Position position, Skin skin) {
 		super(position, skin);
-		this.position.setX((SIZE.getWidth()) + 1);
-		this.position.setY((SIZE.getHeight()) / 2);
+		setPosition(((int) SIZE.getWidth()) + 1, ((int) SIZE.getHeight()) / 2);
 	}
 
 	public void movingPattern() {
 		while (true) {
-			if (this.position.getY() == (SIZE.getHeight()) / 2) {
-				
+			if (getPosition().getY() == ((int) SIZE.getHeight()) / 2) {
+
 				this.movingPatternSupport(1, 5, 1, 800);
-				
+
 			} else {
-				
+
 				this.movingPatternSupport(1, 10, -1, 800);
 
 				this.movingPatternSupport(1, 10, 1, 800);
@@ -37,16 +36,15 @@ public class MovingObstacle extends Obstacle {
 
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(this.getSkin().getImage(), this.position.getX(), this.getY(),
-				(int) (SIZE.getWidth()) / 20,
-				(int) (SIZE.getWidth()) / 10, null);
+		canvas.drawImage(this.getSkin().getImage(), getPosition().getX(), getPosition().getY(),
+				(int) (SIZE.getWidth()) / 20, (int) (SIZE.getWidth()) / 10, null);
 
 		this.movingPattern();
 	}
 
 	private void movingPatternSupport(int start, int end, int shift, int sleepTime) {
 		for (int i = start; i <= end; i++) {
-			this.position.setY(this.updateView(this.position.getY(), shift));
+			setPosition((this.updateView(getPosition().getY(), shift)));
 		}
 		this.sleep(sleepTime);
 	}
