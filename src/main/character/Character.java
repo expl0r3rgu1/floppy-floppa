@@ -29,14 +29,16 @@ public class Character extends Movable implements ActionListener {
 	/*private final int GO_UP=-9; 
 	private final int GO_DOWN=6;
 	private final int TIMER_DELAY=60;*/
+	private boolean falling;
 	
 	
 	public Character(Position position, Skin skin) {
 		super(position);
-		this.initialY = this.getPosition().getY();
+		//this.initialY = this.getPosition().getY();
 		this.skin=skin;
 		this.dead=false;
 		this.hit=false;
+		this.falling=true;
 		/*this.velocity=0;
 		this.gravity=GO_DOWN;
 		this.timer = new Timer(TIMER_DELAY, this);
@@ -70,6 +72,9 @@ public class Character extends Movable implements ActionListener {
 	public void jump() {
 		//this.gravity = GO_UP;
 		//to-do: add rotation
+		this.falling = false;
+		this.updatePosition(falling);
+		this.falling = true;
 	}
 	
 	public void collide(FixedObstacle fixedObstacle) {
@@ -167,6 +172,21 @@ public class Character extends Movable implements ActionListener {
 		
 		this.rotateAndDrawImage(canvas, angle);
 		
+		//these variables will be changed with constants
+		int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+		int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+		
+		int x = this.getPosition().getX();
+		int y = this.getPosition().getY();
+		int width = (int) (screenWidth * 0.035);
+		int height = (int) (screenHeight * 0.045);
+		
+		
+		canvas.drawImage(this.getSkin().getImage(), x, y, width, height, null);
+		
+		
+		this.updatePosition(falling);
+		
 		if(this.isHit()) {
 			this.die();
 		}
@@ -196,5 +216,22 @@ public class Character extends Movable implements ActionListener {
 		
 		this.getPosition().setY(this.getPosition().getY() + this.gravity); 
 	}*/
+	
+	private void updatePosition(boolean falling) {
+		//these variable will be changed with constants
+		int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+		
+		double value = falling ? screenHeight*0.0015 : -screenHeight*0.0015;
+		
+		this.getPosition().setX(this.getPosition().getX());
+		this.getPosition().setY((int) (this.getPosition().getY() + value));
+		
+		try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 }
