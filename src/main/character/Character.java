@@ -10,23 +10,30 @@ import main.utilities.Skin;
 
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 
 import javax.swing.Timer;
 
-public class Character extends Movable {
+public class Character extends Movable implements ActionListener{
 	private Skin skin;
 	private boolean dead; //true if the character is dead
 	private boolean hit; //true if the character is hit by an obstacle
 	private boolean falling; //true if the character is falling
-	
+	private boolean startJump;
+	private boolean jumping;
+	private Timer timer;
 	
 	public Character(Position position, Skin skin) {
 		super(position);
-		this.skin=skin;
-		this.dead=false;
-		this.hit=false;
-		this.falling=true;
+		this.skin = skin;
+		this.dead = false;
+		this.hit = false;
+		this.falling = true;
+		this.startJump = false;
+		this.jumping = false;
+		this.timer = new Timer(100, this);
 	}
 	
 	public boolean isDead() {
@@ -34,7 +41,7 @@ public class Character extends Movable {
 	}
 	
 	public void die() {
-		this.dead=true;
+		this.dead = true;
 	}
 	
 	public boolean isHit() {
@@ -42,7 +49,7 @@ public class Character extends Movable {
 	}
 	
 	public void hit() {
-		this.hit=true;
+		this.hit = true;
 	}
 	
 	public void setSkin(Skin skin){
@@ -55,9 +62,12 @@ public class Character extends Movable {
 	
 	public void jump() {
 		//to-do: add rotation
+		if (!this.jumping) {
+			this.timer.start();
+		}
 		this.falling = false;
+		this.jumping = true;
 		this.updatePosition(falling);
-		this.falling = true;
 	}
 	
 	public void collide(FixedObstacle fixedObstacle) {
@@ -171,7 +181,10 @@ public class Character extends Movable {
 			this.die();
 		}
 		
-		this.updatePosition(falling);
+		if(!this.jumping) {
+			this.timer.stop();
+			this.updatePosition(falling);
+		}
 	}
 	
 	/*private void rotateAndDrawImage(Graphics2D g2D, double angle) {
@@ -196,16 +209,17 @@ public class Character extends Movable {
 		int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 		
 		double value = falling ? screenHeight*0.0015 : -screenHeight*0.0015;
+		int y = this.getPosition().getY();
 		
-		this.getPosition().setX(this.getPosition().getX());
-		this.getPosition().setY((int) (this.getPosition().getY() + value));
-		
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
+		this.getPosition().setY((int) (y + value));
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		this.falling = true;
+		this.jumping = false;
+		this.updatePosition(falling);
 	}
 	
 }
