@@ -23,7 +23,7 @@ import main.utilities.PricedSkin;
 
 public class Shop {
 
-	private int skinNum;
+	private int skinsNum;
 	private int sceneriesNum;
 	private Integer coins;
 	private Map<String, Image> skinInitialize = new HashMap<>();
@@ -70,6 +70,14 @@ public class Shop {
 		} else {
 			return findAndBuySceneries(o, this.sceneries);
 		}
+	}
+
+	public int getSkinsNum() {
+		return skinsNum;
+	}
+
+	public int getSceneriesNum() {
+		return sceneriesNum;
 	}
 
 	private boolean findAndBuySkins(Object o, List<PurchaseStatus<PricedSkin>> list) {
@@ -129,7 +137,7 @@ public class Shop {
 	private void getSkinsInfo(Scanner scanner, List<PurchaseStatus<PricedSkin>> list) {
 		Iterator<Entry<String, Image>> iterator = skinInitialize.entrySet().stream().iterator();
 
-		for (int i = 0; i < skinNum; i++) {
+		for (int i = 0; i < skinsNum; i++) {
 			var item = iterator.next();
 			PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
 					new PricedSkin(item.getKey(), item.getValue(), prices.get(i)), false);
@@ -219,7 +227,7 @@ public class Shop {
 		skinInitialize.put("Capibara", imageCreation("Capibara"));
 		skinInitialize.put("Quokka", imageCreation("Quokka"));
 		skinInitialize.put("Buding", imageCreation("Buding"));
-		this.skinNum = skinInitialize.size();
+		this.skinsNum = skinInitialize.size();
 
 		backgroundInitialize.put("Classic", imageCreation("Classic"));
 		backgroundInitialize.put("Beach", imageCreation("Beach"));

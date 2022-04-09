@@ -36,8 +36,8 @@ public class ShopGUI extends JPanel {
 		this.mainMenu = mainMenu;
 		this.setLayout(new GridBagLayout());
 
-		numSkins = shop.getSkins().size();
-		numBackgrounds = shop.getSceneries().size();
+		numSkins = shop.getSkinsNum();
+		numBackgrounds = shop.getSceneriesNum();
 
 		try {
 			background = ImageIO.read(getClass().getResource("/resources/images/Background.png"));
