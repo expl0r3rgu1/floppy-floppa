@@ -30,6 +30,7 @@ public class ShopGUI extends JPanel {
 			Arrays.asList("0", "50", "100", "200", "500", "0", "50", "100", "200", "500"));
 
 	public ShopGUI(MainMenu mainMenu) {
+		Shop shop = new Shop();
 		this.mainMenu = mainMenu;
 		this.setLayout(new GridBagLayout());
 
