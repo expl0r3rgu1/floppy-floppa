@@ -142,12 +142,7 @@ public class Shop {
 			PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
 					new PricedSkin(item.getKey(), item.getValue(), prices.get(i)), false);
 
-			if (scanner.hasNext()) {
-				String word = scanner.next();
-				if (word.equals("1")) {
-					purchaseStatus.purchase();
-				}
-			}
+			this.getIfPurchased(scanner, purchaseStatus);
 
 			list.add(purchaseStatus);
 		}
@@ -161,12 +156,8 @@ public class Shop {
 			PurchaseStatus<PricedBackground> purchaseStatus = new PurchaseStatus<PricedBackground>(
 					new PricedBackground(item.getKey(), item.getValue(), prices.get(i)), false);
 
-			if (scanner.hasNext()) {
-				String word = scanner.next();
-				if (word.equals("1")) {
-					purchaseStatus.purchase();
-				}
-			}
+			this.getIfPurchased(scanner, purchaseStatus);
+
 			list.add(purchaseStatus);
 		}
 	}
@@ -209,6 +200,15 @@ public class Shop {
 			}
 		});
 		return line;
+	}
+
+	private <X> void getIfPurchased(Scanner scanner, PurchaseStatus<X> purchaseStatus) {
+		if (scanner.hasNext()) {
+			String word = scanner.next();
+			if (word.equals("1")) {
+				purchaseStatus.purchase();
+			}
+		}
 	}
 
 	private Image imageCreation(String name) {
