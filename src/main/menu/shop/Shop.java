@@ -23,6 +23,8 @@ import main.utilities.PricedSkin;
 
 public class Shop {
 
+	private int skinNum;
+	private int sceneriesNum;
 	private Integer coins;
 	private Map<String, Image> skinInitialize = new HashMap<>();
 	private Map<String, Image> backgroundInitialize = new HashMap<>();
@@ -127,7 +129,7 @@ public class Shop {
 	private void getSkinsInfo(Scanner scanner, List<PurchaseStatus<PricedSkin>> list) {
 		Iterator<Entry<String, Image>> iterator = skinInitialize.entrySet().stream().iterator();
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < skinNum; i++) {
 			var item = iterator.next();
 			PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
 					new PricedSkin(item.getKey(), item.getValue(), prices.get(i)), false);
@@ -146,7 +148,7 @@ public class Shop {
 	private void getScenerisInfo(Scanner scanner, List<PurchaseStatus<PricedBackground>> list) {
 		Iterator<Entry<String, Image>> iterator = backgroundInitialize.entrySet().stream().iterator();
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < sceneriesNum; i++) {
 			var item = iterator.next();
 			PurchaseStatus<PricedBackground> purchaseStatus = new PurchaseStatus<PricedBackground>(
 					new PricedBackground(item.getKey(), item.getValue(), prices.get(i)), false);
@@ -217,11 +219,13 @@ public class Shop {
 		skinInitialize.put("Capibara", imageCreation("Capibara"));
 		skinInitialize.put("Quokka", imageCreation("Quokka"));
 		skinInitialize.put("Buding", imageCreation("Buding"));
+		this.skinNum = skinInitialize.size();
 
 		backgroundInitialize.put("Classic", imageCreation("Classic"));
 		backgroundInitialize.put("Beach", imageCreation("Beach"));
 		backgroundInitialize.put("Woods", imageCreation("Woods"));
 		backgroundInitialize.put("Space", imageCreation("Space"));
 		backgroundInitialize.put("NeonCity", imageCreation("NeonCity"));
+		this.sceneriesNum = backgroundInitialize.size();
 	}
 }
