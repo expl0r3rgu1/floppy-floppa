@@ -20,7 +20,7 @@ public class Character extends Movable implements ActionListener{
 	private Skin skin;
 	private boolean dead; //true if the character is dead
 	private boolean hit; //true if the character is hit by an obstacle
-	private boolean falling; //true if the character is falling
+	private boolean falling; //true if the character is fallin
 	private boolean jumping;
 	private Timer timer;
 	
@@ -30,7 +30,6 @@ public class Character extends Movable implements ActionListener{
 		this.dead = false;
 		this.hit = false;
 		this.falling = true;
-		this.startJump = false;
 		this.jumping = false;
 		this.timer = new Timer(100, this);
 	}
