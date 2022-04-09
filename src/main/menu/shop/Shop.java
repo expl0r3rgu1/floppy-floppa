@@ -124,39 +124,37 @@ public class Shop {
 	}
 
 	private void getSkinsInfo(Scanner scanner, List<PurchaseStatus<PricedSkin>> list) {
-		while (scanner.hasNext()) {
-			PurchaseStatus<PricedSkin> purchaseStatus = null;
-			Iterator<Entry<String, Image>> iterator = skinInitialize.entrySet().stream().iterator();
-
-			for (int i = 0; i < 5; i++) {
-				var item = iterator.next();
-				purchaseStatus = new PurchaseStatus<PricedSkin>(
-						new PricedSkin(item.getKey(), item.getValue(), prices.get(i)), false);
+		Iterator<Entry<String, Image>> iterator = skinInitialize.entrySet().stream().iterator();
+		
+		for (int i = 0; i < 5; i++) {
+			var item = iterator.next();
+			PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
+					new PricedSkin(item.getKey(), item.getValue(), prices.get(i)), false);
+			
+			if(scanner.hasNext()) {
+				String word = scanner.next();
+				if (word.equals("1")) {
+					purchaseStatus.purchase();
+				}
 			}
-
-			String word = scanner.next();
-			if (word.equals("1")) {
-				purchaseStatus.purchase();
-			}
+			
 			list.add(purchaseStatus);
 		}
-
 	}
 
 	private void getScenerisInfo(Scanner scanner, List<PurchaseStatus<PricedBackground>> list) {
-		while (scanner.hasNext()) {
-			PurchaseStatus<PricedBackground> purchaseStatus = null;
-			Iterator<Entry<String, Image>> iterator = backgroundInitialize.entrySet().stream().iterator();
-
-			for (int i = 0; i < 5; i++) {
-				var item = iterator.next();
-				purchaseStatus = new PurchaseStatus<PricedBackground>(
-						new PricedBackground(item.getKey(), item.getValue(), prices.get(i)), false);
-			}
-
-			String word = scanner.next();
-			if (word.equals("1")) {
-				purchaseStatus.purchase();
+		Iterator<Entry<String, Image>> iterator = backgroundInitialize.entrySet().stream().iterator();
+		
+		for (int i = 0; i < 5; i++) {
+			var item = iterator.next();
+			PurchaseStatus<PricedBackground> purchaseStatus = new PurchaseStatus<PricedBackground>(
+					new PricedBackground(item.getKey(), item.getValue(), prices.get(i)), false);
+			
+			if(scanner.hasNext()) {
+				String word = scanner.next();
+				if (word.equals("1")) {
+					purchaseStatus.purchase();
+				}
 			}
 			list.add(purchaseStatus);
 		}
