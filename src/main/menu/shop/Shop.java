@@ -22,12 +22,13 @@ import main.utilities.PricedBackground;
 import main.utilities.PricedSkin;
 
 public class Shop {
-	private static Integer coins;
+
+	private Integer coins;
 	private Map<String, Image> skinInitialize = new HashMap<>();
 	private Map<String, Image> backgroundInitialize = new HashMap<>();
 	private List<Integer> prices = Arrays.asList(0, 50, 100, 200, 500);
-	private static List<PurchaseStatus<PricedSkin>> skins;
-	private static List<PurchaseStatus<PricedBackground>> sceneries;
+	private List<PurchaseStatus<PricedSkin>> skins;
+	private List<PurchaseStatus<PricedBackground>> sceneries;
 	private File savingFile;
 
 	public Shop() {
@@ -45,37 +46,37 @@ public class Shop {
 		}
 	}
 
-	public static Integer getCoins() {
+	public Integer getCoins() {
 		return coins;
 	}
 
-	public static void setCoins(Integer coins) {
-		Shop.coins = coins;
+	public void setCoins(Integer coins) {
+		this.coins = coins;
 	}
 
-	public static List<PurchaseStatus<PricedSkin>> getSkins() {
+	public List<PurchaseStatus<PricedSkin>> getSkins() {
 		return skins;
 	}
 
-	public static List<PurchaseStatus<PricedBackground>> getSceneries() {
+	public List<PurchaseStatus<PricedBackground>> getSceneries() {
 		return sceneries;
 	}
 
-	protected static boolean buy(Object o) {
+	protected boolean buy(Object o) {
 		if (o.getClass().equals(PricedSkin.class)) {
-			return findAndBuySkins(o, Shop.skins);
+			return findAndBuySkins(o, this.skins);
 		} else {
-			return findAndBuySceneries(o, Shop.sceneries);
+			return findAndBuySceneries(o, this.sceneries);
 		}
 	}
 
-	private static boolean findAndBuySkins(Object o, List<PurchaseStatus<PricedSkin>> list) {
+	private boolean findAndBuySkins(Object o, List<PurchaseStatus<PricedSkin>> list) {
 		boolean state = false;
 		for (var status : list) {
 			if (status.getX().equals(o)) {
-				if (!status.isPurchased() && status.getX().getPrice() <= Shop.coins) {
+				if (!status.isPurchased() && status.getX().getPrice() <= this.coins) {
 					status.purchase();
-					Shop.setCoins(Shop.coins - status.getX().getPrice());
+					this.setCoins(this.coins - status.getX().getPrice());
 					state = status.isPurchased();
 				}
 			}
@@ -83,13 +84,13 @@ public class Shop {
 		return state;
 	}
 
-	private static boolean findAndBuySceneries(Object o, List<PurchaseStatus<PricedBackground>> list) {
+	private boolean findAndBuySceneries(Object o, List<PurchaseStatus<PricedBackground>> list) {
 		boolean state = false;
 		for (var status : list) {
 			if (status.getX().equals(o)) {
-				if (!status.isPurchased() && status.getX().getPrice() <= Shop.coins) {
+				if (!status.isPurchased() && status.getX().getPrice() <= this.coins) {
 					status.purchase();
-					Shop.setCoins(Shop.coins - status.getX().getPrice());
+					this.setCoins(this.coins - status.getX().getPrice());
 					state = status.isPurchased();
 				}
 			}
@@ -107,16 +108,16 @@ public class Shop {
 			if (counter == 0) {
 				while (nextscanner.hasNext()) {
 					String word = nextscanner.next();
-					Shop.coins = Integer.parseInt(word);
+					this.coins = Integer.parseInt(word);
 				}
 				counter++;
 				continue;
 			} else if (counter == 1) {
-				this.getSkinsInfo(scanner, Shop.skins);
+				this.getSkinsInfo(scanner, this.skins);
 				counter++;
 				continue;
 			} else if (counter == 2) {
-				this.getScenerisInfo(scanner, Shop.sceneries);
+				this.getScenerisInfo(scanner, this.sceneries);
 			}
 			break;
 		}
@@ -125,32 +126,32 @@ public class Shop {
 
 	private void getSkinsInfo(Scanner scanner, List<PurchaseStatus<PricedSkin>> list) {
 		Iterator<Entry<String, Image>> iterator = skinInitialize.entrySet().stream().iterator();
-		
+
 		for (int i = 0; i < 5; i++) {
 			var item = iterator.next();
 			PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
 					new PricedSkin(item.getKey(), item.getValue(), prices.get(i)), false);
-			
-			if(scanner.hasNext()) {
+
+			if (scanner.hasNext()) {
 				String word = scanner.next();
 				if (word.equals("1")) {
 					purchaseStatus.purchase();
 				}
 			}
-			
+
 			list.add(purchaseStatus);
 		}
 	}
 
 	private void getScenerisInfo(Scanner scanner, List<PurchaseStatus<PricedBackground>> list) {
 		Iterator<Entry<String, Image>> iterator = backgroundInitialize.entrySet().stream().iterator();
-		
+
 		for (int i = 0; i < 5; i++) {
 			var item = iterator.next();
 			PurchaseStatus<PricedBackground> purchaseStatus = new PurchaseStatus<PricedBackground>(
 					new PricedBackground(item.getKey(), item.getValue(), prices.get(i)), false);
-			
-			if(scanner.hasNext()) {
+
+			if (scanner.hasNext()) {
 				String word = scanner.next();
 				if (word.equals("1")) {
 					purchaseStatus.purchase();
@@ -166,12 +167,12 @@ public class Shop {
 
 		for (int i = 0; i < fileContent.size(); i++) {
 			if (i == 0) {
-				fileContent.set(i, Shop.coins.toString());
+				fileContent.set(i, this.coins.toString());
 			} else if (i == 1) {
-				String newLine = this.overwritePurchaseStatusLine(Shop.skins);
+				String newLine = this.overwritePurchaseStatusLine(this.skins);
 				fileContent.set(i, newLine);
 			} else {
-				String newLine = this.overwritePurchaseStatusLine(Shop.sceneries);
+				String newLine = this.overwritePurchaseStatusLine(this.sceneries);
 				fileContent.set(i, newLine);
 				break;
 			}
