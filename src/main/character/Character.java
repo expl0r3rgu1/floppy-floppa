@@ -21,7 +21,6 @@ public class Character extends Movable implements ActionListener{
 	private boolean dead; //true if the character is dead
 	private boolean hit; //true if the character is hit by an obstacle
 	private boolean falling; //true if the character is falling
-	private boolean startJump;
 	private boolean jumping;
 	private Timer timer;
 	
