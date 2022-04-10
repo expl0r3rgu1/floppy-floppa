@@ -15,7 +15,7 @@ import main.utilities.Skin;
  */
 public class CoinsIncrement extends Booster {
 
-	private Random rand = new Random();
+	private Random rand;
 	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
 	/**
@@ -25,6 +25,7 @@ public class CoinsIncrement extends Booster {
 	 */
 	public CoinsIncrement(Position position, Skin skin) {
 		super(position, skin);
+		rand = new Random();
 	}
 
 	@Override
