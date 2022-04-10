@@ -23,9 +23,17 @@ public class EOGMenuGUI extends JPanel {
 	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private Image background;
 	private MainMenu mainMenu;
+	private EOGMenu eogMenu;
+	private int meters;
+	private int malusTimes;
+	private int boosterTImes;
 
-	public EOGMenuGUI(MainMenu mainMenu) {
+	public EOGMenuGUI(MainMenu mainMenu, int metersTravelled, int reducerTimes, int incrementTimes) {
+		this.eogMenu = new EOGMenu(metersTravelled, reducerTimes, incrementTimes);
 		this.mainMenu = mainMenu;
+		this.meters = metersTravelled;
+		this.malusTimes = reducerTimes;
+		this.boosterTImes = incrementTimes;
 
 		this.setLayout(new GridBagLayout());
 
@@ -70,7 +78,7 @@ public class EOGMenuGUI extends JPanel {
 			} else if (i == 1) {
 				GraphicJLabel coins = new GraphicJLabel(
 						"<html><center> Old coins: &emsp &emsp New coins: </center> <br> <center> "
-								+ EOGMenu.getPreviousCoins() + "&emsp &emsp &emsp " + EOGMenu.updateCoins(meters)
+								+ eogMenu.getPreviousCoins() + "&emsp &emsp &emsp " + eogMenu.updateCoins(meters, malusTimes, boosterTImes)
 								+ " 1348 </center> </html>",
 						Color.decode("#77DD77"), Color.decode("#007542"), "flips.otf", 25f);
 				this.add(coins,

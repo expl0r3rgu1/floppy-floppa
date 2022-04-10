@@ -4,22 +4,23 @@ import main.menu.shop.Shop;
 
 public class EOGMenu implements Menu {
 
-	private static int previousCoins;
+	private int previousCoins;
 
 	public EOGMenu(int metersTravelled, int reducerTimes, int incrementTimes) {
-		EOGMenu.previousCoins = Shop.getCoins();
+		this.previousCoins = Shop.getCoins();
 		this.updateCoins(metersTravelled, reducerTimes, incrementTimes);
 	}
 
-	public static int getPreviousCoins() {
+	public int getPreviousCoins() {
 		return previousCoins;
 	}
 
-	private void updateCoins(int meters, int reducerTimes, int incrementTimes) {
-		int newCoins = EOGMenu.previousCoins + ((int) Math.floor(meters / 5) - this.updateCoinsReduce(reducerTimes)
+	protected int updateCoins(int meters, int reducerTimes, int incrementTimes) {
+		int newCoins = this.previousCoins + ((int) Math.floor(meters / 5) - this.updateCoinsReduce(reducerTimes)
 				+ this.updateCoinsIncrease(incrementTimes));
 		Shop.setCoins(newCoins);
-		EOGMenu.previousCoins = newCoins;
+		this.previousCoins = newCoins;
+		return newCoins;
 	}
 
 	private int updateCoinsReduce(int times) {
