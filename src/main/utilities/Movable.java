@@ -1,5 +1,21 @@
 package main.utilities;
 
-public class Movable {
+import java.awt.Graphics2D;
 
+public abstract class Movable {
+	Position position;
+	
+	public Movable(Position position) {
+		this.position=position;
+	}
+	
+	public Position getPosition() {
+		return this.position;
+	}
+	
+	public void setPosition(Position position) {
+		this.position=position;
+	}
+	
+	public abstract void animate(Graphics2D canvas);
 }
