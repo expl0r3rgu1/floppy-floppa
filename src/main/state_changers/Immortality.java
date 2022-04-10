@@ -3,19 +3,25 @@ package main.state_changers;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 import main.utilities.Position;
 import main.utilities.Skin;
 
 /**
+ * 
  * A class that extends Booster class and implements an entity that makes the
  * character immortal if hit by them
  *
  */
 public class Immortality extends Booster {
 
+	private static final int TIME = 3000;
 	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private boolean immortal;
+	private Timer timer;
 
 	/**
 	 * 
@@ -25,6 +31,14 @@ public class Immortality extends Booster {
 	public Immortality(Position position, Skin skin) {
 		super(position, skin);
 		this.immortal = false;
+		
+		this.timer = new javax.swing.Timer(TIME, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				immortal = false;
+			}
+		});
 	}
 
 	/**
@@ -45,9 +59,9 @@ public class Immortality extends Booster {
 	}
 
 	@Override
-	public boolean changeState() {
+	public void changeState() {
 		this.immortal = true;
-		return immortal;
+		timer.start();
 	}
 
 	@Override
