@@ -10,14 +10,25 @@ import main.utilities.Skin;
 public class Immortality extends Booster {
 
 	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-
+	private boolean immortal;
+	
 	public Immortality(Position position, Skin skin) {
 		super(position, skin);
+		this.immortal = false;
+	}
+
+	public boolean isImmortal() {
+		return immortal;
+	}
+
+	public void setImmortal(boolean immortal) {
+		this.immortal = immortal;
 	}
 
 	@Override
-	public void changeState() {
-		
+	public boolean changeState() {
+		this.immortal = true;
+		return immortal;
 	}
 
 	@Override
