@@ -16,11 +16,11 @@ import java.awt.geom.AffineTransform;
 
 import javax.swing.Timer;
 
-public class Character extends Movable implements ActionListener{
+public class Character extends Movable {
 	private Skin skin;
 	private boolean dead; //true if the character is dead
 	private boolean hit; //true if the character is hit by an obstacle
-	private boolean falling; //true if the character is fallin
+	private boolean falling; //true if the character is falling
 	private boolean jumping;
 	private Timer timer;
 	
@@ -31,7 +31,16 @@ public class Character extends Movable implements ActionListener{
 		this.hit = false;
 		this.falling = true;
 		this.jumping = false;
-		this.timer = new Timer(100, this);
+		this.timer = new Timer(100, new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				falling = true;
+				jumping = false;
+				updatePosition(falling);
+			}
+			
+		});
 	}
 	
 	public boolean isDead() {
@@ -211,13 +220,6 @@ public class Character extends Movable implements ActionListener{
 		
 		this.getPosition().setY((int) (y + value));
 
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		this.falling = true;
-		this.jumping = false;
-		this.updatePosition(falling);
 	}
 	
 }
