@@ -8,11 +8,21 @@ import java.util.Random;
 import main.utilities.Position;
 import main.utilities.Skin;
 
+/**
+ * A class that extends Booster class and implements an entity that randomly
+ * gifts coins to the main character every time they hit this booster.
+ *
+ */
 public class CoinsIncrement extends Booster {
 
 	private Random rand = new Random();
 	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
+	/**
+	 * 
+	 * @param position The CoinsIncrement initial position
+	 * @param skin     The CoinsIncrement skin
+	 */
 	public CoinsIncrement(Position position, Skin skin) {
 		super(position, skin);
 	}
