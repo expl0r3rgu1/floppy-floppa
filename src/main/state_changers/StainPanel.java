@@ -35,10 +35,7 @@ class StainPanel extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D canvas = (Graphics2D) g;
-		canvas.drawImage(scale(image), 0, 0, (int) SIZE.getWidth(), (int) SIZE.getHeight(), null);
+		canvas.drawImage(image, 0, 0, (int) SIZE.getWidth(), (int) SIZE.getHeight(), null);
 	}
 	
-	private Image scale(Image image) {
-		return image.getScaledInstance((int) SIZE.getWidth(), (int) SIZE.getHeight(), Image.SCALE_DEFAULT);
-	}
 }
