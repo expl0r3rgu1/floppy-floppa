@@ -19,7 +19,6 @@ public class FixedObstacle extends Obstacle {
 
 	public FixedObstacle(Position position, Skin skin) {
 		super(position, skin);
-		this.setPosition(new Position((int) (SIZE.width) + 1, (int) SIZE.height));
 	}
 
 	@Override
