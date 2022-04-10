@@ -9,10 +9,13 @@ import main.utilities.Position;
 import main.utilities.Skin;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 
 import javax.swing.Timer;
 
@@ -20,24 +23,25 @@ public class Character extends Movable {
 	private Skin skin;
 	private boolean dead; //true if the character is dead
 	private boolean hit; //true if the character is hit by an obstacle
-	private boolean falling; //true if the character is falling
-	private boolean jumping;
+	private boolean jumping; //true if the character is jumping
 	private Timer timer;
+	
+	//these variables will be changed with constants
+	private int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+	private int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	
 	public Character(Position position, Skin skin) {
 		super(position);
 		this.skin = skin;
 		this.dead = false;
 		this.hit = false;
-		this.falling = true;
 		this.jumping = false;
-		this.timer = new Timer(100, new ActionListener() {
+		this.timer = new Timer(500, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				falling = true;
 				jumping = false;
-				updatePosition(falling);
+				timer.stop();
 			}
 			
 		});
@@ -68,13 +72,13 @@ public class Character extends Movable {
 	}
 	
 	public void jump() {
-		//to-do: add rotation
+		
 		if (!this.jumping) {
 			this.timer.start();
+			this.jumping = true;
+		} else {
+			this.timer.restart();
 		}
-		this.falling = false;
-		this.jumping = true;
-		this.updatePosition(falling);
 	}
 	
 	public void collide(FixedObstacle fixedObstacle) {
@@ -164,62 +168,52 @@ public class Character extends Movable {
 	@Override
 	public void animate(Graphics2D canvas) {
 		
-		/*double angle = (((90 * (velocity + 20) / 20) - 90))*Math.PI/180;
-		
-		if(angle > Math.PI) {
-			angle = Math.PI;
-		}*/
-		
-		//this.rotateAndDrawImage(canvas, angle);
-		
-		//these variables will be changed with constants
-		int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-		int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-		
 		int x = this.getPosition().getX();
 		int y = this.getPosition().getY();
 		int width = (int) (screenWidth * 0.035);
 		int height = (int) (screenHeight * 0.045);
 		
-		
-		canvas.drawImage(this.getSkin().getImage(), x, y, width, height, null);
-		
-		if(this.isHit()) {
+		if (this.jumping) {
+			canvas.drawImage(getAngledImage(-15), x, y, width, height, null);
+		} else {
+			canvas.drawImage(getAngledImage(15), x, y, width, height, null);
+		}
+
+		if (this.isHit()) {
 			this.die();
 		}
-		
-		if(!this.jumping) {
-			this.timer.stop();
-			this.updatePosition(falling);
-		}
+
+		this.updatePosition();
 	}
 	
-	/*private void rotateAndDrawImage(Graphics2D g2D, double angle) {
-		//these variables will be changed with constants
-		int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-		int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+	private void updatePosition() {
 		
-		int transformX = this.getPosition().getX() + this.getSkin().getImage().getWidth(null)/2;
-		int transformY = this.getPosition().getY() + this.getSkin().getImage().getHeight(null)/2;
-		int x = this.getPosition().getX();
-		int y = this.initialY + this.velocity;
-		int width = (int) (screenWidth * 0.035);
-		int height = (int) (screenHeight * 0.045);
-		
-		AffineTransform rotatedImage = AffineTransform.getRotateInstance(Math.toRadians(angle), transformX, transformY);
-		g2D.setTransform(rotatedImage);
-		g2D.drawImage(this.getSkin().getImage(), x, y, width, height, null);
-	}*/
-	
-	private void updatePosition(boolean falling) {
-		//these variable will be changed with constants
-		int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-		
-		double value = falling ? screenHeight*0.0015 : -screenHeight*0.0015;
-		int y = this.getPosition().getY();
-		
-		this.getPosition().setY((int) (y + value));
+		int value = jumping ? -2 : 1;
+		this.getPosition().setY(this.getPosition().getY() + value);
 
+	}
+	
+	private Image getAngledImage(int degrees) {
+		double rotationRequired = Math.toRadians(degrees);
+		double locationX = this.skin.getImage().getWidth(null) / 2;
+		double locationY = this.skin.getImage().getHeight(null) / 2;
+		AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+
+		return op.filter(toBufferedImage(this.skin.getImage()), null);
+	}
+
+	private static BufferedImage toBufferedImage(Image img) {
+		if (img instanceof BufferedImage) {
+			return (BufferedImage) img;
+		}
+
+		BufferedImage bimage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+		Graphics2D bGr = bimage.createGraphics();
+		bGr.drawImage(img, 0, 0, null);
+		bGr.dispose();
+
+		return bimage;
 	}
 	
 }
