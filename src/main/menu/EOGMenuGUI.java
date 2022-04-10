@@ -72,7 +72,7 @@ public class EOGMenuGUI extends JPanel {
 						"<html><center> Old coins: &emsp &emsp New coins: </center> <br> <center> "
 								+ EOGMenu.getPreviousCoins() + "&emsp &emsp &emsp " + EOGMenu.updateCoins(meters)
 								+ " 1348 </center> </html>",
-						Color.decode("#77DD77"), Color.decode("#007542"), "flips.otf", 25f);
+						Color.decode("#77DD77"), Color.decode("#007542"), "fipps.otf", 25f);
 				this.add(coins,
 						setDimensionObject(1, i, (int) SIZE.getWidth() * 25 / 100, (int) SIZE.getWidth() * 15 / 100,
 								new Insets((int) SIZE.getWidth() * 4 / 100, 0, (int) SIZE.getWidth() * 4 / 100, 0)));
