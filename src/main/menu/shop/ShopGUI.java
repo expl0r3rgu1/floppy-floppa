@@ -24,17 +24,20 @@ public class ShopGUI extends JPanel {
 	private int numBackgrounds;
 	private boolean bought = false;
 	private MainMenu mainMenu;
+	private Shop shop;
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
 			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 	private ArrayList<String> prices = new ArrayList<>(
 			Arrays.asList("0", "50", "100", "200", "500", "0", "50", "100", "200", "500"));
 
 	public ShopGUI(MainMenu mainMenu) {
+		
+		shop = new Shop();
 		this.mainMenu = mainMenu;
 		this.setLayout(new GridBagLayout());
 
-		numSkins = Shop.getSkins().size();
-		numBackgrounds = Shop.getSceneries().size();
+		numSkins = shop.getSkinsNum();
+		numBackgrounds = shop.getSceneriesNum();
 
 		try {
 			background = ImageIO.read(getClass().getResource("/resources/images/Background.png"));
@@ -73,7 +76,7 @@ public class ShopGUI extends JPanel {
 		for (int i = 0; i < numBackgrounds + numSkins; i++) {
 			if (i == 0) {
 
-				GraphicJLabel coins = new GraphicJLabel(Shop.getCoins() + "", Color.decode("#FFDD62"),
+				GraphicJLabel coins = new GraphicJLabel(shop.getCoins() + "", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
 				this.add(coins, setDimensionObject(4, i, 0, 0, new Insets(0, 0, 0, 0)));
 
@@ -122,9 +125,9 @@ public class ShopGUI extends JPanel {
 					setDimensionObject(j, i + 1, 0, 0, new Insets((int) SIZE.getWidth() * 2 / 100, 0, 0, 0)));
 			GraphicJButtonWithObject buyButton = new GraphicJButtonWithObject("BUY", Color.decode("#FDFD96"),
 					Color.decode("#FFDD62"), "Arial", Font.PLAIN,
-					(i == 2 ? Shop.getSkins().get(j).getX() : Shop.getSceneries().get(j).getX()));
+					(i == 2 ? shop.getSkins().get(j).getX() : shop.getSceneries().get(j).getX()));
 			buyButton.addActionListener(e -> {
-				bought = Shop.buy(buyButton.getObject());
+				bought = shop.buy(buyButton.getObject());
 				buyButton.setEnabled(!bought);
 			});
 			this.add(buyButton,
