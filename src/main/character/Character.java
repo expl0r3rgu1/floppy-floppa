@@ -133,7 +133,7 @@ public class Character extends Movable {
 		int characterUpperPointOfCollision = this.getPosition().getY();
 		int characterLowerPointOfCollision = this.getPosition().getY() + (int) this.getSkin().getImage().getHeight(null);
 		int upperBorder = 0;
-		int lowerBorder = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+		int lowerBorder = this.screenHeight;
 		
 		if (characterUpperPointOfCollision >= upperBorder
 			|| characterLowerPointOfCollision <= lowerBorder) {
