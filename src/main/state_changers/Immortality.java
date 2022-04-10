@@ -17,12 +17,12 @@ public class Immortality extends Booster {
 
 	@Override
 	public void changeState() {
-
+		
 	}
 
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(this.getSkin().getImage(), this.getPosition.getX(), this.getPosition.getY(),
+		canvas.drawImage(getSkin().getImage(), getPosition.getX(), getPosition.getY(),
 				SIZE.getWidth() * 3 / 100, SIZE.getWidth() * 3 / 100, null);
 	}
 }
