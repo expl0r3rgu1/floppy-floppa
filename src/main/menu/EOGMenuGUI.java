@@ -97,7 +97,7 @@ public class EOGMenuGUI extends JPanel {
 								(int) Constants.SCREEN_SIZE.getWidth() * 2 / 100,
 								new Insets(0, (int) Constants.SCREEN_SIZE.getWidth() * 5 / 100, 0, 0)));
 				menuButton.addActionListener(e -> {
-					mainMenu.showCard("MENU");
+					mainMenu.showCard(Constants.PANEL.MENU);
 				});
 
 				GraphicJButton shopButton = new GraphicJButton("SHOP", Color.decode("#FFDD62"), Color.decode("#FF971A"),
@@ -107,7 +107,7 @@ public class EOGMenuGUI extends JPanel {
 								(int) Constants.SCREEN_SIZE.getWidth() * 2 / 100,
 								new Insets(0, 0, 0, (int) Constants.SCREEN_SIZE.getWidth() * 5 / 100)));
 				shopButton.addActionListener(e -> {
-					mainMenu.showCard("SHOP");
+					mainMenu.showCard(Constants.PANEL.SHOP);
 				});
 
 			} else if (i == 2) {
@@ -119,7 +119,7 @@ public class EOGMenuGUI extends JPanel {
 								new Insets((int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0,
 										(int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0)));
 				leaderboardButton.addActionListener(e -> {
-					mainMenu.showCard("LEADERBOARD");
+					mainMenu.showCard(Constants.PANEL.LEADERBOARD);
 				});
 			}
 		}
