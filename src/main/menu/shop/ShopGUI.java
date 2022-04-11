@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.menu.MainMenu;
+import main.utilities.Constants;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJButtonWithObject;
 import main.utilities.GraphicJLabel;
@@ -18,7 +19,6 @@ import main.utilities.GraphicJLabel;
 public class ShopGUI extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
-	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private Image background;
 	private int numSkins;
 	private int numBackgrounds;
@@ -31,7 +31,7 @@ public class ShopGUI extends JPanel {
 			Arrays.asList("0", "50", "100", "200", "500", "0", "50", "100", "200", "500"));
 
 	public ShopGUI(MainMenu mainMenu) {
-		
+
 		shop = new Shop();
 		this.mainMenu = mainMenu;
 		this.setLayout(new GridBagLayout());
@@ -51,7 +51,7 @@ public class ShopGUI extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(this.scale(background, SIZE), 0, 0, null);
+		g.drawImage(this.scale(background, Constants.SCREEN_SIZE), 0, 0, null);
 	}
 
 	private Image scale(Image image, Dimension dim) {
@@ -62,8 +62,9 @@ public class ShopGUI extends JPanel {
 		JLabel label = null;
 		try {
 			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
-			ImageIcon imageIcon = new ImageIcon(this.scale(image,
-					new Dimension((int) (SIZE.getWidth() * 8 / 100), (int) (SIZE.getWidth() * 8 / 100))));
+			ImageIcon imageIcon = new ImageIcon(
+					this.scale(image, new Dimension((int) (Constants.SCREEN_SIZE.getWidth() * 8 / 100),
+							(int) (Constants.SCREEN_SIZE.getWidth() * 8 / 100))));
 			label = new JLabel(imageIcon);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -84,26 +85,30 @@ public class ShopGUI extends JPanel {
 
 				GraphicJLabel skins = new GraphicJLabel("SKINS", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"Arial", Font.BOLD);
-				skins.setPreferredSize(
-						new Dimension((int) SIZE.getWidth() * 10 / 100, (int) SIZE.getHeight() * 5 / 100));
-				this.add(skins, setDimensionObject(0, i, (int) SIZE.getWidth() * 2 / 100, 0,
-						new Insets((int) SIZE.getWidth() * 1 / 100, 0, (int) SIZE.getWidth() * 2 / 100, 0)));
+				skins.setPreferredSize(new Dimension((int) Constants.SCREEN_SIZE.getWidth() * 10 / 100,
+						(int) Constants.SCREEN_SIZE.getHeight() * 5 / 100));
+				this.add(skins,
+						setDimensionObject(0, i, (int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0,
+								new Insets((int) Constants.SCREEN_SIZE.getWidth() * 1 / 100, 0,
+										(int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0)));
 
 			} else if (i == 5) {
 
 				GraphicJLabel backgrounds = new GraphicJLabel("BACKGROUNDS", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
-				backgrounds.setPreferredSize(
-						new Dimension((int) SIZE.getWidth() * 10 / 100, (int) SIZE.getHeight() * 5 / 100));
-				this.add(backgrounds, setDimensionObject(0, i, (int) SIZE.getWidth() * 2 / 100, 0,
-						new Insets((int) SIZE.getWidth() * 3 / 100, 0, (int) SIZE.getWidth() * 1 / 100, 0)));
+				backgrounds.setPreferredSize(new Dimension((int) Constants.SCREEN_SIZE.getWidth() * 10 / 100,
+						(int) Constants.SCREEN_SIZE.getHeight() * 5 / 100));
+				this.add(backgrounds,
+						setDimensionObject(0, i, (int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0,
+								new Insets((int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0,
+										(int) Constants.SCREEN_SIZE.getWidth() * 1 / 100, 0)));
 
 			} else if (i == numBackgrounds + numSkins - 1) {
 
 				GraphicJButton backMenu = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"Arial", Font.BOLD);
-				this.add(backMenu,
-						setDimensionObject(4, i, 0, 0, new Insets((int) SIZE.getWidth() * 3 / 100, 0, 0, 0)));
+				this.add(backMenu, setDimensionObject(4, i, 0, 0,
+						new Insets((int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0, 0, 0)));
 				backMenu.addActionListener(e -> {
 					mainMenu.showCard("MENU");
 				});
@@ -120,9 +125,11 @@ public class ShopGUI extends JPanel {
 					(i == 2 ? labelNames.get(j) + " : " + prices.get(j)
 							: labelNames.get(j + 5) + " : " + prices.get(j + 5)),
 					Color.decode("#77DD77"), Color.decode("#007542"), "Arial", Font.PLAIN);
-			this.add(label, setDimensionObject(j, i, 0, 0, new Insets((int) SIZE.getWidth() * 2 / 100, 0, 0, 0)));
+			this.add(label, setDimensionObject(j, i, 0, 0,
+					new Insets((int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0, 0, 0)));
 			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)) + ".png"),
-					setDimensionObject(j, i + 1, 0, 0, new Insets((int) SIZE.getWidth() * 2 / 100, 0, 0, 0)));
+					setDimensionObject(j, i + 1, 0, 0,
+							new Insets((int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0, 0, 0)));
 			GraphicJButtonWithObject buyButton = new GraphicJButtonWithObject("BUY", Color.decode("#FDFD96"),
 					Color.decode("#FFDD62"), "Arial", Font.PLAIN,
 					(i == 2 ? shop.getSkins().get(j).getX() : shop.getSceneries().get(j).getX()));
@@ -131,9 +138,10 @@ public class ShopGUI extends JPanel {
 				buyButton.setEnabled(!bought);
 			});
 			this.add(buyButton,
-					setDimensionObject(j, i + 2, (int) SIZE.getWidth() * 3 / 100, 0,
-							new Insets((int) SIZE.getWidth() * 2 / 100, (int) SIZE.getWidth() * 5 / 100, 0,
-									(int) SIZE.getWidth() * 5 / 100)));
+					setDimensionObject(j, i + 2, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0,
+							new Insets((int) Constants.SCREEN_SIZE.getWidth() * 2 / 100,
+									(int) Constants.SCREEN_SIZE.getWidth() * 5 / 100, 0,
+									(int) Constants.SCREEN_SIZE.getWidth() * 5 / 100)));
 		}
 		return i + 2;
 	}
