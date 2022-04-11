@@ -18,6 +18,7 @@ import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
+import main.utilities.Constants;
 import main.utilities.PricedBackground;
 import main.utilities.PricedSkin;
 
@@ -39,7 +40,7 @@ public class Shop {
 		skins = new ArrayList<>();
 		sceneries = new ArrayList<>();
 
-		this.savingFile = new File("file.txt");
+		this.savingFile = new File(Constants.SAVINGS_FILE_PATH);
 
 		try {
 			this.getFileInfo();
