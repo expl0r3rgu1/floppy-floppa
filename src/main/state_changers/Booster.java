@@ -16,7 +16,8 @@ public class Booster extends StateChanger {
 	}
 	
 	@Override
-	public void changeState() {
+	public Object changeState() {
+		return null;
 		// TO BE IMPLEMENTED IN SUB-CLASSES
 	}
 
