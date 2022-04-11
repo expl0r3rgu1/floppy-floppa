@@ -19,7 +19,6 @@ import main.utilities.Skin;
  */
 public class Immortality extends Booster {
 
-	private static final int TIME = 3000;
 	private boolean immortal;
 	private Timer timer;
 
@@ -32,7 +31,7 @@ public class Immortality extends Booster {
 		super(position, skin);
 		this.immortal = false;
 
-		this.timer = new javax.swing.Timer(TIME, new ActionListener() {
+		this.timer = new javax.swing.Timer(Constants.CHANGED_STATE_TIME, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
