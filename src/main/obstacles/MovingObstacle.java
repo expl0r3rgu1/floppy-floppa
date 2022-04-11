@@ -16,25 +16,17 @@ import main.utilities.Skin;
 public class MovingObstacle extends Obstacle {
 
 	public final static Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-	private Timer timer1;
-	private Timer timer2;
-	private boolean flag2 = false;
+	private Timer timer;
 	private int shift;
 
 	public MovingObstacle(Position position, Skin skin) {
 		super(position, skin);
-		this.timer1 = new Timer(250, new ActionListener() {
+		this.timer = new Timer(300, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setPosition(getPosition().getY() + shift);
-			}
-		});
-		this.timer2 = new Timer(800, new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
+				timer.stop();
 			}
 		});
 	}
@@ -65,14 +57,8 @@ public class MovingObstacle extends Obstacle {
 	private void movingPatternSupport(int end, int shift) {
 		for (int i = 0; i < end; i++) {
 			this.shift = shift;
-			this.timer1.start();
+			this.timer.start();
 		}
-//		flag2 = true;
-//		if (flag2) {
-//			timer2.start();
-//		} else {
-//			timer2.stop();
-//		}
 	}
 
 }
