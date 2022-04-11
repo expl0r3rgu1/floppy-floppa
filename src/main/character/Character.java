@@ -2,7 +2,6 @@ package main.character;
 
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
-import main.state_changers.Malus;
 import main.state_changers.StateChanger;
 import main.utilities.Movable;
 import main.utilities.Position;
