@@ -2,7 +2,6 @@ package main.character;
 
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
-import main.state_changers.Malus;
 import main.state_changers.StateChanger;
 import main.utilities.Movable;
 import main.utilities.Position;
@@ -116,15 +115,15 @@ public class Character extends Movable {
 		}
 	}
 	
-	public void collide(StateChanger sc) {
+	public void collide(StateChanger stateChanger) {
 		//variables to make it more readable
-		int x = sc.getPosition().getX();
-		int y = sc.getPosition().getY();
-		int height = (int) sc.getSkin().getImage().getHeight(null);
-		int width = (int) sc.getSkin().getImage().getWidth(null);
+		int x = stateChanger.getPosition().getX();
+		int y = stateChanger.getPosition().getY();
+		int height = (int) stateChanger.getSkin().getImage().getHeight(null);
+		int width = (int) stateChanger.getSkin().getImage().getWidth(null);
 		
 		if(this.checkCollision(x, y, height, width)) {
-			sc.changeState();
+			stateChanger.changeState();
 		}
 	}
 	
