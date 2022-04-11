@@ -74,9 +74,10 @@ public class Map {
 	protected void addMovingObstacle() {
 		int randomMovingObstacleIndex = getRandomNumber(0, this.movingObstacles.size() - 1);
 
-		this.paintedMovingObstacles
-				.add(Obstacle.factoryObstacle(this.movingObstacles.get(randomMovingObstacleIndex).getSkin(),
-						this.movingObstacles.get(randomMovingObstacleIndex).getPosition()));
+		this.paintedMovingObstacles.add((MovingObstacle) Obstacle.factoryObstacle(
+				this.movingObstacles.get(randomMovingObstacleIndex).getSkin(),
+				new Position((int) SCREEN_SIZE.getWidth(), getRandomNumber((int) (SCREEN_SIZE.getHeight() * 0.25),
+						(int) (SCREEN_SIZE.getHeight() * 0.75)))));
 	}
 
 	public void animate(Graphics2D canvas) {
