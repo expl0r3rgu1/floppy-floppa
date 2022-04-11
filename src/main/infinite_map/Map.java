@@ -13,16 +13,17 @@ import main.obstacles.Obstacle;
 import main.utilities.Position;
 
 public class Map {
-	//Background and FixedObstacle based on selected scenario
+	// Background and FixedObstacle based on selected scenario
 	private ScrollingBackground scrollingBackground;
 	private FixedObstacle fixedObstacle;
-	
-	private List<MovingObstacle> movingObstacles; //Every kind of MovingObstacle available to spawn
-	private Set<FixedObstacle> paintedFixedObstacles; //Set of FixedObstacle that need to be or are being painted
-	private Set<MovingObstacle> paintedMovingObstacles; //Set of MovingObstacle that need to be or are being painted 
-	private TimedFixedObstacleGenerator timedFixedObstacleGenerator; //Timer that manages when to spawn a FixedObstacle
-	private TimedMovingObstacleGenerator timedMovingObstacleGenerator; //Timer that manages when to spawn a MovingObstacle
-	protected int speed = 100; //Find a better way to manage speed in the whole game
+
+	private List<MovingObstacle> movingObstacles; // Every kind of MovingObstacle available to spawn
+	private Set<FixedObstacle> paintedFixedObstacles; // Set of FixedObstacle that need to be or are being painted
+	private Set<MovingObstacle> paintedMovingObstacles; // Set of MovingObstacle that need to be or are being painted
+	private TimedFixedObstacleGenerator timedFixedObstacleGenerator; // Timer that manages when to spawn a FixedObstacle
+	private TimedMovingObstacleGenerator timedMovingObstacleGenerator; // Timer that manages when to spawn a
+																		// MovingObstacle
+	protected int speed = 100; // Find a better way to manage speed in the whole game
 	private final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle,
@@ -58,19 +59,19 @@ public class Map {
 		this.movingObstacles = movingObstacles;
 	}
 
-	//Method that spawns a FixedObstacle cloned from this.fixedObstacle
+	// Method that spawns a FixedObstacle cloned from this.fixedObstacle
 	protected void addFixedObstacle() {
 		this.paintedFixedObstacles.add((FixedObstacle) Obstacle.factoryObstacle(this.fixedObstacle.getSkin(),
 				new Position((int) SCREEN_SIZE.getWidth(), getRandomNumber((int) (SCREEN_SIZE.getHeight() * 0.25),
 						(int) (SCREEN_SIZE.getHeight() * 0.75)))));
 	}
 
-	//Utility method to generate random integer in range (consider moving it)
+	// Utility method to generate random integer in range (consider moving it)
 	private int getRandomNumber(int min, int max) {
 		return (int) ((Math.random() * (max - min)) + min);
 	}
 
-	//Method that spawns a random MovingObstacle
+	// Method that spawns a random MovingObstacle
 	protected void addMovingObstacle() {
 		int randomMovingObstacleIndex = getRandomNumber(0, this.movingObstacles.size() - 1);
 
@@ -82,12 +83,14 @@ public class Map {
 
 	public void animate(Graphics2D canvas) {
 		this.scrollingBackground.animate(canvas);
-		
-		//Removing obstacles off-screen from set
-		this.paintedFixedObstacles.removeIf(obstacle -> obstacle.getPosition().getX() + obstacle.getSkin().getImage().getWidth(null) < 0);
-		this.paintedMovingObstacles.removeIf(obstacle -> obstacle.getPosition().getX() + obstacle.getSkin().getImage().getWidth(null) < 0);
-		
-		//Repainting on-screen obstacles
+
+		// Removing obstacles off-screen from set
+		this.paintedFixedObstacles
+				.removeIf(obstacle -> obstacle.getPosition().getX() + obstacle.getSkin().getImage().getWidth(null) < 0);
+		this.paintedMovingObstacles
+				.removeIf(obstacle -> obstacle.getPosition().getX() + obstacle.getSkin().getImage().getWidth(null) < 0);
+
+		// Repainting on-screen obstacles
 		this.paintedFixedObstacles.forEach(obstacle -> obstacle.animate(canvas));
 		this.paintedMovingObstacles.forEach(obstacle -> obstacle.animate(canvas));
 	}
