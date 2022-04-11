@@ -5,12 +5,11 @@ import java.awt.CardLayout;
 
 public class MainMenu extends JPanel implements Menu {
 
-	//private static Stages condition = Stages.MENU;
 	public static final CardLayout cardLayout = new CardLayout();
 
 	public MainMenu() {
 
-		MenuPanel menu = new MenuPanel();
+		MenuPanel menu = new MenuPanel(this);
 		this.setLayout(cardLayout);
 		
 		this.add("MENU", menu);
