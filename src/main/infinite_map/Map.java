@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
 import main.obstacles.Obstacle;
+import main.utilities.Position;
 
 public class Map {
 	//Background and FixedObstacle based on selected scenario
@@ -59,8 +60,9 @@ public class Map {
 
 	//Method that spawns a FixedObstacle cloned from this.fixedObstacle
 	protected void addFixedObstacle() {
-		this.paintedFixedObstacles
-				.add(Obstacle.factoryObstacle(this.fixedObstacle.getSkin(), this.fixedObstacle.getPoisition()));
+		this.paintedFixedObstacles.add((FixedObstacle) Obstacle.factoryObstacle(this.fixedObstacle.getSkin(),
+				new Position((int) SCREEN_SIZE.getWidth(), getRandomNumber((int) (SCREEN_SIZE.getHeight() * 0.25),
+						(int) (SCREEN_SIZE.getHeight() * 0.75)))));
 	}
 
 	//Utility method to generate random integer in range (consider moving it)
