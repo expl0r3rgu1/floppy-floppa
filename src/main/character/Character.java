@@ -144,7 +144,7 @@ public class Character extends Movable {
 	private boolean checkCollision(int x, int y, int height, int width) {
 		int characterY = this.getPosition().getY();
 		int characterPointOfCollision = this.getPosition().getX() + (int) this.skin.getImage().getWidth(null);
-		int obstacleHeightLowerLimit = characterY + height;
+		int obstacleHeightLowerLimit = y + height;
 		int obstacleHeightUpperLimit = y;
 		int obstacleWidthLimit= x + width;
 		
