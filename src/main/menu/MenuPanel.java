@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -18,15 +19,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import main.menu.MainMenu;
 import main.utilities.Stages;
+import test.GraphicJLabel;
+
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.CardLayout;
 
 public class MenuPanel extends JPanel{
-	
-	private static Stages condition = Stages.MENU;
 	
 	private static final long serialVersionUID = -7631305128085484196L;
 	public static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
@@ -40,42 +42,78 @@ public class MenuPanel extends JPanel{
 		this.setLayout(grid);
 
 		try {
-			background = ImageIO.read(getClass().getResource("/test/Background.jpeg"));
+			background = ImageIO.read(getClass().getResource("/resources/images/Background.jpeg"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		this.setPreferredSize(SIZE);
-		// menu.setBackground(new Color(0,0,0,0)); mette lo sfondo trasparente
 		this.setOpaque(false);
-		
-		JLabel title = new JLabel("Floppy Floppa");
-		title.setFont(new Font("Arial", Font.PLAIN, (int) SIZE.getWidth() / 20));
-		this.add(title, setDimensionObj(3, 0, new Insets(0, 0, (int) SIZE.getWidth() * 4 / 100, 0)));
-		this.add(generateButton("Play", "PLAY"), setDimensionObj(3, 2, new Insets(0, 0, 0, 0)));
-		this.add(generateButton("Leaderboard", "LEADERBOARD"), setDimensionObj(2, 1, new Insets((int) SIZE.getWidth() * 2 / 100, 0, 0, 0)));
-		this.add(generateButton("Clear Saves", "CLEAR"), setDimensionObj(4, 1,new Insets((int) SIZE.getWidth() * 2 / 100, 0, 0, 0)));
-		this.add(generateButton("Shop", "SHOP"), setDimensionObj(4, 3, new Insets((int) SIZE.getWidth() * 2 / 100, 0, 0, 0)));
-		this.add(generateButton("Quit", "QUIT"), setDimensionObj(3, 4, new Insets((int) SIZE.getWidth() * 2 / 100, 0, (int) SIZE.getWidth() * 2 / 100, 0)));
-		this.add(generateButton("Tutorial", "TUTORIAL"), setDimensionObj(2, 3, new Insets((int) SIZE.getWidth() * 2 / 100, 0, 0, 0)));
-		this.add(this.imageCreation("Floppa.png"),setDimensionObj( 1, 2,new Insets(0, 0, 0, (int) SIZE.getWidth() * 2 / 100)));
-		this.add(this.imageCreation("Bingus.png"), setDimensionObj( 5, 2,new Insets(0, (int) SIZE.getWidth() * 2 / 100, 0, 0)));
+
+		addTitle();
+
+		addPlayButton();
+
+		addButton("Leaderboard", 1, 1, 7, 5, 0, 0, 2, 0);
+		addButton("Clear Saves", 3, 1, 7, 5, 0, 0, 2, 0);
+		addButton("Shop", 3, 3, 7, 5, 2, 0, 0, 0);
+		addButton("Tutorial", 1, 3, 7, 5, 2, 0, 0, 0);
+		addButton("Quit", 2, 4, 6, 4, 1, 0, 3, 0);
+		// addButton("", 3, 1, 7, 5, 0, 0, 2, 0);
+
+		addImage("Floppa.png", 1, 2, 0, 0, 0, 0, 0, 2);
+		addImage("Bingus.png", 3, 2, 0, 0, 0, 2, 0, 0);
+
 		this.setVisible(true);
 	}
 	
-	private JButton generateButton(String name, String actionListenerName) {
+	private void addTitle() {
+		GraphicJLabel title = new GraphicJLabel("Floppy Floppa", Color.decode("#8EDCFB"), Color.decode("#3288FE"),
+				"pixel.TTF", (float) SIZE.getWidth() / 25);
+
+		title.setOpaque(false);
+
+		this.add(title, setDimensionObj(2, 0, 0, 0,
+				new Insets((int) SIZE.getWidth() * 3 / 100, 0, (int) SIZE.getWidth() * 3 / 100, 0)));
+	}
+
+	private void addPlayButton() {
+		this.add(generateButton("Play", "PLAY", "fipps.otf"), setDimensionObj(2, 2, (int) SIZE.getWidth() * 15 / 100,
+				(int) SIZE.getHeight() * 10 / 100, new Insets(0, 0, 0, 0)));
+	}
+
+	private void addButton(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
+			int right) {
+		String actionListenerName = name.toUpperCase();
+
+		this.add(generateButton(name, actionListenerName, "fipps.otf"),
+				setDimensionObj(gridx, gridy, (int) SIZE.getWidth() * ipadx / 100, (int) SIZE.getHeight() * ipady / 100,
+						new Insets((int) SIZE.getWidth() * top / 100, (int) SIZE.getWidth() * left / 100,
+								(int) SIZE.getWidth() * bottom / 100, (int) SIZE.getWidth() * right / 100)));
+	}
+	
+	private void addImage(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
+			int right) {
+		this.add(this.getImageResource(name),
+				setDimensionObj(gridx, gridy, (int) SIZE.getWidth() * ipadx / 100, (int) SIZE.getHeight() * ipady / 100,
+						new Insets((int) SIZE.getWidth() * top / 100, (int) SIZE.getWidth() * left / 100,
+								(int) SIZE.getWidth() * bottom / 100, (int) SIZE.getWidth() * right / 100)));
+	}
+	
+	private JButton generateButton(String name, String actionListenerName, String font) {
 		JButton jb = new JButton(name);
-		jb.setFont(new Font("Arial", Font.PLAIN, (int) SIZE.getWidth() / 60));
-		if(name == "Play") {
-			jb.setPreferredSize(new Dimension((int)SIZE.getWidth() * 15/100, (int) SIZE.getHeight() * 10/ 100));
+
+		if (name.equals("Play")) {
+			jb.setFont(getFontResource(font).deriveFont((float) SIZE.getWidth() / 90));
 			jb.setBackground(Color.decode("#77DD77"));
 			jb.setBorder(BorderFactory.createLineBorder(Color.decode("#007542"), 4, true));
-		}else {
-			jb.setPreferredSize(new Dimension((int)SIZE.getWidth() * 11/100, (int) SIZE.getHeight() * 5/ 100));
-			if(name == "Quit") {
+		} else {
+			if (name.equals("Quit")) {
+				jb.setFont(getFontResource(font).deriveFont((float) SIZE.getWidth() / 110));
 				jb.setBackground(Color.decode("#FF0000"));
 				jb.setBorder(BorderFactory.createLineBorder(Color.decode("#8B0000"), 4, true));
-			}else {
+			} else {
+				jb.setFont(getFontResource(font).deriveFont((float) SIZE.getWidth() / 120));
 				jb.setBackground(Color.decode("#FFDD62"));
 				jb.setBorder(BorderFactory.createLineBorder(Color.decode("#FF971A"), 4, true));
 			}
@@ -84,22 +122,34 @@ public class MenuPanel extends JPanel{
 		return jb;
 	}
 	
-	private GridBagConstraints setDimensionObj(int gridx, int gridy, Insets i) {
+	private GridBagConstraints setDimensionObj(int gridx, int gridy, int ipadx, int ipady, Insets i) {
 		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.gridx=gridx;
+		gbc.gridx = gridx;
 		gbc.gridy = gridy;
+		gbc.ipadx = ipadx;
+		gbc.ipady = ipady;
 		gbc.insets = i;
 		return gbc;
 	}
 	
+	private Font getFontResource(String fontName) {
+		try {
+			return Font.createFont(Font.TRUETYPE_FONT,
+					new File(getClass().getResource("/resources/fonts/" + fontName).getFile()));
+		} catch (FontFormatException | IOException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
 	private ActionListener adHocActionListener(String panelName) {
 
-		if (panelName == "PLAY") {
+		if (panelName.equals("PLAY")) {
 			return e -> {
-				condition = Stages.GAME;
 				MainMenu.cardLayout.show(this.mainMenu, panelName);
 			};
-		}else if(panelName == "QUIT"){
+		} else if (panelName.equals("QUIT")) {
 			return e -> {
 				System.exit(0);
 			};
@@ -114,13 +164,13 @@ public class MenuPanel extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D canvas = (Graphics2D) g;
-		canvas.drawImage(scale(background), 0, 0, (int) SIZE.getWidth(), (int) SIZE.getHeight(), null);
+		canvas.drawImage(background, 0, 0, (int) SIZE.getWidth(), (int) SIZE.getHeight(), null);
 	}
 	
-	private JLabel imageCreation(String fileName) {
+	private JLabel getImageResource(String fileName) {
 		JLabel label = null;
 		try {
-			Image image = ImageIO.read(getClass().getResource("/test/" + fileName));
+			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
 			ImageIcon imageIcon = new ImageIcon(this.scaleImage(image,
 					new Dimension((int) (SIZE.getWidth() * 20 / 100), (int) (SIZE.getWidth() * 20 / 100))));
 			label = new JLabel(imageIcon);
@@ -128,10 +178,6 @@ public class MenuPanel extends JPanel{
 			e.printStackTrace();
 		}
 		return label;
-	}
-	
-	private Image scale(Image image) {
-		return image.getScaledInstance((int) SIZE.getWidth(), (int) SIZE.getHeight(), Image.SCALE_DEFAULT);
 	}
 	
 	private Image scaleImage(Image image, Dimension dim) {
