@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.util.Random;
 
+import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
 
@@ -16,7 +17,6 @@ import main.utilities.Skin;
 public class CoinsIncrement extends Booster {
 
 	private Random rand;
-	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
 	/**
 	 * 
@@ -35,7 +35,7 @@ public class CoinsIncrement extends Booster {
 
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(.getSkin().getImage(), getPosition.getX(), getPosition.getY(),
-				SIZE.getWidth() * 3 / 100, SIZE.getWidth() * 3 / 100, null);
+		canvas.drawImage(getSkin().getImage(), getPosition.getX(), getPosition.getY(),
+				Constants.SCREEN_SIZE.getWidth() * 3 / 100, Constants.SCREEN_SIZE.getWidth() * 3 / 100, null);
 	}
 }
