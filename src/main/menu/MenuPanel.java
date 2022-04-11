@@ -103,16 +103,16 @@ public class MenuPanel extends JPanel{
 		JButton jb = new JButton(name);
 
 		if (name.equals("Play")) {
-			jb.setFont(getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 90));
+			jb.setFont(CommonMethods.getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 90));
 			jb.setBackground(Color.decode("#77DD77"));
 			jb.setBorder(BorderFactory.createLineBorder(Color.decode("#007542"), 4, true));
 		} else {
 			if (name.equals("Quit")) {
-				jb.setFont(getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 110));
+				jb.setFont(CommonMethods.getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 110));
 				jb.setBackground(Color.decode("#FF0000"));
 				jb.setBorder(BorderFactory.createLineBorder(Color.decode("#8B0000"), 4, true));
 			} else {
-				jb.setFont(getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 120));
+				jb.setFont(CommonMethods.getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 120));
 				jb.setBackground(Color.decode("#FFDD62"));
 				jb.setBorder(BorderFactory.createLineBorder(Color.decode("#FF971A"), 4, true));
 			}
@@ -129,17 +129,6 @@ public class MenuPanel extends JPanel{
 		gbc.ipady = ipady;
 		gbc.insets = i;
 		return gbc;
-	}
-	
-	private Font getFontResource(String fontName) {
-		try {
-			return Font.createFont(Font.TRUETYPE_FONT,
-					new File(getClass().getResource("/resources/fonts/" + fontName).getFile()));
-		} catch (FontFormatException | IOException e) {
-			e.printStackTrace();
-		}
-
-		return null;
 	}
 	
 	private ActionListener adHocActionListener(String panelName) {
