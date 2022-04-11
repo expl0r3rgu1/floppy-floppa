@@ -18,8 +18,8 @@ public class MovingObstacle extends Obstacle {
 	public final static Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private Timer timer1;
 	private Timer timer2;
-	private boolean flag1 = false;
 	private boolean flag2 = false;
+	private int shift;
 
 	public MovingObstacle(Position position, Skin skin) {
 		super(position, skin);
@@ -27,14 +27,14 @@ public class MovingObstacle extends Obstacle {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				flag1 = false;
+				setPosition(getPosition().getY() + shift);
 			}
 		});
 		this.timer2 = new Timer(800, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				flag2 = false;
+				
 			}
 		});
 	}
@@ -43,13 +43,13 @@ public class MovingObstacle extends Obstacle {
 		while (true) {
 			if (getPosition().getY() == ((int) SIZE.getHeight()) / 2) {
 
-				this.movingPatternSupport(1, 5, 1);
+				this.movingPatternSupport(5, 1);
 
 			} else {
 
-				this.movingPatternSupport(1, 10, -1);
+				this.movingPatternSupport(10, -1);
 
-				this.movingPatternSupport(1, 10, 1);
+				this.movingPatternSupport(10, 1);
 			}
 		}
 	}
@@ -62,35 +62,17 @@ public class MovingObstacle extends Obstacle {
 		this.movingPattern();
 	}
 
-	private void movingPatternSupport(int start, int end, int shift) {
-		for (int i = start; i <= end; i++) {
-			setPosition((this.updateView(getPosition().getY(), shift)));
+	private void movingPatternSupport(int end, int shift) {
+		for (int i = 0; i < end; i++) {
+			this.shift = shift;
+			this.timer1.start();
 		}
-		flag2 = true;
-		if (flag2) {
-			timer2.start();
-		} else {
-			timer2.stop();
-		}
+//		flag2 = true;
+//		if (flag2) {
+//			timer2.start();
+//		} else {
+//			timer2.stop();
+//		}
 	}
 
-	public boolean validPositionY(int y) {
-		int maxHeight = (int) SIZE.getHeight();
-
-		return y <= maxHeight && y >= 0;
-	}
-
-	private int updateView(int y, int increment) {
-		flag1 = true;
-		if (flag1) {
-			timer1.start();
-		} else {
-			timer1.stop();
-		}
-		
-		if (validPositionY(y + increment)) {
-			return y + increment;
-		}
-		return 0;
-	}
 }
