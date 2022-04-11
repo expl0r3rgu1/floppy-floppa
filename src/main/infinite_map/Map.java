@@ -1,5 +1,6 @@
 package main.infinite_map;
 
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Map {
 	private TimedFixedObstacleGenerator timedFixedObstacleGenerator; //Timer that manages when to spawn a FixedObstacle
 	private TimedMovingObstacleGenerator timedMovingObstacleGenerator; //Timer that manages when to spawn a MovingObstacle
 	protected int speed = 100; //Find a better way to manage speed in the whole game
+	private final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle,
 			List<MovingObstacle> movingObstacles) {
