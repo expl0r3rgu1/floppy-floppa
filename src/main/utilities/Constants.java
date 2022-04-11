@@ -9,4 +9,5 @@ public class Constants {
 	public static final String SAVINGS_FILE_PATH = "savings";
 	public static final int CHANGED_STATE_TIME = 3000;
 	public static final int CHARACTER_ANGLE_DEGREES = 15;
+	public static final int LEADERBOARD_FILE_LINE_START = 3;
 }
