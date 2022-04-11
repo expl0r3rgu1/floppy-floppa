@@ -54,7 +54,8 @@ public class EOGMenuGUI extends JPanel {
 	}
 
 	private Image scale(Image image) {
-		return image.getScaledInstance((int) Constants.SCREEN_SIZE.getWidth(), (int) Constants.SCREEN_SIZE.getHeight(), Image.SCALE_DEFAULT);
+		return image.getScaledInstance((int) Constants.SCREEN_SIZE.getWidth(), (int) Constants.SCREEN_SIZE.getHeight(),
+				Image.SCALE_DEFAULT);
 	}
 
 	private GridBagConstraints setDimensionObject(int gridx, int gridy, int ipadx, int ipady, Insets i) {
@@ -72,31 +73,39 @@ public class EOGMenuGUI extends JPanel {
 			if (i == 0) {
 				GraphicJLabel EOGtitle = new GraphicJLabel("G A M E    O V E R", Color.decode("#FF675F"),
 						Color.decode("#FF392E"), "pixel.TTF", 50f);
-				this.add(EOGtitle, setDimensionObject(1, i, (int) Constants.SCREEN_SIZE.getWidth() * 10 / 100,
-						(int) Constants.SCREEN_SIZE.getWidth() * 5 / 100, new Insets((int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0, 0, 0)));
+				this.add(EOGtitle,
+						setDimensionObject(1, i, (int) Constants.SCREEN_SIZE.getWidth() * 10 / 100,
+								(int) Constants.SCREEN_SIZE.getWidth() * 5 / 100,
+								new Insets((int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0, 0, 0)));
 
 			} else if (i == 1) {
 				GraphicJLabel coins = new GraphicJLabel(
 						"<html><center> Old coins: &emsp &emsp New coins: </center> <br> <center> "
-								+ eogMenu.getPreviousCoins() + "&emsp &emsp &emsp " + eogMenu.updateCoins(meters, malusTimes, boosterTImes)
-								+ " 1348 </center> </html>",
+								+ eogMenu.getPreviousCoins() + "&emsp &emsp &emsp "
+								+ eogMenu.updateCoins(meters, malusTimes, boosterTImes) + " 1348 </center> </html>",
 						Color.decode("#77DD77"), Color.decode("#007542"), "fipps.otf", 25f);
 				this.add(coins,
-						setDimensionObject(1, i, (int) Constants.SCREEN_SIZE.getWidth() * 25 / 100, (int) Constants.SCREEN_SIZE.getWidth() * 15 / 100,
-								new Insets((int) Constants.SCREEN_SIZE.getWidth() * 4 / 100, 0, (int) Constants.SCREEN_SIZE.getWidth() * 4 / 100, 0)));
+						setDimensionObject(1, i, (int) Constants.SCREEN_SIZE.getWidth() * 25 / 100,
+								(int) Constants.SCREEN_SIZE.getWidth() * 15 / 100,
+								new Insets((int) Constants.SCREEN_SIZE.getWidth() * 4 / 100, 0,
+										(int) Constants.SCREEN_SIZE.getWidth() * 4 / 100, 0)));
 
 				GraphicJButton menuButton = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"Arial", Font.BOLD);
-				this.add(menuButton, setDimensionObject(2, i, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100,
-						(int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, new Insets(0, (int) Constants.SCREEN_SIZE.getWidth() * 5 / 100, 0, 0)));
+				this.add(menuButton,
+						setDimensionObject(2, i, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100,
+								(int) Constants.SCREEN_SIZE.getWidth() * 2 / 100,
+								new Insets(0, (int) Constants.SCREEN_SIZE.getWidth() * 5 / 100, 0, 0)));
 				menuButton.addActionListener(e -> {
 					mainMenu.showCard("MENU");
 				});
 
 				GraphicJButton shopButton = new GraphicJButton("SHOP", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"Arial", Font.BOLD);
-				this.add(shopButton, setDimensionObject(0, i, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100,
-						(int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, new Insets(0, 0, 0, (int) Constants.SCREEN_SIZE.getWidth() * 5 / 100)));
+				this.add(shopButton,
+						setDimensionObject(0, i, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100,
+								(int) Constants.SCREEN_SIZE.getWidth() * 2 / 100,
+								new Insets(0, 0, 0, (int) Constants.SCREEN_SIZE.getWidth() * 5 / 100)));
 				shopButton.addActionListener(e -> {
 					mainMenu.showCard("SHOP");
 				});
@@ -105,8 +114,10 @@ public class EOGMenuGUI extends JPanel {
 				GraphicJButton leaderboardButton = new GraphicJButton("LEADERBOARD", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
 				this.add(leaderboardButton,
-						setDimensionObject(1, i, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, (int) Constants.SCREEN_SIZE.getWidth() * 2 / 100,
-								new Insets((int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0, (int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0)));
+						setDimensionObject(1, i, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100,
+								(int) Constants.SCREEN_SIZE.getWidth() * 2 / 100,
+								new Insets((int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0,
+										(int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0)));
 				leaderboardButton.addActionListener(e -> {
 					mainMenu.showCard("LEADERBOARD");
 				});
