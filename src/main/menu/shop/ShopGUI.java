@@ -110,7 +110,7 @@ public class ShopGUI extends JPanel {
 				this.add(backMenu, setDimensionObject(4, i, 0, 0,
 						new Insets((int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0, 0, 0)));
 				backMenu.addActionListener(e -> {
-					mainMenu.showCard("MENU");
+					mainMenu.showCard(Constants.PANEL.MENU);
 				});
 
 			} else if (i == 2 || i == 6) {
