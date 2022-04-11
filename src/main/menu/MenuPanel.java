@@ -18,9 +18,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import main.menu.MainMenu;
-import main.utilities.Stages;
-import test.GraphicJLabel;
-
+import main.utilities.GraphicJLabel;
+import main.utilities.Constants;
+import main.utilities.CommonMethods;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Color;
@@ -31,7 +31,6 @@ import java.awt.CardLayout;
 public class MenuPanel extends JPanel{
 	
 	private static final long serialVersionUID = -7631305128085484196L;
-	public static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private GridBagLayout grid = new GridBagLayout();
 	private Image background;
 	private MainMenu mainMenu;
@@ -47,7 +46,7 @@ public class MenuPanel extends JPanel{
 			e.printStackTrace();
 		}
 
-		this.setPreferredSize(SIZE);
+		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.setOpaque(false);
 
 		addTitle();
@@ -69,17 +68,17 @@ public class MenuPanel extends JPanel{
 	
 	private void addTitle() {
 		GraphicJLabel title = new GraphicJLabel("Floppy Floppa", Color.decode("#8EDCFB"), Color.decode("#3288FE"),
-				"pixel.TTF", (float) SIZE.getWidth() / 25);
+				"pixel.TTF", (float) Constants.SCREEN_SIZE.getWidth() / 25);
 
 		title.setOpaque(false);
 
 		this.add(title, setDimensionObj(2, 0, 0, 0,
-				new Insets((int) SIZE.getWidth() * 3 / 100, 0, (int) SIZE.getWidth() * 3 / 100, 0)));
+				new Insets((int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0)));
 	}
 
 	private void addPlayButton() {
-		this.add(generateButton("Play", "PLAY", "fipps.otf"), setDimensionObj(2, 2, (int) SIZE.getWidth() * 15 / 100,
-				(int) SIZE.getHeight() * 10 / 100, new Insets(0, 0, 0, 0)));
+		this.add(generateButton("Play", "PLAY", "fipps.otf"), setDimensionObj(2, 2, (int) Constants.SCREEN_SIZE.getWidth() * 15 / 100,
+				(int) Constants.SCREEN_SIZE.getHeight() * 10 / 100, new Insets(0, 0, 0, 0)));
 	}
 
 	private void addButton(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
@@ -87,33 +86,33 @@ public class MenuPanel extends JPanel{
 		String actionListenerName = name.toUpperCase();
 
 		this.add(generateButton(name, actionListenerName, "fipps.otf"),
-				setDimensionObj(gridx, gridy, (int) SIZE.getWidth() * ipadx / 100, (int) SIZE.getHeight() * ipady / 100,
-						new Insets((int) SIZE.getWidth() * top / 100, (int) SIZE.getWidth() * left / 100,
-								(int) SIZE.getWidth() * bottom / 100, (int) SIZE.getWidth() * right / 100)));
+				setDimensionObj(gridx, gridy, (int) Constants.SCREEN_SIZE.getWidth() * ipadx / 100, (int) Constants.SCREEN_SIZE.getHeight() * ipady / 100,
+						new Insets((int) Constants.SCREEN_SIZE.getWidth() * top / 100, (int) Constants.SCREEN_SIZE.getWidth() * left / 100,
+								(int) Constants.SCREEN_SIZE.getWidth() * bottom / 100, (int) Constants.SCREEN_SIZE.getWidth() * right / 100)));
 	}
 	
 	private void addImage(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
 			int right) {
 		this.add(this.getImageResource(name),
-				setDimensionObj(gridx, gridy, (int) SIZE.getWidth() * ipadx / 100, (int) SIZE.getHeight() * ipady / 100,
-						new Insets((int) SIZE.getWidth() * top / 100, (int) SIZE.getWidth() * left / 100,
-								(int) SIZE.getWidth() * bottom / 100, (int) SIZE.getWidth() * right / 100)));
+				setDimensionObj(gridx, gridy, (int) Constants.SCREEN_SIZE.getWidth() * ipadx / 100, (int) Constants.SCREEN_SIZE.getHeight() * ipady / 100,
+						new Insets((int) Constants.SCREEN_SIZE.getWidth() * top / 100, (int) Constants.SCREEN_SIZE.getWidth() * left / 100,
+								(int) Constants.SCREEN_SIZE.getWidth() * bottom / 100, (int) Constants.SCREEN_SIZE.getWidth() * right / 100)));
 	}
 	
 	private JButton generateButton(String name, String actionListenerName, String font) {
 		JButton jb = new JButton(name);
 
 		if (name.equals("Play")) {
-			jb.setFont(getFontResource(font).deriveFont((float) SIZE.getWidth() / 90));
+			jb.setFont(getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 90));
 			jb.setBackground(Color.decode("#77DD77"));
 			jb.setBorder(BorderFactory.createLineBorder(Color.decode("#007542"), 4, true));
 		} else {
 			if (name.equals("Quit")) {
-				jb.setFont(getFontResource(font).deriveFont((float) SIZE.getWidth() / 110));
+				jb.setFont(getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 110));
 				jb.setBackground(Color.decode("#FF0000"));
 				jb.setBorder(BorderFactory.createLineBorder(Color.decode("#8B0000"), 4, true));
 			} else {
-				jb.setFont(getFontResource(font).deriveFont((float) SIZE.getWidth() / 120));
+				jb.setFont(getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 120));
 				jb.setBackground(Color.decode("#FFDD62"));
 				jb.setBorder(BorderFactory.createLineBorder(Color.decode("#FF971A"), 4, true));
 			}
@@ -164,7 +163,7 @@ public class MenuPanel extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D canvas = (Graphics2D) g;
-		canvas.drawImage(background, 0, 0, (int) SIZE.getWidth(), (int) SIZE.getHeight(), null);
+		canvas.drawImage(background, 0, 0, (int) Constants.SCREEN_SIZE.getWidth(), (int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
 	
 	private JLabel getImageResource(String fileName) {
@@ -172,7 +171,7 @@ public class MenuPanel extends JPanel{
 		try {
 			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
 			ImageIcon imageIcon = new ImageIcon(this.scaleImage(image,
-					new Dimension((int) (SIZE.getWidth() * 20 / 100), (int) (SIZE.getWidth() * 20 / 100))));
+					new Dimension((int) (Constants.SCREEN_SIZE.getWidth() * 20 / 100), (int) (Constants.SCREEN_SIZE.getWidth() * 20 / 100))));
 			label = new JLabel(imageIcon);
 		} catch (IOException e) {
 			e.printStackTrace();
