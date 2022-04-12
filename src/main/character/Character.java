@@ -169,9 +169,9 @@ public class Character extends Movable {
 		int height = (int) (Constants.SCREEN_SIZE.getHeight() * 0.045);
 		
 		if (this.jumping) {
-			canvas.drawImage(getAngledImage(-15), x, y, width, height, null);
+			canvas.drawImage(getAngledImage(-Constants.CHARACTER_ANGLE_DEGREES), x, y, width, height, null);
 		} else {
-			canvas.drawImage(getAngledImage(15), x, y, width, height, null);
+			canvas.drawImage(getAngledImage(Constants.CHARACTER_ANGLE_DEGREES), x, y, width, height, null);
 		}
 
 		if (this.isHit()) {
