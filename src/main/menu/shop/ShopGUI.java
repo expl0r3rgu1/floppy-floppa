@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.menu.MainMenu;
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJButtonWithObject;
@@ -39,11 +40,7 @@ public class ShopGUI extends JPanel {
 		numSkins = shop.getSkinsNum();
 		numBackgrounds = shop.getSceneriesNum();
 
-		try {
-			background = ImageIO.read(getClass().getResource("/resources/images/Background.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		CommonMethods.getImageResource("Background");
 
 		this.placeGUIComponents();
 	}
@@ -60,15 +57,11 @@ public class ShopGUI extends JPanel {
 
 	private JLabel imageCreation(String fileName) {
 		JLabel label = null;
-		try {
-			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
-			ImageIcon imageIcon = new ImageIcon(
-					this.scale(image, new Dimension((int) (Constants.SCREEN_SIZE.getWidth() * 8 / 100),
-							(int) (Constants.SCREEN_SIZE.getWidth() * 8 / 100))));
-			label = new JLabel(imageIcon);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Image image = CommonMethods.getImageResource(fileName);
+		ImageIcon imageIcon = new ImageIcon(
+				this.scale(image, new Dimension((int) (Constants.SCREEN_SIZE.getWidth() * 8 / 100),
+						(int) (Constants.SCREEN_SIZE.getWidth() * 8 / 100))));
+		label = new JLabel(imageIcon);
 		return label;
 	}
 
