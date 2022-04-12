@@ -1,5 +1,8 @@
 package main.menu;
 
-public interface Menu {
+import java.awt.Graphics2D;
 
+public interface Menu {
+	
+	//public void show(Graphics2D g);
 }
