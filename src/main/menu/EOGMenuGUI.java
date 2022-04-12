@@ -12,7 +12,6 @@ import java.awt.Toolkit;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.sql.CommonDataSource;
 import javax.swing.JPanel;
 
 import main.utilities.CommonMethods;
