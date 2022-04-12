@@ -1,7 +1,5 @@
 package main.utilities;
 
-import java.awt.Toolkit;
-
 public class Position {
 	//the range of these integers is from 0 to the screen size
 	private int x; 
