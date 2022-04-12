@@ -58,9 +58,8 @@ public class ShopGUI extends JPanel {
 	private JLabel imageCreation(String fileName) {
 		JLabel label = null;
 		Image image = CommonMethods.getImageResource(fileName);
-		ImageIcon imageIcon = new ImageIcon(
-				this.scale(image, new Dimension((int) (Constants.SCREEN_SIZE.getWidth() * 8 / 100),
-						(int) (Constants.SCREEN_SIZE.getWidth() * 8 / 100))));
+		ImageIcon imageIcon = new ImageIcon(this.scale(image,
+				new Dimension((CommonMethods.getPixelsFromPercentage(8)), (CommonMethods.getPixelsFromPercentage(8)))));
 		label = new JLabel(imageIcon);
 		return label;
 	}
@@ -78,30 +77,28 @@ public class ShopGUI extends JPanel {
 
 				GraphicJLabel skins = new GraphicJLabel("SKINS", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"Arial", Font.BOLD);
-				skins.setPreferredSize(new Dimension((int) Constants.SCREEN_SIZE.getWidth() * 10 / 100,
-						(int) Constants.SCREEN_SIZE.getHeight() * 5 / 100));
-				this.add(skins,
-						setDimensionObject(0, i, (int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0,
-								new Insets((int) Constants.SCREEN_SIZE.getWidth() * 1 / 100, 0,
-										(int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0)));
+				skins.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentage(10)),
+						(CommonMethods.getPixelsFromPercentage(5))));
+				this.add(skins, setDimensionObject(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0, new Insets(
+						(CommonMethods.getPixelsFromPercentage(1)), 0, (CommonMethods.getPixelsFromPercentage(2)), 0)));
 
 			} else if (i == 5) {
 
 				GraphicJLabel backgrounds = new GraphicJLabel("BACKGROUNDS", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
-				backgrounds.setPreferredSize(new Dimension((int) Constants.SCREEN_SIZE.getWidth() * 10 / 100,
-						(int) Constants.SCREEN_SIZE.getHeight() * 5 / 100));
+				backgrounds.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentage(10)),
+						(CommonMethods.getPixelsFromPercentage(5))));
 				this.add(backgrounds,
-						setDimensionObject(0, i, (int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0,
-								new Insets((int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0,
-										(int) Constants.SCREEN_SIZE.getWidth() * 1 / 100, 0)));
+						setDimensionObject(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0,
+								new Insets((CommonMethods.getPixelsFromPercentage(3)), 0,
+										(CommonMethods.getPixelsFromPercentage(1)), 0)));
 
 			} else if (i == numBackgrounds + numSkins - 1) {
 
 				GraphicJButton backMenu = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"Arial", Font.BOLD);
 				this.add(backMenu, setDimensionObject(4, i, 0, 0,
-						new Insets((int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0, 0, 0)));
+						new Insets((CommonMethods.getPixelsFromPercentage(3)), 0, 0, 0)));
 				backMenu.addActionListener(e -> {
 					mainMenu.showCard(Constants.PANEL.MENU);
 				});
@@ -118,11 +115,11 @@ public class ShopGUI extends JPanel {
 					(i == 2 ? labelNames.get(j) + " : " + prices.get(j)
 							: labelNames.get(j + 5) + " : " + prices.get(j + 5)),
 					Color.decode("#77DD77"), Color.decode("#007542"), "Arial", Font.PLAIN);
-			this.add(label, setDimensionObject(j, i, 0, 0,
-					new Insets((int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0, 0, 0)));
+			this.add(label,
+					setDimensionObject(j, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
 			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)) + ".png"),
 					setDimensionObject(j, i + 1, 0, 0,
-							new Insets((int) Constants.SCREEN_SIZE.getWidth() * 2 / 100, 0, 0, 0)));
+							new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
 			GraphicJButtonWithObject buyButton = new GraphicJButtonWithObject("BUY", Color.decode("#FDFD96"),
 					Color.decode("#FFDD62"), "Arial", Font.PLAIN,
 					(i == 2 ? shop.getSkins().get(j).getX() : shop.getSceneries().get(j).getX()));
@@ -131,10 +128,10 @@ public class ShopGUI extends JPanel {
 				buyButton.setEnabled(!bought);
 			});
 			this.add(buyButton,
-					setDimensionObject(j, i + 2, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0,
-							new Insets((int) Constants.SCREEN_SIZE.getWidth() * 2 / 100,
-									(int) Constants.SCREEN_SIZE.getWidth() * 5 / 100, 0,
-									(int) Constants.SCREEN_SIZE.getWidth() * 5 / 100)));
+					setDimensionObject(j, i + 2, (CommonMethods.getPixelsFromPercentage(3)), 0,
+							new Insets((CommonMethods.getPixelsFromPercentage(2)),
+									(CommonMethods.getPixelsFromPercentage(5)), 0,
+									(CommonMethods.getPixelsFromPercentage(5)))));
 		}
 		return i + 2;
 	}
