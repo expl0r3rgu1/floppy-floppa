@@ -12,8 +12,10 @@ import java.awt.Toolkit;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.sql.CommonDataSource;
 import javax.swing.JPanel;
 
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJLabel;
@@ -37,11 +39,7 @@ public class EOGMenuGUI extends JPanel {
 
 		this.setLayout(new GridBagLayout());
 
-		try {
-			background = ImageIO.read(getClass().getResource("/resources/images/Background.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		background = CommonMethods.getImageResource("Background");
 
 		this.placeGUIComponents();
 
