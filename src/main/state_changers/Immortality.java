@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
+import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
 
@@ -18,8 +19,6 @@ import main.utilities.Skin;
  */
 public class Immortality extends Booster {
 
-	private static final int TIME = 3000;
-	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private boolean immortal;
 	private Timer timer;
 
@@ -31,9 +30,9 @@ public class Immortality extends Booster {
 	public Immortality(Position position, Skin skin) {
 		super(position, skin);
 		this.immortal = false;
-		
-		this.timer = new javax.swing.Timer(TIME, new ActionListener() {
-			
+
+		this.timer = new javax.swing.Timer(Constants.CHANGED_STATE_TIME, new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				immortal = false;
@@ -59,14 +58,15 @@ public class Immortality extends Booster {
 	}
 
 	@Override
-	public void changeState() {
+	public Object changeState() {
 		this.immortal = true;
 		timer.start();
+		return immortal;
 	}
 
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), getPosition.getX(), getPosition.getY(), SIZE.getWidth() * 3 / 100,
-				SIZE.getWidth() * 3 / 100, null);
+		canvas.drawImage(getSkin().getImage(), getPosition.getX(), getPosition.getY(),
+				Constants.SCREEN_SIZE.getWidth() * 3 / 100, Constants.SCREEN_SIZE.getWidth() * 3 / 100, null);
 	}
 }
