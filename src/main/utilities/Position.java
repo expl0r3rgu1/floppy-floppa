@@ -16,7 +16,9 @@ public class Position {
 	
 	private boolean validPosition(int x, int y) {
 		
-		if(x<=maxWidth && y<=maxHeight) {
+		if(x <= Constants.SCREEN_SIZE.getWidth() 
+			&& y <= Constants.SCREEN_SIZE.getHeight()) {
+			
 			return true;
 		}
 		else {

@@ -3,6 +3,7 @@ package main.character;
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
 import main.state_changers.StateChanger;
+import main.utilities.Constants;
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
@@ -128,7 +129,7 @@ public class Character extends Movable {
 		int characterUpperPointOfCollision = this.getPosition().getY();
 		int characterLowerPointOfCollision = this.getPosition().getY() + (int) this.getSkin().getImage().getHeight(null);
 		int upperBorder = 0;
-		int lowerBorder = this.screenHeight;
+		int lowerBorder = (int) Constants.SCREEN_SIZE.getHeight();
 		
 		if (characterUpperPointOfCollision >= upperBorder
 			|| characterLowerPointOfCollision <= lowerBorder) {
@@ -165,8 +166,8 @@ public class Character extends Movable {
 		
 		int x = this.getPosition().getX();
 		int y = this.getPosition().getY();
-		int width = (int) (screenWidth * 0.035);
-		int height = (int) (screenHeight * 0.045);
+		int width = (int) (Constants.SCREEN_SIZE.getWidth() * 0.035);
+		int height = (int) (Constants.SCREEN_SIZE.getHeight() * 0.045);
 		
 		if (this.jumping) {
 			canvas.drawImage(getAngledImage(-15), x, y, width, height, null);
