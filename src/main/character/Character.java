@@ -84,7 +84,7 @@ public class Character extends Movable {
 		//variables to make it more readable
 		int characterPointOfCollisionX = this.getPosition().getX() + (int) this.skin.getImage().getWidth(null);
 		int characterY = this.getPosition().getY();
-		int characterPointOfCollisionY = characterY + (int) fixedObstacle.getSkin().getImage().getHeight(null);
+		int characterLowerY = characterY + (int) this.skin.getImage().getHeight(null);
 		int obstacleLeftLimit = fixedObstacle.getPosition().getX();
 		int obstacleRightLimit = fixedObstacle.getPosition().getX() + (int) fixedObstacle.getSkin().getImage().getWidth(null);
 		int upperObstacleRange = fixedObstacle.getPosition().getY() + (int) FixedObstacle.space/2;
@@ -96,7 +96,7 @@ public class Character extends Movable {
 					
 			//the purpose of this if is to check if the character hits the obstacle
 			if (characterY >= upperObstacleRange
-				|| characterPointOfCollisionY <= lowerObstacleRange) {
+				|| characterLowerY <= lowerObstacleRange) {
 						
 				this.hit();
 			}
@@ -144,7 +144,7 @@ public class Character extends Movable {
 	private boolean checkCollision(int x, int y, int height, int width) {
 		int characterY = this.getPosition().getY();
 		int characterPointOfCollision = this.getPosition().getX() + (int) this.skin.getImage().getWidth(null);
-		int obstacleHeightLowerLimit = characterY + height;
+		int obstacleHeightLowerLimit = y + height;
 		int obstacleHeightUpperLimit = y;
 		int obstacleWidthLimit= x + width;
 		
