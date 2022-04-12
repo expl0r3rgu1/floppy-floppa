@@ -14,14 +14,13 @@ import javax.swing.JLabel;
 public class GraphicJLabel extends JLabel{
 
 	private static final long serialVersionUID = 3550487230752126610L;
-	private static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	
 	public GraphicJLabel(String name ,Color backgroundColor, Color borderColor, String font, int fontAppearance) {
 		super(name, CENTER);
 		this.setOpaque(true);
 		this.setBackground(backgroundColor);
 		this.setBorder(BorderFactory.createLineBorder(borderColor, 4, true));
-		this.setFont(new Font(font, fontAppearance, (int) SIZE.getWidth() / 70));
+		this.setFont(new Font(font, fontAppearance, (int) Constants.SCREEN_SIZE.getWidth() / 70));
 	}
 	
 	public GraphicJLabel(String name ,Color backgroundColor, Color borderColor, String font, float fontSize) {
