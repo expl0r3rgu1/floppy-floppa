@@ -25,10 +25,6 @@ public class Character extends Movable {
 	private boolean jumping; //true if the character is jumping
 	private Timer timer;
 	
-	//these variables will be changed with constants
-	private int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-	private int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-	
 	public Character(Position position, Skin skin) {
 		super(position);
 		this.skin = skin;
