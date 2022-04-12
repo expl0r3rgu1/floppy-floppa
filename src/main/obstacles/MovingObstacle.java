@@ -10,12 +10,12 @@ import java.awt.event.ActionListener;
 import javax.print.attribute.standard.Sides;
 import javax.swing.Timer;
 
+import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
 
 public class MovingObstacle extends Obstacle implements ActionListener {
 
-	public final static Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private Timer timer;
 	private int shift;
 
@@ -26,7 +26,7 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 
 	public void movingPattern() {
 		while (true) {
-			if (getPosition().getY() == ((int) SIZE.getHeight()) / 2) {
+			if (getPosition().getY() == ((int) Constants.SCREEN_SIZE.getHeight()) / 2) {
 
 				this.movingPatternSupport(5, 1);
 
@@ -49,7 +49,7 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 	@Override
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(this.getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				(int) (SIZE.getWidth()) / 20, (int) (SIZE.getWidth()) / 10, null);
+				(int) (Constants.SCREEN_SIZE.getWidth()) / 20, (int) (Constants.SCREEN_SIZE.getWidth()) / 10, null);
 
 		this.movingPattern();
 	}
