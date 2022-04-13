@@ -2,9 +2,10 @@ package main.infinite_map;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+
+import main.utilities.Constants;
 import main.utilities.Position;
 
 public class ScrollingBackground {
@@ -16,16 +17,17 @@ public class ScrollingBackground {
 	public ScrollingBackground(String name, String imageFile) {
 		backOne = new Background(name, getImageResource(imageFile));
 		backTwo = new Background(name, getImageResource(imageFile),
-				new Position((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(), 0));
+				new Position((int) Constants.SCREEN_SIZE.getWidth(), 0));
 	}
 
-	//Animates the two backgrounds
+	// Animates the two backgrounds
 	public void animate(Graphics2D canvas) {
 		backOne.animate(canvas);
 		backTwo.animate(canvas);
 	}
 
-	//Utility method to get image resource (might move this function to reduce code duplication)
+	// Utility method to get image resource (might move this function to reduce code
+	// duplication)
 	public Image getImageResource(String imageName) {
 		try {
 			return ImageIO.read(getClass().getResource("/resources/images/" + imageName));

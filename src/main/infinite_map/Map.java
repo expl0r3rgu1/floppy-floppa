@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
 import main.obstacles.Obstacle;
+import main.utilities.Constants;
 import main.utilities.Position;
 
 public class Map {
@@ -23,8 +24,6 @@ public class Map {
 	private TimedFixedObstacleGenerator timedFixedObstacleGenerator; // Timer that manages when to spawn a FixedObstacle
 	private TimedMovingObstacleGenerator timedMovingObstacleGenerator; // Timer that manages when to spawn a
 																		// MovingObstacle
-	protected int speed = 100; // Find a better way to manage speed in the whole game
-	private final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle,
 			List<MovingObstacle> movingObstacles) {
@@ -62,8 +61,9 @@ public class Map {
 	// Method that spawns a FixedObstacle cloned from this.fixedObstacle
 	protected void addFixedObstacle() {
 		this.paintedFixedObstacles.add((FixedObstacle) Obstacle.factoryObstacle(this.fixedObstacle.getSkin(),
-				new Position((int) SCREEN_SIZE.getWidth(), getRandomNumber((int) (SCREEN_SIZE.getHeight() * 0.25),
-						(int) (SCREEN_SIZE.getHeight() * 0.75)))));
+				new Position((int) Constants.SCREEN_SIZE.getWidth(),
+						getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
+								(int) (Constants.SCREEN_SIZE.getHeight() * 0.75)))));
 	}
 
 	// Utility method to generate random integer in range (consider moving it)
@@ -75,10 +75,11 @@ public class Map {
 	protected void addMovingObstacle() {
 		int randomMovingObstacleIndex = getRandomNumber(0, this.movingObstacles.size() - 1);
 
-		this.paintedMovingObstacles.add((MovingObstacle) Obstacle.factoryObstacle(
-				this.movingObstacles.get(randomMovingObstacleIndex).getSkin(),
-				new Position((int) SCREEN_SIZE.getWidth(), getRandomNumber((int) (SCREEN_SIZE.getHeight() * 0.25),
-						(int) (SCREEN_SIZE.getHeight() * 0.75)))));
+		this.paintedMovingObstacles.add(
+				(MovingObstacle) Obstacle.factoryObstacle(this.movingObstacles.get(randomMovingObstacleIndex).getSkin(),
+						new Position((int) Constants.SCREEN_SIZE.getWidth(),
+								getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
+										(int) (Constants.SCREEN_SIZE.getHeight() * 0.75)))));
 	}
 
 	public void animate(Graphics2D canvas) {

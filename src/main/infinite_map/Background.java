@@ -1,10 +1,9 @@
 package main.infinite_map;
 
-import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
 
+import main.utilities.Constants;
 import main.utilities.Movable;
 import main.utilities.Position;
 
@@ -60,9 +59,8 @@ public class Background extends Movable {
 	@Override
 	public void animate(Graphics2D canvas) {
 		// Drawing the background on the canvas to fill it completely
-		canvas.drawImage(image, getPosition().getX(), getPosition().getY(),
-				(int) Toolkit.getDefaultToolkit().getScreenSize().getWidth(),
-				(int) Toolkit.getDefaultToolkit().getScreenSize().getHeight(), null);
+		canvas.drawImage(image, getPosition().getX(), getPosition().getY(), (int) Constants.SCREEN_SIZE.getWidth(),
+				(int) Constants.SCREEN_SIZE.getHeight(), null);
 
 		updatePosition(movingFactor);
 
@@ -72,11 +70,9 @@ public class Background extends Movable {
 	}
 
 	private void updatePosition(int movingFactor) {
-		final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
 		// Checking the width of the screen to decide if to use double the movingFactor
 		// or not
-		if (screenSize.getWidth() > 2000) {
+		if (Constants.SCREEN_SIZE.getWidth() > 2000) {
 			movingFactor *= 2;
 		}
 
@@ -84,7 +80,7 @@ public class Background extends Movable {
 	}
 
 	private boolean isOffStageLeft() {
-		if (getPosition().getX() <= -1 * Toolkit.getDefaultToolkit().getScreenSize().getWidth()) {
+		if (getPosition().getX() <= -1 * Constants.SCREEN_SIZE.getWidth()) {
 			return true;
 		} else {
 			return false;
@@ -92,6 +88,6 @@ public class Background extends Movable {
 	}
 
 	private void moveToSideOfSecondBackground() {
-		getPosition().setX(getPosition().getX() + (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 2);
+		getPosition().setX(getPosition().getX() + (int) Constants.SCREEN_SIZE.getWidth() * 2);
 	}
 }
