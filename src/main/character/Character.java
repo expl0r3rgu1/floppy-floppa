@@ -10,6 +10,7 @@ import main.utilities.Position;
 import main.utilities.Skin;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -164,12 +165,10 @@ public class Character extends Movable {
 		int y = this.getPosition().getY();
 		int percentage = 4;
 		int width = CommonMethods.getPixelsFromPercentage(percentage);
+		int angle = jumping ? -Constants.CHARACTER_ANGLE_DEGREES : Constants.CHARACTER_ANGLE_DEGREES;
+		Image image = CommonMethods.getAngledImage(this.skin.getImage(), angle);
 		
-		if (this.jumping) {
-			canvas.drawImage(CommonMethods.getAngledImage(this.skin.getImage(), -Constants.CHARACTER_ANGLE_DEGREES), x, y, width, width, null);
-		} else {
-			canvas.drawImage(CommonMethods.getAngledImage(this.skin.getImage(), Constants.CHARACTER_ANGLE_DEGREES), x, y, width, width, null);
-		}
+		canvas.drawImage(image, x, y, width, width, null);
 
 		if (this.isHit()) {
 			this.die();
