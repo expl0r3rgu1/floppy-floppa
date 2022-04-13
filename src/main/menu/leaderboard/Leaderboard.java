@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+import main.utilities.Constants;
+
 public class Leaderboard {
-	private final File leaderboardFile = new File("savings");
+	private final File leaderboardFile = new File(Constants.SAVINGS_FILE_PATH);
 	private ArrayList<Player> leaderboard;
 
 	public Leaderboard() {
@@ -43,7 +45,7 @@ public class Leaderboard {
 	}
 
 	private void skipToLeaderboardStart(Scanner scanner) {
-		for (int i = 0; i < 3 && scanner.hasNextLine(); i++) {
+		for (int i = 0; i < Constants.LEADERBOARD_FILE_LINE_START && scanner.hasNextLine(); i++) {
 			scanner.nextLine();
 		}
 	}
