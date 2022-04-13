@@ -14,17 +14,20 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 
 	private Timer timer;
 	private int shift;
+	private int counter;
 
 	public MovingObstacle(Position position, Skin skin) {
 		super(position, skin);
+		counter = 0;
 		this.timer = new Timer(300, this);
 	}
 
 	public void movingPattern() {
 		while (true) {
-			if (getPosition().getY() == ((int) Constants.SCREEN_SIZE.getHeight()) / 2) {
+			if (counter == 0) {
 
 				this.movingPatternSupport(5, 1);
+				counter++;
 
 			} else {
 
