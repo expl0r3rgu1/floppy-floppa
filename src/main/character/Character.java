@@ -188,27 +188,4 @@ public class Character extends Movable {
 
 	}
 	
-	private Image getAngledImage(int degrees) {
-		double rotationRequired = Math.toRadians(degrees);
-		double locationX = this.skin.getImage().getWidth(null) / 2;
-		double locationY = this.skin.getImage().getHeight(null) / 2;
-		AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
-		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-
-		return op.filter(toBufferedImage(this.skin.getImage()), null);
-	}
-
-	private static BufferedImage toBufferedImage(Image img) {
-		if (img instanceof BufferedImage) {
-			return (BufferedImage) img;
-		}
-
-		BufferedImage bimage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-		Graphics2D bGr = bimage.createGraphics();
-		bGr.drawImage(img, 0, 0, null);
-		bGr.dispose();
-
-		return bimage;
-	}
-	
 }
