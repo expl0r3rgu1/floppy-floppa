@@ -58,6 +58,10 @@ public class Immortality extends Booster {
 		this.immortal = immortal;
 	}
 
+	private void updatePositionX() {
+		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+	}
+
 	@Override
 	public Object changeState() {
 		this.immortal = true;
@@ -69,5 +73,7 @@ public class Immortality extends Booster {
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition.getX(), getPosition.getY(),
 				CommonMethods.getPixelsFromPercentage(3), CommonMethods.getPixelsFromPercentage(3), null);
+
+		this.updatePositionX();
 	}
 }
