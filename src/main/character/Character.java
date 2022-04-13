@@ -165,7 +165,7 @@ public class Character extends Movable {
 		int y = this.getPosition().getY();
 		int percentage = 4;
 		int width = CommonMethods.getPixelsFromPercentage(percentage);
-		int angle = jumping ? -Constants.CHARACTER_ANGLE_DEGREES : Constants.CHARACTER_ANGLE_DEGREES;
+		int angle = this.jumping ? -Constants.CHARACTER_ANGLE_DEGREES : Constants.CHARACTER_ANGLE_DEGREES;
 		Image image = CommonMethods.getAngledImage(this.skin.getImage(), angle);
 		
 		canvas.drawImage(image, x, y, width, width, null);
@@ -179,7 +179,7 @@ public class Character extends Movable {
 	
 	private void updatePosition() {
 		
-		int value = jumping ? -2 : 1;
+		int value = this.jumping ? -2 : 1;
 		this.getPosition().setY(this.getPosition().getY() + value);
 
 	}
