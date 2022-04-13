@@ -16,8 +16,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
-import javax.imageio.ImageIO;
-
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.PricedBackground;
