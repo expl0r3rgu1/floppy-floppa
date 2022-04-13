@@ -32,7 +32,7 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 
 	public void movingPattern() {
 		while (true) {
-			
+			this.movingPatternSupportX();
 			if (counter == 0) {
 
 				this.movingPatternSupportY(this.firstPositionShift, this.upShift);
@@ -45,6 +45,10 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 				this.movingPatternSupportY(this.PositionShift, this.upShift);
 			}
 		}
+	}
+	
+	private void movingPatternSupportX() {
+		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
 	}
 
 	private void movingPatternSupportY(int end, int shift) {
