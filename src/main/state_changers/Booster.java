@@ -14,7 +14,7 @@ public class Booster extends StateChanger {
 	public static Booster factoryBooster(Position position, Skin skin) {
 		return new Booster(position, skin);
 	}
-	
+
 	@Override
 	public Object changeState() {
 		return null;
