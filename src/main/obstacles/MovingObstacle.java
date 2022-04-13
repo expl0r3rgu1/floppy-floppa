@@ -32,21 +32,22 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 
 	public void movingPattern() {
 		while (true) {
+			
 			if (counter == 0) {
 
-				this.movingPatternSupport(this.firstPositionShift, this.upShift);
+				this.movingPatternSupportY(this.firstPositionShift, this.upShift);
 				counter++;
 
 			} else {
 
-				this.movingPatternSupport(this.PositionShift, this.downShift);
+				this.movingPatternSupportY(this.PositionShift, this.downShift);
 
-				this.movingPatternSupport(this.PositionShift, this.upShift);
+				this.movingPatternSupportY(this.PositionShift, this.upShift);
 			}
 		}
 	}
 
-	private void movingPatternSupport(int end, int shift) {
+	private void movingPatternSupportY(int end, int shift) {
 		for (int i = 0; i < end; i++) {
 			this.shift = shift;
 			this.timer.start();
