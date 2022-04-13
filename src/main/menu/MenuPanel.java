@@ -41,7 +41,7 @@ public class MenuPanel extends JPanel{
 		this.setLayout(grid);
 
 		try {
-			background = ImageIO.read(getClass().getResource("/resources/images/Background.jpeg"));
+			background = ImageIO.read(getClass().getResource("/resources/images/Background.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
