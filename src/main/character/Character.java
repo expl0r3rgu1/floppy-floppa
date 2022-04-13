@@ -164,7 +164,6 @@ public class Character extends Movable {
 		int y = this.getPosition().getY();
 		int percentage = 4;
 		int width = CommonMethods.getPixelsFromPercentage(percentage);
-		int height = (int) (Constants.SCREEN_SIZE.getHeight() * 0.045);
 		
 		if (this.jumping) {
 			canvas.drawImage(CommonMethods.getAngledImage(this.skin.getImage(), -Constants.CHARACTER_ANGLE_DEGREES), x, y, width, width, null);
