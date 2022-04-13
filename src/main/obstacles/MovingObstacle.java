@@ -56,7 +56,7 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		setPosition(getPosition().getY() + shift);
+		setPosition(new Position(getPosition().getX(), getPosition().getY() + shift));
 		timer.stop();
 	}
 
