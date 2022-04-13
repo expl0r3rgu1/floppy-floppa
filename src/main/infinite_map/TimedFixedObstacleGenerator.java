@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import main.utilities.Constants;
+
 public class TimedFixedObstacleGenerator extends TimedObstacleGenerator {
 
 	public TimedFixedObstacleGenerator(Map map) {
