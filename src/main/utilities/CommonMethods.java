@@ -14,7 +14,7 @@ import javax.imageio.ImageIO;
 
 public class CommonMethods {
 	public static int getPixelsFromPercentage(int percentage) {
-		return (int) Constants.SCREEN_SIZE.getWidth() * (percentage / 100);
+		return (int) Constants.SCREEN_SIZE.getWidth() * percentage / 100;
 	}
 
 	public static Image getImageResource(String imageName) {
