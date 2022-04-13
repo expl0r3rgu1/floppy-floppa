@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -48,12 +49,11 @@ public class EOGMenuGUI extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(this.scale(background), 0, 0, null);
-	}
 
-	private Image scale(Image image) {
-		return image.getScaledInstance((int) Constants.SCREEN_SIZE.getWidth(), (int) Constants.SCREEN_SIZE.getHeight(),
-				Image.SCALE_DEFAULT);
+		Graphics2D canvas = (Graphics2D) g;
+
+		canvas.drawImage(background, 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
+				(int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
 
 	private void placeGUIComponents() {
