@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.util.Random;
 
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
@@ -36,6 +37,6 @@ public class CoinsIncrement extends Booster {
 	@Override
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition.getX(), getPosition.getY(),
-				Constants.SCREEN_SIZE.getWidth() * 3 / 100, Constants.SCREEN_SIZE.getWidth() * 3 / 100, null);
+				CommonMethods.getPixelsFromPercentage(3), CommonMethods.getPixelsFromPercentage(3), null);
 	}
 }
