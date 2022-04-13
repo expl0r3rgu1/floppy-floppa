@@ -3,6 +3,7 @@ package main.character;
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
 import main.state_changers.StateChanger;
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Movable;
 import main.utilities.Position;
@@ -126,7 +127,7 @@ public class Character extends Movable {
 	public void collideBorders() {
 		//variables to make it more readable
 		int characterUpperPointOfCollision = this.getPosition().getY();
-		int characterLowerPointOfCollision = this.getPosition().getY() + (int) this.getSkin().getImage().getHeight(null);
+		int characterLowerPointOfCollision = this.getPosition().getY() + (int) this.skin.getImage().getHeight(null);
 		int upperBorder = 0;
 		int lowerBorder = (int) Constants.SCREEN_SIZE.getHeight();
 		
@@ -169,9 +170,9 @@ public class Character extends Movable {
 		int height = (int) (Constants.SCREEN_SIZE.getHeight() * 0.045);
 		
 		if (this.jumping) {
-			canvas.drawImage(getAngledImage(-Constants.CHARACTER_ANGLE_DEGREES), x, y, width, height, null);
+			canvas.drawImage(CommonMethods.getAngledImage(this.skin.getImage(), -Constants.CHARACTER_ANGLE_DEGREES), x, y, width, height, null);
 		} else {
-			canvas.drawImage(getAngledImage(Constants.CHARACTER_ANGLE_DEGREES), x, y, width, height, null);
+			canvas.drawImage(CommonMethods.getAngledImage(this.skin.getImage(), Constants.CHARACTER_ANGLE_DEGREES), x, y, width, height, null);
 		}
 
 		if (this.isHit()) {
