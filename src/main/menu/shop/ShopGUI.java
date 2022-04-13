@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import main.menu.MainMenu;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
+import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJButtonWithObject;
 import main.utilities.GraphicJLabel;
@@ -71,7 +72,7 @@ public class ShopGUI extends JPanel {
 
 				GraphicJLabel coins = new GraphicJLabel(shop.getCoins() + "", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
-				this.add(coins, setDimensionObject(4, i, 0, 0, new Insets(0, 0, 0, 0)));
+				this.add(coins, new GBCSimplified(4, i, 0, 0, new Insets(0, 0, 0, 0)));
 
 			} else if (i == 1) {
 
@@ -79,7 +80,7 @@ public class ShopGUI extends JPanel {
 						"Arial", Font.BOLD);
 				skins.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentage(10)),
 						(CommonMethods.getPixelsFromPercentage(5))));
-				this.add(skins, setDimensionObject(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0, new Insets(
+				this.add(skins, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0, new Insets(
 						(CommonMethods.getPixelsFromPercentage(1)), 0, (CommonMethods.getPixelsFromPercentage(2)), 0)));
 
 			} else if (i == 5) {
@@ -88,17 +89,15 @@ public class ShopGUI extends JPanel {
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
 				backgrounds.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentage(10)),
 						(CommonMethods.getPixelsFromPercentage(5))));
-				this.add(backgrounds,
-						setDimensionObject(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0,
-								new Insets((CommonMethods.getPixelsFromPercentage(3)), 0,
-										(CommonMethods.getPixelsFromPercentage(1)), 0)));
+				this.add(backgrounds, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0, new Insets(
+						(CommonMethods.getPixelsFromPercentage(3)), 0, (CommonMethods.getPixelsFromPercentage(1)), 0)));
 
 			} else if (i == numBackgrounds + numSkins - 1) {
 
 				GraphicJButton backMenu = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"Arial", Font.BOLD);
-				this.add(backMenu, setDimensionObject(4, i, 0, 0,
-						new Insets((CommonMethods.getPixelsFromPercentage(3)), 0, 0, 0)));
+				this.add(backMenu,
+						new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(3)), 0, 0, 0)));
 				backMenu.addActionListener(e -> {
 					mainMenu.showCard(Constants.PANEL.MENU);
 				});
@@ -116,10 +115,9 @@ public class ShopGUI extends JPanel {
 							: labelNames.get(j + 5) + " : " + prices.get(j + 5)),
 					Color.decode("#77DD77"), Color.decode("#007542"), "Arial", Font.PLAIN);
 			this.add(label,
-					setDimensionObject(j, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
+					new GBCSimplified(j, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
 			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)) + ".png"),
-					setDimensionObject(j, i + 1, 0, 0,
-							new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
+					new GBCSimplified(j, i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
 			GraphicJButtonWithObject buyButton = new GraphicJButtonWithObject("BUY", Color.decode("#FDFD96"),
 					Color.decode("#FFDD62"), "Arial", Font.PLAIN,
 					(i == 2 ? shop.getSkins().get(j).getX() : shop.getSceneries().get(j).getX()));
@@ -128,21 +126,11 @@ public class ShopGUI extends JPanel {
 				buyButton.setEnabled(!bought);
 			});
 			this.add(buyButton,
-					setDimensionObject(j, i + 2, (CommonMethods.getPixelsFromPercentage(3)), 0,
+					new GBCSimplified(j, i + 2, (CommonMethods.getPixelsFromPercentage(3)), 0,
 							new Insets((CommonMethods.getPixelsFromPercentage(2)),
 									(CommonMethods.getPixelsFromPercentage(5)), 0,
 									(CommonMethods.getPixelsFromPercentage(5)))));
 		}
 		return i + 2;
-	}
-
-	private GridBagConstraints setDimensionObject(int gridx, int gridy, int ipadx, int ipady, Insets i) {
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridx = gridx;
-		c.gridy = gridy;
-		c.ipadx = ipadx;
-		c.ipady = ipady;
-		c.insets = i;
-		return c;
 	}
 }
