@@ -18,6 +18,7 @@ import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.PricedBackground;
 import main.utilities.PricedSkin;
@@ -42,6 +43,11 @@ public class Shop {
 
 		this.savingFile = new File(Constants.SAVINGS_FILE_PATH);
 
+		try {
+			this.getFileInfo();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public Integer getCoins() {
@@ -207,29 +213,19 @@ public class Shop {
 		}
 	}
 
-	private Image imageCreation(String name) {
-		Image image = null;
-		try {
-			image = ImageIO.read(getClass().getResource("/resources/images/" + name + ".png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return image;
-	}
-
 	private void MapInitializing() {
-		skinInitialize.put("Floppa", imageCreation("Floppa"));
-		skinInitialize.put("Sogga", imageCreation("Sogga"));
-		skinInitialize.put("Capibara", imageCreation("Capibara"));
-		skinInitialize.put("Quokka", imageCreation("Quokka"));
-		skinInitialize.put("Buding", imageCreation("Buding"));
+		skinInitialize.put("Floppa", CommonMethods.getImageResource("Floppa"));
+		skinInitialize.put("Sogga", CommonMethods.getImageResource("Sogga"));
+		skinInitialize.put("Capibara", CommonMethods.getImageResource("Capibara"));
+		skinInitialize.put("Quokka", CommonMethods.getImageResource("Quokka"));
+		skinInitialize.put("Buding", CommonMethods.getImageResource("Buding"));
 		this.skinsNum = skinInitialize.size();
 
-		backgroundInitialize.put("Classic", imageCreation("Classic"));
-		backgroundInitialize.put("Beach", imageCreation("Beach"));
-		backgroundInitialize.put("Woods", imageCreation("Woods"));
-		backgroundInitialize.put("Space", imageCreation("Space"));
-		backgroundInitialize.put("NeonCity", imageCreation("NeonCity"));
+		backgroundInitialize.put("Classic", CommonMethods.getImageResource("Classic"));
+		backgroundInitialize.put("Beach", CommonMethods.getImageResource("Beach"));
+		backgroundInitialize.put("Woods", CommonMethods.getImageResource("Woods"));
+		backgroundInitialize.put("Space", CommonMethods.getImageResource("Space"));
+		backgroundInitialize.put("NeonCity", CommonMethods.getImageResource("NeonCity"));
 		this.sceneriesNum = backgroundInitialize.size();
 	}
 }
