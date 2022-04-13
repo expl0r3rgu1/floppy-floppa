@@ -49,7 +49,11 @@ public class ShopGUI extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(this.scale(background, Constants.SCREEN_SIZE), 0, 0, null);
+
+		Graphics2D canvas = (Graphics2D) g;
+
+		canvas.drawImage(background, 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
+				(int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
 
 	private Image scale(Image image, Dimension dim) {
