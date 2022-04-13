@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
+import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJLabel;
 
@@ -55,23 +56,13 @@ public class EOGMenuGUI extends JPanel {
 				Image.SCALE_DEFAULT);
 	}
 
-	private GridBagConstraints setDimensionObject(int gridx, int gridy, int ipadx, int ipady, Insets i) {
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridx = gridx;
-		c.gridy = gridy;
-		c.ipadx = ipadx;
-		c.ipady = ipady;
-		c.insets = i;
-		return c;
-	}
-
 	private void placeGUIComponents() {
 		for (int i = 0; i < 3; i++) {
 			if (i == 0) {
 				GraphicJLabel EOGtitle = new GraphicJLabel("G A M E    O V E R", Color.decode("#FF675F"),
 						Color.decode("#FF392E"), "pixel.TTF", 50f);
 				this.add(EOGtitle,
-						setDimensionObject(1, i, CommonMethods.getPixelsFromPercentage(10),
+						new GBCSimplified(1, i, CommonMethods.getPixelsFromPercentage(10),
 								CommonMethods.getPixelsFromPercentage(5),
 								new Insets(CommonMethods.getPixelsFromPercentage(2), 0, 0, 0)));
 
@@ -81,14 +72,14 @@ public class EOGMenuGUI extends JPanel {
 								+ eogMenu.getPreviousCoins() + "&emsp &emsp &emsp "
 								+ eogMenu.updateCoins(meters, malusTimes, boosterTImes) + " 1348 </center> </html>",
 						Color.decode("#77DD77"), Color.decode("#007542"), "fipps.otf", 25f);
-				this.add(coins, setDimensionObject(1, i, CommonMethods.getPixelsFromPercentage(25),
+				this.add(coins, new GBCSimplified(1, i, CommonMethods.getPixelsFromPercentage(25),
 						CommonMethods.getPixelsFromPercentage(15), new Insets(CommonMethods.getPixelsFromPercentage(4),
 								0, CommonMethods.getPixelsFromPercentage(4), 0)));
 
 				GraphicJButton menuButton = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"Arial", Font.BOLD);
 				this.add(menuButton,
-						setDimensionObject(2, i, CommonMethods.getPixelsFromPercentage(3),
+						new GBCSimplified(2, i, CommonMethods.getPixelsFromPercentage(3),
 								CommonMethods.getPixelsFromPercentage(2),
 								new Insets(0, CommonMethods.getPixelsFromPercentage(5), 0, 0)));
 				menuButton.addActionListener(e -> {
@@ -98,7 +89,7 @@ public class EOGMenuGUI extends JPanel {
 				GraphicJButton shopButton = new GraphicJButton("SHOP", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"Arial", Font.BOLD);
 				this.add(shopButton,
-						setDimensionObject(0, i, CommonMethods.getPixelsFromPercentage(3),
+						new GBCSimplified(0, i, CommonMethods.getPixelsFromPercentage(3),
 								CommonMethods.getPixelsFromPercentage(2),
 								new Insets(0, 0, 0, CommonMethods.getPixelsFromPercentage(5))));
 				shopButton.addActionListener(e -> {
@@ -108,7 +99,7 @@ public class EOGMenuGUI extends JPanel {
 			} else if (i == 2) {
 				GraphicJButton leaderboardButton = new GraphicJButton("LEADERBOARD", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
-				this.add(leaderboardButton, setDimensionObject(1, i, CommonMethods.getPixelsFromPercentage(3),
+				this.add(leaderboardButton, new GBCSimplified(1, i, CommonMethods.getPixelsFromPercentage(3),
 						CommonMethods.getPixelsFromPercentage(2), new Insets(CommonMethods.getPixelsFromPercentage(2),
 								0, CommonMethods.getPixelsFromPercentage(2), 0)));
 				leaderboardButton.addActionListener(e -> {
