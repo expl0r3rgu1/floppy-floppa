@@ -3,13 +3,13 @@ package main.character;
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
 import main.state_changers.StateChanger;
+import main.utilities.Constants;
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
@@ -24,10 +24,6 @@ public class Character extends Movable {
 	private boolean hit; //true if the character is hit by an obstacle
 	private boolean jumping; //true if the character is jumping
 	private Timer timer;
-	
-	//these variables will be changed with constants
-	private int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-	private int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	
 	public Character(Position position, Skin skin) {
 		super(position);
@@ -132,7 +128,7 @@ public class Character extends Movable {
 		int characterUpperPointOfCollision = this.getPosition().getY();
 		int characterLowerPointOfCollision = this.getPosition().getY() + (int) this.getSkin().getImage().getHeight(null);
 		int upperBorder = 0;
-		int lowerBorder = this.screenHeight;
+		int lowerBorder = (int) Constants.SCREEN_SIZE.getHeight();
 		
 		if (characterUpperPointOfCollision >= upperBorder
 			|| characterLowerPointOfCollision <= lowerBorder) {
@@ -169,13 +165,13 @@ public class Character extends Movable {
 		
 		int x = this.getPosition().getX();
 		int y = this.getPosition().getY();
-		int width = (int) (screenWidth * 0.035);
-		int height = (int) (screenHeight * 0.045);
+		int width = (int) (Constants.SCREEN_SIZE.getWidth() * 0.035);
+		int height = (int) (Constants.SCREEN_SIZE.getHeight() * 0.045);
 		
 		if (this.jumping) {
-			canvas.drawImage(getAngledImage(-15), x, y, width, height, null);
+			canvas.drawImage(getAngledImage(-Constants.CHARACTER_ANGLE_DEGREES), x, y, width, height, null);
 		} else {
-			canvas.drawImage(getAngledImage(15), x, y, width, height, null);
+			canvas.drawImage(getAngledImage(Constants.CHARACTER_ANGLE_DEGREES), x, y, width, height, null);
 		}
 
 		if (this.isHit()) {

@@ -1,7 +1,5 @@
 package main.utilities;
 
-import java.awt.Toolkit;
-
 public class Position {
 	//the range of these integers is from 0 to the screen size
 	private int x; 
@@ -15,11 +13,10 @@ public class Position {
 	}
 	
 	private boolean validPosition(int x, int y) {
-		//I get the screen size to check if the position is in the right range
-		int maxWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-		int maxHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 		
-		if(x<=maxWidth && y<=maxHeight) {
+		if(x <= Constants.SCREEN_SIZE.getWidth() 
+			&& y <= Constants.SCREEN_SIZE.getHeight()) {
+			
 			return true;
 		}
 		else {
