@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
 
@@ -15,8 +16,8 @@ public class ScrollingBackground {
 	private Background backTwo;
 
 	public ScrollingBackground(String name, String imageFile) {
-		backOne = new Background(name, getImageResource(imageFile));
-		backTwo = new Background(name, getImageResource(imageFile),
+		backOne = new Background(name, CommonMethods.getImageResource(imageFile));
+		backTwo = new Background(name, CommonMethods.getImageResource(imageFile),
 				new Position((int) Constants.SCREEN_SIZE.getWidth(), 0));
 	}
 
@@ -24,17 +25,5 @@ public class ScrollingBackground {
 	public void animate(Graphics2D canvas) {
 		backOne.animate(canvas);
 		backTwo.animate(canvas);
-	}
-
-	// Utility method to get image resource (might move this function to reduce code
-	// duplication)
-	public Image getImageResource(String imageName) {
-		try {
-			return ImageIO.read(getClass().getResource("/resources/images/" + imageName));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return null;
 	}
 }
