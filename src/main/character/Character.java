@@ -3,18 +3,15 @@ package main.character;
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
 import main.state_changers.StateChanger;
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
 
 import javax.swing.Timer;
 
@@ -126,7 +123,7 @@ public class Character extends Movable {
 	public void collideBorders() {
 		//variables to make it more readable
 		int characterUpperPointOfCollision = this.getPosition().getY();
-		int characterLowerPointOfCollision = this.getPosition().getY() + (int) this.getSkin().getImage().getHeight(null);
+		int characterLowerPointOfCollision = this.getPosition().getY() + (int) this.skin.getImage().getHeight(null);
 		int upperBorder = 0;
 		int lowerBorder = (int) Constants.SCREEN_SIZE.getHeight();
 		
@@ -165,13 +162,13 @@ public class Character extends Movable {
 		
 		int x = this.getPosition().getX();
 		int y = this.getPosition().getY();
-		int width = (int) (Constants.SCREEN_SIZE.getWidth() * 0.035);
-		int height = (int) (Constants.SCREEN_SIZE.getHeight() * 0.045);
+		int percentage = 4;
+		int width = CommonMethods.getPixelsFromPercentage(percentage);
 		
 		if (this.jumping) {
-			canvas.drawImage(getAngledImage(-Constants.CHARACTER_ANGLE_DEGREES), x, y, width, height, null);
+			canvas.drawImage(CommonMethods.getAngledImage(this.skin.getImage(), -Constants.CHARACTER_ANGLE_DEGREES), x, y, width, width, null);
 		} else {
-			canvas.drawImage(getAngledImage(Constants.CHARACTER_ANGLE_DEGREES), x, y, width, height, null);
+			canvas.drawImage(CommonMethods.getAngledImage(this.skin.getImage(), Constants.CHARACTER_ANGLE_DEGREES), x, y, width, width, null);
 		}
 
 		if (this.isHit()) {
@@ -186,29 +183,6 @@ public class Character extends Movable {
 		int value = jumping ? -2 : 1;
 		this.getPosition().setY(this.getPosition().getY() + value);
 
-	}
-	
-	private Image getAngledImage(int degrees) {
-		double rotationRequired = Math.toRadians(degrees);
-		double locationX = this.skin.getImage().getWidth(null) / 2;
-		double locationY = this.skin.getImage().getHeight(null) / 2;
-		AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
-		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-
-		return op.filter(toBufferedImage(this.skin.getImage()), null);
-	}
-
-	private static BufferedImage toBufferedImage(Image img) {
-		if (img instanceof BufferedImage) {
-			return (BufferedImage) img;
-		}
-
-		BufferedImage bimage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-		Graphics2D bGr = bimage.createGraphics();
-		bGr.drawImage(img, 0, 0, null);
-		bGr.dispose();
-
-		return bimage;
 	}
 	
 }
