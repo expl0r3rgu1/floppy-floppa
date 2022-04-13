@@ -46,7 +46,7 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 			}
 		}
 	}
-	
+
 	private void movingPatternSupportX() {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
 	}
