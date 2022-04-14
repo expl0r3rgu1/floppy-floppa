@@ -120,16 +120,14 @@ public class Shop {
 					String word = nextscanner.next();
 					this.coins = Integer.parseInt(word);
 				}
-				counter++;
-				continue;
 			} else if (counter == 1) {
 				this.getSkinsInfo(scanner, this.skins);
-				counter++;
-				continue;
+
 			} else if (counter == 2) {
 				this.getScenerisInfo(scanner, this.sceneries);
+				break;
 			}
-			break;
+			counter++;
 		}
 		scanner.close();
 	}
@@ -189,13 +187,13 @@ public class Shop {
 				if (line.isEmpty()) {
 					line.concat("1");
 				} else {
-					line.concat(" 1");
+					line.concat(",1");
 				}
 			} else {
 				if (line.isEmpty()) {
 					line.concat("0");
 				} else {
-					line.concat(" 0");
+					line.concat(",0");
 				}
 			}
 		});
@@ -207,6 +205,11 @@ public class Shop {
 			String word = scanner.next();
 			if (word.equals("1")) {
 				purchaseStatus.purchase();
+			} else if (word.equals(",")) {
+				word = scanner.next();
+				if (word.equals("1")) {
+					purchaseStatus.purchase();
+				}
 			}
 		}
 	}
