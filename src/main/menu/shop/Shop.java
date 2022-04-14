@@ -207,6 +207,11 @@ public class Shop {
 			String word = scanner.next();
 			if (word.equals("1")) {
 				purchaseStatus.purchase();
+			} else if (word.equals(",")) {
+				word = scanner.next();
+				if (word.equals("1")) {
+					purchaseStatus.purchase();
+				}
 			}
 		}
 	}
