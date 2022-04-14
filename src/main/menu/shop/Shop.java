@@ -189,13 +189,13 @@ public class Shop {
 				if (line.isEmpty()) {
 					line.concat("1");
 				} else {
-					line.concat(" 1");
+					line.concat(",1");
 				}
 			} else {
 				if (line.isEmpty()) {
 					line.concat("0");
 				} else {
-					line.concat(" 0");
+					line.concat(",0");
 				}
 			}
 		});
