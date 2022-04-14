@@ -1,13 +1,9 @@
 package main.obstacles;
 
-import java.awt.Image;
-import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.print.attribute.standard.Sides;
 import javax.swing.Timer;
 
 import main.utilities.Constants;
@@ -18,28 +14,44 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 
 	private Timer timer;
 	private int shift;
+	private int counter;
+	private int firstPositionShift;
+	private int PositionShift;
+	private int upShift;
+	private int downShift;
 
 	public MovingObstacle(Position position, Skin skin) {
 		super(position, skin);
-		this.timer = new Timer(300, this);
+		counter = 0;
+		firstPositionShift = 5;
+		PositionShift = 10;
+		upShift = 1;
+		downShift = -1;
+		this.timer = new Timer(Constants.CHANGE_DIRECTION_TIMEOUT, this);
 	}
 
 	public void movingPattern() {
 		while (true) {
-			if (getPosition().getY() == ((int) Constants.SCREEN_SIZE.getHeight()) / 2) {
+			this.movingPatternSupportX();
+			if (counter == 0) {
 
-				this.movingPatternSupport(5, 1);
+				this.movingPatternSupportY(this.firstPositionShift, this.upShift);
+				counter++;
 
 			} else {
 
-				this.movingPatternSupport(10, -1);
+				this.movingPatternSupportY(this.PositionShift, this.downShift);
 
-				this.movingPatternSupport(10, 1);
+				this.movingPatternSupportY(this.PositionShift, this.upShift);
 			}
 		}
 	}
 
-	private void movingPatternSupport(int end, int shift) {
+	private void movingPatternSupportX() {
+		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+	}
+
+	private void movingPatternSupportY(int end, int shift) {
 		for (int i = 0; i < end; i++) {
 			this.shift = shift;
 			this.timer.start();
@@ -56,7 +68,7 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		setPosition(getPosition().getY() + shift);
+		setPosition(new Position(getPosition().getX(), getPosition().getY() + shift));
 		timer.stop();
 	}
 
