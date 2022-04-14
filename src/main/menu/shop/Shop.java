@@ -128,8 +128,8 @@ public class Shop {
 				continue;
 			} else if (counter == 2) {
 				this.getScenerisInfo(scanner, this.sceneries);
+				break;
 			}
-			break;
 		}
 		scanner.close();
 	}
