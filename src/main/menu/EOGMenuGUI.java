@@ -21,6 +21,10 @@ import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJLabel;
 
+/**
+ * The End Of Game class implements the panel shown at the end of a game
+ */
+
 public class EOGMenuGUI extends JPanel {
 
 	private static final long serialVersionUID = -6834009314888626973L;
@@ -31,6 +35,15 @@ public class EOGMenuGUI extends JPanel {
 	private int malusTimes;
 	private int boosterTImes;
 
+	/**
+	 * 
+	 * @param mainMenu        Used to show card layouts
+	 * @param metersTravelled The meters that the Character traveled during the game
+	 * @param reducerTimes    How many times the character hit the CoinsReducer
+	 *                        malus
+	 * @param incrementTimes  How many times the character hit the CoinsIncrement
+	 *                        booster
+	 */
 	public EOGMenuGUI(MainMenu mainMenu, int metersTravelled, int reducerTimes, int incrementTimes) {
 		this.eogMenu = new EOGMenu(metersTravelled, reducerTimes, incrementTimes);
 		this.mainMenu = mainMenu;
@@ -56,6 +69,9 @@ public class EOGMenuGUI extends JPanel {
 				(int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
 
+	/**
+	 * Main class method, it correctly creates and placed the various GUI components
+	 */
 	private void placeGUIComponents() {
 		for (int i = 0; i < 3; i++) {
 			if (i == 0) {
