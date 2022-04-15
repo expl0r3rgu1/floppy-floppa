@@ -28,8 +28,9 @@ public class CoinsIncrement extends Booster {
 	}
 
 	/**
-	 * The method sets the CoinsIncrement booster with a new Position that leaves
-	 * the Y position unchanged, while the X position decreases by one pixel
+	 * The method gives the CoinsIncrement booster a new Position that leaves the Y
+	 * position unchanged, while the X position decreases by one pixel so that the
+	 * object moves from right to left
 	 */
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
