@@ -21,7 +21,7 @@ public class BlackStain extends Malus implements ActionListener{
 	//Dirty Screen
 	private String blackstains;
 	private StainPanel stain;
-	Timer timer = new Timer(300, this);
+	Timer timer = new Timer(Constants.CHANGED_STATE_TIME, this);
 	
 	public BlackStain(Position position, Skin skin) {
 		super(position, skin);
