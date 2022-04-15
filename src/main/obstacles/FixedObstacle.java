@@ -8,13 +8,13 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import main.obstacles.Obstacle;
+import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
 
 public class FixedObstacle extends Obstacle {
 
-	public static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-	public static final double space = (SIZE.getHeight()) / 7; // hole the floppa will pass throught
+	public static final double space = (Constants.SCREEN_SIZE.getHeight()) / 7; // hole the floppa will pass throught
 	private int movingFactor = 1;
 
 	public FixedObstacle(Position position, Skin skin) {
@@ -24,9 +24,10 @@ public class FixedObstacle extends Obstacle {
 	@Override
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition().getX(), (int) (getPosition().getY() + (space) / 2),
-				(int) (SIZE.getWidth()) / 10, (int) (SIZE.getHeight() - (getPosition().getY() + (space) / 2)), null);
+				(int) (Constants.SCREEN_SIZE.getWidth()) / 10,
+				(int) (Constants.SCREEN_SIZE.getHeight() - (getPosition().getY() + (space) / 2)), null);
 		canvas.drawImage(getUpsidedownImage(getSkin().getImage()), getPosition().getX(), 0,
-				(int) (SIZE.getWidth()) / 10, (int) (getPosition().getY() - (space) / 2), null);
+				(int) (Constants.SCREEN_SIZE.getWidth()) / 10, (int) (getPosition().getY() - (space) / 2), null);
 
 		updatePosition(movingFactor);
 	}
