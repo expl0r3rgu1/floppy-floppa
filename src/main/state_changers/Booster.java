@@ -2,34 +2,34 @@ package main.state_changers;
 
 import java.awt.Graphics2D;
 
+import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
 
 /**
  * A class that implements an object that helps the character in different ways
  */
-public class Booster extends StateChanger {
+public class Booster extends Movable {
+
+	private Skin skin;
 
 	/**
 	 * @param position the booster initial position
 	 * @param skin     the booster skin
 	 */
 	public Booster(Position position, Skin skin) {
-		super(position, skin);
+		super(position);
+		this.skin = skin;
 	}
 
-	/**
-	 * A factory method that creates a booster
-	 * 
-	 * @param position the initial booster position
-	 * @param skin     the booster skin
-	 * @return a new booster
-	 */
-	public static Booster factoryBooster(Position position, Skin skin) {
-		return new Booster(position, skin);
+	public Skin getSkin() {
+		return skin;
 	}
 
-	@Override
+	public void setSkin(Skin skin) {
+		this.skin = skin;
+	}
+
 	public Object changeState() {
 		return null;
 		// TO BE IMPLEMENTED IN SUB-CLASSES
