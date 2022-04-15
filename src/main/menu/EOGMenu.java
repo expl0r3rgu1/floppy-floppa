@@ -1,10 +1,13 @@
 package main.menu;
 
 import main.menu.shop.Shop;
+import main.state_changers.CoinsIncrement;
+import main.state_changers.CoinsReducer;
 
 public class EOGMenu implements Menu {
 
 	private int previousCoins;
+	private Shop shop;
 
 	/**
 	 * @param metersTravelled The meters that the Character traveled during the game
@@ -14,7 +17,8 @@ public class EOGMenu implements Menu {
 	 *                        booster
 	 */
 	public EOGMenu(int metersTravelled, int reducerTimes, int incrementTimes) {
-		this.previousCoins = Shop.getCoins();
+		shop = new Shop();
+		this.previousCoins = shop.getCoins();
 		this.updateCoins(metersTravelled, reducerTimes, incrementTimes);
 	}
 
@@ -38,7 +42,7 @@ public class EOGMenu implements Menu {
 	protected int updateCoins(int meters, int reducerTimes, int incrementTimes) {
 		int newCoins = this.previousCoins + ((int) Math.floor(meters / 5) - this.updateCoinsReduce(reducerTimes)
 				+ this.updateCoinsIncrease(incrementTimes));
-		Shop.setCoins(newCoins);
+		shop.setCoins(newCoins);
 		this.previousCoins = newCoins;
 		return newCoins;
 	}
