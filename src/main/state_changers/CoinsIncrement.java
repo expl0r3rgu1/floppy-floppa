@@ -1,12 +1,8 @@
 package main.state_changers;
 
-import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Toolkit;
 import java.util.Random;
-
 import main.utilities.CommonMethods;
-import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
 
