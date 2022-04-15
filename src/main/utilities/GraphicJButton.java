@@ -6,10 +6,20 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+/**
+ * A class that extends JButton adding graphic features for the button
+ */
 public class GraphicJButton extends JButton {
 
 	private static final long serialVersionUID = 3550487230752126610L;
 
+	/**
+	 * @param name            String that will appear on the Button
+	 * @param backgroundColor Button background color
+	 * @param borderColor     Button borders color
+	 * @param font            Font for the String that is shown on the Button
+	 * @param fontAppearance  how the font will appear (bold, italic, plain...)
+	 */
 	public GraphicJButton(String name, Color backgroundColor, Color borderColor, String font, int fontAppearance) {
 		super(name);
 		this.setBackground(backgroundColor);
