@@ -10,6 +10,10 @@ import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
 
+/**
+ * A class that implements an Obstacle that changes its position on the map
+ *
+ */
 public class MovingObstacle extends Obstacle implements ActionListener {
 
 	private Timer timer;
@@ -20,6 +24,10 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 	private int upShift;
 	private int downShift;
 
+	/**
+	 * @param position the obstacle initial position
+	 * @param skin     the obstacle Skin
+	 */
 	public MovingObstacle(Position position, Skin skin) {
 		super(position, skin);
 		counter = 0;
@@ -30,6 +38,9 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 		this.timer = new Timer(Constants.CHANGE_DIRECTION_TIMEOUT, this);
 	}
 
+	/**
+	 * This method changes the Obstacle X and Y positions through time
+	 */
 	public void movingPattern() {
 		while (true) {
 			this.movingPatternSupportX();
@@ -47,10 +58,22 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 		}
 	}
 
+	/**
+	 * It sets a new position for the object, where its X position is decreased by 1
+	 * pixel, so that the moving obstacle keeps moving from right to left
+	 */
 	private void movingPatternSupportX() {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
 	}
 
+	/**
+	 * For end times the method calls a timer, after
+	 * Constants.CHANGE_DIRECTION_TIMEOUT milliseconds the actionPermormed method is
+	 * called and the Y position changes according to the shift field
+	 * 
+	 * @param end
+	 * @param shift Determines if the position will increment or decrement
+	 */
 	private void movingPatternSupportY(int end, int shift) {
 		for (int i = 0; i < end; i++) {
 			this.shift = shift;
