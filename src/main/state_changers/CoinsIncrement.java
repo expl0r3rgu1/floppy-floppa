@@ -13,14 +13,12 @@ import main.utilities.Skin;
 /**
  * A class that extends Booster class and implements an entity that randomly
  * gifts coins to the main character every time they hit this booster.
- *
  */
 public class CoinsIncrement extends Booster {
 
 	private Random rand;
 
 	/**
-	 * 
 	 * @param position The CoinsIncrement initial position
 	 * @param skin     The CoinsIncrement skin
 	 */
@@ -29,6 +27,11 @@ public class CoinsIncrement extends Booster {
 		rand = new Random();
 	}
 
+	/**
+	 * The method gives the CoinsIncrement booster a new Position that leaves the Y
+	 * position unchanged, while the X position decreases by one pixel so that the
+	 * object moves from right to left
+	 */
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
 	}

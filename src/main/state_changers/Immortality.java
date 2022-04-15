@@ -13,10 +13,8 @@ import main.utilities.Position;
 import main.utilities.Skin;
 
 /**
- * 
  * A class that extends Booster class and implements an entity that makes the
  * character immortal if hit by them
- *
  */
 public class Immortality extends Booster {
 
@@ -24,7 +22,6 @@ public class Immortality extends Booster {
 	private Timer timer;
 
 	/**
-	 * 
 	 * @param position The CoinsIncrement initial position
 	 * @param skin     The CoinsIncrement skin
 	 */
@@ -42,7 +39,6 @@ public class Immortality extends Booster {
 	}
 
 	/**
-	 * 
 	 * @return immortal, true if the character has hit the booster, false otherwise
 	 */
 	public boolean isImmortal() {
@@ -58,6 +54,11 @@ public class Immortality extends Booster {
 		this.immortal = immortal;
 	}
 
+	/**
+	 * The method gives the Immortality booster a new Position that leaves the Y
+	 * position unchanged, while the X position decreases by one pixel so that the
+	 * object moves from right to left
+	 */
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
 	}
