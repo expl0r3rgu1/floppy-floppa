@@ -5,6 +5,7 @@ import main.menu.shop.Shop;
 public class EOGMenu implements Menu {
 
 	private int previousCoins;
+	private Shop shop;
 
 	/**
 	 * @param metersTravelled The meters that the Character traveled during the game
@@ -14,6 +15,7 @@ public class EOGMenu implements Menu {
 	 *                        booster
 	 */
 	public EOGMenu(int metersTravelled, int reducerTimes, int incrementTimes) {
+		shop = new Shop();
 		this.previousCoins = Shop.getCoins();
 		this.updateCoins(metersTravelled, reducerTimes, incrementTimes);
 	}
