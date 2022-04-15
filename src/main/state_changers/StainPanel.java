@@ -1,11 +1,8 @@
 package main.state_changers;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -14,6 +11,7 @@ import main.utilities.Constants;
 
 class StainPanel extends JPanel {
 
+	private static final long serialVersionUID = 9048749950295388684L;
 	private Image image;
 
 	public StainPanel(String imageName) {
