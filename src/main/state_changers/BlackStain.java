@@ -1,5 +1,7 @@
 package main.state_changers;
 
+import main.utilities.Constants;
+import main.utilities.Position;
 import main.utilities.Skin;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,10 +19,9 @@ import javax.swing.Timer;
 public class BlackStain extends Malus implements ActionListener{
 	
 	//Dirty Screen
-	public static final Dimension SIZE = Toolkit.getDefaultToolkit().getScreenSize();
 	private String blackstains;
 	private StainPanel stain;
-	Timer timer = new Timer(300, this);
+	Timer timer = new Timer(Constants.CHANGED_STATE_TIME, this);
 	
 	public BlackStain(Position position, Skin skin) {
 		super(position, skin);
@@ -36,7 +37,8 @@ public class BlackStain extends Malus implements ActionListener{
 	}
 	
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(), SIZE.getWidth() * 3 / 100, SIZE.getWidth() * 3 / 100, null);
+		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
+				(int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, null);
 	}
 
 	@Override
