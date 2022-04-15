@@ -18,6 +18,11 @@ import main.utilities.GraphicJButton;
 import main.utilities.GraphicJButtonWithObject;
 import main.utilities.GraphicJLabel;
 
+/**
+ * A class that shows Shop
+ *
+ */
+
 public class ShopGUI extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
@@ -32,6 +37,9 @@ public class ShopGUI extends JPanel {
 	private ArrayList<String> prices = new ArrayList<>(
 			Arrays.asList("0", "50", "100", "200", "500", "0", "50", "100", "200", "500"));
 
+	/**
+	 * @param mainMenu needed to correctly show card layouts
+	 */
 	public ShopGUI(MainMenu mainMenu) {
 
 		shop = new Shop();
@@ -56,10 +64,24 @@ public class ShopGUI extends JPanel {
 				(int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
 
+	/**
+	 * Returns a scaled version of the image parameter
+	 * 
+	 * @param image the image to scale
+	 * @param dim   the Dimension to which to scale the image
+	 * @return a scaled version of the image parameter
+	 */
 	private Image scale(Image image, Dimension dim) {
 		return image.getScaledInstance((int) dim.getWidth(), (int) dim.getHeight(), Image.SCALE_DEFAULT);
 	}
 
+	/**
+	 * The method reads an image file and creates the corresponding Image object
+	 * which gets also scaled
+	 * 
+	 * @param fileName
+	 * @return a JLabel containing the newly created Image
+	 */
 	private JLabel imageCreation(String fileName) {
 		JLabel label = null;
 		Image image = CommonMethods.getImageResource(fileName);
@@ -69,6 +91,9 @@ public class ShopGUI extends JPanel {
 		return label;
 	}
 
+	/**
+	 * Main class method, it correctly creates and placed the various GUI components
+	 */
 	private void placeGUIComponents() {
 
 		for (int i = 0; i < numBackgrounds + numSkins; i++) {
@@ -112,6 +137,14 @@ public class ShopGUI extends JPanel {
 		}
 	}
 
+	/**
+	 * Considering the grid as a matrix, the method creates and places labels and
+	 * buttons either for PricedSkin items or PricedBackground items depending on
+	 * the given argument i
+	 * 
+	 * @param i Index used to correctly place components in the GridBagLayout
+	 * @return the index to correctly placed the next items
+	 */
 	private int placeGUIComponentsSupport(int i) {
 		for (int j = 0; j < numSkins; j++) {
 			GraphicJLabel label = new GraphicJLabel(
