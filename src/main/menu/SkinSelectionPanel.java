@@ -57,12 +57,12 @@ public class SkinSelectionPanel extends JPanel {
 		list = shop.getSkins();
 		list.get(0).isPurchased()//se è true allora è stato comprato
 		
-		this.placeGUIComponents();
+		this.placeLabels();
 
 		this.setVisible(true);
 	}
 
-	private void placeGUIComponents() {
+	private void placeLabels() {
 
 		for (int i = 0; i < numBackgrounds + numSkins; i++) {
 			if (i == 1) {
@@ -88,9 +88,6 @@ public class SkinSelectionPanel extends JPanel {
 				this.add(backMenu,
 						new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(3)), 0, 0, 0)));
 
-
-			} else if (i == 2 || i == 6) {
-				i = this.placeGUIComponentsSupport(i);
 			}
 		}
 	}
