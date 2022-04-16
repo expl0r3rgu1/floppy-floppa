@@ -69,11 +69,11 @@ public class MovingObstacle extends Movable implements ActionListener {
 	}
 
 	/**
-	 * It sets a new position for the object, where its X position is decreased by 1
-	 * pixel, so that the moving obstacle keeps moving from right to left
+	 * It sets a new position for the object, where its X position is decreased by 3
+	 * pixels, so that the moving obstacle keeps moving from right to left
 	 */
 	private void movingPatternSupportX() {
-		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+		setPosition(new Position(getPosition().getX() - 3, getPosition().getY()));
 	}
 
 	/**
