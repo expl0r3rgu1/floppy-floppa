@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Movable;
 import main.utilities.Position;
@@ -34,8 +35,8 @@ public class MovingObstacle extends Movable implements ActionListener {
 		super(position);
 		this.skin = skin;
 		counter = 0;
-		firstPositionShift = 5;
-		PositionShift = 10;
+		firstPositionShift = CommonMethods.getPixelsFromPercentage(15);
+		PositionShift = CommonMethods.getPixelsFromPercentage(30);
 		upShift = 1;
 		downShift = -1;
 		this.timer = new Timer(Constants.CHANGE_DIRECTION_TIMEOUT, this);
