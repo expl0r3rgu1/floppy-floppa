@@ -49,24 +49,12 @@ public class Map {
 		return scrollingBackground;
 	}
 
-	public void setScrollingBackground(ScrollingBackground scrollingBackground) {
-		this.scrollingBackground = scrollingBackground;
-	}
-
 	public FixedObstacle getFixedObstacle() {
 		return fixedObstacle;
 	}
 
-	public void setFixedObstacle(FixedObstacle fixedObstacle) {
-		this.fixedObstacle = fixedObstacle;
-	}
-
 	public List<MovingObstacle> getMovingObstacles() {
 		return movingObstacles;
-	}
-
-	public void setMovingObstacles(List<MovingObstacle> movingObstacles) {
-		this.movingObstacles = movingObstacles;
 	}
 
 	// Method that spawns a FixedObstacle cloned from this.fixedObstacle
