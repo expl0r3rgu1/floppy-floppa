@@ -65,10 +65,12 @@ public class Map {
 
 	// Method that spawns a FixedObstacle cloned from this.fixedObstacle
 	protected void addFixedObstacle() {
-		this.paintedFixedObstacles.add((FixedObstacle) Obstacle.factoryObstacle(this.fixedObstacle.getSkin(),
-				new Position((int) Constants.SCREEN_SIZE.getWidth(),
-						getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
-								(int) (Constants.SCREEN_SIZE.getHeight() * 0.75)))));
+		this.paintedFixedObstacles
+				.add(obstacleFactory.fixedObstacleFactory(
+						new Position((int) Constants.SCREEN_SIZE.getWidth(),
+								getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
+										(int) (Constants.SCREEN_SIZE.getHeight() * 0.75))),
+						this.fixedObstacle.getSkin()));
 	}
 
 	// Utility method to generate random integer in range (consider moving it)
