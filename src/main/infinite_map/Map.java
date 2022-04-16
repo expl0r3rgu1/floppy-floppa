@@ -3,6 +3,7 @@ package main.infinite_map;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -21,12 +22,15 @@ public class Map {
 	private final FixedObstacle fixedObstacle;
 	private final List<MovingObstacle> movingObstacles; // Every kind of MovingObstacle available to spawn
 
-	private final List<FixedObstacle> paintedFixedObstacles; // Set of FixedObstacle that need to be or are being painted
-	private final List<MovingObstacle> paintedMovingObstacles; // Set of MovingObstacle that need to be or are being painted
+	private final List<FixedObstacle> paintedFixedObstacles; // Set of FixedObstacle that need to be or are being
+																// painted
+	private final List<MovingObstacle> paintedMovingObstacles; // Set of MovingObstacle that need to be or are being
+																// painted
 
-	private final TimedFixedObstacleGenerator timedFixedObstacleGenerator; // Timer that manages when to spawn a FixedObstacle
+	private final TimedFixedObstacleGenerator timedFixedObstacleGenerator; // Timer that manages when to spawn a
+																			// FixedObstacle
 	private final TimedMovingObstacleGenerator timedMovingObstacleGenerator; // Timer that manages when to spawn a
-																		// MovingObstacle
+	// MovingObstacle
 	private final ObstacleFactory obstacleFactory;
 
 	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle,
@@ -34,6 +38,8 @@ public class Map {
 		this.scrollingBackground = scrollingBackground;
 		this.fixedObstacle = fixedObstacle;
 		this.movingObstacles = movingObstacles;
+		this.paintedFixedObstacles = new ArrayList<>();
+		this.paintedMovingObstacles = new ArrayList<>();
 		this.timedFixedObstacleGenerator = new TimedFixedObstacleGenerator(this);
 		this.timedMovingObstacleGenerator = new TimedMovingObstacleGenerator(this);
 		this.obstacleFactory = new ObstacleFactoryImpl();
