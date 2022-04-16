@@ -1,8 +1,6 @@
 package main.state_changers;
 
-import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -72,7 +70,7 @@ public class Immortality extends Booster {
 
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), getPosition.getX(), getPosition.getY(),
+		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
 				CommonMethods.getPixelsFromPercentage(3), CommonMethods.getPixelsFromPercentage(3), null);
 
 		this.updatePositionX();

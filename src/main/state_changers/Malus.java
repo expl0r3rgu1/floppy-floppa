@@ -2,20 +2,27 @@ package main.state_changers;
 
 import java.awt.Graphics2D;
 
+import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
 
-public class Malus extends StateChanger {
+public class Malus extends Movable {
+
+	private Skin skin;
 
 	protected Malus(Position position, Skin skin) {
-		super(position, skin);
+		super(position);
+		this.skin = skin;
 	}
 
-	public static Malus factoryMalus(Position position, Skin skin) {
-		return new Malus(position, skin);
+	public Skin getSkin() {
+		return skin;
 	}
 
-	@Override
+	public void setSkin(Skin skin) {
+		this.skin = skin;
+	}
+
 	public Object changeState() {
 		return null;
 		// TO BE IMPLEMENTED IN SUB-CLASSES
