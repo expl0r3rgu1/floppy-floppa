@@ -105,7 +105,7 @@ public class SkinSelectionPanel extends JPanel {
 				
 			} else if (i == 3 || i == 7) {
 				
-				this.selectButton(i);
+				this.getselectButton(i);
 				
 			}
 		}
@@ -114,7 +114,7 @@ public class SkinSelectionPanel extends JPanel {
 	private int getLNameImage(int i) {
 		for (int j = 0; j < numSkins; j++) {
 			GraphicJLabel label = new GraphicJLabel((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)),
-					Color.decode("#77DD77"), Color.decode("#007542"), "Arial", Font.PLAIN);
+					Color.decode("#77DD77"), Color.decode("#007542"), "fipps.otf", (float) Constants.SCREEN_SIZE.getWidth() / 120);
 			this.add(label,
 					new GBCSimplified(j, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
 			this.add(this.imageCreation((i == 1 ? labelNames.get(j) : labelNames.get(j + 5))),
@@ -123,7 +123,7 @@ public class SkinSelectionPanel extends JPanel {
 		return i + 1;
 	}
 	
-	private void selectButton(int i) {
+	private void getselectButton(int i) {
 		for (int j = 0; j < numSkins; j++) {
 			JButton selectButton = generateButton("SELECT", "fipps.otf");
 //			bought = (i == 4 ? skinList.get(j).isPurchased() : backgroundList.get(j).isPurchased());
