@@ -22,9 +22,8 @@ public class MainMenu extends JPanel implements Menu {
 
 	}
 	
-	public void showCard(String cardName) {
-		CardLayout cl = (CardLayout) (this.getLayout());
-		cl.show(this, cardName);
+	public void showCard(Constants.PANEL panel) {
+		cardLayout.show(this, panel.name());
 	}
 
 }
