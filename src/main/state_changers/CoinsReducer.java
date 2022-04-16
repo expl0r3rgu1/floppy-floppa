@@ -21,10 +21,16 @@ public class CoinsReducer extends Malus {
 		return malus.get((int) (Math.random() * (malus.size())));
 	}
 
+	private void updatePositionX() {
+		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+	}
+	
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
 				(int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100,
 				null);
+		
+		this.updatePositionX();
 	}
 
 }
