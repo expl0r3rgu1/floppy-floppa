@@ -2,6 +2,7 @@ package main.character;
 
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
+import main.state_changers.Booster;
 import main.state_changers.Malus;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
@@ -118,6 +119,18 @@ public class Character extends Movable {
 		
 		if(this.checkCollision(x, y, height, width)) {
 			malus.changeState();
+		}
+	}
+	
+	public void collide(Booster booster) {
+		//variables to make it more readable
+		int x = booster.getPosition().getX();
+		int y = booster.getPosition().getY();
+		int height = (int) booster.getSkin().getImage().getHeight(null);
+		int width = (int) booster.getSkin().getImage().getWidth(null);
+		
+		if(this.checkCollision(x, y, height, width)) {
+			booster.changeState();
 		}
 	}
 	
