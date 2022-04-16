@@ -16,6 +16,11 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		super("Floppy-Floppa");
 		
+		this.gameSettings = new GameSettings();
+		this.mainMenu = new MainMenu(this.gameSettings);
+		
+		this.add(mainMenu);
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setUndecorated(true);
 		device.setFullScreenWindow(this);
