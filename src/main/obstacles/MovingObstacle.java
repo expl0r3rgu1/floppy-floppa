@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Movable;
 import main.utilities.Position;
@@ -34,8 +35,8 @@ public class MovingObstacle extends Movable implements ActionListener {
 		super(position);
 		this.skin = skin;
 		counter = 0;
-		firstPositionShift = 5;
-		PositionShift = 10;
+		firstPositionShift = CommonMethods.getPixelsFromPercentage(5);
+		PositionShift = CommonMethods.getPixelsFromPercentage(10);
 		upShift = 1;
 		downShift = -1;
 		this.timer = new Timer(Constants.CHANGE_DIRECTION_TIMEOUT, this);
@@ -53,28 +54,26 @@ public class MovingObstacle extends Movable implements ActionListener {
 	 * This method changes the Obstacle X and Y positions through time
 	 */
 	public void movingPattern() {
-		while (true) {
-			this.movingPatternSupportX();
-			if (counter == 0) {
+		this.movingPatternSupportX();
+		if (counter == 0) {
 
-				this.movingPatternSupportY(this.firstPositionShift, this.upShift);
-				counter++;
+			this.movingPatternSupportY(this.firstPositionShift, this.upShift);
+			counter++;
 
-			} else {
+		} else {
 
-				this.movingPatternSupportY(this.PositionShift, this.downShift);
+			this.movingPatternSupportY(this.PositionShift, this.downShift);
 
-				this.movingPatternSupportY(this.PositionShift, this.upShift);
-			}
+			this.movingPatternSupportY(this.PositionShift, this.upShift);
 		}
 	}
 
 	/**
-	 * It sets a new position for the object, where its X position is decreased by 1
-	 * pixel, so that the moving obstacle keeps moving from right to left
+	 * It sets a new position for the object, where its X position is decreased by 3
+	 * pixels, so that the moving obstacle keeps moving from right to left
 	 */
 	private void movingPatternSupportX() {
-		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+		setPosition(new Position(getPosition().getX() - 3, getPosition().getY()));
 	}
 
 	/**
@@ -92,14 +91,20 @@ public class MovingObstacle extends Movable implements ActionListener {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(this.getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				(int) (Constants.SCREEN_SIZE.getWidth()) / 20, (int) (Constants.SCREEN_SIZE.getWidth()) / 10, null);
+				CommonMethods.getPixelsFromPercentage(10), CommonMethods.getPixelsFromPercentage(10), null);
 
 		this.movingPattern();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		setPosition(new Position(getPosition().getX(), getPosition().getY() + shift));
