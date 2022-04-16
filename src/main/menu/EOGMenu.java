@@ -8,6 +8,8 @@ public class EOGMenu implements Menu {
 
 	private int previousCoins;
 	private Shop shop;
+	private CoinsReducer coinsReducer;
+	private CoinsIncrement coinsIncrement;
 
 	/**
 	 * @param metersTravelled The meters that the Character traveled during the game
@@ -20,6 +22,8 @@ public class EOGMenu implements Menu {
 		shop = new Shop();
 		this.previousCoins = shop.getCoins();
 		this.updateCoins(metersTravelled, reducerTimes, incrementTimes);
+		coinsReducer = new CoinsReducer(null, null);
+		coinsIncrement = new CoinsIncrement(null, null);
 	}
 
 	/**
@@ -54,9 +58,9 @@ public class EOGMenu implements Menu {
 	 * @return the sum of coins that need to be subtracted
 	 */
 	private int updateCoinsReduce(int times) {
-		int sum;
+		int sum = 0;
 		for (int i = 0; i < times; i++) {
-			sum += CoinsReducer.changeState();
+			sum += coinsReducer.changeState();
 		}
 		return sum;
 	}
@@ -68,9 +72,9 @@ public class EOGMenu implements Menu {
 	 * @return the sum of coins that need to be subtracted
 	 */
 	private int updateCoinsIncrease(int times) {
-		int sum;
+		int sum = 0;
 		for (int i = 0; i < times; i++) {
-			sum += CoinsIncrement.changeState();
+			sum += coinsIncrement.changeState();
 		}
 		return sum;
 	}
