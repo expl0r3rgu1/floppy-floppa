@@ -58,9 +58,9 @@ public class EOGMenu implements Menu {
 	 * @return the sum of coins that need to be subtracted
 	 */
 	private int updateCoinsReduce(int times) {
-		int sum;
+		int sum = 0;
 		for (int i = 0; i < times; i++) {
-			sum += CoinsReducer.changeState();
+			sum += coinsReducer.changeState();
 		}
 		return sum;
 	}
@@ -72,9 +72,9 @@ public class EOGMenu implements Menu {
 	 * @return the sum of coins that need to be subtracted
 	 */
 	private int updateCoinsIncrease(int times) {
-		int sum;
+		int sum = 0;
 		for (int i = 0; i < times; i++) {
-			sum += CoinsIncrement.changeState();
+			sum += coinsIncrement.changeState();
 		}
 		return sum;
 	}
