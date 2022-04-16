@@ -9,20 +9,25 @@ import java.util.stream.Collectors;
 
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
+import main.obstacles.ObstacleFactory;
+import main.obstacles.ObstacleFactoryImpl;
 import main.utilities.Constants;
 import main.utilities.Position;
 
 public class Map {
 	// Background and FixedObstacle based on selected scenario
 	private ScrollingBackground scrollingBackground;
-	private FixedObstacle fixedObstacle;
 
+	private FixedObstacle fixedObstacle;
 	private List<MovingObstacle> movingObstacles; // Every kind of MovingObstacle available to spawn
+
 	private Set<FixedObstacle> paintedFixedObstacles; // Set of FixedObstacle that need to be or are being painted
 	private Set<MovingObstacle> paintedMovingObstacles; // Set of MovingObstacle that need to be or are being painted
+
 	private TimedFixedObstacleGenerator timedFixedObstacleGenerator; // Timer that manages when to spawn a FixedObstacle
 	private TimedMovingObstacleGenerator timedMovingObstacleGenerator; // Timer that manages when to spawn a
 																		// MovingObstacle
+	private final ObstacleFactory obstacleFactory;
 
 	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle,
 			List<MovingObstacle> movingObstacles) {
@@ -31,6 +36,7 @@ public class Map {
 		this.movingObstacles = movingObstacles;
 		this.timedFixedObstacleGenerator = new TimedFixedObstacleGenerator(this);
 		this.timedMovingObstacleGenerator = new TimedMovingObstacleGenerator(this);
+		this.obstacleFactory = new ObstacleFactoryImpl();
 	}
 
 	public ScrollingBackground getScrollingBackground() {
