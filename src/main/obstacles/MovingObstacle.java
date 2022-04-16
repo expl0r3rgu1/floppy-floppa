@@ -91,6 +91,9 @@ public class MovingObstacle extends Movable implements ActionListener {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(this.getSkin().getImage(), getPosition().getX(), getPosition().getY(),
@@ -99,6 +102,9 @@ public class MovingObstacle extends Movable implements ActionListener {
 		this.movingPattern();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		setPosition(new Position(getPosition().getX(), getPosition().getY() + shift));
