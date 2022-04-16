@@ -21,8 +21,8 @@ public class Map {
 	private final FixedObstacle fixedObstacle;
 	private final List<MovingObstacle> movingObstacles; // Every kind of MovingObstacle available to spawn
 
-	private final Set<FixedObstacle> paintedFixedObstacles; // Set of FixedObstacle that need to be or are being painted
-	private final Set<MovingObstacle> paintedMovingObstacles; // Set of MovingObstacle that need to be or are being painted
+	private final List<FixedObstacle> paintedFixedObstacles; // Set of FixedObstacle that need to be or are being painted
+	private final List<MovingObstacle> paintedMovingObstacles; // Set of MovingObstacle that need to be or are being painted
 
 	private final TimedFixedObstacleGenerator timedFixedObstacleGenerator; // Timer that manages when to spawn a FixedObstacle
 	private final TimedMovingObstacleGenerator timedMovingObstacleGenerator; // Timer that manages when to spawn a
