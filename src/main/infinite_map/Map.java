@@ -1,12 +1,8 @@
 package main.infinite_map;
 
-import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
