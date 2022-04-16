@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import main.infinite_map.ScrollingBackground;
 import main.menu.shop.PurchaseStatus;
 import main.menu.shop.Shop;
 import main.utilities.CommonMethods;
@@ -28,19 +29,25 @@ import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJButtonWithObject;
 import main.utilities.GraphicJLabel;
+import main.utilities.PricedBackground;
 import main.utilities.PricedSkin;
+import test.Character;
 
 public class SkinSelectionPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
 	private GridBagLayout grid = new GridBagLayout();
+	private Character character;
+	private ScrollingBackground scenario;
 	private Image background;
 	private int numSkins;
 	private int numBackgrounds;
 	private boolean equip = false;
+	private boolean bought = false;
 	private MainMenu mainMenu;
 	private Shop shop;
-	private List<PurchaseStatus<PricedSkin>> list;
+	private List<PurchaseStatus<PricedSkin>> skinList;
+	private List<PurchaseStatus<PricedBackground>> backgroundList;
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
 			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 
@@ -57,16 +64,16 @@ public class SkinSelectionPanel extends JPanel {
 
 		numSkins = shop.getSkinsNum();
 		numBackgrounds = shop.getSceneriesNum();
-		
-		list = shop.getSkins();
-		list.get(0).isPurchased()//se è true allora è stato comprato
-		
-		this.placeLabels();
 
-		this.setVisible(true);
+		skinList = shop.getSkins();
+		backgroundList = shop.getSceneries();
+		this.character = character;
+		this.scenario = scenario;
+
+		this.placeComponents();
 	}
 
-	private void placeLabels() {
+	private void placeComponents() {
 
 		for (int i = 0; i < numBackgrounds + numSkins; i++) {
 			if (i == 1) {
@@ -91,10 +98,59 @@ public class SkinSelectionPanel extends JPanel {
 				backMenu.addActionListener(e -> {
 //					mainMenu.showCard(Constants.PANEL.MENU);
 				});
+				
+			} else if (i == 1 || i == 5) {
+				
+				i = this.getLNameImage(i);
+				
+			} else if (i == 3 || i == 7) {
+				
+				this.selectButton(i);
+				
 			}
 		}
 	}
 
+	private int getLNameImage(int i) {
+		for (int j = 0; j < numSkins; j++) {
+			GraphicJLabel label = new GraphicJLabel((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)),
+					Color.decode("#77DD77"), Color.decode("#007542"), "Arial", Font.PLAIN);
+			this.add(label,
+					new GBCSimplified(j, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
+			this.add(this.imageCreation((i == 1 ? labelNames.get(j) : labelNames.get(j + 5))),
+					new GBCSimplified(j, i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
+		}
+		return i + 1;
+	}
+	
+	private void selectButton(int i) {
+		for (int j = 0; j < numSkins; j++) {
+			JButton selectButton = generateButton("SELECT", "fipps.otf");
+//			bought = (i == 4 ? skinList.get(j).isPurchased() : backgroundList.get(j).isPurchased());
+			bought = false;
+			selectButton.setEnabled(bought);
+			final int index = j;
+			selectButton.addActionListener(e -> {
+//				getImageSkin(i,index);
+			});
+			this.add(selectButton,
+					new GBCSimplified(j, i, (CommonMethods.getPixelsFromPercentage(3)), 0,
+							new Insets((CommonMethods.getPixelsFromPercentage(1)),
+									(CommonMethods.getPixelsFromPercentage(5)), 0,
+									(CommonMethods.getPixelsFromPercentage(5)))));
+		}
+	}
+	
+	private void getImageSkin(int i, int j) {
+		if(i == 4) {
+			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)));
+			character.setSkin(skin);
+		}else {
+			ScrollingBackground scenario = new ScrollingBackground(labelNames.get(j+5), CommonMethods.getImageResource(labelNames.get(j+5)));
+		}
+		
+	}
+	
 	private JButton generateButton(String name, String font) {
 		JButton jb = new JButton(name);
 
