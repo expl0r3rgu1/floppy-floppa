@@ -54,19 +54,17 @@ public class MovingObstacle extends Movable implements ActionListener {
 	 * This method changes the Obstacle X and Y positions through time
 	 */
 	public void movingPattern() {
-		while (true) {
-			this.movingPatternSupportX();
-			if (counter == 0) {
+		this.movingPatternSupportX();
+		if (counter == 0) {
 
-				this.movingPatternSupportY(this.firstPositionShift, this.upShift);
-				counter++;
+			this.movingPatternSupportY(this.firstPositionShift, this.upShift);
+			counter++;
 
-			} else {
+		} else {
 
-				this.movingPatternSupportY(this.PositionShift, this.downShift);
+			this.movingPatternSupportY(this.PositionShift, this.downShift);
 
-				this.movingPatternSupportY(this.PositionShift, this.upShift);
-			}
+			this.movingPatternSupportY(this.PositionShift, this.upShift);
 		}
 	}
 
