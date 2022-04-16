@@ -14,7 +14,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -70,30 +72,45 @@ public class SkinSelectionPanel extends JPanel {
 			if (i == 1) {
 
 				GraphicJLabel skins = new GraphicJLabel("SKINS", Color.decode("#FFDD62"), Color.decode("#FF971A"),
-						"Arial", CommonMethods.getPixelsFromPercentage(10));
-				this.add(skins, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0, new Insets(
-						(CommonMethods.getPixelsFromPercentage(1)), 0, (CommonMethods.getPixelsFromPercentage(2)), 0)));
-
+						"fipps.otf", (float) Constants.SCREEN_SIZE.getWidth() / 100);
+				this.add(skins, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0,
+						new Insets((CommonMethods.getPixelsFromPercentage(1)), 0, 0, 0)));
+			
 			} else if (i == 5) {
 
 				GraphicJLabel backgrounds = new GraphicJLabel("BACKGROUNDS", Color.decode("#FFDD62"),
-						Color.decode("#FF971A"), "Arial", Font.BOLD);
-				backgrounds.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentage(10)),
-						(CommonMethods.getPixelsFromPercentage(5))));
-				this.add(backgrounds, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0, new Insets(
-						(CommonMethods.getPixelsFromPercentage(3)), 0, (CommonMethods.getPixelsFromPercentage(1)), 0)));
+						Color.decode("#FF971A"), "fipps.otf", (float) Constants.SCREEN_SIZE.getWidth() / 100);
+				this.add(backgrounds, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0,
+						new Insets((CommonMethods.getPixelsFromPercentage(3)), 0, 0, 0)));
 
 			} else if (i == numBackgrounds + numSkins - 1) {
 
-				GraphicJButton backMenu = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
-						"Arial", Font.BOLD);
-				this.add(backMenu,
-						new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(3)), 0, 0, 0)));
-
+				JButton backMenu = generateButton("MENU", "fipps.otf");
+				this.add(backMenu, new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)),
+						0, (CommonMethods.getPixelsFromPercentage(1)), 0)));
+				backMenu.addActionListener(e -> {
+//					mainMenu.showCard(Constants.PANEL.MENU);
+				});
 			}
 		}
 	}
 
+	private JButton generateButton(String name, String font) {
+		JButton jb = new JButton(name);
+
+		if (name.equals("MENU")) {
+			jb.setFont(CommonMethods.getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 100));
+			jb.setBackground(Color.decode("#FFDD62"));
+			jb.setBorder(BorderFactory.createLineBorder(Color.decode("#FF971A"), 4, true));
+		} else {
+			jb.setFont(CommonMethods.getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 120));
+			jb.setBackground(Color.decode("#FDFD96"));
+			jb.setBorder(BorderFactory.createLineBorder(Color.decode("#FFDD62"), 4, true));
+
+		}
+		return jb;
+	}
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
