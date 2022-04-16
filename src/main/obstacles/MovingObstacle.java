@@ -35,8 +35,8 @@ public class MovingObstacle extends Movable implements ActionListener {
 		super(position);
 		this.skin = skin;
 		counter = 0;
-		firstPositionShift = CommonMethods.getPixelsFromPercentage(15);
-		PositionShift = CommonMethods.getPixelsFromPercentage(30);
+		firstPositionShift = CommonMethods.getPixelsFromPercentage(5);
+		PositionShift = CommonMethods.getPixelsFromPercentage(10);
 		upShift = 1;
 		downShift = -1;
 		this.timer = new Timer(Constants.CHANGE_DIRECTION_TIMEOUT, this);
