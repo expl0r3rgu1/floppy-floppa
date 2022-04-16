@@ -8,6 +8,8 @@ public class EOGMenu implements Menu {
 
 	private int previousCoins;
 	private Shop shop;
+	private CoinsReducer coinsReducer;
+	private CoinsIncrement coinsIncrement;
 
 	/**
 	 * @param metersTravelled The meters that the Character traveled during the game
@@ -20,6 +22,8 @@ public class EOGMenu implements Menu {
 		shop = new Shop();
 		this.previousCoins = shop.getCoins();
 		this.updateCoins(metersTravelled, reducerTimes, incrementTimes);
+		coinsReducer = new CoinsReducer(null, null);
+		coinsIncrement = new CoinsIncrement(null, null);
 	}
 
 	/**
