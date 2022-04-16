@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import main.utilities.Constants;
+import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
 
@@ -14,7 +15,7 @@ import main.utilities.Skin;
  * A class that implements an Obstacle that changes its position on the map
  *
  */
-public class MovingObstacle extends Obstacle implements ActionListener {
+public class MovingObstacle extends Movable implements ActionListener {
 
 	private Timer timer;
 	private int shift;
@@ -23,19 +24,29 @@ public class MovingObstacle extends Obstacle implements ActionListener {
 	private int PositionShift;
 	private int upShift;
 	private int downShift;
+	private Skin skin;
 
 	/**
 	 * @param position the obstacle initial position
 	 * @param skin     the obstacle Skin
 	 */
 	public MovingObstacle(Position position, Skin skin) {
-		super(position, skin);
+		super(position);
+		this.skin = skin;
 		counter = 0;
 		firstPositionShift = 5;
 		PositionShift = 10;
 		upShift = 1;
 		downShift = -1;
 		this.timer = new Timer(Constants.CHANGE_DIRECTION_TIMEOUT, this);
+	}
+
+	public Skin getSkin() {
+		return skin;
+	}
+
+	public void setSkin(Skin skin) {
+		this.skin = skin;
 	}
 
 	/**

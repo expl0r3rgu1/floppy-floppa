@@ -7,18 +7,28 @@ import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
-import main.obstacles.Obstacle;
 import main.utilities.Constants;
+import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
 
-public class FixedObstacle extends Obstacle {
+public class FixedObstacle extends Movable {
 
 	public static final double space = (Constants.SCREEN_SIZE.getHeight()) / 7; // hole the floppa will pass throught
 	private int movingFactor = 1;
+	private Skin skin;
 
 	public FixedObstacle(Position position, Skin skin) {
-		super(position, skin);
+		super(position);
+		this.skin = skin;
+	}
+
+	public Skin getSkin() {
+		return skin;
+	}
+
+	public void setSkin(Skin skin) {
+		this.skin = skin;
 	}
 
 	@Override
