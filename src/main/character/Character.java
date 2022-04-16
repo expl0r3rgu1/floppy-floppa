@@ -2,7 +2,8 @@ package main.character;
 
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
-import main.state_changers.StateChanger;
+import main.state_changers.Booster;
+import main.state_changers.Malus;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Movable;
@@ -109,15 +110,27 @@ public class Character extends Movable {
 		}
 	}
 	
-	public void collide(StateChanger stateChanger) {
+	public void collide(Malus malus) {
 		//variables to make it more readable
-		int x = stateChanger.getPosition().getX();
-		int y = stateChanger.getPosition().getY();
-		int height = (int) stateChanger.getSkin().getImage().getHeight(null);
-		int width = (int) stateChanger.getSkin().getImage().getWidth(null);
+		int x = malus.getPosition().getX();
+		int y = malus.getPosition().getY();
+		int height = (int) malus.getSkin().getImage().getHeight(null);
+		int width = (int) malus.getSkin().getImage().getWidth(null);
 		
 		if(this.checkCollision(x, y, height, width)) {
-			stateChanger.changeState();
+			malus.changeState();
+		}
+	}
+	
+	public void collide(Booster booster) {
+		//variables to make it more readable
+		int x = booster.getPosition().getX();
+		int y = booster.getPosition().getY();
+		int height = (int) booster.getSkin().getImage().getHeight(null);
+		int width = (int) booster.getSkin().getImage().getWidth(null);
+		
+		if(this.checkCollision(x, y, height, width)) {
+			booster.changeState();
 		}
 	}
 	
