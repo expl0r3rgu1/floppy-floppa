@@ -80,13 +80,13 @@ public class Map {
 
 	// Method that spawns a random MovingObstacle
 	protected void addMovingObstacle() {
-		int randomMovingObstacleIndex = getRandomNumber(0, this.movingObstacles.size() - 1);
+		int randomMovingObstacleIndex = getRandomNumber(0, this.movingObstacles.size());
 
-		this.paintedMovingObstacles.add(
-				(MovingObstacle) Obstacle.factoryObstacle(this.movingObstacles.get(randomMovingObstacleIndex).getSkin(),
-						new Position((int) Constants.SCREEN_SIZE.getWidth(),
-								getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
-										(int) (Constants.SCREEN_SIZE.getHeight() * 0.75)))));
+		this.paintedMovingObstacles.add(obstacleFactory.movingObstacleFactory(
+				new Position((int) Constants.SCREEN_SIZE.getWidth(),
+						getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
+								(int) (Constants.SCREEN_SIZE.getHeight() * 0.75))),
+				this.movingObstacles.get(randomMovingObstacleIndex).getSkin()));
 	}
 
 	public void animate(Graphics2D canvas) {
