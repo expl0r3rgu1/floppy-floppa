@@ -16,16 +16,16 @@ import main.utilities.Position;
 
 public class Map {
 	// Background and FixedObstacle based on selected scenario
-	private ScrollingBackground scrollingBackground;
+	private final ScrollingBackground scrollingBackground;
 
-	private FixedObstacle fixedObstacle;
-	private List<MovingObstacle> movingObstacles; // Every kind of MovingObstacle available to spawn
+	private final FixedObstacle fixedObstacle;
+	private final List<MovingObstacle> movingObstacles; // Every kind of MovingObstacle available to spawn
 
-	private Set<FixedObstacle> paintedFixedObstacles; // Set of FixedObstacle that need to be or are being painted
-	private Set<MovingObstacle> paintedMovingObstacles; // Set of MovingObstacle that need to be or are being painted
+	private final Set<FixedObstacle> paintedFixedObstacles; // Set of FixedObstacle that need to be or are being painted
+	private final Set<MovingObstacle> paintedMovingObstacles; // Set of MovingObstacle that need to be or are being painted
 
-	private TimedFixedObstacleGenerator timedFixedObstacleGenerator; // Timer that manages when to spawn a FixedObstacle
-	private TimedMovingObstacleGenerator timedMovingObstacleGenerator; // Timer that manages when to spawn a
+	private final TimedFixedObstacleGenerator timedFixedObstacleGenerator; // Timer that manages when to spawn a FixedObstacle
+	private final TimedMovingObstacleGenerator timedMovingObstacleGenerator; // Timer that manages when to spawn a
 																		// MovingObstacle
 	private final ObstacleFactory obstacleFactory;
 
