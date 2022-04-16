@@ -1,9 +1,6 @@
 package main.infinite_map;
 
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 import main.utilities.CommonMethods;
 import main.utilities.Constants;

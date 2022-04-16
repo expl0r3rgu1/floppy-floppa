@@ -1,9 +1,6 @@
 package main.infinite_map;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.Timer;
 
 import main.utilities.Constants;
 
