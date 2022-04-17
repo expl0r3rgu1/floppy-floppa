@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import main.character.Character;
 import main.infinite_map.Map;
 import main.infinite_map.ScrollingBackground;
 import main.obstacles.FixedObstacle;
@@ -20,12 +21,14 @@ import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.GBCSimplified;
 import main.utilities.GameSettings;
+import main.utilities.Position;
 import main.utilities.Skin;
 
 public class PlayPanel extends JPanel implements ActionListener {
 	private Timer refreshRate;
 	private final Map map;
 	private final NicknamePanel nicknamePanel;
+	private final Character character;
 
 	public PlayPanel(GameSettings gameSettings) {
 		this.setLayout(new GridBagLayout());
@@ -35,7 +38,13 @@ public class PlayPanel extends JPanel implements ActionListener {
 				new FixedObstacle(null, new Skin("pipe", CommonMethods.getImageResource("pipe"))),
 				List.of(new MovingObstacle(null, new Skin("Bingus", CommonMethods.getImageResource("Bingus"))),
 						new MovingObstacle(null, new Skin("Walter", CommonMethods.getImageResource("Walter")))));
+
 		refreshRate = new Timer(1000 / Constants.SPEED, this);
+
+		character = new Character(
+				new Position((int) Constants.SCREEN_SIZE.getHeight() / 2, CommonMethods.getPixelsFromPercentage(30)),
+				new Skin("Floppa", CommonMethods.getImageResource("Floppa")));
+
 		this.nicknamePanel = new NicknamePanel(this, gameSettings);
 		this.add(nicknamePanel, new GBCSimplified(0, 0, 0, 0, new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
 	}
