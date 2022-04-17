@@ -47,6 +47,10 @@ public class CommonMethods {
 
 		return null;
 	}
+	
+	public static ImageIcon getGifResource(String gifName) {
+		
+	}
 
 	public static Image getAngledImage(Image image, int degrees) {
 		double rotationRequired = Math.toRadians(degrees);
