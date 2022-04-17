@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -24,7 +26,7 @@ import main.utilities.GameSettings;
 import main.utilities.Position;
 import main.utilities.Skin;
 
-public class PlayPanel extends JPanel implements ActionListener {
+public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 	private Timer refreshRate;
 	private final Map map;
 	private final NicknamePanel nicknamePanel;
@@ -64,5 +66,21 @@ public class PlayPanel extends JPanel implements ActionListener {
 	public void dismissNicknamePanel() {
 		this.remove(nicknamePanel);
 		refreshRate.start();
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			this.character.jump();
+		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+
 	}
 }
