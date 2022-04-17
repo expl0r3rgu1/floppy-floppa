@@ -111,7 +111,7 @@ public class Character extends Movable {
 		}
 	}
 
-	public void collide(Malus malus) {
+	public void collideMalus(Malus malus) {
 		// variables to make it more readable
 		int x = malus.getPosition().getX();
 		int y = malus.getPosition().getY();
@@ -123,7 +123,7 @@ public class Character extends Movable {
 		}
 	}
 
-	public void collide(Booster booster) {
+	public void collideBooster(Booster booster) {
 		// variables to make it more readable
 		int x = booster.getPosition().getX();
 		int y = booster.getPosition().getY();
