@@ -27,7 +27,6 @@ public class Character extends Movable {
 		super(position);
 		this.skin = skin;
 		this.dead = false;
-		this.hit = false;
 		this.jumping = false;
 		this.timer = new Timer(500, new ActionListener() {
 
