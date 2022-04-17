@@ -138,13 +138,13 @@ public class Character extends Movable {
 	public void collideBorders() {
 		// variables to make it more readable
 		int characterUpperPointOfCollision = this.getPosition().getY();
-		int characterLowerPointOfCollision = this.getPosition().getY() + (int) this.skin.getImage().getHeight(null);
+		int characterLowerPointOfCollision = this.getPosition().getY() + this.skin.getHeight();
 		int upperBorder = 0;
 		int lowerBorder = (int) Constants.SCREEN_SIZE.getHeight();
 
 		if (characterUpperPointOfCollision >= upperBorder || characterLowerPointOfCollision <= lowerBorder) {
 
-			this.hit();
+			this.dead = true;
 		}
 	}
 
