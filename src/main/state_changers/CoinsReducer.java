@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import main.utilities.Constants;
+import main.utilities.CommonMethods;
 import main.utilities.Position;
 import main.utilities.Skin;
 
@@ -24,12 +25,11 @@ public class CoinsReducer extends Malus {
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
 	}
-	
+
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				(int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100,
-				null);
-		
+				CommonMethods.getPixelsFromPercentage(3), CommonMethods.getPixelsFromPercentage(3), null);
+
 		this.updatePositionX();
 	}
 

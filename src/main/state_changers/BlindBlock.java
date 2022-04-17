@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
@@ -22,7 +23,7 @@ public class BlindBlock extends Malus implements ActionListener {
 	// Black Block
 	private String blindBlock;
 	private StainPanel stain;
-	Timer timer = new Timer(Constants.CHANGED_STATE_TIME, this);
+	private Timer timer = new Timer(Constants.CHANGED_STATE_TIME, this);
 
 	public BlindBlock(Position position, Skin skin) {
 		super(position, skin);
@@ -40,12 +41,11 @@ public class BlindBlock extends Malus implements ActionListener {
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
 	}
-	
+
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				(int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100,
-				null);
-		
+				CommonMethods.getPixelsFromPercentage(3), CommonMethods.getPixelsFromPercentage(3), null);
+
 		this.updatePositionX();
 	}
 

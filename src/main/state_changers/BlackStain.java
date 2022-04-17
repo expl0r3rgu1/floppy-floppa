@@ -1,5 +1,6 @@
 package main.state_changers;
 
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
@@ -16,13 +17,13 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class BlackStain extends Malus implements ActionListener{
-	
-	//Dirty Screen
+public class BlackStain extends Malus implements ActionListener {
+
+	// Dirty Screen
 	private String blackstains;
 	private StainPanel stain;
-	Timer timer = new Timer(Constants.CHANGED_STATE_TIME, this);
-	
+	private Timer timer = new Timer(Constants.CHANGED_STATE_TIME, this);
+
 	public BlackStain(Position position, Skin skin) {
 		super(position, skin);
 		blackstains = "blackstains";
@@ -32,18 +33,18 @@ public class BlackStain extends Malus implements ActionListener{
 	public Object changeState() {
 		timer.start();
 		play.add(stain);
-		
+
 		return null;
 	}
-	
+
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
 	}
-	
+
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				(int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, (int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, null);
-		
+				CommonMethods.getPixelsFromPercentage(3), CommonMethods.getPixelsFromPercentage(3), null);
+
 		this.updatePositionX();
 	}
 
@@ -51,5 +52,5 @@ public class BlackStain extends Malus implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		play.remove(stain);
 	}
-	
+
 }
