@@ -32,8 +32,8 @@ public class Shop {
 	private int skinsNum;
 	private int sceneriesNum;
 	private Integer coins;
-	private Map<String, Image> skinInitialize = new HashMap<>();
-	private Map<String, Image> backgroundInitialize = new HashMap<>();
+	private List<String> skinInitialize = new ArrayList<>();
+	private List<String> backgroundInitialize = new ArrayList<>();
 	private List<Integer> prices = Arrays.asList(0, 50, 100, 200, 500);
 	private List<PurchaseStatus<PricedSkin>> skins;
 	private List<PurchaseStatus<PricedBackground>> sceneries;
