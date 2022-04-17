@@ -53,6 +53,7 @@ public class PlayPanel extends JPanel implements ActionListener {
 	public void paintComponent(Graphics g) {
 		Graphics2D canvas = (Graphics2D) g;
 		map.animate(canvas);
+		character.animate(canvas);
 	}
 
 	@Override
