@@ -8,9 +8,11 @@ public class Skin {
 	private int width;
 	private int height;
 	
-	public Skin(String name, Image image){
+	public Skin(String name, Image image, int width, int height){
 		this.name = name;
 		this.image = image;
+		this.width = width;
+		this.height = height;
 	}
 
 	public String getName() {
