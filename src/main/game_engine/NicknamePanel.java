@@ -4,12 +4,16 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import main.menu.leaderboard.Player;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
+import main.utilities.GraphicJButton;
 import main.utilities.GraphicJLabel;
 
 public class NicknamePanel extends JPanel {
@@ -27,5 +31,18 @@ public class NicknamePanel extends JPanel {
 
 		JTextField nicknameField = new JTextField("");
 		nicknameField.setFont(new Font("Arial", Font.BOLD, (int) Constants.SCREEN_SIZE.getWidth() / 70));
+
+		GraphicJButton okButton = new GraphicJButton("OK", Color.decode("#FFDD62"), Color.decode("#FF971A"), "Arial",
+				Font.PLAIN);
+
+		// Adding ActionListener to the button
+		okButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gameSettings.setPlayer(new Player(nicknameField.getText(), 0));
+				playPanel.dismissNicknamePanel();
+			}
+		});
 	}
 }
