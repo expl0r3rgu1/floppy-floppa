@@ -20,7 +20,6 @@ import javax.swing.Timer;
 public class Character extends Movable {
 	private Skin skin;
 	private boolean dead; //true if the character is dead
-	private boolean hit; //true if the character is hit by an obstacle
 	private boolean jumping; //true if the character is jumping
 	private Timer timer;
 	
@@ -47,14 +46,6 @@ public class Character extends Movable {
 	
 	public void die() {
 		this.dead = true;
-	}
-	
-	public boolean isHit() {
-		return this.hit;
-	}
-	
-	public void hit() {
-		this.hit = true;
 	}
 	
 	public void setSkin(Skin skin){
