@@ -21,7 +21,7 @@ import main.utilities.Skin;
 
 public class PlayPanel extends JPanel implements ActionListener {
 	private Timer refreshRate;
-	private Map map;
+	private final Map map;
 
 	public PlayPanel(GameSettings gameSettings) {
 		this.setLayout(new GridBagLayout());
