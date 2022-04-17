@@ -30,7 +30,7 @@ public class PlayPanel extends JPanel implements ActionListener {
 	public PlayPanel(GameSettings gameSettings) {
 		this.setLayout(new GridBagLayout());
 		this.setPreferredSize(Constants.SCREEN_SIZE);
-		
+
 		map = new Map(new ScrollingBackground("Default", "Classic"),
 				new FixedObstacle(null, new Skin("pipe", CommonMethods.getImageResource("pipe"))),
 				List.of(new MovingObstacle(null, new Skin("Bingus", CommonMethods.getImageResource("Bingus"))),
@@ -51,4 +51,8 @@ public class PlayPanel extends JPanel implements ActionListener {
 		repaint();
 	}
 
+	public void dismissNicknamePanel() {
+		this.remove(nicknamePanel);
+		refreshRate.start();
+	}
 }
