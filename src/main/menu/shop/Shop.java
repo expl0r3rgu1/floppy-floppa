@@ -40,7 +40,7 @@ public class Shop {
 	private File savingFile;
 
 	public Shop() {
-		this.MapInitializing();
+		this.initializeStrings();
 
 		skins = new ArrayList<>();
 		sceneries = new ArrayList<>();
@@ -309,22 +309,22 @@ public class Shop {
 	}
 
 	/**
-	 * The method initializes a map that keeps entries of skins/sceneries names and
-	 * their corresponding Image names
+	 * The method initializes two ArrayLists that keep the skins/sceneries' string
+	 * names.
 	 */
-	private void MapInitializing() {
-		skinInitialize.put("Floppa", CommonMethods.getImageResource("Floppa"));
-		skinInitialize.put("Sogga", CommonMethods.getImageResource("Sogga"));
-		skinInitialize.put("Capibara", CommonMethods.getImageResource("Capibara"));
-		skinInitialize.put("Quokka", CommonMethods.getImageResource("Quokka"));
-		skinInitialize.put("Buding", CommonMethods.getImageResource("Buding"));
+	private void initializeStrings() {
+		skinInitialize.add("Floppa");
+		skinInitialize.add("Sogga");
+		skinInitialize.add("Capibara");
+		skinInitialize.add("Quokka");
+		skinInitialize.add("Buding");
 		this.skinsNum = skinInitialize.size();
 
-		backgroundInitialize.put("Classic", CommonMethods.getImageResource("Classic"));
-		backgroundInitialize.put("Beach", CommonMethods.getImageResource("Beach"));
-		backgroundInitialize.put("Woods", CommonMethods.getImageResource("Woods"));
-		backgroundInitialize.put("Space", CommonMethods.getImageResource("Space"));
-		backgroundInitialize.put("NeonCity", CommonMethods.getImageResource("NeonCity"));
+		backgroundInitialize.add("Classic");
+		backgroundInitialize.add("Beach");
+		backgroundInitialize.add("Woods");
+		backgroundInitialize.add("Space");
+		backgroundInitialize.add("NeonCity");
 		this.sceneriesNum = backgroundInitialize.size();
 	}
 }
