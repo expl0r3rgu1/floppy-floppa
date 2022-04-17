@@ -51,6 +51,11 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		this.add(nicknamePanel, new GBCSimplified(0, 0, 0, 0, new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
 	}
 
+	public void dismissNicknamePanel() {
+		this.remove(nicknamePanel);
+		refreshRate.start();
+	}
+
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D canvas = (Graphics2D) g;
@@ -61,11 +66,6 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		repaint();
-	}
-
-	public void dismissNicknamePanel() {
-		this.remove(nicknamePanel);
-		refreshRate.start();
 	}
 
 	@Override
