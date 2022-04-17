@@ -82,7 +82,7 @@ public class SkinSelectionPanel extends JPanel {
 						"fipps.otf", (float) Constants.SCREEN_SIZE.getWidth() / 100);
 				this.add(skins, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0,
 						new Insets((CommonMethods.getPixelsFromPercentage(1)), 0, 0, 0)));
-			
+
 			} else if (i == 5) {
 
 				GraphicJLabel backgrounds = new GraphicJLabel("BACKGROUNDS", Color.decode("#FFDD62"),
@@ -96,17 +96,17 @@ public class SkinSelectionPanel extends JPanel {
 				this.add(backMenu, new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)),
 						0, (CommonMethods.getPixelsFromPercentage(1)), 0)));
 				backMenu.addActionListener(e -> {
-//					mainMenu.showCard(Constants.PANEL.MENU);
+					mainMenu.showCard(Constants.PANEL.MENU);
 				});
-				
+
 			} else if (i == 1 || i == 5) {
-				
+
 				i = this.getLNameImage(i);
-				
+
 			} else if (i == 3 || i == 7) {
-				
-				this.getselectButton(i);
-				
+
+				this.getSelectButton(i);
+
 			}
 		}
 	}
@@ -114,7 +114,8 @@ public class SkinSelectionPanel extends JPanel {
 	private int getLNameImage(int i) {
 		for (int j = 0; j < numSkins; j++) {
 			GraphicJLabel label = new GraphicJLabel((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)),
-					Color.decode("#77DD77"), Color.decode("#007542"), "fipps.otf", (float) Constants.SCREEN_SIZE.getWidth() / 120);
+					Color.decode("#77DD77"), Color.decode("#007542"), "fipps.otf",
+					(float) Constants.SCREEN_SIZE.getWidth() / 120);
 			this.add(label,
 					new GBCSimplified(j, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
 			this.add(this.imageCreation((i == 1 ? labelNames.get(j) : labelNames.get(j + 5))),
@@ -122,16 +123,16 @@ public class SkinSelectionPanel extends JPanel {
 		}
 		return i + 1;
 	}
-	
-	private void getselectButton(int i) {
+
+	private void getSelectButton(int i) {
 		for (int j = 0; j < numSkins; j++) {
 			JButton selectButton = generateButton("SELECT", "fipps.otf");
-//			bought = (i == 4 ? skinList.get(j).isPurchased() : backgroundList.get(j).isPurchased());
+			bought = (i == 4 ? skinList.get(j).isPurchased() : backgroundList.get(j).isPurchased());
 			bought = false;
 			selectButton.setEnabled(bought);
 			final int index = j;
 			selectButton.addActionListener(e -> {
-//				getImageSkin(i,index);
+				getImageSkin(i, index);
 			});
 			this.add(selectButton,
 					new GBCSimplified(j, i, (CommonMethods.getPixelsFromPercentage(3)), 0,
@@ -140,17 +141,21 @@ public class SkinSelectionPanel extends JPanel {
 									(CommonMethods.getPixelsFromPercentage(5)))));
 		}
 	}
-	
+
 	private void getImageSkin(int i, int j) {
-		if(i == 4) {
+
+		if (i == 4) {
+
 			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)));
 			character.setSkin(skin);
-		}else {
-			ScrollingBackground scenario = new ScrollingBackground(labelNames.get(j+5), CommonMethods.getImageResource(labelNames.get(j+5)));
+
+		} else {
+			ScrollingBackground scenario = new ScrollingBackground(labelNames.get(j + 5),
+					CommonMethods.getImageResource(labelNames.get(j + 5)));
 		}
-		
+
 	}
-	
+
 	private JButton generateButton(String name, String font) {
 		JButton jb = new JButton(name);
 
@@ -166,7 +171,7 @@ public class SkinSelectionPanel extends JPanel {
 		}
 		return jb;
 	}
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -174,7 +179,7 @@ public class SkinSelectionPanel extends JPanel {
 		canvas.drawImage(background, 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
 				(int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
-	
+
 	private JLabel imageCreation(String fileName) {
 		JLabel label = null;
 		Image image = CommonMethods.getImageResource(fileName);
