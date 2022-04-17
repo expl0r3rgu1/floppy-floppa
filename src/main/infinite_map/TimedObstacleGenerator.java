@@ -26,4 +26,8 @@ public abstract class TimedObstacleGenerator implements ActionListener {
 	protected Map getMap() {
 		return map;
 	}
+
+	public Timer getTimer() {
+		return timer;
+	}
 }
