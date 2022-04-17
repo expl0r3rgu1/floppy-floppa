@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class CommonMethods {
 	public static int getPixelsFromPercentage(int percentage) {
@@ -37,15 +38,9 @@ public class CommonMethods {
 
 		return null;
 	}
-
-	public static File getVideoResource(String videoName) {
-		File videoFile = new File(CommonMethods.class.getResource("/resources/videos/" + videoName + ".mp4").getFile());
-
-		if (videoFile.exists()) {
-			return videoFile;
-		}
-
-		return null;
+	
+	public static ImageIcon getGifResource(String gifName) {
+		return new ImageIcon(CommonMethods.class.getResource("/resources/gifs/" + gifName + ".gif"));
 	}
 
 	public static Image getAngledImage(Image image, int degrees) {
