@@ -5,6 +5,8 @@ import java.awt.Image;
 public class Skin {
 	private String name;
 	private Image image;
+	private int width;
+	private int height;
 	
 	public Skin(String name, Image image){
 		this.name = name;
