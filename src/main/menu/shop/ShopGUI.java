@@ -54,6 +54,9 @@ public class ShopGUI extends JPanel {
 		this.placeGUIComponents();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
