@@ -6,8 +6,10 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import main.utilities.CommonMethods;
+import main.utilities.Constants;
 import main.utilities.GraphicJLabel;
 
 public class NicknamePanel extends JPanel {
@@ -22,5 +24,8 @@ public class NicknamePanel extends JPanel {
 		GraphicJLabel title = new GraphicJLabel("Enter your nickname", new Color(0, 0, 0, 0), new Color(0, 0, 0, 0),
 				"Arial", Font.BOLD);
 		title.setOpaque(false);
+
+		JTextField nicknameField = new JTextField("");
+		nicknameField.setFont(new Font("Arial", Font.BOLD, (int) Constants.SCREEN_SIZE.getWidth() / 70));
 	}
 }
