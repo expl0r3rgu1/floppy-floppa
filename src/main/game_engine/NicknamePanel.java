@@ -3,7 +3,9 @@ package main.game_engine;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,6 +15,7 @@ import javax.swing.JTextField;
 import main.menu.leaderboard.Player;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
+import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJLabel;
 
@@ -44,5 +47,15 @@ public class NicknamePanel extends JPanel {
 				playPanel.dismissNicknamePanel();
 			}
 		});
+
+		// ADDING THE COMPONENTS TO THE JPANEL
+		this.add(title, new GBCSimplified(0, 0, CommonMethods.getPixelsFromPercentage(8),
+				CommonMethods.getPixelsFromPercentage(1), new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
+		this.add(nicknameField, new GBCSimplified(0, 1, CommonMethods.getPixelsFromPercentage(17),
+				CommonMethods.getPixelsFromPercentage(2), new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
+		this.add(okButton,
+				new GBCSimplified(0, 2, CommonMethods.getPixelsFromPercentage(3),
+						CommonMethods.getPixelsFromPercentage(1),
+						new Insets(CommonMethods.getPixelsFromPercentage(2), 0, 0, 0), GridBagConstraints.CENTER));
 	}
 }
