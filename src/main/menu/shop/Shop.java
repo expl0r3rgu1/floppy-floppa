@@ -193,18 +193,18 @@ public class Shop {
 	 * then through the scanner and another method, checks the actual purchase
 	 * status of the PricedSkin objects
 	 * 
-	 * @param scanner one line of the savings file
-	 * @param list    List of purchase statuses of PricedSkin items
+	 * @param line one line of the savings file
+	 * @param list List of purchase statuses of PricedSkin items
 	 */
-	private void getSkinsInfo(Scanner scanner, List<PurchaseStatus<PricedSkin>> list) {
-		Iterator<Entry<String, Image>> iterator = skinInitialize.entrySet().stream().iterator();
+	private void getSkinsInfo(String line, List<PurchaseStatus<PricedSkin>> list) {
 
 		for (int i = 0; i < skinsNum; i++) {
-			var item = iterator.next();
 			PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
-					new PricedSkin(item.getKey(), item.getValue(), prices.get(i)), false);
+					new PricedSkin(skinInitialize.get(i), CommonMethods.getImageResource(skinInitialize.get(i)),
+							prices.get(i)),
+					false);
 
-			this.getIfPurchased(scanner, purchaseStatus);
+			this.getIfPurchased(line, purchaseStatus);
 
 			list.add(purchaseStatus);
 		}
@@ -215,18 +215,17 @@ public class Shop {
 	 * initializes them, then through the scanner and another method, checks the
 	 * actual purchase status of the PricedBackground objects
 	 * 
-	 * @param scanner one line of the savings file
-	 * @param list    List of purchase statuses of PricedBackground items
+	 * @param line one line of the savings file
+	 * @param list List of purchase statuses of PricedBackground items
 	 */
-	private void getScenerisInfo(Scanner scanner, List<PurchaseStatus<PricedBackground>> list) {
-		Iterator<Entry<String, Image>> iterator = backgroundInitialize.entrySet().stream().iterator();
-
+	private void getScenerisInfo(String line, List<PurchaseStatus<PricedBackground>> list) {
 		for (int i = 0; i < sceneriesNum; i++) {
-			var item = iterator.next();
 			PurchaseStatus<PricedBackground> purchaseStatus = new PurchaseStatus<PricedBackground>(
-					new PricedBackground(item.getKey(), item.getValue(), prices.get(i)), false);
+					new PricedBackground(backgroundInitialize.get(i),
+							CommonMethods.getImageResource(backgroundInitialize.get(i)), prices.get(i)),
+					false);
 
-			this.getIfPurchased(scanner, purchaseStatus);
+			this.getIfPurchased(line, purchaseStatus);
 
 			list.add(purchaseStatus);
 		}
@@ -291,13 +290,13 @@ public class Shop {
 	 * PurchaseStatus parameter
 	 * 
 	 * @param <X>            The items type
-	 * @param line        a line of the savings file
+	 * @param line           a line of the savings file
 	 * @param purchaseStatus the purchase status whose info are needed
 	 */
 	private <X> void getIfPurchased(String line, PurchaseStatus<X> purchaseStatus) {
 		String[] lineWords = line.split(",");
 		for (int i = 0; i < skinsNum; i++) {
-			
+
 			if (lineWords[i].equals("1")) {
 				purchaseStatus.purchase();
 			}
