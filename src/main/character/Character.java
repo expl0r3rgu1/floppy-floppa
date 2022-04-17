@@ -174,10 +174,6 @@ public class Character extends Movable {
 		
 		canvas.drawImage(image, x, y, width, width, null);
 
-		if (this.isHit()) {
-			this.die();
-		}
-
 		this.updatePosition();
 	}
 	
