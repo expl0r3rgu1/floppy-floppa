@@ -31,7 +31,7 @@ import main.utilities.GraphicJButtonWithObject;
 import main.utilities.GraphicJLabel;
 import main.utilities.PricedBackground;
 import main.utilities.PricedSkin;
-import test.Character;
+import main.character.Character;
 
 public class SkinSelectionPanel extends JPanel {
 
