@@ -127,8 +127,8 @@ public class Character extends Movable {
 		// variables to make it more readable
 		int x = booster.getPosition().getX();
 		int y = booster.getPosition().getY();
-		int height = (int) booster.getSkin().getHeight();
-		int width = (int) booster.getSkin().getWidth();
+		int height = booster.getSkin().getHeight();
+		int width = booster.getSkin().getWidth();
 
 		if (this.checkCollision(x, y, height, width)) {
 			booster.changeState();
