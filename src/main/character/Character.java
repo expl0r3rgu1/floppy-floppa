@@ -94,15 +94,20 @@ public class Character extends Movable {
 		}
 	}
 
-	public void collide(MovingObstacle movingObstacle) {
-		// variables to make it more readable
-		int x = movingObstacle.getPosition().getX();
-		int y = movingObstacle.getPosition().getY();
-		int height = (int) movingObstacle.getSkin().getImage().getHeight(null);
-		int width = (int) movingObstacle.getSkin().getImage().getWidth(null);
+	public void collideMovingObstacle(List<MovingObstacle> movingObstacleList) {
+		
+		for (MovingObstacle movingObstacle : movingObstacleList) {
+			
+			// variables to make it more readable
+			int x = movingObstacle.getPosition().getX();
+			int y = movingObstacle.getPosition().getY();
+			int height = movingObstacle.getSkin().getHeight();
+			int width = movingObstacle.getSkin().getWidth();
 
-		if (this.checkCollision(x, y, height, width)) {
-			this.hit();
+			if (this.checkCollision(x, y, height, width)) {
+				this.dead = true;
+				return;
+			}
 		}
 	}
 
