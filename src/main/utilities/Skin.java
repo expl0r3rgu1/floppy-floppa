@@ -30,4 +30,12 @@ public class Skin {
 	public void setImage(Image image) {
 		this.image = image;
 	}
+	
+	public int getWidth() {
+		return this.width;
+	}
+	
+	public void setWidth(int width) {
+		this.width = width;
+	}
 }
