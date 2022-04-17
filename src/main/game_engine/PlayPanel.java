@@ -37,9 +37,13 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 
 		map = new Map(new ScrollingBackground("Default", "Classic"),
-				new FixedObstacle(null, new Skin("pipe", CommonMethods.getImageResource("pipe"))),
-				List.of(new MovingObstacle(null, new Skin("Bingus", CommonMethods.getImageResource("Bingus"))),
-						new MovingObstacle(null, new Skin("Walter", CommonMethods.getImageResource("Walter")))));
+				new FixedObstacle(null, new Skin("pipe", CommonMethods.getImageResource("pipe"), null, null)),
+				List.of(new MovingObstacle(null, new Skin("Bingus", CommonMethods.getImageResource("Bingus"),
+						(int) (Constants.SCREEN_SIZE.getWidth()) / 20, (int) (Constants.SCREEN_SIZE.getWidth()) / 10)),
+						new MovingObstacle(null,
+								new Skin("Walter", CommonMethods.getImageResource("Walter"),
+										(int) (Constants.SCREEN_SIZE.getWidth()) / 20,
+										(int) (Constants.SCREEN_SIZE.getWidth()) / 10))));
 
 		refreshRate = new Timer(1000 / Constants.SPEED, this);
 
