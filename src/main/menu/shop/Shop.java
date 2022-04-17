@@ -291,19 +291,15 @@ public class Shop {
 	 * PurchaseStatus parameter
 	 * 
 	 * @param <X>            The items type
-	 * @param scanner        a line of the savings file
+	 * @param line        a line of the savings file
 	 * @param purchaseStatus the purchase status whose info are needed
 	 */
-	private <X> void getIfPurchased(Scanner scanner, PurchaseStatus<X> purchaseStatus) {
-		if (scanner.hasNext()) {
-			String word = scanner.next();
-			if (word.equals("1")) {
+	private <X> void getIfPurchased(String line, PurchaseStatus<X> purchaseStatus) {
+		String[] lineWords = line.split(",");
+		for (int i = 0; i < skinsNum; i++) {
+			
+			if (lineWords[i].equals("1")) {
 				purchaseStatus.purchase();
-			} else if (word.equals(",")) {
-				word = scanner.next();
-				if (word.equals("1")) {
-					purchaseStatus.purchase();
-				}
 			}
 		}
 	}
