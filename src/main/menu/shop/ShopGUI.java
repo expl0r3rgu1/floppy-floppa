@@ -153,7 +153,7 @@ public class ShopGUI extends JPanel {
 					Color.decode("#77DD77"), Color.decode("#007542"), "Arial", Font.PLAIN);
 			this.add(label,
 					new GBCSimplified(j, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
-			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)) + ".png"),
+			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5))),
 					new GBCSimplified(j, i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
 			GraphicJButtonWithObject buyButton = new GraphicJButtonWithObject("BUY", Color.decode("#FDFD96"),
 					Color.decode("#FFDD62"), "Arial", Font.PLAIN,
