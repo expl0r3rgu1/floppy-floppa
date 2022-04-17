@@ -115,8 +115,8 @@ public class Character extends Movable {
 		// variables to make it more readable
 		int x = malus.getPosition().getX();
 		int y = malus.getPosition().getY();
-		int height = (int) malus.getSkin().getImage().getHeight(null);
-		int width = (int) malus.getSkin().getImage().getWidth(null);
+		int height = malus.getSkin().getHeight();
+		int width = malus.getSkin().getWidth();
 
 		if (this.checkCollision(x, y, height, width)) {
 			malus.changeState();
