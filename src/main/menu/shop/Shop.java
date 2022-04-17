@@ -170,17 +170,15 @@ public class Shop {
 
 		int counter = 0;
 		while (scanner.hasNextLine()) {
-			Scanner nextscanner = new Scanner(scanner.nextLine());
+			String nextScanner = scanner.next();
 			if (counter == 0) {
-				while (nextscanner.hasNext()) {
-					String word = nextscanner.next();
-					this.coins = Integer.parseInt(word);
-				}
+				this.coins = Integer.parseInt(nextScanner);
+
 			} else if (counter == 1) {
-				this.getSkinsInfo(scanner, this.skins);
+				this.getSkinsInfo(nextScanner, this.skins);
 
 			} else if (counter == 2) {
-				this.getScenerisInfo(scanner, this.sceneries);
+				this.getScenerisInfo(nextScanner, this.sceneries);
 				break;
 			}
 			counter++;
