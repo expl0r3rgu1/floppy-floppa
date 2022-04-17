@@ -54,6 +54,7 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 	public void dismissNicknamePanel() {
 		this.remove(nicknamePanel);
 		refreshRate.start();
+		map.startTimer();
 	}
 
 	@Override
