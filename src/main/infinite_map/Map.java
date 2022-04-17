@@ -53,6 +53,11 @@ public class Map {
 		return movingObstacles;
 	}
 
+	public void startTimer() {
+		timedFixedObstacleGenerator.getTimer().start();
+		timedMovingObstacleGenerator.getTimer().start();
+	}
+
 	// Method that spawns a FixedObstacle cloned from this.fixedObstacle
 	protected void addFixedObstacle() {
 		this.paintedFixedObstacles
