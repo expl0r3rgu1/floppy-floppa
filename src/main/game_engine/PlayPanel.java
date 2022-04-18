@@ -35,6 +35,9 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 	public PlayPanel(GameSettings gameSettings) {
 		this.setLayout(new GridBagLayout());
 		this.setPreferredSize(Constants.SCREEN_SIZE);
+		this.addKeyListener(this);
+		this.setFocusable(true);
+		this.requestFocus();
 
 		map = new Map(new ScrollingBackground("Default", "Classic"),
 				new FixedObstacle(null, new Skin("pipe", CommonMethods.getImageResource("pipe"), null, null)),
