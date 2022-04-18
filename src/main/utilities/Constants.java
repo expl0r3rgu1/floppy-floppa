@@ -16,6 +16,6 @@ public class Constants {
 	public static final int CHANGE_DIRECTION_TIMEOUT = 300;
 
 	public static enum PANEL {
-		MENU, LEADERBOARD, SHOP, TUTORIAL, EOGMENU
+		MENU, PLAY, LEADERBOARD, SHOP, TUTORIAL, EOGMENU
 	}
 }
