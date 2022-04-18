@@ -1,6 +1,9 @@
 package main.menu;
 
 import javax.swing.JPanel;
+
+import main.utilities.Constants;
+
 import java.awt.CardLayout;
 
 public class MainMenu extends JPanel implements Menu {
@@ -28,12 +31,12 @@ public class MainMenu extends JPanel implements Menu {
 		this.setLayout(cardLayout);
 		
 		this.add("MENU", menu);
-		// this.add("PLAY", play);
-		// this.add("LEADERBOARD", leaderboard);
-		// this.add("CLEAR", clear);
-		// this.add("SHOP", shop);
-		// this.add("QUIT", quit);
-		// this.add("TUTORIAL", tutorial);
+		this.add("PLAY", Constants.PANEL.PLAY);
+		this.add("LEADERBOARD", Constants.PANEL.LEADERBOARD);
+		this.add("EOGMENU", Constants.PANEL.EOGMENU);
+	    this.add("SHOP", Constants.PANEL.SHOP);
+		this.add("TUTORIAL", Constants.PANEL.TUTORIAL);
+		this.add("SELECT", Constants.PANEL.SELECT);
 
 	}
 	
