@@ -39,21 +39,16 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		this.setFocusable(true);
 		this.requestFocus();
 
-		map = new Map(new ScrollingBackground("Default", "Classic"),
-				new FixedObstacle(null, new Skin("pipe", CommonMethods.getImageResource("pipe"), null, null)),
-				List.of(new MovingObstacle(null, new Skin("Bingus", CommonMethods.getImageResource("Bingus"),
-						(int) (Constants.SCREEN_SIZE.getWidth()) / 20, (int) (Constants.SCREEN_SIZE.getWidth()) / 10)),
-						new MovingObstacle(null,
-								new Skin("Walter", CommonMethods.getImageResource("Walter"),
-										(int) (Constants.SCREEN_SIZE.getWidth()) / 20,
-										(int) (Constants.SCREEN_SIZE.getWidth()) / 10))));
+		map = new Map(gameSettings.getScrollingBackground(),
+				new FixedObstacle(null, new Skin("pipe", CommonMethods.getImageResource("pipe"))),
+				List.of(new MovingObstacle(null, new Skin("Bingus", CommonMethods.getImageResource("Bingus"))),
+						new MovingObstacle(null, new Skin("Walter", CommonMethods.getImageResource("Walter")))));
 
 		refreshRate = new Timer(1000 / Constants.SPEED, this);
 
 		character = new Character(
 				new Position((int) Constants.SCREEN_SIZE.getHeight() / 2, CommonMethods.getPixelsFromPercentage(30)),
-				new Skin("Floppa", CommonMethods.getImageResource("Floppa"), CommonMethods.getPixelsFromPercentage(4),
-						CommonMethods.getPixelsFromPercentage(4)));
+				gameSettings.getSkin());
 
 		this.nicknamePanel = new NicknamePanel(this, gameSettings);
 		this.add(nicknamePanel, new GBCSimplified(0, 0, 0, 0, new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
