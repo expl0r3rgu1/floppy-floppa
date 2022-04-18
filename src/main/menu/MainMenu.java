@@ -9,10 +9,22 @@ import java.awt.CardLayout;
 public class MainMenu extends JPanel implements Menu {
 
 	public static final CardLayout cardLayout = new CardLayout();
+	private final MenuPanel menuPanel;
+	private final LeaderboardPanel leaderboardPanel;
+	private final PlayPanel playPanel;
+	private final ShopGUI shopGUI;
+	private final EOGMenuGUI EOGMenuGUI;
+	private final Tutorial tutorial;
+	private final selectionPanel selectionPanel;
 
 	public MainMenu() {
 
-		MenuPanel menu = new MenuPanel(this);
+		menuPanel = new MenuPanel(this);
+		leaderboardPanel = new LeaderboardPanel(this);
+		playPanel = new PlayPanel(gameSettings);
+		shopGUI = new ShopGUI(this);
+		EOGMenuGUI = new EOGMenuGUI(this);
+		tutorial = new Tutorial(this);
 		
 		File savings = new File(Constants.SAVINGS_FILE_PATH);
 		if(!savingsFile.exists()) {
@@ -30,13 +42,13 @@ public class MainMenu extends JPanel implements Menu {
 		
 		this.setLayout(cardLayout);
 		
-		this.add("MENU", menu);
-		this.add("PLAY", Constants.PANEL.PLAY);
-		this.add("LEADERBOARD", Constants.PANEL.LEADERBOARD);
-		this.add("EOGMENU", Constants.PANEL.EOGMENU);
-	    this.add("SHOP", Constants.PANEL.SHOP);
-		this.add("TUTORIAL", Constants.PANEL.TUTORIAL);
-		this.add("SELECT", Constants.PANEL.SELECT);
+		this.add("MENU", menuPanel);
+		this.add(Constants.PANEL.PLAY.name(), playPanel);
+		this.add(Constants.PANEL.LEADERBOARD.name(), leaderboardPanel);
+		this.add(Constants.PANEL.EOGMENU.name(), EOGMenuGUI);
+	    this.add(Constants.PANEL.SHOP.name(), shopGUI);
+		this.add(Constants.PANEL.TUTORIAL.name(), tutorial);
+		this.add(Constants.PANEL.SELECT.name(), selectionPanel);
 
 	}
 	
