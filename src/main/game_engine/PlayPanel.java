@@ -49,7 +49,8 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 
 		character = new Character(
 				new Position((int) Constants.SCREEN_SIZE.getHeight() / 2, CommonMethods.getPixelsFromPercentage(30)),
-				new Skin("Floppa", CommonMethods.getImageResource("Floppa")));
+				new Skin("Floppa", CommonMethods.getImageResource("Floppa"), CommonMethods.getPixelsFromPercentage(4),
+						CommonMethods.getPixelsFromPercentage(4)));
 
 		this.nicknamePanel = new NicknamePanel(this, gameSettings);
 		this.add(nicknamePanel, new GBCSimplified(0, 0, 0, 0, new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
