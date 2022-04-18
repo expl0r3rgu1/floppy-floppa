@@ -67,26 +67,27 @@ public class Character extends Movable {
 	}
 
 	public void collideFixedObstacle(List<FixedObstacle> fixedObstacleList) {
-		
+
 		for (FixedObstacle fixedObstacle : fixedObstacleList) {
-			
-			//variables to make it more readable
-			int characterPointOfCollisionX = this.getPosition().getX() + this.skin.getWidth();
+
+			// variables to make it more readable
+			int characterX = this.getPosition().getX();
+			int characterWiderX = characterX + this.skin.getWidth();
 			int characterY = this.getPosition().getY();
 			int characterLowerY = characterY + this.skin.getHeight();
-			int obstacleLeftLimit = fixedObstacle.getPosition().getX();
-			int obstacleRightLimit = fixedObstacle.getPosition().getX() + fixedObstacle.getSkin().getWidth();
-			int upperObstacleRange = fixedObstacle.getPosition().getY() + (int) FixedObstacle.space/2;
-			int lowerObstacleRange = fixedObstacle.getPosition().getY() - (int) FixedObstacle.space/2;
-			
-			//the purpose of this if is to check if the character is in the range of the obstacle
-			if (characterPointOfCollisionX >= obstacleLeftLimit
-				&& characterPointOfCollisionX <= obstacleRightLimit) {
-						
-				//the purpose of this if is to check if the character hits the obstacle
-				if (characterY >= upperObstacleRange
-					|| characterLowerY <= lowerObstacleRange) {
-							
+			int obstacleX = fixedObstacle.getPosition().getX();
+			int obstacleWiderX = obstacleX + fixedObstacle.getSkin().getWidth();
+			int obstacleUpperY = fixedObstacle.getPosition().getY() + (int) fixedObstacle.space / 2;
+			int obstacleLowerY = fixedObstacle.getPosition().getY() - (int) fixedObstacle.space / 2;
+
+			// in this if I check the x
+			if ((characterX >= obstacleX && characterX <= obstacleWiderX)
+					|| (characterWiderX >= obstacleX && characterWiderX <= obstacleWiderX)) {
+
+				// in this if I check the y
+				if ((characterY >= obstacleUpperY || characterY <= obstacleLowerY)
+						|| (characterLowerY >= obstacleUpperY || characterLowerY <= obstacleLowerY)) {
+					
 					this.dead = true;
 					return;
 				}
@@ -95,9 +96,9 @@ public class Character extends Movable {
 	}
 
 	public void collideMovingObstacle(List<MovingObstacle> movingObstacleList) {
-		
+
 		for (MovingObstacle movingObstacle : movingObstacleList) {
-			
+
 			// variables to make it more readable
 			int x = movingObstacle.getPosition().getX();
 			int y = movingObstacle.getPosition().getY();
@@ -175,12 +176,12 @@ public class Character extends Movable {
 
 		int x = this.getPosition().getX();
 		int y = this.getPosition().getY();
-		int percentage = 4;
-		int width = CommonMethods.getPixelsFromPercentage(percentage);
+		int width = this.skin.getWidth();
+		int height = this.skin.getHeight();
 		int angle = this.jumping ? -Constants.CHARACTER_ANGLE_DEGREES : Constants.CHARACTER_ANGLE_DEGREES;
 		Image image = CommonMethods.getAngledImage(this.skin.getImage(), angle);
 
-		canvas.drawImage(image, x, y, width, width, null);
+		canvas.drawImage(image, x, y, width, height, null);
 
 		this.updatePosition();
 	}
