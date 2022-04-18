@@ -24,7 +24,6 @@ import main.utilities.GraphicJLabel;
 public class ShopGUI extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
-	private Image background;
 	private int numSkins;
 	private int numBackgrounds;
 	private boolean bought = false;
@@ -50,19 +49,6 @@ public class ShopGUI extends JPanel {
 		CommonMethods.getImageResource("Background");
 
 		this.placeGUIComponents();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-
-		Graphics2D canvas = (Graphics2D) g;
-
-		canvas.drawImage(background, 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
-				(int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
 
 	/**
