@@ -25,6 +25,7 @@ import main.menu.shop.PurchaseStatus;
 import main.menu.shop.Shop;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
+import main.utilities.GameSettings;
 import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJButtonWithObject;
@@ -46,6 +47,7 @@ public class SkinSelectionPanel extends JPanel {
 	private boolean bought = false;
 	private MainMenu mainMenu;
 	private Shop shop;
+	public static final double dimension = (Constants.SCREEN_SIZE.getHeight()) / 12;
 	private List<PurchaseStatus<PricedSkin>> skinList;
 	private List<PurchaseStatus<PricedBackground>> backgroundList;
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
@@ -144,14 +146,17 @@ public class SkinSelectionPanel extends JPanel {
 
 	private void getImageSkin(int i, int j) {
 
+		GameSettings settings;
+		
 		if (i == 4) {
 
-			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)));
-			character.setSkin(skin);
+			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)), dimension, dimension);
+			settings.setSkin(skin);
 
 		} else {
 			ScrollingBackground scenario = new ScrollingBackground(labelNames.get(j + 5),
 					CommonMethods.getImageResource(labelNames.get(j + 5)));
+			settings.setScrollingBackground(scenario);
 		}
 
 	}
