@@ -28,6 +28,10 @@ public class MainFrame extends JFrame {
 
 		this.add(mainMenu);
 
+		if (System.getProperty("os.name").toLowerCase().startsWith("win")) {
+			playSoundtrack();
+		}
+
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setUndecorated(true);
 		device.setFullScreenWindow(this);
