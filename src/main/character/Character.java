@@ -87,7 +87,7 @@ public class Character extends Movable {
 				// in this if I check the y
 				if ((characterY >= obstacleUpperY || characterY <= obstacleLowerY)
 						|| (characterLowerY >= obstacleUpperY || characterLowerY <= obstacleLowerY)) {
-					
+
 					this.dead = true;
 					return;
 				}
@@ -150,24 +150,27 @@ public class Character extends Movable {
 	}
 
 	private boolean checkCollision(int x, int y, int height, int width) {
+
 		// variables to make it more readable
+		int characterX = this.getPosition().getX();
+		int characterWiderX = characterX + this.skin.getWidth();
 		int characterY = this.getPosition().getY();
-		int characterPointOfCollision = this.getPosition().getX() + this.skin.getWidth();
-		int obstacleHeightLowerLimit = y + height;
-		int obstacleHeightUpperLimit = y;
-		int obstacleWidthLimit = x + width;
+		int characterLowerY = characterY + this.getSkin().getHeight();
+		int entityWiderX = x + width;
+		int entityLowerY = y + height;
 
-		// the purpose of this if is to check if the character is in the range of the
-		// obstacle
-		if (characterY <= obstacleHeightUpperLimit && characterY >= obstacleHeightLowerLimit) {
+		// in this if I check the x
+		if ((characterX >= x && characterX <= entityWiderX)
+				|| (characterWiderX >= x && characterWiderX <= entityWiderX)) {
 
-			// the purpose of this if is to check if the character hits the obstacle
-			if (characterPointOfCollision >= x && characterPointOfCollision <= obstacleWidthLimit) {
-
+			// in this if I check the y
+			if ((characterY >= y && characterY <= entityLowerY)
+					|| (characterLowerY >= y && characterLowerY <= entityLowerY)) {
+				
 				return true;
 			}
 		}
-
+		
 		return false;
 	}
 
