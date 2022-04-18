@@ -40,14 +40,15 @@ public class SkinSelectionPanel extends JPanel {
 	private GridBagLayout grid = new GridBagLayout();
 	private Character character;
 	private ScrollingBackground scenario;
+	private GameSettings settings;
+	private MainMenu mainMenu;
+	private Shop shop;
 	private Image background;
 	private int numSkins;
 	private int numBackgrounds;
 	private boolean equip = false;
 	private boolean bought = false;
-	private MainMenu mainMenu;
-	private Shop shop;
-	public static final double dimension = (Constants.SCREEN_SIZE.getHeight()) / 12;
+	public static final int dimension = (Constants.SCREEN_SIZE.getHeight()) / 12;
 	private List<PurchaseStatus<PricedSkin>> skinList;
 	private List<PurchaseStatus<PricedBackground>> backgroundList;
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
@@ -69,6 +70,7 @@ public class SkinSelectionPanel extends JPanel {
 
 		skinList = shop.getSkins();
 		backgroundList = shop.getSceneries();
+		this.settings = settings;
 		this.character = character;
 		this.scenario = scenario;
 
@@ -146,11 +148,10 @@ public class SkinSelectionPanel extends JPanel {
 
 	private void getImageSkin(int i, int j) {
 
-		GameSettings settings;
-		
 		if (i == 4) {
 
-			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)), dimension, dimension);
+			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)), dimension,
+					dimension);
 			settings.setSkin(skin);
 
 		} else {
