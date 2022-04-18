@@ -93,8 +93,8 @@ public class Map {
 
 		// Removing obstacles off-screen from set
 		this.paintedFixedObstacles
-				.removeIf(obstacle -> obstacle.getPosition().getX() + obstacle.getSkin().getImage().getWidth(null) < 0);
+				.removeIf(obstacle -> obstacle.getPosition().getX() + obstacle.getSkin().getWidth() < 0);
 		this.paintedMovingObstacles
-				.removeIf(obstacle -> obstacle.getPosition().getX() + obstacle.getSkin().getImage().getWidth(null) < 0);
+				.removeIf(obstacle -> obstacle.getPosition().getX() + obstacle.getSkin().getWidth() < 0);
 	}
 }
