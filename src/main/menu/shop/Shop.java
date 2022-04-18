@@ -32,7 +32,7 @@ public class Shop {
 	private List<Integer> prices = Arrays.asList(0, 50, 100, 200, 500);
 	private List<PurchaseStatus<PricedSkin>> skins;
 	private List<PurchaseStatus<PricedBackground>> sceneries;
-	private File savingFile;
+	private File savingsFile;
 
 	public Shop() {
 		this.initializeStrings();
@@ -40,7 +40,7 @@ public class Shop {
 		skins = new ArrayList<>();
 		sceneries = new ArrayList<>();
 
-		this.savingFile = new File(Constants.SAVINGS_FILE_PATH);
+		this.savingsFile = new File(Constants.SAVINGS_FILE_PATH);
 
 		try {
 			this.getFileInfo();
@@ -161,7 +161,7 @@ public class Shop {
 	 */
 	private void getFileInfo() throws FileNotFoundException {
 
-		Scanner scanner = new Scanner(this.savingFile);
+		Scanner scanner = new Scanner(this.savingsFile);
 
 		int counter = 0;
 		while (scanner.hasNextLine()) {
@@ -230,7 +230,7 @@ public class Shop {
 	 * @throws IOException
 	 */
 	public void fileUpdate() throws IOException {
-		Path path = this.savingFile.toPath();
+		Path path = this.savingsFile.toPath();
 		List<String> fileContent = new ArrayList<>(Files.readAllLines(path, StandardCharsets.UTF_8));
 
 		for (int i = 0; i < fileContent.size(); i++) {
