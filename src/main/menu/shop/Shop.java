@@ -34,6 +34,7 @@ public class Shop {
 
 	public Shop() {
 		this.initializeStrings();
+		this.coins = 0;
 
 		skins = new ArrayList<>();
 		sceneries = new ArrayList<>();
@@ -231,9 +232,13 @@ public class Shop {
 	public void fileUpdate() throws IOException {
 		FileWriter shopFileWriter = new FileWriter(savingsFile, false);
 
-		shopFileWriter.append(this.coins + "\n");
-		shopFileWriter.append(this.overwritePurchaseStatusLine(this.skins) + "\n");
-		shopFileWriter.append(this.overwritePurchaseStatusLine(this.sceneries) + "\n");
+		if (!skins.isEmpty() && !sceneries.isEmpty()) {
+			shopFileWriter.append(this.coins + "\n");
+			shopFileWriter.append(this.overwritePurchaseStatusLine(this.skins) + "\n");
+			shopFileWriter.append(this.overwritePurchaseStatusLine(this.sceneries) + "\n");
+		} else {
+			shopFileWriter.write(Constants.SAVINGS_FILE_START_CONTENT);
+		}
 
 		shopFileWriter.close();
 	}
@@ -264,6 +269,14 @@ public class Shop {
 			}
 		}
 		return line;
+	}
+
+	/**
+	 * Used to clear data from the lists of Purchase Statuses.
+	 */
+	public void clearSavings() {
+		this.skins.clear();
+		this.sceneries.clear();
 	}
 
 	/**
