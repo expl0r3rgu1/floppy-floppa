@@ -69,7 +69,7 @@ public class MainMenu extends JPanel implements Menu {
 	}
 
 	/**
-	 * paintComponent is a method 
+	 * paintComponent is a method to put the background in the JPanel
 	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -77,7 +77,7 @@ public class MainMenu extends JPanel implements Menu {
 		canvas.drawImage(CommonMethods.getImageResource("Background"), 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
 				(int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
-	
+
 	/**
 	 * showCard is a method that when called shows the JPanel panel
 	 * 
@@ -86,7 +86,10 @@ public class MainMenu extends JPanel implements Menu {
 	public void showCard(Constants.PANEL panel) {
 		cardLayout.show(this, panel.name());
 	}
-	
+
+	/**
+	 * updateSavings is a method that writes on a file the data of the players
+	 */
 	public void updateSavings() {
 		try {
 			shopGUI.getShop().fileUpdate();
@@ -96,6 +99,9 @@ public class MainMenu extends JPanel implements Menu {
 		}
 	}
 
+	/**
+	 * clearSavings is a method that deletes all the data from the savingsFile
+	 */
 	public void clearSavings() {
 		File savingsFile = new File(Constants.SAVINGS_FILE_PATH);
 		try {
@@ -109,5 +115,5 @@ public class MainMenu extends JPanel implements Menu {
 		this.leaderboardPanel.getLeaderboard().clearLeaderboard();
 		this.shopGUI.getShop().clearSavings();
 	}
-	
+
 }
