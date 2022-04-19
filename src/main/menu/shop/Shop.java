@@ -229,13 +229,10 @@ public class Shop {
 	 */
 	public void fileUpdate() throws IOException {
 		FileWriter shopFileWriter = new FileWriter(savingsFile, false);
-		String newLine = null;
 
 		shopFileWriter.append(this.coins.toString());
-		this.overwritePurchaseStatusLine(this.skins);
-		shopFileWriter.append(newLine);
-		newLine = this.overwritePurchaseStatusLine(this.sceneries);
-		shopFileWriter.append(newLine);
+		shopFileWriter.append(this.overwritePurchaseStatusLine(this.skins));
+		shopFileWriter.append(this.overwritePurchaseStatusLine(this.sceneries));
 
 		shopFileWriter.close();
 	}
