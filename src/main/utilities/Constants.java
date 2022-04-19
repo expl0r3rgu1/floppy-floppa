@@ -5,7 +5,9 @@ import java.awt.Toolkit;
 
 public class Constants {
 	public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-	public static final int SPEED = CommonMethods.getPixelsFromPercentage(6);
+	public static final int MOVING_FACTOR = ((int) ((Toolkit.getDefaultToolkit().getScreenResolution() + 50) / 100))
+			* 2;
+	public static final int SPEED = 60;
 	public static final double FIXED_OBSTACLE_SPEED = 0.002;
 	public static final double MOVING_OBSTACLE_SPEED = 0.0005;
 	public static final String SAVINGS_FILE_PATH = "savings";
