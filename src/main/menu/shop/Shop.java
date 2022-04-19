@@ -280,25 +280,6 @@ public class Shop {
 	}
 
 	/**
-	 * Reads the line provided by the scanner word per word, if the word is a 1 it
-	 * means the item has been purchased so the method saves this info through the
-	 * PurchaseStatus parameter
-	 * 
-	 * @param <X>            The items type
-	 * @param line           a line of the savings file
-	 * @param purchaseStatus the purchase status whose info are needed
-	 */
-	private <X> void getIfPurchased(String line, PurchaseStatus<X> purchaseStatus) {
-		String[] lineWords = line.split(",");
-		for (int i = 0; i < skinsNum; i++) {
-
-			if (lineWords[i].equals("1")) {
-				purchaseStatus.purchase();
-			}
-		}
-	}
-
-	/**
 	 * The method initializes two ArrayLists that keep the skins/sceneries' string
 	 * names.
 	 */
