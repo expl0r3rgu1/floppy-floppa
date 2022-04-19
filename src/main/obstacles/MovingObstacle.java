@@ -30,7 +30,8 @@ public class MovingObstacle extends Movable implements ActionListener {
 		super(position);
 		this.skin = skin;
 
-		this.timer = new Timer(Constants.CHANGE_DIRECTION_TIMEOUT, this);
+		this.timer = new Timer(Constants.CHANGE_DIRECTION_TIMEOUT / Constants.SPEED, this);
+		this.timer.start();
 	}
 
 	/**
