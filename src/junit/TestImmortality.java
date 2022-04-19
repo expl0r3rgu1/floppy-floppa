@@ -1,5 +1,6 @@
 package junit;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Random;
@@ -29,16 +30,36 @@ public class TestImmortality {
 	 * Check if the moving pattern of the booster works correctly
 	 */
 	void immortalityBoosterMovement() {
-		Immortality immortalityBooster = new Immortality(this.POSITION, this.SKIN);
+		Immortality immortality = new Immortality(this.POSITION, this.SKIN);
 		xPos = this.POSITION.getX();
-		assertTrue(immortalityBooster.getPosition().getX() == xPos--);
+		assertTrue(immortality.getPosition().getX() == xPos--);
 
-		immortalityBooster.setPosition(HALFWAY_POSITION);
+		immortality.setPosition(HALFWAY_POSITION);
 		xPos = this.HALFWAY_POSITION.getX();
-		assertTrue(immortalityBooster.getPosition().getX() == xPos--);
+		assertTrue(immortality.getPosition().getX() == xPos--);
 
-		immortalityBooster.setPosition(RANDOM_POSITION);
+		immortality.setPosition(RANDOM_POSITION);
 		xPos = this.RANDOM_POSITION.getX();
-		assertTrue(immortalityBooster.getPosition().getX() == xPos--);
+		assertTrue(immortality.getPosition().getX() == xPos--);
+	}
+
+	@Test
+	/**
+	 * Checks if the booster actually sets the Immortality field to true
+	 */
+	void coinsIncrementChangeState() {
+		Immortality immortality = new Immortality(this.POSITION, this.SKIN);
+		immortality.changeState();
+		assertTrue(immortality.isImmortal());
+
+		immortality.setImmortal(false);
+		assertFalse(immortality.isImmortal());
+		immortality.changeState();
+		assertTrue(immortality.isImmortal());
+
+		immortality.setImmortal(false);
+		assertFalse(immortality.isImmortal());
+		immortality.changeState();
+		assertTrue(immortality.isImmortal());
 	}
 }
