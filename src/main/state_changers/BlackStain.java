@@ -17,6 +17,11 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+/**
+ * A class that extends Malus class and implements an entity that makes appear a
+ * stain on the screen, blocking the players vision of parts of the screen,
+ * every time they hit this malus
+ */
 public class BlackStain extends Malus implements ActionListener {
 
 	// Dirty Screen
@@ -24,6 +29,10 @@ public class BlackStain extends Malus implements ActionListener {
 	private StainPanel stain;
 	private Timer timer = new Timer(Constants.CHANGED_STATE_TIME, this);
 
+	/**
+	 * @param position - The CoinsReducer initial position
+	 * @param skin     - The CoinsReducer skin
+	 */
 	public BlackStain(Position position, Skin skin) {
 		super(position, skin);
 		blackstains = "blackstains";
@@ -37,6 +46,11 @@ public class BlackStain extends Malus implements ActionListener {
 		return null;
 	}
 
+	/**
+	 * The method gives the CoinsReducer malus a new Position that leaves the Y
+	 * position unchanged, while the X position decreases by one pixel so that the
+	 * object moves from right to left
+	 */
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
 	}
