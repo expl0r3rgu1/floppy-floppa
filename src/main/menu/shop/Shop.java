@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -239,7 +236,7 @@ public class Shop {
 		shopFileWriter.append(newLine);
 		newLine = this.overwritePurchaseStatusLine(this.sceneries);
 		shopFileWriter.append(newLine);
-		
+
 		shopFileWriter.close();
 	}
 
