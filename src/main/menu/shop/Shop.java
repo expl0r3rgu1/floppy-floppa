@@ -230,9 +230,9 @@ public class Shop {
 	public void fileUpdate() throws IOException {
 		FileWriter shopFileWriter = new FileWriter(savingsFile, false);
 
-		shopFileWriter.append(this.coins.toString());
-		shopFileWriter.append(this.overwritePurchaseStatusLine(this.skins));
-		shopFileWriter.append(this.overwritePurchaseStatusLine(this.sceneries));
+		shopFileWriter.append(this.coins + "\n");
+		shopFileWriter.append(this.overwritePurchaseStatusLine(this.skins) + "\n");
+		shopFileWriter.append(this.overwritePurchaseStatusLine(this.sceneries) + "\n");
 
 		shopFileWriter.close();
 	}
