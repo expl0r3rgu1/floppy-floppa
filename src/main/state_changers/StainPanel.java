@@ -10,11 +10,18 @@ import javax.swing.JPanel;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 
-class StainPanel extends JPanel {
+/**
+ * StainPanel is a class that makes appear a JPanel on the screen, used by
+ * BlackStain and BlindBlock
+ */
+public class StainPanel extends JPanel {
 
 	private static final long serialVersionUID = 9048749950295388684L;
 	private Image image;
 
+	/**
+	 * @param imageName
+	 */
 	public StainPanel(String imageName) {
 
 		this.setLayout(null);
