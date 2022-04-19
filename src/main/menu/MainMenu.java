@@ -31,6 +31,9 @@ public class MainMenu extends JPanel implements Menu {
 	private final Tutorial tutorial;
 	private final SkinSelectionPanel selectionPanel;
 
+	/**
+	 * @param gameSettings - GameSettings
+	 */
 	public MainMenu(GameSettings gameSettings) {
 
 		menuPanel = new MenuPanel(this);
@@ -65,6 +68,9 @@ public class MainMenu extends JPanel implements Menu {
 
 	}
 
+	/**
+	 * paintComponent is a method 
+	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D canvas = (Graphics2D) g;
