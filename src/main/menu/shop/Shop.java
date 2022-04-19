@@ -247,21 +247,21 @@ public class Shop {
 	 */
 	private <X> String overwritePurchaseStatusLine(List<PurchaseStatus<X>> list) {
 		String line = "";
-		list.forEach(status -> {
-			if (status.isPurchased()) {
+		for (var purchaseStatus : list) {
+			if (purchaseStatus.isPurchased()) {
 				if (line.isEmpty()) {
-					line.concat("1");
+					line += "1";
 				} else {
-					line.concat(",1");
+					line += ",1";
 				}
 			} else {
 				if (line.isEmpty()) {
-					line.concat("0");
+					line += "0";
 				} else {
-					line.concat(",0");
+					line += ",0";
 				}
 			}
-		});
+		}
 		return line;
 	}
 
