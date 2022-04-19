@@ -19,7 +19,6 @@ import main.utilities.Skin;
 public class MovingObstacle extends Movable implements ActionListener {
 
 	private Timer timer;
-	private int shift;
 	private Skin skin;
 	private int direction = -1;
 
@@ -75,8 +74,7 @@ public class MovingObstacle extends Movable implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		setPosition(new Position(getPosition().getX(), getPosition().getY() + shift));
-		timer.stop();
+		this.direction = -this.direction;
 	}
 
 }
