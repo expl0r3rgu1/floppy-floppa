@@ -248,9 +248,8 @@ public class Shop {
 	 * @return the line that will be overwritten over an old line to update the
 	 *         savings file
 	 */
-	@SuppressWarnings("null")
 	private <X> String overwritePurchaseStatusLine(List<PurchaseStatus<X>> list) {
-		String line = null;
+		String line = "";
 		list.forEach(status -> {
 			if (status.isPurchased()) {
 				if (line.isEmpty()) {
