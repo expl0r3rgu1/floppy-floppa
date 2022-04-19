@@ -34,6 +34,7 @@ public class Shop {
 
 	public Shop() {
 		this.initializeStrings();
+		this.coins = 0;
 
 		skins = new ArrayList<>();
 		sceneries = new ArrayList<>();
