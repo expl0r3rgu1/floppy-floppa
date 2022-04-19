@@ -25,6 +25,7 @@ import main.menu.shop.PurchaseStatus;
 import main.menu.shop.Shop;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
+import main.utilities.GameSettings;
 import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJButtonWithObject;
@@ -39,19 +40,21 @@ public class SkinSelectionPanel extends JPanel {
 	private GridBagLayout grid = new GridBagLayout();
 	private Character character;
 	private ScrollingBackground scenario;
+	private GameSettings settings;
+	private MainMenu mainMenu;
+	private Shop shop;
 	private Image background;
 	private int numSkins;
 	private int numBackgrounds;
 	private boolean equip = false;
 	private boolean bought = false;
-	private MainMenu mainMenu;
-	private Shop shop;
+	public static final int dimension = (Constants.SCREEN_SIZE.getHeight()) / 12;
 	private List<PurchaseStatus<PricedSkin>> skinList;
 	private List<PurchaseStatus<PricedBackground>> backgroundList;
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
 			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 
-	public SkinSelectionPanel(MainMenu mainMenu) {
+	public SkinSelectionPanel(MainMenu mainMenu, GameSettings settings) {
 
 		shop = new Shop();
 		this.mainMenu = mainMenu;
@@ -67,6 +70,7 @@ public class SkinSelectionPanel extends JPanel {
 
 		skinList = shop.getSkins();
 		backgroundList = shop.getSceneries();
+		this.settings = settings;
 		this.character = character;
 		this.scenario = scenario;
 
@@ -146,12 +150,14 @@ public class SkinSelectionPanel extends JPanel {
 
 		if (i == 4) {
 
-			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)));
-			character.setSkin(skin);
+			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)), dimension,
+					dimension);
+			settings.setSkin(skin);
 
 		} else {
 			ScrollingBackground scenario = new ScrollingBackground(labelNames.get(j + 5),
 					CommonMethods.getImageResource(labelNames.get(j + 5)));
+			settings.setScrollingBackground(scenario);
 		}
 
 	}
