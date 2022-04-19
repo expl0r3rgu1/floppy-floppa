@@ -7,20 +7,33 @@ import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
 
+/**
+ * A class that implements a fixed Obstacle
+ */
 public class FixedObstacle extends Movable {
 
 	public static final double space = (Constants.SCREEN_SIZE.getHeight()) / 7;
 	private Skin skin;
 
+	/**
+	 * @param position - the obstacle initial position
+	 * @param skin     - the obstacle Skin
+	 */
 	public FixedObstacle(Position position, Skin skin) {
 		super(position);
 		this.skin = skin;
 	}
 
+	/*
+	 * getter method for Skin
+	 */
 	public Skin getSkin() {
 		return skin;
 	}
 
+	/**
+	 * setter method for Skin
+	 */
 	public void setSkin(Skin skin) {
 		this.skin = skin;
 	}
@@ -36,6 +49,10 @@ public class FixedObstacle extends Movable {
 		updatePosition();
 	}
 
+	/**
+	 * updatePosition is a method that as its name says updates the position, the X,
+	 * of the fixedobstacle
+	 */
 	private void updatePosition() {
 		getPosition().setX(getPosition().getX() - Constants.MOVING_FACTOR);
 	}
