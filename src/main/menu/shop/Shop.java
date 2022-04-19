@@ -182,13 +182,13 @@ public class Shop {
 
 	/**
 	 * Creates skinsNum PurchaseStatus of PricedSkin objects and initializes them,
-	 * then through the scanner and another method, checks the actual purchase
-	 * status of the PricedSkin objects
+	 * checks the line, word by word, to get the current PurchaseStatus
 	 * 
 	 * @param line one line of the savings file
 	 * @param list List of purchase statuses of PricedSkin items
 	 */
 	private void getSkinsInfo(String line, List<PurchaseStatus<PricedSkin>> list) {
+		String[] lineWords = line.split(",");
 
 		for (int i = 0; i < skinsNum; i++) {
 			PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
@@ -197,7 +197,9 @@ public class Shop {
 							prices.get(i)),
 					false);
 
-			this.getIfPurchased(line, purchaseStatus);
+			if (lineWords[i].equals("1")) {
+				purchaseStatus.purchase();
+			}
 
 			list.add(purchaseStatus);
 		}
