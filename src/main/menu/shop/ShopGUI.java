@@ -43,6 +43,8 @@ public class ShopGUI extends JPanel {
 		this.mainMenu = mainMenu;
 		this.setLayout(new GridBagLayout());
 
+		this.setOpaque(false);
+
 		numSkins = shop.getSkinsNum();
 		numBackgrounds = shop.getSceneriesNum();
 
