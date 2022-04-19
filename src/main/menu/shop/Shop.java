@@ -231,9 +231,13 @@ public class Shop {
 	public void fileUpdate() throws IOException {
 		FileWriter shopFileWriter = new FileWriter(savingsFile, false);
 
-		shopFileWriter.append(this.coins + "\n");
-		shopFileWriter.append(this.overwritePurchaseStatusLine(this.skins) + "\n");
-		shopFileWriter.append(this.overwritePurchaseStatusLine(this.sceneries) + "\n");
+		if (!skins.isEmpty() && !sceneries.isEmpty()) {
+			shopFileWriter.append(this.coins + "\n");
+			shopFileWriter.append(this.overwritePurchaseStatusLine(this.skins) + "\n");
+			shopFileWriter.append(this.overwritePurchaseStatusLine(this.sceneries) + "\n");
+		} else {
+			shopFileWriter.write(Constants.SAVINGS_FILE_START_CONTENT);
+		}
 
 		shopFileWriter.close();
 	}
