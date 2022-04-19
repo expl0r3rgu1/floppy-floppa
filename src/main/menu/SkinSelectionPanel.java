@@ -54,7 +54,7 @@ public class SkinSelectionPanel extends JPanel {
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
 			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 
-	public SkinSelectionPanel(MainMenu mainMenu) {
+	public SkinSelectionPanel(MainMenu mainMenu, GameSettings settings) {
 
 		shop = new Shop();
 		this.mainMenu = mainMenu;
