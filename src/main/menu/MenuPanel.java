@@ -35,7 +35,6 @@ public class MenuPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
 	private GridBagLayout grid = new GridBagLayout();
-	private Image background;
 	private MainMenu mainMenu;
 
 	/**
@@ -47,12 +46,6 @@ public class MenuPanel extends JPanel {
 
 		this.mainMenu = mainMenu;
 		this.setLayout(grid);
-
-		try {
-			background = ImageIO.read(getClass().getResource("/resources/images/Background.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.setOpaque(false);
@@ -225,18 +218,15 @@ public class MenuPanel extends JPanel {
 			return e -> {
 				System.exit(0);
 			};
+		} else if (panelName.equals("CLEAR SAVINGS")) {
+			return e -> {
+				mainMenu.clearSavings();
+			};
 		} else {
 			return e -> {
 				MainMenu.cardLayout.show(this.mainMenu, panelName);
 			};
 		}
-	}
-
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		Graphics2D canvas = (Graphics2D) g;
-		canvas.drawImage(background, 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
-				(int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
 
 	/**
