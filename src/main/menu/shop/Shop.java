@@ -267,6 +267,14 @@ public class Shop {
 	}
 
 	/**
+	 * Used to clear data from the lists of Purchase Statuses.
+	 */
+	public void clearSavings() {
+		this.skins.clear();
+		this.sceneries.clear();
+	}
+
+	/**
 	 * Reads the line provided by the scanner word per word, if the word is a 1 it
 	 * means the item has been purchased so the method saves this info through the
 	 * PurchaseStatus parameter
