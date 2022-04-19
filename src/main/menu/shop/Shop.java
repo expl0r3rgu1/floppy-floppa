@@ -2,6 +2,7 @@ package main.menu.shop;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -230,22 +231,16 @@ public class Shop {
 	 * @throws IOException
 	 */
 	public void fileUpdate() throws IOException {
-		Path path = this.savingsFile.toPath();
-		List<String> fileContent = new ArrayList<>(Files.readAllLines(path, StandardCharsets.UTF_8));
+		FileWriter shopFileWriter = new FileWriter(savingsFile, false);
+		String newLine = null;
 
-		for (int i = 0; i < fileContent.size(); i++) {
-			if (i == 0) {
-				fileContent.set(i, this.coins.toString());
-			} else if (i == 1) {
-				String newLine = this.overwritePurchaseStatusLine(this.skins);
-				fileContent.set(i, newLine);
-			} else {
-				String newLine = this.overwritePurchaseStatusLine(this.sceneries);
-				fileContent.set(i, newLine);
-				break;
-			}
-		}
-		Files.write(path, fileContent, StandardCharsets.UTF_8);
+		shopFileWriter.append(this.coins.toString());
+		this.overwritePurchaseStatusLine(this.skins);
+		shopFileWriter.append(newLine);
+		newLine = this.overwritePurchaseStatusLine(this.sceneries);
+		shopFileWriter.append(newLine);
+		
+		shopFileWriter.close();
 	}
 
 	/**
