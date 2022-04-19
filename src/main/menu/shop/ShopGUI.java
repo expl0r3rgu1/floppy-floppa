@@ -1,11 +1,9 @@
 package main.menu.shop;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,7 +24,6 @@ import main.utilities.GraphicJLabel;
 public class ShopGUI extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
-	private Image background;
 	private int numSkins;
 	private int numBackgrounds;
 	private boolean bought = false;
@@ -46,6 +43,8 @@ public class ShopGUI extends JPanel {
 		this.mainMenu = mainMenu;
 		this.setLayout(new GridBagLayout());
 
+		this.setOpaque(false);
+
 		numSkins = shop.getSkinsNum();
 		numBackgrounds = shop.getSceneriesNum();
 
@@ -54,14 +53,11 @@ public class ShopGUI extends JPanel {
 		this.placeGUIComponents();
 	}
 
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-
-		Graphics2D canvas = (Graphics2D) g;
-
-		canvas.drawImage(background, 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
-				(int) Constants.SCREEN_SIZE.getHeight(), null);
+	/**
+	 * @return The Shop associated with the GUI
+	 */
+	public Shop getShop() {
+		return shop;
 	}
 
 	/**
@@ -151,13 +147,17 @@ public class ShopGUI extends JPanel {
 					(i == 2 ? labelNames.get(j) + " : " + prices.get(j)
 							: labelNames.get(j + 5) + " : " + prices.get(j + 5)),
 					Color.decode("#77DD77"), Color.decode("#007542"), "Arial", Font.PLAIN);
+
 			this.add(label,
 					new GBCSimplified(j, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
-			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)) + ".png"),
+
+			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5))),
 					new GBCSimplified(j, i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
+
 			GraphicJButtonWithObject buyButton = new GraphicJButtonWithObject("BUY", Color.decode("#FDFD96"),
 					Color.decode("#FFDD62"), "Arial", Font.PLAIN,
 					(i == 2 ? shop.getSkins().get(j).getX() : shop.getSceneries().get(j).getX()));
+
 			buyButton.addActionListener(e -> {
 				bought = shop.buy(buyButton.getObject());
 				buyButton.setEnabled(!bought);
