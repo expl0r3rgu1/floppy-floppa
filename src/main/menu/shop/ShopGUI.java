@@ -52,6 +52,13 @@ public class ShopGUI extends JPanel {
 	}
 
 	/**
+	 * @return The Shop associated with the GUI
+	 */
+	public Shop getShop() {
+		return shop;
+	}
+
+	/**
 	 * Returns a scaled version of the image parameter
 	 * 
 	 * @param image the image to scale
