@@ -1,9 +1,7 @@
 package main.obstacles;
 
-import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -14,8 +12,7 @@ import main.utilities.Skin;
 
 public class FixedObstacle extends Movable {
 
-	public static final double space = (Constants.SCREEN_SIZE.getHeight()) / 7; // hole the floppa will pass throught
-	private int movingFactor = 1;
+	public static final double space = (Constants.SCREEN_SIZE.getHeight()) / 7;
 	private Skin skin;
 
 	public FixedObstacle(Position position, Skin skin) {
@@ -39,17 +36,11 @@ public class FixedObstacle extends Movable {
 		canvas.drawImage(getUpsidedownImage(getSkin().getImage()), getPosition().getX(), 0,
 				(int) (Constants.SCREEN_SIZE.getWidth()) / 10, (int) (getPosition().getY() - (space) / 2), null);
 
-		updatePosition(movingFactor);
+		updatePosition();
 	}
 
-	private void updatePosition(int movingFactor) {
-		final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-		if (screenSize.getWidth() > 2000) {
-			movingFactor *= 2;
-		}
-
-		getPosition().setX(getPosition().getX() - movingFactor);
+	private void updatePosition() {
+		getPosition().setX(getPosition().getX() - Constants.MOVING_FACTOR);
 	}
 
 	private Image getUpsidedownImage(Image image) {
