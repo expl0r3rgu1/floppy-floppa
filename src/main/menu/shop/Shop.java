@@ -207,20 +207,24 @@ public class Shop {
 
 	/**
 	 * Creates sceneriesNum PurchaseStatus of PricedBackground objects and
-	 * initializes them, then through the scanner and another method, checks the
-	 * actual purchase status of the PricedBackground objects
+	 * initializes them, checks the line, word by word, to get the current
+	 * PurchaseStatus
 	 * 
 	 * @param line one line of the savings file
 	 * @param list List of purchase statuses of PricedBackground items
 	 */
 	private void getScenerisInfo(String line, List<PurchaseStatus<PricedBackground>> list) {
+		String[] lineWords = line.split(",");
+
 		for (int i = 0; i < sceneriesNum; i++) {
 			PurchaseStatus<PricedBackground> purchaseStatus = new PurchaseStatus<PricedBackground>(
 					new PricedBackground(backgroundInitialize.get(i),
 							CommonMethods.getImageResource(backgroundInitialize.get(i)), prices.get(i)),
 					false);
 
-			this.getIfPurchased(line, purchaseStatus);
+			if (lineWords[i].equals("1")) {
+				purchaseStatus.purchase();
+			}
 
 			list.add(purchaseStatus);
 		}
