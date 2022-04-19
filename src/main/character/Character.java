@@ -191,7 +191,7 @@ public class Character extends Movable {
 
 	private void updatePosition() {
 
-		int value = this.jumping ? -Constants.MOVING_FACTOR * 2 : Constants.MOVING_FACTOR;
+		int value = this.jumping ? (-Constants.MOVING_FACTOR * 2) : Constants.MOVING_FACTOR;
 		this.getPosition().setY(this.getPosition().getY() + value);
 
 	}
