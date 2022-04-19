@@ -77,8 +77,8 @@ public class MenuPanel extends JPanel {
 
 		title.setOpaque(false);
 
-		this.add(title, new GBCSimplified(2, 0, 0, 0, new Insets((int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0,
-				(int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0)));
+		this.add(title, new GBCSimplified(2, 0, 0, 0,
+				new Insets(CommonMethods.getPixelsFromPercentage(3), 0, CommonMethods.getPixelsFromPercentage(3), 0)));
 	}
 
 	/*
@@ -86,7 +86,7 @@ public class MenuPanel extends JPanel {
 	 */
 	private void addPlayButton() {
 		this.add(generateButton("Play", "PLAY", "fipps.otf"),
-				new GBCSimplified(2, 2, (int) Constants.SCREEN_SIZE.getWidth() * 15 / 100,
+				new GBCSimplified(2, 2, CommonMethods.getPixelsFromPercentage(15),
 						(int) Constants.SCREEN_SIZE.getHeight() * 10 / 100, new Insets(0, 0, 0, 0)));
 	}
 
@@ -116,13 +116,10 @@ public class MenuPanel extends JPanel {
 			int right) {
 		String actionListenerName = name.toUpperCase();
 
-		this.add(generateButton(name, actionListenerName, "fipps.otf"),
-				new GBCSimplified(gridx, gridy, (int) Constants.SCREEN_SIZE.getWidth() * ipadx / 100,
-						(int) Constants.SCREEN_SIZE.getHeight() * ipady / 100,
-						new Insets((int) Constants.SCREEN_SIZE.getWidth() * top / 100,
-								(int) Constants.SCREEN_SIZE.getWidth() * left / 100,
-								(int) Constants.SCREEN_SIZE.getWidth() * bottom / 100,
-								(int) Constants.SCREEN_SIZE.getWidth() * right / 100)));
+		this.add(generateButton(name, actionListenerName, "fipps.otf"), new GBCSimplified(gridx, gridy,
+				CommonMethods.getPixelsFromPercentage(ipadx), (int) Constants.SCREEN_SIZE.getHeight() * ipady / 100,
+				new Insets(CommonMethods.getPixelsFromPercentage(top), CommonMethods.getPixelsFromPercentage(left),
+						CommonMethods.getPixelsFromPercentage(bottom), CommonMethods.getPixelsFromPercentage(right))));
 	}
 
 	/*
@@ -148,13 +145,10 @@ public class MenuPanel extends JPanel {
 	 */
 	private void addImage(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
 			int right) {
-		this.add(this.getImageResource(name),
-				new GBCSimplified(gridx, gridy, (int) Constants.SCREEN_SIZE.getWidth() * ipadx / 100,
-						(int) Constants.SCREEN_SIZE.getHeight() * ipady / 100,
-						new Insets((int) Constants.SCREEN_SIZE.getWidth() * top / 100,
-								(int) Constants.SCREEN_SIZE.getWidth() * left / 100,
-								(int) Constants.SCREEN_SIZE.getWidth() * bottom / 100,
-								(int) Constants.SCREEN_SIZE.getWidth() * right / 100)));
+		this.add(this.getImageResource(name), new GBCSimplified(gridx, gridy,
+				CommonMethods.getPixelsFromPercentage(ipadx), (int) Constants.SCREEN_SIZE.getHeight() * ipady / 100,
+				new Insets(CommonMethods.getPixelsFromPercentage(top), CommonMethods.getPixelsFromPercentage(left),
+						CommonMethods.getPixelsFromPercentage(bottom), CommonMethods.getPixelsFromPercentage(right))));
 	}
 
 	/**
@@ -231,9 +225,8 @@ public class MenuPanel extends JPanel {
 		JLabel label = null;
 		try {
 			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
-			ImageIcon imageIcon = new ImageIcon(
-					this.scaleImage(image, new Dimension((int) (Constants.SCREEN_SIZE.getWidth() * 20 / 100),
-							(int) (Constants.SCREEN_SIZE.getWidth() * 20 / 100))));
+			ImageIcon imageIcon = new ImageIcon(this.scaleImage(image, new Dimension(
+					CommonMethods.getPixelsFromPercentage(20), CommonMethods.getPixelsFromPercentage(20))));
 			label = new JLabel(imageIcon);
 		} catch (IOException e) {
 			e.printStackTrace();
