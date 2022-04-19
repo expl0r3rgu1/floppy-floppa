@@ -96,8 +96,8 @@ public class MovingObstacle extends Movable implements ActionListener {
 	 */
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(this.getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				CommonMethods.getPixelsFromPercentage(10), CommonMethods.getPixelsFromPercentage(10), null);
+		canvas.drawImage(this.getSkin().getImage(), getPosition().getX(), getPosition().getY(), getSkin().getWidth(),
+				getSkin().getHeight(), null);
 
 		this.movingPattern();
 	}
