@@ -73,7 +73,7 @@ public class MovingObstacle extends Movable implements ActionListener {
 	 * pixels, so that the moving obstacle keeps moving from right to left
 	 */
 	private void movingPatternSupportX() {
-		setPosition(new Position(getPosition().getX() - 3, getPosition().getY()));
+		setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR, getPosition().getY()));
 	}
 
 	/**
