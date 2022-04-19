@@ -7,7 +7,6 @@ import java.util.Random;
 import org.junit.jupiter.api.Test;
 
 import main.state_changers.CoinsIncrement;
-import main.state_changers.Immortality;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
@@ -23,7 +22,7 @@ public class TestCoinsIncrement {
 	final private Skin SKIN = new Skin("Immortality", CommonMethods.getImageResource("Immortality"),
 			(int) this.POSITION.getX(), (int) this.POSITION.getY());
 	private int xPos;
-	
+
 	@Test
 	/**
 	 * Check if the moving pattern of the booster works correctly
@@ -32,14 +31,14 @@ public class TestCoinsIncrement {
 		CoinsIncrement coinsIncrement = new CoinsIncrement(this.POSITION, this.SKIN);
 		xPos = this.POSITION.getX();
 		assertTrue(coinsIncrement.getPosition().getX() == xPos--);
-		
+
 		coinsIncrement.setPosition(HALFWAY_POSITION);
 		xPos = this.HALFWAY_POSITION.getX();
 		assertTrue(coinsIncrement.getPosition().getX() == xPos--);
-		
+
 		coinsIncrement.setPosition(RANDOM_POSITION);
 		xPos = this.RANDOM_POSITION.getX();
 		assertTrue(coinsIncrement.getPosition().getX() == xPos--);
 	}
-	
+
 }

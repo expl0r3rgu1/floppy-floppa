@@ -32,11 +32,11 @@ public class TestImmortality {
 		Immortality immortalityBooster = new Immortality(this.POSITION, this.SKIN);
 		xPos = this.POSITION.getX();
 		assertTrue(immortalityBooster.getPosition().getX() == xPos--);
-		
+
 		immortalityBooster.setPosition(HALFWAY_POSITION);
 		xPos = this.HALFWAY_POSITION.getX();
 		assertTrue(immortalityBooster.getPosition().getX() == xPos--);
-		
+
 		immortalityBooster.setPosition(RANDOM_POSITION);
 		xPos = this.RANDOM_POSITION.getX();
 		assertTrue(immortalityBooster.getPosition().getX() == xPos--);
