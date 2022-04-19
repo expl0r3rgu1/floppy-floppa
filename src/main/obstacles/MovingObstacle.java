@@ -20,12 +20,8 @@ public class MovingObstacle extends Movable implements ActionListener {
 
 	private Timer timer;
 	private int shift;
-	private int counter;
-	private int firstPositionShift;
-	private int PositionShift;
-	private int upShift;
-	private int downShift;
 	private Skin skin;
+	private int direction = -1;
 
 	/**
 	 * @param position the obstacle initial position
@@ -34,11 +30,7 @@ public class MovingObstacle extends Movable implements ActionListener {
 	public MovingObstacle(Position position, Skin skin) {
 		super(position);
 		this.skin = skin;
-		counter = 0;
-		firstPositionShift = CommonMethods.getPixelsFromPercentage(5);
-		PositionShift = CommonMethods.getPixelsFromPercentage(10);
-		upShift = 1;
-		downShift = -1;
+
 		this.timer = new Timer(Constants.CHANGE_DIRECTION_TIMEOUT, this);
 	}
 
@@ -52,15 +44,20 @@ public class MovingObstacle extends Movable implements ActionListener {
 	/**
 	 * Sets the MovingObstacle Skin
 	 * 
-	 * @param skin 
+	 * @param skin
 	 */
 	public void setSkin(Skin skin) {
 		this.skin = skin;
 	}
 
-	
-
-	
+	/**
+	 * The main method to update the MovingObstacle position, in the map, through
+	 * time
+	 */
+	private void updatePosition() {
+		this.setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR,
+				getPosition().getY() + direction * Constants.MOVING_FACTOR));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -70,7 +67,7 @@ public class MovingObstacle extends Movable implements ActionListener {
 		canvas.drawImage(this.getSkin().getImage(), getPosition().getX(), getPosition().getY(), getSkin().getWidth(),
 				getSkin().getHeight(), null);
 
-		this.movingPattern();
+		this.updatePosition();
 	}
 
 	/**
