@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import main.menu.MainMenu;
 import main.utilities.GraphicJLabel;
 import main.utilities.Constants;
+import main.utilities.GBCSimplified;
 import main.utilities.CommonMethods;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -76,7 +77,7 @@ public class MenuPanel extends JPanel {
 
 		title.setOpaque(false);
 
-		this.add(title, setDimensionObj(2, 0, 0, 0, new Insets((int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0,
+		this.add(title, new GBCSimplified(2, 0, 0, 0, new Insets((int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0,
 				(int) Constants.SCREEN_SIZE.getWidth() * 3 / 100, 0)));
 	}
 
@@ -85,7 +86,7 @@ public class MenuPanel extends JPanel {
 	 */
 	private void addPlayButton() {
 		this.add(generateButton("Play", "PLAY", "fipps.otf"),
-				setDimensionObj(2, 2, (int) Constants.SCREEN_SIZE.getWidth() * 15 / 100,
+				new GBCSimplified(2, 2, (int) Constants.SCREEN_SIZE.getWidth() * 15 / 100,
 						(int) Constants.SCREEN_SIZE.getHeight() * 10 / 100, new Insets(0, 0, 0, 0)));
 	}
 
@@ -116,7 +117,7 @@ public class MenuPanel extends JPanel {
 		String actionListenerName = name.toUpperCase();
 
 		this.add(generateButton(name, actionListenerName, "fipps.otf"),
-				setDimensionObj(gridx, gridy, (int) Constants.SCREEN_SIZE.getWidth() * ipadx / 100,
+				new GBCSimplified(gridx, gridy, (int) Constants.SCREEN_SIZE.getWidth() * ipadx / 100,
 						(int) Constants.SCREEN_SIZE.getHeight() * ipady / 100,
 						new Insets((int) Constants.SCREEN_SIZE.getWidth() * top / 100,
 								(int) Constants.SCREEN_SIZE.getWidth() * left / 100,
@@ -148,7 +149,7 @@ public class MenuPanel extends JPanel {
 	private void addImage(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
 			int right) {
 		this.add(this.getImageResource(name),
-				setDimensionObj(gridx, gridy, (int) Constants.SCREEN_SIZE.getWidth() * ipadx / 100,
+				new GBCSimplified(gridx, gridy, (int) Constants.SCREEN_SIZE.getWidth() * ipadx / 100,
 						(int) Constants.SCREEN_SIZE.getHeight() * ipady / 100,
 						new Insets((int) Constants.SCREEN_SIZE.getWidth() * top / 100,
 								(int) Constants.SCREEN_SIZE.getWidth() * left / 100,
@@ -189,16 +190,6 @@ public class MenuPanel extends JPanel {
 		}
 		jb.addActionListener(adHocActionListener(actionListenerName));
 		return jb;
-	}
-
-	private GridBagConstraints setDimensionObj(int gridx, int gridy, int ipadx, int ipady, Insets i) {
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.gridx = gridx;
-		gbc.gridy = gridy;
-		gbc.ipadx = ipadx;
-		gbc.ipady = ipady;
-		gbc.insets = i;
-		return gbc;
 	}
 
 	/**
