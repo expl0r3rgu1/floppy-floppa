@@ -5,9 +5,8 @@ import java.awt.Toolkit;
 
 public class Constants {
 	public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final int MOVING_FACTOR = (int) Math.floor(SCREEN_SIZE.getWidth() / (double) 1000) * 2;
 	public static final double SPACE_BETWEEN_PIPES = (Toolkit.getDefaultToolkit().getScreenSize().getHeight()) / 3;
-	public static final int MOVING_FACTOR = ((int) ((Toolkit.getDefaultToolkit().getScreenResolution() + 50) / 100))
-			* 2;
 	public static final int SPEED = 60;
 	public static final double FIXED_OBSTACLE_SPEED = 0.002;
 	public static final double MOVING_OBSTACLE_SPEED = 0.0005;
