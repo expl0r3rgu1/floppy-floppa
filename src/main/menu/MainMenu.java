@@ -36,13 +36,6 @@ public class MainMenu extends JPanel implements Menu {
 	 */
 	public MainMenu(GameSettings gameSettings) {
 
-		menuPanel = new MenuPanel(this);
-		leaderboardPanel = new LeaderboardPanel(this);
-		playPanel = new PlayPanel(this, gameSettings);
-		shopGUI = new ShopGUI(this);
-		EOGMenuGUI = new EOGMenuGUI(this);
-		tutorial = new Tutorial(this);
-
 		File savingsFile = new File(Constants.SAVINGS_FILE_PATH);
 		if (!savingsFile.exists()) {
 			// showCard(PANEL.TUTORIAL);
@@ -56,6 +49,13 @@ public class MainMenu extends JPanel implements Menu {
 			}
 		}
 
+		menuPanel = new MenuPanel(this);
+		leaderboardPanel = new LeaderboardPanel(this);
+		playPanel = new PlayPanel(this, gameSettings);
+		shopGUI = new ShopGUI(this);
+		EOGMenuGUI = new EOGMenuGUI(this);
+		tutorial = new Tutorial(this);
+		
 		this.setLayout(cardLayout);
 
 		this.add("MENU", menuPanel);
