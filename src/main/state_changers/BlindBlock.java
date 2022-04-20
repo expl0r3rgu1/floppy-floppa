@@ -18,6 +18,11 @@ import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
 
+/**
+ * A class that extends Malus class and implements an entity that makes appear a
+ * stain on the screen, blocking the players vision of part of the right side of
+ * the screen, every time they hit this malus
+ */
 public class BlindBlock extends Malus implements ActionListener {
 
 	// Black Block
@@ -25,6 +30,10 @@ public class BlindBlock extends Malus implements ActionListener {
 	private StainPanel stain;
 	private Timer timer = new Timer(Constants.CHANGED_STATE_TIME, this);
 
+	/**
+	 * @param position - The CoinsReducer initial position
+	 * @param skin     - The CoinsReducer skin
+	 */
 	public BlindBlock(Position position, Skin skin) {
 		super(position, skin);
 		blindBlock = "blindBlock";
@@ -38,6 +47,11 @@ public class BlindBlock extends Malus implements ActionListener {
 		return null;
 	}
 
+	/**
+	 * The method gives the CoinsReducer malus a new Position that leaves the Y
+	 * position unchanged, while the X position decreases by one pixel so that the
+	 * object moves from right to left
+	 */
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
 	}
