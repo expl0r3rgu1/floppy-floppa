@@ -25,6 +25,7 @@ import main.menu.shop.PurchaseStatus;
 import main.menu.shop.Shop;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
+import main.utilities.GameSettings;
 import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJButtonWithObject;
@@ -33,28 +34,31 @@ import main.utilities.PricedBackground;
 import main.utilities.PricedSkin;
 import main.character.Character;
 
-public class SkinSelectionPanel extends JPanel {
+public class SelectionPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
 	private GridBagLayout grid = new GridBagLayout();
 	private Character character;
 	private ScrollingBackground scenario;
+	private GameSettings settings;
+	private MainMenu mainMenu;
+	private Shop shop;
 	private Image background;
 	private int numSkins;
 	private int numBackgrounds;
 	private boolean equip = false;
 	private boolean bought = false;
-	private MainMenu mainMenu;
-	private Shop shop;
+	public static final int dimension = (Constants.SCREEN_SIZE.getHeight()) / 12;
 	private List<PurchaseStatus<PricedSkin>> skinList;
 	private List<PurchaseStatus<PricedBackground>> backgroundList;
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
 			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 
-	public SkinSelectionPanel(MainMenu mainMenu) {
+	public SelectionPanel(MainMenu mainMenu, GameSettings settings) {
 
 		shop = new Shop();
 		this.mainMenu = mainMenu;
+		this.settings = settings;
 		this.setLayout(grid);
 
 		CommonMethods.getImageResource("Background");
@@ -64,7 +68,6 @@ public class SkinSelectionPanel extends JPanel {
 
 		numSkins = shop.getSkinsNum();
 		numBackgrounds = shop.getSceneriesNum();
-
 		skinList = shop.getSkins();
 		backgroundList = shop.getSceneries();
 		this.character = character;
@@ -146,12 +149,14 @@ public class SkinSelectionPanel extends JPanel {
 
 		if (i == 4) {
 
-			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)));
-			character.setSkin(skin);
+			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)), dimension,
+					dimension);
+			settings.setSkin(skin);
 
 		} else {
 			ScrollingBackground scenario = new ScrollingBackground(labelNames.get(j + 5),
 					CommonMethods.getImageResource(labelNames.get(j + 5)));
+			settings.setScrollingBackground(scenario);
 		}
 
 	}
@@ -170,14 +175,6 @@ public class SkinSelectionPanel extends JPanel {
 
 		}
 		return jb;
-	}
-
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		Graphics2D canvas = (Graphics2D) g;
-		canvas.drawImage(background, 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
-				(int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
 
 	private JLabel imageCreation(String fileName) {
