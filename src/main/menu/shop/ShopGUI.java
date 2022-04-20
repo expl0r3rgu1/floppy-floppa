@@ -79,8 +79,8 @@ public class ShopGUI extends JPanel {
 	private JLabel imageCreation(String fileName) {
 		JLabel label = null;
 		Image image = CommonMethods.getImageResource(fileName);
-		ImageIcon imageIcon = new ImageIcon(this.scale(image,
-				new Dimension((CommonMethods.getPixelsFromPercentage(8)), (CommonMethods.getPixelsFromPercentage(8)))));
+		ImageIcon imageIcon = new ImageIcon(this.scale(image, new Dimension(
+				(CommonMethods.getPixelsFromPercentageHeight(8)), (CommonMethods.getPixelsFromPercentageHeight(8)))));
 		label = new JLabel(imageIcon);
 		return label;
 	}
