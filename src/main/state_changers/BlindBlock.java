@@ -20,15 +20,13 @@ import main.utilities.Skin;
 
 /**
  * A class that extends Malus class and implements an entity that makes appear a
- * stain on the screen, blocking the players vision of part of the right side of
+ * black block on the screen, blocking the players vision of part of the right side of
  * the screen, every time they hit this malus
  */
 public class BlindBlock extends Malus implements ActionListener {
 
-	// Black Block
-	private String blindBlock;
-	private StainPanel stain;
-	private Timer timer = new Timer(Constants.CHANGED_STATE_TIME, this);
+	private boolean collided = false;
+	private Timer timer;
 
 	/**
 	 * @param position - The CoinsReducer initial position
@@ -36,14 +34,12 @@ public class BlindBlock extends Malus implements ActionListener {
 	 */
 	public BlindBlock(Position position, Skin skin) {
 		super(position, skin);
-		blindBlock = "blindBlock";
-		stain = new StainPanel(blindBlock);
+		timer = new Timer(Constants.CHANGED_STATE_TIME, this);
 	}
 
 	public Object changeState() {
 		timer.start();
-		play.add(stain);
-
+		this.collided = true;
 		return null;
 	}
 
@@ -53,19 +49,26 @@ public class BlindBlock extends Malus implements ActionListener {
 	 * object moves from right to left
 	 */
 	private void updatePositionX() {
-		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+		setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR, getPosition().getY()));
 	}
-
+	
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
 				CommonMethods.getPixelsFromPercentage(3), CommonMethods.getPixelsFromPercentage(3), null);
 
 		this.updatePositionX();
+		
+		if (collided) {
+			canvas.drawImage(getSkin().getImage(), 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
+					(int) Constants.SCREEN_SIZE.getHeight(), null);
+		}
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		play.remove(stain);
+		this.collided = false;
+		timer.stop();
 	}
 
 }
