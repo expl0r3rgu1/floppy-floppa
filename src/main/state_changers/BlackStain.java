@@ -24,9 +24,7 @@ import javax.swing.Timer;
  */
 public class BlackStain extends Malus implements ActionListener {
 
-	// Dirty Screen
-	private String blackstains;
-	private StainPanel stain;
+	private boolean collided = false;
 	private Timer timer = new Timer(Constants.CHANGED_STATE_TIME, this);
 
 	/**
@@ -35,14 +33,11 @@ public class BlackStain extends Malus implements ActionListener {
 	 */
 	public BlackStain(Position position, Skin skin) {
 		super(position, skin);
-		blackstains = "blackstains";
-		stain = new StainPanel(blackstains);
 	}
 
 	public Object changeState() {
 		timer.start();
-		play.add(stain);
-
+		this.collided = true;
 		return null;
 	}
 
@@ -52,7 +47,7 @@ public class BlackStain extends Malus implements ActionListener {
 	 * object moves from right to left
 	 */
 	private void updatePositionX() {
-		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+		setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR, getPosition().getY()));
 	}
 
 	public void animate(Graphics2D canvas) {
@@ -60,11 +55,17 @@ public class BlackStain extends Malus implements ActionListener {
 				CommonMethods.getPixelsFromPercentage(3), CommonMethods.getPixelsFromPercentage(3), null);
 
 		this.updatePositionX();
+		
+		if (collided) {
+			canvas.drawImage(getSkin().getImage(), 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
+					(int) Constants.SCREEN_SIZE.getHeight(), null);
+		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		play.remove(stain);
+		this.collided = false;
+		this.timer.stop();
 	}
 
 }
