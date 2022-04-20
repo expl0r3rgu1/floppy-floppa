@@ -47,10 +47,8 @@ public class TestCoinsIncrement {
 	 */
 	void coinsIncrementChangeState() {
 		CoinsIncrement coinsIncrement = new CoinsIncrement(this.POSITION, this.SKIN);
-		assertTrue(coinsIncrement.changeState() >= 0 && coinsIncrement.changeState() <= 100);
-		assertTrue(coinsIncrement.changeState() >= 0 && coinsIncrement.changeState() <= 100);
-		assertTrue(coinsIncrement.changeState() >= 0 && coinsIncrement.changeState() <= 100);
-		assertTrue(coinsIncrement.changeState() >= 0 && coinsIncrement.changeState() <= 100);
-		assertTrue(coinsIncrement.changeState() >= 0 && coinsIncrement.changeState() <= 100);
+		for (int i = 0; i < 100; i++) {
+			assertTrue(coinsIncrement.changeState() >= 0 && coinsIncrement.changeState() <= 100);
+		}
 	}
 }
