@@ -79,8 +79,8 @@ public class ShopGUI extends JPanel {
 	private JLabel imageCreation(String fileName) {
 		JLabel label = null;
 		Image image = CommonMethods.getImageResource(fileName);
-		ImageIcon imageIcon = new ImageIcon(this.scale(image,
-				new Dimension((CommonMethods.getPixelsFromPercentage(8)), (CommonMethods.getPixelsFromPercentage(8)))));
+		ImageIcon imageIcon = new ImageIcon(this.scale(image, new Dimension(
+				(CommonMethods.getPixelsFromPercentageHeight(8)), (CommonMethods.getPixelsFromPercentageHeight(8)))));
 		label = new JLabel(imageIcon);
 		return label;
 	}
@@ -103,24 +103,27 @@ public class ShopGUI extends JPanel {
 						"Arial", Font.BOLD);
 				skins.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentage(10)),
 						(CommonMethods.getPixelsFromPercentage(5))));
-				this.add(skins, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0, new Insets(
-						(CommonMethods.getPixelsFromPercentage(1)), 0, (CommonMethods.getPixelsFromPercentage(2)), 0)));
-
+				this.add(skins,
+						new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentageHeight(2)), 0,
+								new Insets((CommonMethods.getPixelsFromPercentageHeight(1)), 0,
+										(CommonMethods.getPixelsFromPercentageHeight(2)), 0)));
 			} else if (i == 5) {
 
 				GraphicJLabel backgrounds = new GraphicJLabel("BACKGROUNDS", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
-				backgrounds.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentage(10)),
-						(CommonMethods.getPixelsFromPercentage(5))));
-				this.add(backgrounds, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0, new Insets(
-						(CommonMethods.getPixelsFromPercentage(3)), 0, (CommonMethods.getPixelsFromPercentage(1)), 0)));
+				backgrounds.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentageWidth(10)),
+						(CommonMethods.getPixelsFromPercentageHeight(5))));
+				this.add(backgrounds,
+						new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentageWidth(2)), 0,
+								new Insets((CommonMethods.getPixelsFromPercentageHeight(3)), 0,
+										(CommonMethods.getPixelsFromPercentageHeight(1)), 0)));
 
 			} else if (i == numBackgrounds + numSkins - 1) {
 
 				GraphicJButton backMenu = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"Arial", Font.BOLD);
-				this.add(backMenu,
-						new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(3)), 0, 0, 0)));
+				this.add(backMenu, new GBCSimplified(4, i, 0, 0,
+						new Insets((CommonMethods.getPixelsFromPercentageHeight(3)), 0, 0, 0)));
 				backMenu.addActionListener(e -> {
 					mainMenu.showCard(Constants.PANEL.MENU);
 				});
@@ -146,11 +149,11 @@ public class ShopGUI extends JPanel {
 							: labelNames.get(j + 5) + " : " + prices.get(j + 5)),
 					Color.decode("#77DD77"), Color.decode("#007542"), "Arial", Font.PLAIN);
 
-			this.add(label,
-					new GBCSimplified(j, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
+			this.add(label, new GBCSimplified(j, i, 0, 0,
+					new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
 
-			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5))),
-					new GBCSimplified(j, i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(2)), 0, 0, 0)));
+			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5))), new GBCSimplified(j,
+					i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
 
 			GraphicJButtonWithObject buyButton = new GraphicJButtonWithObject("BUY", Color.decode("#FDFD96"),
 					Color.decode("#FFDD62"), "Arial", Font.PLAIN,
@@ -169,10 +172,10 @@ public class ShopGUI extends JPanel {
 			});
 
 			this.add(buyButton,
-					new GBCSimplified(j, i + 2, (CommonMethods.getPixelsFromPercentage(3)), 0,
-							new Insets((CommonMethods.getPixelsFromPercentage(2)),
-									(CommonMethods.getPixelsFromPercentage(5)), 0,
-									(CommonMethods.getPixelsFromPercentage(5)))));
+					new GBCSimplified(j, i + 2, (CommonMethods.getPixelsFromPercentageWidth(3)), 0,
+							new Insets((CommonMethods.getPixelsFromPercentageHeight(2)),
+									(CommonMethods.getPixelsFromPercentageWidth(5)), 0,
+									(CommonMethods.getPixelsFromPercentageWidth(5)))));
 		}
 		return i + 2;
 	}
