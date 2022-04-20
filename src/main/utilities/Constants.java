@@ -2,6 +2,12 @@ package main.utilities;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.List;
+
+import main.state_changers.BlackStain;
+import main.state_changers.BlindBlock;
+import main.state_changers.CoinsReducer;
+import main.state_changers.Malus;
 
 public class Constants {
 	public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
@@ -17,6 +23,14 @@ public class Constants {
 	public static final int LEADERBOARD_FILE_LINE_START = 3;
 	public static final int CHANGE_DIRECTION_TIMEOUT = 60000;
 	public static final int CHARACTER_JUMP_TIMEOUT = 30000;
+
+	public static final List<Malus> MALUS = List.of(
+			new BlackStain(null, new Skin("blackstains", CommonMethods.getImageResource("blackstains"),
+					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))),
+			new BlindBlock(null, new Skin("blindblock", CommonMethods.getImageResource("blindblock"),
+					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))),
+			new CoinsReducer(null, new Skin("coinsreducer", CommonMethods.getImageResource("coinsreducer"),
+					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))));
 
 	public static enum PANEL {
 		MENU, PLAY, LEADERBOARD, SHOP, TUTORIAL, EOGMENU
