@@ -58,7 +58,7 @@ public class Immortality extends Booster {
 	 * object moves from right to left
 	 */
 	private void updatePositionX() {
-		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+		setPosition(new Position(getPosition().getX() - Constants.MOVING_FACTOR, getPosition().getY()));
 	}
 
 	@Override
