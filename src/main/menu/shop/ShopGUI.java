@@ -26,7 +26,6 @@ public class ShopGUI extends JPanel {
 	private static final long serialVersionUID = -7631305128085484196L;
 	private int numSkins;
 	private int numBackgrounds;
-	private boolean bought = false;
 	private MainMenu mainMenu;
 	private Shop shop;
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
@@ -42,7 +41,6 @@ public class ShopGUI extends JPanel {
 		shop = new Shop();
 		this.mainMenu = mainMenu;
 		this.setLayout(new GridBagLayout());
-
 		this.setOpaque(false);
 
 		numSkins = shop.getSkinsNum();
@@ -158,10 +156,18 @@ public class ShopGUI extends JPanel {
 					Color.decode("#FFDD62"), "Arial", Font.PLAIN,
 					(i == 2 ? shop.getSkins().get(j).getX() : shop.getSceneries().get(j).getX()));
 
+			if (i == 2) {
+				buyButton.setEnabled(!shop.getSkins().get(j).isPurchased());
+			} else {
+				buyButton.setEnabled(!shop.getSceneries().get(j).isPurchased());
+			}
+
 			buyButton.addActionListener(e -> {
-				bought = shop.buy(buyButton.getObject());
+				GraphicJButtonWithObject button = (GraphicJButtonWithObject) e.getSource();
+				boolean bought = shop.buy(button.getObject());
 				buyButton.setEnabled(!bought);
 			});
+
 			this.add(buyButton,
 					new GBCSimplified(j, i + 2, (CommonMethods.getPixelsFromPercentage(3)), 0,
 							new Insets((CommonMethods.getPixelsFromPercentage(2)),
