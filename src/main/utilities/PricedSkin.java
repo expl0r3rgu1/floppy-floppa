@@ -37,5 +37,14 @@ public class PricedSkin extends Skin {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		PricedSkin other = (PricedSkin) obj;
+		return super.equals(other) && this.price == other.getPrice();
+	}
 
 }
