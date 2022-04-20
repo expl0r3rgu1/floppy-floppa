@@ -30,4 +30,12 @@ public class PricedBackground extends Background {
 		this.price = price;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		PricedBackground other = (PricedBackground) obj;
+		return super.equals(other) && this.price == other.getPrice();
+	}
 }
