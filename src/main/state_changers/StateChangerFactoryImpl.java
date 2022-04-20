@@ -16,8 +16,11 @@ public class StateChangerFactoryImpl implements StateChangerFactory {
 	}
 
 	@Override
-	public Booster boosterFactory(Position position, Skin skin) {
-		return new Booster(position, skin);
+	public Booster boosterFactory(Position position) {
+		int randomBoosterIndex = CommonMethods.getRandomNumber(0, Constants.BOOSTERS.size());
+		Booster randomBooster = Constants.BOOSTERS.get(randomBoosterIndex);
+		randomBooster.setPosition(position);
+		return randomBooster;
 	}
 
 }
