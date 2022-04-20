@@ -34,7 +34,7 @@ import main.utilities.PricedBackground;
 import main.utilities.PricedSkin;
 import main.character.Character;
 
-public class SkinSelectionPanel extends JPanel {
+public class SelectionPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
 	private GridBagLayout grid = new GridBagLayout();
@@ -54,10 +54,11 @@ public class SkinSelectionPanel extends JPanel {
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
 			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 
-	public SkinSelectionPanel(MainMenu mainMenu, GameSettings settings) {
+	public SelectionPanel(MainMenu mainMenu, GameSettings settings) {
 
 		shop = new Shop();
 		this.mainMenu = mainMenu;
+		this.settings = settings;
 		this.setLayout(grid);
 
 		CommonMethods.getImageResource("Background");
@@ -67,10 +68,8 @@ public class SkinSelectionPanel extends JPanel {
 
 		numSkins = shop.getSkinsNum();
 		numBackgrounds = shop.getSceneriesNum();
-
 		skinList = shop.getSkins();
 		backgroundList = shop.getSceneries();
-		this.settings = settings;
 		this.character = character;
 		this.scenario = scenario;
 
@@ -176,14 +175,6 @@ public class SkinSelectionPanel extends JPanel {
 
 		}
 		return jb;
-	}
-
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		Graphics2D canvas = (Graphics2D) g;
-		canvas.drawImage(background, 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
-				(int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
 
 	private JLabel imageCreation(String fileName) {
