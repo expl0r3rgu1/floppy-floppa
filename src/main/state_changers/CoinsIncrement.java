@@ -32,15 +32,21 @@ public class CoinsIncrement extends Booster {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Integer changeState() {
 		return (int) rand.nextInt(100);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				CommonMethods.getPixelsFromPercentage(3), CommonMethods.getPixelsFromPercentage(3), null);
+				CommonMethods.getPixelsFromPercentageWidth(3), CommonMethods.getPixelsFromPercentageWidth(3), null);
 
 		this.updatePositionX();
 	}

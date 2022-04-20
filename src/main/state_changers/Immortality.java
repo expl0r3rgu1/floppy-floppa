@@ -58,9 +58,12 @@ public class Immortality extends Booster {
 	 * object moves from right to left
 	 */
 	private void updatePositionX() {
-		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+		setPosition(new Position(getPosition().getX() - Constants.MOVING_FACTOR, getPosition().getY()));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Object changeState() {
 		this.immortal = true;
@@ -68,10 +71,13 @@ public class Immortality extends Booster {
 		return immortal;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				CommonMethods.getPixelsFromPercentage(3), CommonMethods.getPixelsFromPercentage(3), null);
+				CommonMethods.getPixelsFromPercentageWidth(4), CommonMethods.getPixelsFromPercentageWidth(4), null);
 
 		this.updatePositionX();
 	}
