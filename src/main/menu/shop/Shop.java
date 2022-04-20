@@ -100,7 +100,7 @@ public class Shop {
 	 * @param o the object to be purchased
 	 * @return true if the given object gets purchased, false otherwise
 	 */
-	protected boolean buy(Object o) {
+	public boolean buy(Object o) {
 		if (o.getClass().equals(PricedSkin.class)) {
 			return findAndBuySkins(o, this.skins);
 		} else {

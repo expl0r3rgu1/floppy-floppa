@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import main.menu.shop.Shop;
 
 public class TestShop {
+	
+	final private int ENOUGH_COINS = 1000;
+	final private int NOT_ENOUGH_COINS = 0;
 
 	@Test
 	/**
@@ -33,6 +36,42 @@ public class TestShop {
 			} else {
 				assertFalse(shop.getSceneries().get(i).isPurchased());
 			}
+		}
+	}
+
+	@Test
+	/**
+	 * Checks if the Shop correctly buys items
+	 */
+	void buying() {
+		Shop shop = new Shop();
+
+		shop.setCoins(this.NOT_ENOUGH_COINS);
+		for (int i = 1; i < shop.getSkinsNum(); i++) {
+			shop.buy(shop.getSkins().get(i).getX());
+			assertFalse(shop.getSkins().get(i).isPurchased());
+		}
+		for (int i = 1; i < shop.getSceneriesNum(); i++) {
+			shop.buy(shop.getSceneries().get(i).getX());
+			assertFalse(shop.getSceneries().get(i).isPurchased());
+		}
+
+		shop.setCoins(this.ENOUGH_COINS);
+		int prevCoins = shop.getCoins();
+		for (int i = 1; i < shop.getSkinsNum(); i++) {
+			shop.buy(shop.getSkins().get(i).getX());
+			assertTrue(shop.getCoins() < prevCoins);
+			prevCoins = shop.getCoins();
+			assertTrue(shop.getSkins().get(i).isPurchased());
+		}
+
+		shop.setCoins(this.ENOUGH_COINS);
+		prevCoins = shop.getCoins();
+		for (int i = 1; i < shop.getSceneriesNum(); i++) {
+			shop.buy(shop.getSceneries().get(i).getX());
+			assertTrue(shop.getCoins() < prevCoins);
+			prevCoins = shop.getCoins();
+			assertTrue(shop.getSceneries().get(i).isPurchased());
 		}
 	}
 }
