@@ -12,7 +12,6 @@ import main.utilities.Skin;
  */
 public class FixedObstacle extends Movable {
 
-	public static final double space = (Constants.SCREEN_SIZE.getHeight()) / 7;
 	private Skin skin;
 
 	/**
@@ -40,11 +39,11 @@ public class FixedObstacle extends Movable {
 
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), getPosition().getX(), (int) (getPosition().getY() + (space) / 2),
+		canvas.drawImage(getSkin().getImage(), getPosition().getX(), (int) (getPosition().getY() + (Constants.SPACE_BETWEEN_PIPES) / 2),
 				(int) (Constants.SCREEN_SIZE.getWidth()) / 10,
-				(int) (Constants.SCREEN_SIZE.getHeight() - (getPosition().getY() + (space) / 2)), null);
+				(int) (Constants.SCREEN_SIZE.getHeight() - (getPosition().getY() + (Constants.SPACE_BETWEEN_PIPES) / 2)), null);
 		canvas.drawImage(CommonMethods.getAngledImage(getSkin().getImage(), 180), getPosition().getX(), 0,
-				(int) (Constants.SCREEN_SIZE.getWidth()) / 10, (int) (getPosition().getY() - (space) / 2), null);
+				(int) (Constants.SCREEN_SIZE.getWidth()) / 10, (int) (getPosition().getY() - (Constants.SPACE_BETWEEN_PIPES) / 2), null);
 
 		updatePosition();
 	}
