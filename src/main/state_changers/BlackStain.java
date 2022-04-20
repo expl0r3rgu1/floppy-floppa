@@ -35,6 +35,10 @@ public class BlackStain extends Malus implements ActionListener {
 		super(position, skin);
 	}
 
+	/**
+	 * changeState is a method that makes timer start when the player collides with
+	 * the malus
+	 */
 	public Object changeState() {
 		timer.start();
 		this.collided = true;
@@ -43,19 +47,26 @@ public class BlackStain extends Malus implements ActionListener {
 
 	/**
 	 * The method gives the CoinsReducer malus a new Position that leaves the Y
-	 * position unchanged, while the X position decreases by one pixel so that the
-	 * object moves from right to left
+	 * position unchanged, while the X position decreases so that the object moves
+	 * from right to left
 	 */
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR, getPosition().getY()));
 	}
 
+	/**
+	 * animate is a method that draws the malus on the screen and it updates its
+	 * position by the method updatePositionX and when the player collides in it an
+	 * image of a stain is drawn on the playing screen
+	 * 
+	 * @param canvas - Graphics2D
+	 */
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
 				CommonMethods.getPixelsFromPercentage(3), CommonMethods.getPixelsFromPercentage(3), null);
 
 		this.updatePositionX();
-		
+
 		if (collided) {
 			canvas.drawImage(getSkin().getImage(), 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
 					(int) Constants.SCREEN_SIZE.getHeight(), null);
