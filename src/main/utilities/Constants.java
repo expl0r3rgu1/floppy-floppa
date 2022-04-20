@@ -6,7 +6,10 @@ import java.util.List;
 
 import main.state_changers.BlackStain;
 import main.state_changers.BlindBlock;
+import main.state_changers.Booster;
+import main.state_changers.CoinsIncrement;
 import main.state_changers.CoinsReducer;
+import main.state_changers.Immortality;
 import main.state_changers.Malus;
 
 public class Constants {
@@ -30,6 +33,12 @@ public class Constants {
 			new BlindBlock(null, new Skin("blindblock", CommonMethods.getImageResource("blindblock"),
 					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))),
 			new CoinsReducer(null, new Skin("coinsreducer", CommonMethods.getImageResource("coinsreducer"),
+					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))));
+
+	public static final List<Booster> BOOSTERS = List.of(
+			new Immortality(null, new Skin("immortality", CommonMethods.getImageResource("immortality"),
+					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))),
+			new CoinsIncrement(null, new Skin("coinsincrement", CommonMethods.getImageResource("coinsincrement"),
 					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))));
 
 	public static enum PANEL {
