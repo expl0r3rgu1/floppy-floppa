@@ -193,8 +193,8 @@ public class Shop {
 		for (int i = 0; i < skinsNum; i++) {
 			PurchaseStatus<PricedSkin> purchaseStatus = new PurchaseStatus<PricedSkin>(
 					new PricedSkin(skinInitialize.get(i), CommonMethods.getImageResource(skinInitialize.get(i)),
-							CommonMethods.getPixelsFromPercentage(10), CommonMethods.getPixelsFromPercentage(10),
-							prices.get(i)),
+							CommonMethods.getPixelsFromPercentageHeight(10),
+							CommonMethods.getPixelsFromPercentageHeight(10), prices.get(i)),
 					false);
 
 			if (lineWords[i].equals("1")) {
