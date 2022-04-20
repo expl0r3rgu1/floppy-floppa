@@ -22,12 +22,28 @@ public class PricedBackground extends Background {
 		this.price = price;
 	}
 
+	/**
+	 * @return the PricedBackground price
+	 */
 	public int getPrice() {
 		return price;
 	}
 
+	/**
+	 * Sets the PricedBackground price
+	 * 
+	 * @param price the price field
+	 */
 	public void setPrice(int price) {
 		this.price = price;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		PricedBackground other = (PricedBackground) obj;
+		return super.equals(other) && this.price == other.getPrice();
+	}
 }
