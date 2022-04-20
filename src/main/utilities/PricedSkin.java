@@ -37,7 +37,7 @@ public class PricedSkin extends Skin {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
