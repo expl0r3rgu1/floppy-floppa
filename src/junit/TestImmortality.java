@@ -21,7 +21,7 @@ public class TestImmortality {
 	final private Position HALFWAY_POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth() / 2),
 			(int) Constants.SCREEN_SIZE.getHeight() / 2);
 	final private Position RANDOM_POSITION = new Position(rand.nextInt(), rand.nextInt());
-	final private Skin SKIN = new Skin("Immortality", CommonMethods.getImageResource("Immortality"),
+	final private Skin SKIN = new Skin("immortality", CommonMethods.getImageResource("immortality"),
 			(int) this.POSITION.getX(), (int) this.POSITION.getY());
 	private int xPos;
 
