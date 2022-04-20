@@ -6,12 +6,12 @@ import main.utilities.Skin;
 public class StateChangerFactoryImpl implements StateChangerFactory {
 
 	@Override
-	public Malus MalusFactory(Position position, Skin skin) {
+	public Malus malusFactory(Position position, Skin skin) {
 		return new Malus(position, skin);
 	}
 
 	@Override
-	public Booster BoosterFactory(Position position, Skin skin) {
+	public Booster boosterFactory(Position position, Skin skin) {
 		return new Booster(position, skin);
 	}
 
