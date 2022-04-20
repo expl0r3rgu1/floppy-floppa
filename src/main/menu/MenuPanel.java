@@ -31,7 +31,7 @@ import java.awt.CardLayout;
 
 /**
  * Menu class implements the panel for the menu
- **/
+ */
 public class MenuPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
@@ -42,7 +42,7 @@ public class MenuPanel extends JPanel {
 	 * 
 	 * @param used to show cardlayouts
 	 * 
-	 **/
+	 */
 	public MenuPanel(MainMenu mainMenu) {
 
 		this.mainMenu = mainMenu;
@@ -68,7 +68,7 @@ public class MenuPanel extends JPanel {
 		this.setVisible(true);
 	}
 
-	/*
+	/**
 	 * addTitle is a class method that creates and adds the title label of the menu
 	 */
 	private void addTitle() {
@@ -78,19 +78,19 @@ public class MenuPanel extends JPanel {
 		title.setOpaque(false);
 
 		this.add(title, new GBCSimplified(2, 0, 0, 0,
-				new Insets(CommonMethods.getPixelsFromPercentage(3), 0, CommonMethods.getPixelsFromPercentage(3), 0)));
+				new Insets(CommonMethods.getPixelsFromPercentageWidth(3), 0, CommonMethods.getPixelsFromPercentageWidth(3), 0)));
 	}
 
-	/*
+	/**
 	 * addPlayButton is a class method that creates and adds the play button
 	 */
 	private void addPlayButton() {
 		this.add(generateButton("Play", "PLAY", "fipps.otf"),
-				new GBCSimplified(2, 2, CommonMethods.getPixelsFromPercentage(15),
-						(int) Constants.SCREEN_SIZE.getHeight() * 10 / 100, new Insets(0, 0, 0, 0)));
+				new GBCSimplified(2, 2, CommonMethods.getPixelsFromPercentageWidth(15),
+						(int) Constants.getPixelsFromPercentageHeight(10), new Insets(0, 0, 0, 0)));
 	}
 
-	/*
+	/**
 	 * addButton is a class method that creates and adds the various buttons of the
 	 * menu
 	 * 
@@ -117,12 +117,12 @@ public class MenuPanel extends JPanel {
 		String actionListenerName = name.toUpperCase();
 
 		this.add(generateButton(name, actionListenerName, "fipps.otf"), new GBCSimplified(gridx, gridy,
-				CommonMethods.getPixelsFromPercentage(ipadx), (int) Constants.SCREEN_SIZE.getHeight() * ipady / 100,
-				new Insets(CommonMethods.getPixelsFromPercentage(top), CommonMethods.getPixelsFromPercentage(left),
-						CommonMethods.getPixelsFromPercentage(bottom), CommonMethods.getPixelsFromPercentage(right))));
+				CommonMethods.getPixelsFromPercentageWidth(ipadx), (int) Constants.getPixelsFromPercentageHeight(ipady),
+				new Insets(CommonMethods.getPixelsFromPercentageWidth(top), CommonMethods.getPixelsFromPercentageWidth(left),
+						CommonMethods.getPixelsFromPercentageWidth(bottom), CommonMethods.getPixelsFromPercentageWidth(right))));
 	}
 
-	/*
+	/**
 	 * class method that creates and adds the images show in the menu
 	 * 
 	 * @param name - The name for getImageResource
@@ -146,9 +146,9 @@ public class MenuPanel extends JPanel {
 	private void addImage(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
 			int right) {
 		this.add(this.getImageResource(name), new GBCSimplified(gridx, gridy,
-				CommonMethods.getPixelsFromPercentage(ipadx), (int) Constants.SCREEN_SIZE.getHeight() * ipady / 100,
-				new Insets(CommonMethods.getPixelsFromPercentage(top), CommonMethods.getPixelsFromPercentage(left),
-						CommonMethods.getPixelsFromPercentage(bottom), CommonMethods.getPixelsFromPercentage(right))));
+				CommonMethods.getPixelsFromPercentageWidth(ipadx), (int) Constants.getPixelsFromPercentageHeight(ipady),
+				new Insets(CommonMethods.getPixelsFromPercentageWidth(top), CommonMethods.getPixelsFromPercentageWidth(left),
+						CommonMethods.getPixelsFromPercentageWidth(bottom), CommonMethods.getPixelsFromPercentageWidth(right))));
 	}
 
 	/**
@@ -226,7 +226,7 @@ public class MenuPanel extends JPanel {
 		try {
 			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
 			ImageIcon imageIcon = new ImageIcon(this.scaleImage(image, new Dimension(
-					CommonMethods.getPixelsFromPercentage(20), CommonMethods.getPixelsFromPercentage(20))));
+					CommonMethods.getPixelsFromPercentageWidth(20), CommonMethods.getPixelsFromPercentageWidth(20))));
 			label = new JLabel(imageIcon);
 		} catch (IOException e) {
 			e.printStackTrace();
