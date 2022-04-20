@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class CommonMethods {
 	// Utility method to generate random integer in range (consider moving it)
@@ -45,6 +46,10 @@ public class CommonMethods {
 		}
 
 		return null;
+	}
+
+	public static ImageIcon getGifResource(String gifName) {
+		return new ImageIcon(CommonMethods.class.getResource("/resources/gifs/" + gifName + ".gif"));
 	}
 
 	public static Image getAngledImage(Image image, int degrees) {
