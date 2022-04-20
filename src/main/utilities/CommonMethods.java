@@ -14,8 +14,17 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class CommonMethods {
-	public static int getPixelsFromPercentage(int percentage) {
+	// Utility method to generate random integer in range (consider moving it)
+	public static int getRandomNumber(int min, int max) {
+		return (int) ((Math.random() * (max - min)) + min);
+	}
+
+	public static int getPixelsFromPercentageWidth(int percentage) {
 		return (int) Constants.SCREEN_SIZE.getWidth() * percentage / 100;
+	}
+
+	public static int getPixelsFromPercentageHeight(int percentage) {
+		return (int) Constants.SCREEN_SIZE.getHeight() * percentage / 100;
 	}
 
 	public static Image getImageResource(String imageName) {
@@ -38,7 +47,7 @@ public class CommonMethods {
 
 		return null;
 	}
-	
+
 	public static ImageIcon getGifResource(String gifName) {
 		return new ImageIcon(CommonMethods.class.getResource("/resources/gifs/" + gifName + ".gif"));
 	}
