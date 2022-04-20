@@ -22,10 +22,18 @@ public class PricedBackground extends Background {
 		this.price = price;
 	}
 
+	/**
+	 * @return the PricedBackground price
+	 */
 	public int getPrice() {
 		return price;
 	}
 
+	/**
+	 * Sets the PricedBackground price
+	 * 
+	 * @param price the price field
+	 */
 	public void setPrice(int price) {
 		this.price = price;
 	}

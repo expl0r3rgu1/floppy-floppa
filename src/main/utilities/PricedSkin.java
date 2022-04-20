@@ -32,7 +32,7 @@ public class PricedSkin extends Skin {
 	/**
 	 * Sets the PricedSkin price
 	 * 
-	 * @param price
+	 * @param price the price field
 	 */
 	public void setPrice(int price) {
 		this.price = price;
