@@ -47,16 +47,6 @@ public class CommonMethods {
 		return null;
 	}
 
-	public static File getVideoResource(String videoName) {
-		File videoFile = new File(CommonMethods.class.getResource("/resources/videos/" + videoName + ".mp4").getFile());
-
-		if (videoFile.exists()) {
-			return videoFile;
-		}
-
-		return null;
-	}
-
 	public static Image getAngledImage(Image image, int degrees) {
 		double rotationRequired = Math.toRadians(degrees);
 		double locationX = image.getWidth(null) / 2;
