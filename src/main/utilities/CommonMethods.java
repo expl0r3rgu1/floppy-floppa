@@ -19,8 +19,12 @@ public class CommonMethods {
 		return (int) ((Math.random() * (max - min)) + min);
 	}
 
-	public static int getPixelsFromPercentage(int percentage) {
+	public static int getPixelsFromPercentageWidth(int percentage) {
 		return (int) Constants.SCREEN_SIZE.getWidth() * percentage / 100;
+	}
+
+	public static int getPixelsFromPercentageHeight(int percentage) {
+		return (int) Constants.SCREEN_SIZE.getHeight() * percentage / 100;
 	}
 
 	public static Image getImageResource(String imageName) {
