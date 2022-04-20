@@ -10,8 +10,8 @@ import main.utilities.Position;
 import main.utilities.Skin;
 
 /**
- * A class that extends Malus class and implements an entity that randomly
- * takes away coins to the main character every time they hit this malus
+ * A class that extends Malus class and implements an entity that randomly takes
+ * away coins to the main character every time they hit this malus
  */
 public class CoinsReducer extends Malus {
 
@@ -26,6 +26,12 @@ public class CoinsReducer extends Malus {
 		super(position, skin);
 	}
 
+	/**
+	 * changeState is a method that returns the minus value of the CoinsReducer
+	 * malus, that will be applied to the player's coins
+	 * 
+	 * @return malus - Integer that represent the value of the CoinsReducer malus
+	 */
 	public Integer changeState() {
 		return malus.get((int) (Math.random() * (malus.size())));
 	}
