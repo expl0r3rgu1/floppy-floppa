@@ -14,6 +14,11 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class CommonMethods {
+	// Utility method to generate random integer in range (consider moving it)
+	public static int getRandomNumber(int min, int max) {
+		return (int) ((Math.random() * (max - min)) + min);
+	}
+
 	public static int getPixelsFromPercentage(int percentage) {
 		return (int) Constants.SCREEN_SIZE.getWidth() * percentage / 100;
 	}
@@ -38,7 +43,7 @@ public class CommonMethods {
 
 		return null;
 	}
-	
+
 	public static ImageIcon getGifResource(String gifName) {
 		return new ImageIcon(CommonMethods.class.getResource("/resources/gifs/" + gifName + ".gif"));
 	}
