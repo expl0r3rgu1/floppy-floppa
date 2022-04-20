@@ -18,7 +18,7 @@ public class FixedObstacle extends Movable {
 	 * @param position - the obstacle initial position
 	 * @param skin     - the obstacle Skin
 	 */
-	private FixedObstacle(Position position, Skin skin) {
+	public FixedObstacle(Position position, Skin skin) {
 		super(position);
 		this.skin = skin;
 	}
