@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 
 public class Constants {
 	public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+	public static final double SPACE_BETWEEN_PIPES = (Toolkit.getDefaultToolkit().getScreenSize().getHeight()) / 3;
 	public static final int MOVING_FACTOR = ((int) ((Toolkit.getDefaultToolkit().getScreenResolution() + 50) / 100))
 			* 2;
 	public static final int SPEED = 60;
