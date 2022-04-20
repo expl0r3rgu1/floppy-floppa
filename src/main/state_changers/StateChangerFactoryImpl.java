@@ -3,13 +3,16 @@ package main.state_changers;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
-import main.utilities.Skin;
 
 /**
- * StateChangerFactoryImpl is a class that implements the interface StateChangerFactory
+ * StateChangerFactoryImpl is a class that implements the interface
+ * StateChangerFactory
  */
 public class StateChangerFactoryImpl implements StateChangerFactory {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Malus malusFactory(Position position) {
 		int randomMalusIndex = CommonMethods.getRandomNumber(0, Constants.MALUS.size());
@@ -18,6 +21,9 @@ public class StateChangerFactoryImpl implements StateChangerFactory {
 		return randomMalus;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Booster boosterFactory(Position position) {
 		int randomBoosterIndex = CommonMethods.getRandomNumber(0, Constants.BOOSTERS.size());
