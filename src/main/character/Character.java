@@ -144,7 +144,7 @@ public class Character extends Movable {
 		int upperBorder = 0;
 		int lowerBorder = (int) Constants.SCREEN_SIZE.getHeight();
 
-		if (characterY >= upperBorder || characterLowerY <= lowerBorder) {
+		if (characterY <= upperBorder || characterLowerY >= lowerBorder) {
 			this.dead = true;
 		}
 	}
