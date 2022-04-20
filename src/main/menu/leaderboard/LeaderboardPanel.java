@@ -1,20 +1,11 @@
 package main.menu.leaderboard;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Toolkit;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,26 +14,24 @@ import javax.swing.SwingConstants;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
 import main.menu.MainMenu;
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
+import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
-	private Leaderboard leaderboard;
-	private MainMenu mainMenu;
-
-	private Image background;
-	private JLabel title;
+	private final Leaderboard leaderboard;
+	private final MainMenu mainMenu;
 
 	public LeaderboardPanel(MainMenu mainMenu) {
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.setLayout(new GridBagLayout());
+		this.setOpaque(false);
 
 		this.mainMenu = mainMenu;
 
 		leaderboard = new Leaderboard();
-
-		background = getImageResource("menuBackground.png");
 
 		// TITLE
 		addTitle();
@@ -54,57 +43,17 @@ public class LeaderboardPanel extends JPanel {
 		addMenuButton();
 	}
 
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-
-		Graphics2D canvas = (Graphics2D) g;
-
-		canvas.drawImage(background, 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
-				(int) Constants.SCREEN_SIZE.getHeight(), null);
-	}
-
-	public GridBagConstraints getConstraints(int gridx, int gridy, Insets insets, int ipadx, int ipady, int anchor) {
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.insets = insets;
-		constraints.anchor = anchor;
-		constraints.fill = GridBagConstraints.HORIZONTAL;
-		constraints.gridx = gridx;
-		constraints.gridy = gridy;
-		constraints.ipadx = ipadx;
-		constraints.ipady = ipady;
-
-		return constraints;
-	}
-
-	public Image getImageResource(String imageName) {
-		try {
-			return ImageIO.read(getClass().getResource("/resources/images/" + imageName));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return null;
-	}
-
-	public Font getFontResource(String fontName) {
-		try {
-			return Font.createFont(Font.TRUETYPE_FONT,
-					new File(getClass().getResource("/resources/fonts/" + fontName).getFile()));
-		} catch (FontFormatException | IOException e) {
-			e.printStackTrace();
-		}
-
-		return null;
+	public Leaderboard getLeaderboard() {
+		return leaderboard;
 	}
 
 	// GRAPHIC COMPONENTS
 
 	private void addTitle() {
-		title = new JLabel("LEADERBOARD", SwingConstants.CENTER);
-		title.setFont(getFontResource("pixel.TTF").deriveFont(50f));
+		JLabel title = new JLabel("LEADERBOARD", SwingConstants.CENTER);
+		title.setFont(CommonMethods.getFontResource("pixel.TTF").deriveFont(50f));
 
-		this.add(title, getConstraints(0, 0, new Insets(0, 0, (int) (Constants.SCREEN_SIZE.getWidth() * 0.02), 0), 0, 0,
+		this.add(title, new GBCSimplified(0, 0, 0, 0, new Insets(0, 0, CommonMethods.getPixelsFromPercentage(2), 0),
 				GridBagConstraints.PAGE_START));
 	}
 
@@ -117,7 +66,7 @@ public class LeaderboardPanel extends JPanel {
 			JLabel score = new JLabel(
 					placeNumber + " - " + player.getNickname() + " - " + player.getPersonalBest() + " m",
 					SwingConstants.CENTER);
-			score.setFont(getFontResource("fipps.otf").deriveFont(20f));
+			score.setFont(CommonMethods.getFontResource("fipps.otf").deriveFont(20f));
 			score.setForeground(Color.lightGray);
 			scorePanel.add(score);
 
@@ -145,9 +94,8 @@ public class LeaderboardPanel extends JPanel {
 			}
 		});
 
-		this.add(scrollablePane,
-				getConstraints(0, 1, new Insets(0, 0, 0, 0), (int) (Constants.SCREEN_SIZE.getWidth() * 0.7),
-						(int) (Constants.SCREEN_SIZE.getHeight() * 0.7), GridBagConstraints.CENTER));
+		this.add(scrollablePane, new GBCSimplified(0, 1, CommonMethods.getPixelsFromPercentage(70),
+				CommonMethods.getPixelsFromPercentage(35), new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
 	}
 
 	private void addMenuButton() {
@@ -158,8 +106,9 @@ public class LeaderboardPanel extends JPanel {
 			mainMenu.showCard(Constants.PANEL.MENU);
 		});
 
-		this.add(menuButton, getConstraints(0, 2, new Insets((int) (Constants.SCREEN_SIZE.getHeight() * 0.03),
-				(int) (Constants.SCREEN_SIZE.getWidth() * 0.3), 0, (int) (Constants.SCREEN_SIZE.getWidth() * 0.3)), 0,
-				(int) (Constants.SCREEN_SIZE.getWidth() * 0.02), GridBagConstraints.PAGE_END));
+		this.add(menuButton, new GBCSimplified(
+				0, 2, 0, CommonMethods.getPixelsFromPercentage(2), new Insets(CommonMethods.getPixelsFromPercentage(2),
+						CommonMethods.getPixelsFromPercentage(30), 0, CommonMethods.getPixelsFromPercentage(30)),
+				GridBagConstraints.PAGE_END));
 	}
 }

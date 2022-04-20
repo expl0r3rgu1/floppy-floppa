@@ -8,21 +8,28 @@ import main.utilities.Constants;
 
 public abstract class TimedObstacleGenerator implements ActionListener {
 	private Timer timer;
-	private double obstacleSpeed;
 	private Map map;
+	private final double obstacleSpeed;
 
 	public TimedObstacleGenerator(Map map, double obstacleSpeed) {
 		this.map = map;
 		this.obstacleSpeed = obstacleSpeed;
-		this.timer = new Timer((int) (1000 / (Constants.SPEED * obstacleSpeed)), this);
-		this.timer.start();
+		timer = new Timer((int) ((1000 / Constants.SPEED) / obstacleSpeed), this);
 	}
 
-	protected void setObstacleSpeed(double obstacleSpeed) {
-		this.obstacleSpeed = obstacleSpeed;
+	public void updateObstacleSpeed() {
+		if (timer != null) {
+			timer.stop();
+		}
+		timer = new Timer((int) ((1000 / Constants.SPEED) / this.obstacleSpeed), this);
+		timer.start();
 	}
 
 	protected Map getMap() {
 		return map;
+	}
+
+	public Timer getTimer() {
+		return timer;
 	}
 }

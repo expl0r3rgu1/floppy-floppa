@@ -22,4 +22,12 @@ public class GBCSimplified extends GridBagConstraints {
 		this.insets = insets;
 		this.anchor = anchor;
 	}
+	
+	public GBCSimplified(int gridx, int gridy, int ipadx, int ipady) {
+		super();
+		this.gridx = gridx;
+		this.gridy = gridy;
+		this.ipadx = ipadx;
+		this.ipady = ipady;
+	}
 }

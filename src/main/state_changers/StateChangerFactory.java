@@ -7,8 +7,7 @@ import main.utilities.Skin;
  * StateChangerFactory is an interface for the factory if a StateChanger
  */
 public interface StateChangerFactory {
-
-	/**
+  /**
 	 * MalusFactory is a method that creates a factory using position and skiin to
 	 * generate a Malus
 	 * 
@@ -16,7 +15,7 @@ public interface StateChangerFactory {
 	 * @param skin     - the skin for a Malus
 	 * @return Malus
 	 */
-	public Malus MalusFactory(Position position, Skin skin);
+	public Malus malusFactory(Position position);
 
 	/**
 	 * BoosterFactory is a method that creates a factory using position and skiin to
@@ -26,5 +25,5 @@ public interface StateChangerFactory {
 	 * @param skin     - the skin for a Booster
 	 * @return Booster
 	 */
-	public Booster BoosterFactory(Position position, Skin skin);
+	public Booster boosterFactory(Position position);
 }
