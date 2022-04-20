@@ -158,8 +158,15 @@ public class ShopGUI extends JPanel {
 					Color.decode("#FFDD62"), "Arial", Font.PLAIN,
 					(i == 2 ? shop.getSkins().get(j).getX() : shop.getSceneries().get(j).getX()));
 
+			if (i == 2) {
+				buyButton.setEnabled(!shop.getSkins().get(j).isPurchased());
+			} else {
+				buyButton.setEnabled(!shop.getSceneries().get(j).isPurchased());
+			}
+
 			buyButton.addActionListener(e -> {
-				bought = shop.buy(buyButton.getObject());
+				GraphicJButtonWithObject button = (GraphicJButtonWithObject) e.getSource();
+				boolean bought = shop.buy(button.getObject());
 				buyButton.setEnabled(!bought);
 			});
 			this.add(buyButton,
