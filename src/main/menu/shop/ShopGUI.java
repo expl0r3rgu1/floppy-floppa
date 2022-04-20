@@ -101,8 +101,8 @@ public class ShopGUI extends JPanel {
 
 				GraphicJLabel skins = new GraphicJLabel("SKINS", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"Arial", Font.BOLD);
-				skins.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentage(10)),
-						(CommonMethods.getPixelsFromPercentage(5))));
+				skins.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentageWidth(10)),
+						(CommonMethods.getPixelsFromPercentageHeight(5))));
 				this.add(skins,
 						new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentageHeight(2)), 0,
 								new Insets((CommonMethods.getPixelsFromPercentageHeight(1)), 0,
