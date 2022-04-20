@@ -5,7 +5,7 @@ import main.utilities.Skin;
 
 public interface StateChangerFactory {
 	
-	public Malus malusFactory(Position position, Skin skin);
+	public Malus malusFactory(Position position);
 
 	public Booster boosterFactory(Position position, Skin skin);
 }
