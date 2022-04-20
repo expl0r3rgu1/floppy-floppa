@@ -103,24 +103,27 @@ public class ShopGUI extends JPanel {
 						"Arial", Font.BOLD);
 				skins.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentage(10)),
 						(CommonMethods.getPixelsFromPercentage(5))));
-				this.add(skins, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0, new Insets(
-						(CommonMethods.getPixelsFromPercentage(1)), 0, (CommonMethods.getPixelsFromPercentage(2)), 0)));
-
+				this.add(skins,
+						new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentageHeight(2)), 0,
+								new Insets((CommonMethods.getPixelsFromPercentageHeight(1)), 0,
+										(CommonMethods.getPixelsFromPercentageHeight(2)), 0)));
 			} else if (i == 5) {
 
 				GraphicJLabel backgrounds = new GraphicJLabel("BACKGROUNDS", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "Arial", Font.BOLD);
-				backgrounds.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentage(10)),
-						(CommonMethods.getPixelsFromPercentage(5))));
-				this.add(backgrounds, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentage(2)), 0, new Insets(
-						(CommonMethods.getPixelsFromPercentage(3)), 0, (CommonMethods.getPixelsFromPercentage(1)), 0)));
+				backgrounds.setPreferredSize(new Dimension((CommonMethods.getPixelsFromPercentageWidth(10)),
+						(CommonMethods.getPixelsFromPercentageHeight(5))));
+				this.add(backgrounds,
+						new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentageWidth(2)), 0,
+								new Insets((CommonMethods.getPixelsFromPercentageHeight(3)), 0,
+										(CommonMethods.getPixelsFromPercentageHeight(1)), 0)));
 
 			} else if (i == numBackgrounds + numSkins - 1) {
 
 				GraphicJButton backMenu = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"Arial", Font.BOLD);
-				this.add(backMenu,
-						new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentage(3)), 0, 0, 0)));
+				this.add(backMenu, new GBCSimplified(4, i, 0, 0,
+						new Insets((CommonMethods.getPixelsFromPercentageHeight(3)), 0, 0, 0)));
 				backMenu.addActionListener(e -> {
 					mainMenu.showCard(Constants.PANEL.MENU);
 				});
