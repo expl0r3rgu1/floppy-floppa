@@ -1,7 +1,6 @@
 package main.state_changers;
 
 import main.utilities.Position;
-import main.utilities.Skin;
 
 /**
  * StateChangerFactory is an interface for the factory of a StateChanger
