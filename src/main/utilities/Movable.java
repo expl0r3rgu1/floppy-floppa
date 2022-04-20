@@ -18,4 +18,10 @@ public abstract class Movable {
 	}
 	
 	public abstract void animate(Graphics2D canvas);
+	
+	@Override
+	public boolean equals(Object obj) {
+		Movable other = (Movable) obj;
+		return this.position.equals(other.position);
+	}
 }
