@@ -15,7 +15,7 @@ public class Constants {
 	public static final int CHANGED_STATE_TIME = 3000;
 	public static final int CHARACTER_ANGLE_DEGREES = 15;
 	public static final int LEADERBOARD_FILE_LINE_START = 3;
-	public static final int CHANGE_DIRECTION_TIMEOUT = 300;
+	public static final int CHANGE_DIRECTION_TIMEOUT = 60000;
 
 	public static enum PANEL {
 		MENU, PLAY, LEADERBOARD, SHOP, TUTORIAL, EOGMENU
