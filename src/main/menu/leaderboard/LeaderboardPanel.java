@@ -53,8 +53,8 @@ public class LeaderboardPanel extends JPanel {
 		JLabel title = new JLabel("LEADERBOARD", SwingConstants.CENTER);
 		title.setFont(CommonMethods.getFontResource("pixel.TTF").deriveFont(50f));
 
-		this.add(title, new GBCSimplified(0, 0, 0, 0, new Insets(0, 0, CommonMethods.getPixelsFromPercentage(2), 0),
-				GridBagConstraints.PAGE_START));
+		this.add(title, new GBCSimplified(0, 0, 0, 0,
+				new Insets(0, 0, CommonMethods.getPixelsFromPercentageHeight(2), 0), GridBagConstraints.PAGE_START));
 	}
 
 	private JPanel getScorePanel() {
@@ -94,8 +94,8 @@ public class LeaderboardPanel extends JPanel {
 			}
 		});
 
-		this.add(scrollablePane, new GBCSimplified(0, 1, CommonMethods.getPixelsFromPercentage(70),
-				CommonMethods.getPixelsFromPercentage(35), new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
+		this.add(scrollablePane, new GBCSimplified(0, 1, CommonMethods.getPixelsFromPercentageWidth(70),
+				CommonMethods.getPixelsFromPercentageHeight(80), new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
 	}
 
 	private void addMenuButton() {
@@ -106,9 +106,11 @@ public class LeaderboardPanel extends JPanel {
 			mainMenu.showCard(Constants.PANEL.MENU);
 		});
 
-		this.add(menuButton, new GBCSimplified(
-				0, 2, 0, CommonMethods.getPixelsFromPercentage(2), new Insets(CommonMethods.getPixelsFromPercentage(2),
-						CommonMethods.getPixelsFromPercentage(30), 0, CommonMethods.getPixelsFromPercentage(30)),
-				GridBagConstraints.PAGE_END));
+		this.add(menuButton,
+				new GBCSimplified(0, 2, 0, CommonMethods.getPixelsFromPercentageHeight(2),
+						new Insets(CommonMethods.getPixelsFromPercentageHeight(2),
+								CommonMethods.getPixelsFromPercentageWidth(30), 0,
+								CommonMethods.getPixelsFromPercentageWidth(30)),
+						GridBagConstraints.PAGE_END));
 	}
 }
