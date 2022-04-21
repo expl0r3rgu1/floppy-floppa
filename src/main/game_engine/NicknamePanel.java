@@ -16,6 +16,7 @@ import main.menu.leaderboard.Player;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.GBCSimplified;
+import main.utilities.GameSettings;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJLabel;
 
