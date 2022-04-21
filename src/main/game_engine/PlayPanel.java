@@ -17,6 +17,7 @@ import javax.swing.Timer;
 import main.character.Character;
 import main.infinite_map.Map;
 import main.infinite_map.ScrollingBackground;
+import main.menu.MainMenu;
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
 import main.utilities.CommonMethods;
@@ -29,16 +30,19 @@ import main.utilities.Skin;
 public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 	private static final long serialVersionUID = 4739973632599419506L;
 	private Timer refreshRate;
+	private final MainMenu mainMenu;
 	private final Map map;
 	private final NicknamePanel nicknamePanel;
 	private final Character character;
 
-	public PlayPanel(GameSettings gameSettings) {
+	public PlayPanel(MainMenu mainMenu, GameSettings gameSettings) {
 		this.setLayout(new GridBagLayout());
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.addKeyListener(this);
 		this.setFocusable(true);
 		this.requestFocus();
+
+		this.mainMenu = mainMenu;
 
 		map = new Map(gameSettings.getScrollingBackground(),
 				new FixedObstacle(null, new Skin("pipe", CommonMethods.getImageResource("pipe"))),
