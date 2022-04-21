@@ -17,6 +17,7 @@ import javax.swing.Timer;
 import main.character.Character;
 import main.infinite_map.Map;
 import main.infinite_map.ScrollingBackground;
+import main.menu.EOGMenuGUI;
 import main.menu.MainMenu;
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
@@ -26,6 +27,7 @@ import main.utilities.GBCSimplified;
 import main.utilities.GameSettings;
 import main.utilities.Position;
 import main.utilities.Skin;
+import main.utilities.Constants.PANEL;
 
 public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 	private static final long serialVersionUID = 4739973632599419506L;
@@ -76,6 +78,13 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		character.collideMalus(map.getPaintedMalus());
 		character.collideBooster(map.getPaintedBoosters());
 		character.collideBorders();
+
+		if (character.isDead()) {
+			refreshRate.stop();
+
+			mainMenu.add(PANEL.EOGMENU.name(), new EOGMenuGUI(mainMenu, 0, 0, 0));
+			mainMenu.showCard(PANEL.EOGMENU);
+		}
 	}
 
 	@Override
