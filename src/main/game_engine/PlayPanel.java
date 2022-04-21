@@ -66,6 +66,12 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		Graphics2D canvas = (Graphics2D) g;
 		map.animate(canvas);
 		character.animate(canvas);
+
+		character.collideFixedObstacle(map.getPaintedFixedObstacles());
+		character.collideMovingObstacle(map.getPaintedMovingObstacles());
+		character.collideMalus(map.getPaintedMalus());
+		character.collideBooster(map.getPaintedBoosters());
+		character.collideBorders();
 	}
 
 	@Override
