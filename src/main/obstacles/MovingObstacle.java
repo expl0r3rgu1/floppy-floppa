@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Movable;
 import main.utilities.Position;
