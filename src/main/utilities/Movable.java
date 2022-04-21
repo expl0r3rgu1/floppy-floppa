@@ -27,7 +27,7 @@ public abstract class Movable {
 	/**
 	 * Setter of the entity position
 	 * 
-	 * @param position
+	 * @param position the new position of the entity
 	 */
 	public void setPosition(Position position) {
 		this.position = position;
