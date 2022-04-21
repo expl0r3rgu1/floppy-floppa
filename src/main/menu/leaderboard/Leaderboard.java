@@ -51,27 +51,43 @@ public class Leaderboard {
 	}
 
 	public void writeToFile() throws IOException {
-		FileWriter leaderboardFileWriter = new FileWriter(leaderboardFile);
+		FileWriter leaderboardFileWriter = new FileWriter(leaderboardFile, true);
 
 		for (var player : leaderboard) {
-			leaderboardFileWriter.append(player.toString());
+			leaderboardFileWriter.append(player + "\n";
 		}
 
 		leaderboardFileWriter.close();
 	}
 
-	public void update(Player newPlayer) {
-		int index = Collections.binarySearch(this.leaderboard, newPlayer,
-				(a, b) -> a.getPersonalBest() - b.getPersonalBest());
+  public void update(Player newPlayer) {
+		int playerIndexInLeaderboard = this.leaderboard.indexOf(newPlayer);
+		boolean playerAlreadyPresent = (playerIndexInLeaderboard == -1) ? false : true;
+
+		if (playerAlreadyPresent) {
+			if (newPlayer.getPersonalBest() > this.leaderboard.get(playerIndexInLeaderboard).getPersonalBest()) {
+				this.leaderboard.remove(playerIndexInLeaderboard);
+
+				binarySearchInsert(newPlayer);
+			}
+		} else {
+			binarySearchInsert(newPlayer);
+		}
+
+	}
+
+  private void binarySearchInsert(Player newPlayer) {
+		int index = Collections.binarySearch(this.leaderboard, newPlayer, (a, b) -> {
+			return b.getPersonalBest() - a.getPersonalBest();
+		});
 
 		if (index < 0)
 			index = ~index; // Converting negative index to positive index = (-index) - 1
 
-		Player player = this.leaderboard.get(index);
-		if (player.equals(newPlayer) && newPlayer.getPersonalBest() > player.getPersonalBest()) {
-			player.setPersonalBest(newPlayer.getPersonalBest());
-		} else {
-			this.leaderboard.add(index, newPlayer);
-		}
+		this.leaderboard.add(index, newPlayer);
 	}
+  
+  public void clearLeaderboard() {
+    this.leaderboard.clear();
+  }
 }
