@@ -88,6 +88,17 @@ public class Map {
 				Constants.MOVING_OBSTACLES.get(randomMovingObstacleIndex).getSkin()));
 	}
 
+	// Method that spawns a random StateChanger
+	protected void addStateChanger() {
+		boolean randomStateChanger = (CommonMethods.getRandomNumber(0, 2) == 0) ? false : true;
+
+		if (randomStateChanger) {
+			this.paintedMalus.add(Constants.STATE_CHANGER_FACTORY.malusFactory(getRandomPosition()));
+		} else {
+			this.paintedBoosters.add(Constants.STATE_CHANGER_FACTORY.boosterFactory(getRandomPosition()));
+		}
+	}
+
 	private Position getRandomPosition() {
 		return new Position((int) Constants.SCREEN_SIZE.getWidth(), CommonMethods.getRandomNumber(
 				CommonMethods.getPixelsFromPercentageHeight(25), CommonMethods.getPixelsFromPercentageHeight(75)));
