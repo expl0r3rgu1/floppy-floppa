@@ -281,8 +281,15 @@ public class Shop {
 	 * Used to clear data from the lists of Purchase Statuses.
 	 */
 	public void clearSavings() {
-		this.skins.clear();
-		this.sceneries.clear();
+		this.skins.forEach(status -> {
+			status.resetPurchase();
+		});
+		skins.get(0).purchase();
+
+		this.sceneries.forEach(status -> {
+			status.resetPurchase();
+		});
+		sceneries.get(0).purchase();
 	}
 
 	/**
