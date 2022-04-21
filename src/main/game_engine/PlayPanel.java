@@ -93,7 +93,7 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 
 			gameEnd = new Timestamp(System.currentTimeMillis());
 
-			mainMenu.add(PANEL.EOGMENU.name(), new EOGMenuGUI(mainMenu, 0, 0, 0));
+			mainMenu.add(PANEL.EOGMENU.name(), new EOGMenuGUI(mainMenu, getMetersTraveled(), 0, 0));
 			mainMenu.showCard(PANEL.EOGMENU);
 		}
 	}
