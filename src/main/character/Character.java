@@ -22,8 +22,8 @@ import javax.swing.Timer;
  * A class that implements the character, it keeps track of its current status
  * (if it is dead or alive), it updates its position making it go lower due to
  * gravity or upper when performing a jump and it checks its collision with the
- * various entities on the map and with the borders of the map, this class extends
- * the class Movable
+ * various entities on the map and with the borders of the map, this class
+ * extends the class Movable
  */
 public class Character extends Movable {
 	private Skin skin;
@@ -220,7 +220,7 @@ public class Character extends Movable {
 
 		if ((characterX >= x && characterX <= entityWiderX)
 				|| (characterWiderX >= x && characterWiderX <= entityWiderX)) {
-			
+
 			if ((characterY >= y && characterY <= entityLowerY)
 					|| (characterLowerY >= y && characterLowerY <= entityLowerY)) {
 
