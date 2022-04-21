@@ -64,6 +64,9 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		refreshRate.start();
 		map.startTimer();
 
+		PlayPanel.reducerTimes = 0;
+		PlayPanel.incrementTimes = 0;
+
 		gameStart = new Timestamp(System.currentTimeMillis());
 	}
 
