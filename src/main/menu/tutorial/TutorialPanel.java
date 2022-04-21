@@ -15,10 +15,17 @@ import main.utilities.Constants;
 import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 
+/**
+ * A class that shows the initial tutorial, this class extends the java class
+ * JPanel
+ */
 public class TutorialPanel extends JPanel {
 	private static final long serialVersionUID = 3621436339823195193L;
 	private MainMenu mainMenu;
 
+	/**
+	 * @param mainMenu it is necessary to use correctly the card layout
+	 */
 	public TutorialPanel(MainMenu mainMenu) {
 		this.mainMenu = mainMenu;
 		this.setPreferredSize(Constants.SCREEN_SIZE);
@@ -30,6 +37,9 @@ public class TutorialPanel extends JPanel {
 		this.addMenuButton();
 	}
 
+	/**
+	 * Creates and adds the label that contains the title of this panel
+	 */
 	private void addTitleLabel() {
 		JLabel titleLabel = new JLabel("TUTORIAL");
 		titleLabel.setFont(CommonMethods.getFontResource("pixel.TTF").deriveFont(50f));
@@ -37,6 +47,9 @@ public class TutorialPanel extends JPanel {
 		this.add(titleLabel, new GBCSimplified(0, 0, 0, CommonMethods.getPixelsFromPercentageHeight(1)));
 	}
 
+	/**
+	 * Creates and adds the label that contains the initial tutorial
+	 */
 	private void addTutorialLabel() {
 		ImageIcon tutorialIcon = CommonMethods.getGifResource("tutorial");
 		tutorialIcon.setImage(tutorialIcon.getImage().getScaledInstance(
@@ -48,6 +61,9 @@ public class TutorialPanel extends JPanel {
 		this.add(tutorialLabel, new GBCSimplified(0, 1, 0, 0));
 	}
 
+	/**
+	 * Creates and adds the button to go back to the main menu
+	 */
 	private void addMenuButton() {
 		GraphicJButton menuButton = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 				"Arial", Font.BOLD);
