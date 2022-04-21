@@ -17,7 +17,7 @@ import main.utilities.GameSettings;
 
 public class MainFrame extends JFrame {
 	private static final long serialVersionUID = -5008443485850327687L;
-	private GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0];
+	private GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	private final MainMenu mainMenu;
 
 	public MainFrame() {
