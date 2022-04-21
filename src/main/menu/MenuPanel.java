@@ -6,30 +6,20 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import main.menu.MainMenu;
 import main.utilities.GraphicJLabel;
 import main.utilities.Constants;
 import main.utilities.Constants.PANEL;
 import main.utilities.GBCSimplified;
 import main.utilities.CommonMethods;
 import main.utilities.generateJButton;
-import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.CardLayout;
 
 /**
  * Menu class implements the panel for the menu
