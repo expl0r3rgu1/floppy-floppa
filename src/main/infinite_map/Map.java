@@ -13,7 +13,6 @@ import main.utilities.Constants;
 import main.utilities.Position;
 
 public class Map {
-	// Background and FixedObstacle based on selected scenario
 	private final ScrollingBackground scrollingBackground;
 	private final List<FixedObstacle> paintedFixedObstacles; // Set of FixedObstacle that need to be or are being
 																// painted
