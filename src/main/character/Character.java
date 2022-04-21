@@ -112,32 +112,42 @@ public class Character extends Movable {
 		}
 	}
 
-	public void collideMalus(Malus malus) {
-		// variables to make it more readable
-		int x = malus.getPosition().getX();
-		int y = malus.getPosition().getY();
-		int height = malus.getSkin().getHeight();
-		int width = malus.getSkin().getWidth();
+	public void collideMalus(List<Malus> malusList) {
 
-		if (this.checkCollision(x, y, height, width)) {
-			malus.changeState();
+		for (Malus malus : malusList) {
+
+			// variables to make it more readable
+			int x = malus.getPosition().getX();
+			int y = malus.getPosition().getY();
+			int height = malus.getSkin().getHeight();
+			int width = malus.getSkin().getWidth();
+
+			if (this.checkCollision(x, y, height, width)) {
+				malus.changeState();
+				return;
+			}
 		}
 	}
 
-	public void collideBooster(Booster booster) {
-		// variables to make it more readable
-		int x = booster.getPosition().getX();
-		int y = booster.getPosition().getY();
-		int height = booster.getSkin().getHeight();
-		int width = booster.getSkin().getWidth();
+	public void collideBooster(List<Booster> boosterList) {
 
-		if (this.checkCollision(x, y, height, width)) {
-			booster.changeState();
+		for (Booster booster : boosterList) {
+
+			// variables to make it more readable
+			int x = booster.getPosition().getX();
+			int y = booster.getPosition().getY();
+			int height = booster.getSkin().getHeight();
+			int width = booster.getSkin().getWidth();
+
+			if (this.checkCollision(x, y, height, width)) {
+				booster.changeState();
+				return;
+			}
 		}
 	}
 
 	public void collideBorders() {
-		
+
 		// variables to make it more readable
 		int characterY = this.getPosition().getY();
 		int characterLowerY = characterY + this.skin.getHeight();
@@ -166,11 +176,11 @@ public class Character extends Movable {
 			// in this if I check the y
 			if ((characterY >= y && characterY <= entityLowerY)
 					|| (characterLowerY >= y && characterLowerY <= entityLowerY)) {
-				
+
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
