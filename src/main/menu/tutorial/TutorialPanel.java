@@ -24,7 +24,7 @@ public class TutorialPanel extends JPanel {
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.setOpaque(false);
 		this.setLayout(new GridBagLayout());
-		
+
 		this.addTitleLabel();
 		this.addTutorialLabel();
 		this.addMenuButton();
@@ -34,14 +34,14 @@ public class TutorialPanel extends JPanel {
 		JLabel titleLabel = new JLabel("TUTORIAL");
 		titleLabel.setFont(CommonMethods.getFontResource("pixel.TTF").deriveFont(50f));
 
-		this.add(titleLabel, new GBCSimplified(0, 0, 0, CommonMethods.getPixelsFromPercentage(1)));
+		this.add(titleLabel, new GBCSimplified(0, 0, 0, CommonMethods.getPixelsFromPercentageHeight(1)));
 	}
 
 	private void addTutorialLabel() {
 		ImageIcon tutorialIcon = CommonMethods.getGifResource("tutorial");
 		tutorialIcon.setImage(tutorialIcon.getImage().getScaledInstance(
-				(int) Constants.SCREEN_SIZE.getWidth() - CommonMethods.getPixelsFromPercentage(10),
-				(int) Constants.SCREEN_SIZE.getHeight() - CommonMethods.getPixelsFromPercentage(10),
+				(int) Constants.SCREEN_SIZE.getWidth() - CommonMethods.getPixelsFromPercentageWidth(15),
+				(int) Constants.SCREEN_SIZE.getHeight() - CommonMethods.getPixelsFromPercentageHeight(20),
 				Image.SCALE_DEFAULT));
 		JLabel tutorialLabel = new JLabel(tutorialIcon);
 
@@ -56,7 +56,7 @@ public class TutorialPanel extends JPanel {
 			mainMenu.showCard(Constants.PANEL.MENU);
 		});
 
-		this.add(menuButton, new GBCSimplified(0, 2, CommonMethods.getPixelsFromPercentage(25),
-				CommonMethods.getPixelsFromPercentage(1)));
+		this.add(menuButton, new GBCSimplified(0, 2, CommonMethods.getPixelsFromPercentageWidth(25),
+				CommonMethods.getPixelsFromPercentageHeight(1)));
 	}
 }
