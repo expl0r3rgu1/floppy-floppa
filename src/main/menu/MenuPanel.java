@@ -28,8 +28,7 @@ public class MenuPanel extends JPanel {
 	private MainMenu mainMenu;
 
 	/**
-	 * 
-	 * @param used to show cardlayouts
+	 * @param mainMenu - used to show cardlayouts
 	 * 
 	 */
 	public MenuPanel(MainMenu mainMenu) {
@@ -222,8 +221,8 @@ public class MenuPanel extends JPanel {
 	/**
 	 * Returns a scaled version of the image parameter
 	 * 
-	 * @param image the image to scale
-	 * @param dim   the Dimension to which to scale the image
+	 * @param image - the image to scale
+	 * @param dim   - the Dimension to which to scale the image
 	 * @return a scaled version of the image parameter
 	 */
 	private Image scaleImage(Image image, Dimension dim) {
