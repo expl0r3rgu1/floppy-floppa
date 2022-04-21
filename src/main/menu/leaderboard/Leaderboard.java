@@ -67,8 +67,9 @@ public class Leaderboard {
 		if (index < 0)
 			index = ~index; // Converting negative index to positive index = (-index) - 1
 
-		if (this.leaderboard.get(index).equals(newPlayer)) {
-			this.leaderboard.get(index).setPersonalBest(newPlayer.getPersonalBest());
+		Player player = this.leaderboard.get(index);
+		if (player.equals(newPlayer) && newPlayer.getPersonalBest() > player.getPersonalBest()) {
+			player.setPersonalBest(newPlayer.getPersonalBest());
 		} else {
 			this.leaderboard.add(index, newPlayer);
 		}
