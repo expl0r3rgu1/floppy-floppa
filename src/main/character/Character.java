@@ -29,7 +29,7 @@ public class Character extends Movable {
 		this.skin = skin;
 		this.dead = false;
 		this.jumping = false;
-		this.timer = new Timer(500, new ActionListener() {
+		this.timer = new Timer(Constants.CHARACTER_JUMP_TIMEOUT / Constants.SPEED, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -77,8 +77,8 @@ public class Character extends Movable {
 			int characterLowerY = characterY + this.skin.getHeight();
 			int obstacleX = fixedObstacle.getPosition().getX();
 			int obstacleWiderX = obstacleX + fixedObstacle.getSkin().getWidth();
-			int obstacleUpperY = fixedObstacle.getPosition().getY() + (int) fixedObstacle.space / 2;
-			int obstacleLowerY = fixedObstacle.getPosition().getY() - (int) fixedObstacle.space / 2;
+			int obstacleUpperY = fixedObstacle.getPosition().getY() + (int) Constants.SPACE_BETWEEN_PIPES / 2;
+			int obstacleLowerY = fixedObstacle.getPosition().getY() - (int) Constants.SPACE_BETWEEN_PIPES / 2;
 
 			// in this if I check the x
 			if ((characterX >= obstacleX && characterX <= obstacleWiderX)
