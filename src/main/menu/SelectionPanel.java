@@ -2,21 +2,14 @@ package main.menu;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -27,27 +20,21 @@ import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.GameSettings;
 import main.utilities.GBCSimplified;
-import main.utilities.GraphicJButton;
-import main.utilities.GraphicJButtonWithObject;
 import main.utilities.GraphicJLabel;
+import main.utilities.generateJButton;
 import main.utilities.PricedBackground;
 import main.utilities.PricedSkin;
 import main.utilities.Skin;
-import main.character.Character;
 
 public class SelectionPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
 	private GridBagLayout grid = new GridBagLayout();
-	private Character character;
-	private ScrollingBackground scenario;
 	private GameSettings settings;
 	private MainMenu mainMenu;
 	private Shop shop;
-	private Image background;
 	private int numSkins;
 	private int numBackgrounds;
-	private boolean equip = false;
 	private boolean bought = false;
 	private List<PurchaseStatus<PricedSkin>> skinList;
 	private List<PurchaseStatus<PricedBackground>> backgroundList;
@@ -70,8 +57,6 @@ public class SelectionPanel extends JPanel {
 		numBackgrounds = shop.getSceneriesNum();
 		skinList = shop.getSkins();
 		backgroundList = shop.getSceneries();
-		this.character = character;
-		this.scenario = scenario;
 
 		this.placeComponents();
 	}
@@ -95,7 +80,7 @@ public class SelectionPanel extends JPanel {
 
 			} else if (i == numBackgrounds + numSkins - 1) {
 
-				JButton backMenu = generateButton("MENU", "fipps.otf");
+				generateJButton backMenu = new generateJButton("MENU", "fipps.otf", 100, "#FFDD62", "#FF971A");
 				this.add(backMenu, new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageWidth(2)),
 						0, (CommonMethods.getPixelsFromPercentageWidth(1)), 0)));
 				backMenu.addActionListener(e -> {
@@ -129,14 +114,15 @@ public class SelectionPanel extends JPanel {
 
 	private void getSelectButton(int i) {
 		for (int j = 0; j < numSkins; j++) {
-			JButton selectButton = generateButton("SELECT", "fipps.otf");
-			bought = (i == 4 ? skinList.get(j).isPurchased() : backgroundList.get(j).isPurchased());
-			bought = false;
-			selectButton.setEnabled(bought);
 			final int index = j;
+			generateJButton selectButton = new generateJButton("SELECT", "fipps.otf", 120, "#FDFD96", "#FFDD62");
+			
+			bought = (i == 4 ? skinList.get(j).isPurchased() : backgroundList.get(j).isPurchased());
+			selectButton.setEnabled(bought);
 			selectButton.addActionListener(e -> {
-				getImageSkin(i, index);
+				getSelectedIcon(i, index);
 			});
+			
 			this.add(selectButton,
 					new GBCSimplified(j, i, (CommonMethods.getPixelsFromPercentageWidth(3)), 0,
 							new Insets((CommonMethods.getPixelsFromPercentageWidth(1)),
@@ -145,7 +131,7 @@ public class SelectionPanel extends JPanel {
 		}
 	}
 
-	private void getImageSkin(int i, int j) {
+	private void getSelectedIcon(int i, int j) {
 
 		if (i == 4) {
 
@@ -159,22 +145,6 @@ public class SelectionPanel extends JPanel {
 			settings.setScrollingBackground(scenario);
 		}
 
-	}
-
-	private JButton generateButton(String name, String font) {
-		JButton jb = new JButton(name);
-
-		if (name.equals("MENU")) {
-			jb.setFont(CommonMethods.getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 100));
-			jb.setBackground(Color.decode("#FFDD62"));
-			jb.setBorder(BorderFactory.createLineBorder(Color.decode("#FF971A"), 4, true));
-		} else {
-			jb.setFont(CommonMethods.getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 120));
-			jb.setBackground(Color.decode("#FDFD96"));
-			jb.setBorder(BorderFactory.createLineBorder(Color.decode("#FFDD62"), 4, true));
-
-		}
-		return jb;
 	}
 
 	private JLabel imageCreation(String fileName) {
