@@ -27,6 +27,7 @@ import main.utilities.Position;
 import main.utilities.Skin;
 
 public class PlayPanel extends JPanel implements ActionListener, KeyListener {
+	private static final long serialVersionUID = 4739973632599419506L;
 	private Timer refreshRate;
 	private final Map map;
 	private final NicknamePanel nicknamePanel;
