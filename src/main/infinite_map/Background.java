@@ -67,4 +67,10 @@ public class Background extends Movable {
 	private void moveToSideOfSecondBackground() {
 		getPosition().setX(getPosition().getX() + (int) Constants.SCREEN_SIZE.getWidth() * 2);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Background other = (Background) obj;
+		return super.equals(other) && this.name.equals(other.getName()) && this.image.equals(other.getImage());
+	}
 }
