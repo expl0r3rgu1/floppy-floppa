@@ -36,7 +36,9 @@ public class ShopGUI extends JPanel {
 	private GraphicJLabel coins;
 
 	/**
-	 * @param mainMenu needed to correctly show card layouts
+	 * @param mainMenu a MainMenu parameter, needed to correctly show card layouts
+	 * @param shop     Shop parameter is passed so that the constructor does not
+	 *                 initializes a new one
 	 */
 	public ShopGUI(MainMenu mainMenu, Shop shop) {
 		this.mainMenu = mainMenu;
