@@ -51,7 +51,7 @@ public class Leaderboard {
 	}
 
 	public void writeToFile() throws IOException {
-		FileWriter leaderboardFileWriter = new FileWriter(leaderboardFile);
+		FileWriter leaderboardFileWriter = new FileWriter(leaderboardFile, true);
 
 		for (var player : leaderboard) {
 			leaderboardFileWriter.append(player.toString());
