@@ -53,9 +53,8 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 
 		refreshRate = new Timer(1000 / Constants.SPEED, this);
 
-		character = new Character(
-				new Position((int) Constants.SCREEN_SIZE.getHeight() / 2, CommonMethods.getPixelsFromPercentage(30)),
-				gameSettings.getSkin());
+		character = new Character(new Position((int) Constants.SCREEN_SIZE.getHeight() / 2,
+				CommonMethods.getPixelsFromPercentageWidth(30)), gameSettings.getSkin());
 
 		this.nicknamePanel = new NicknamePanel(this, gameSettings);
 		this.add(nicknamePanel, new GBCSimplified(0, 0, 0, 0, new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
