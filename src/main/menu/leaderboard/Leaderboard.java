@@ -54,13 +54,13 @@ public class Leaderboard {
 		FileWriter leaderboardFileWriter = new FileWriter(leaderboardFile, true);
 
 		for (var player : leaderboard) {
-			leaderboardFileWriter.append(player + "\n";
+			leaderboardFileWriter.append(player + "\n");
 		}
 
 		leaderboardFileWriter.close();
 	}
 
-  public void update(Player newPlayer) {
+	public void update(Player newPlayer) {
 		int playerIndexInLeaderboard = this.leaderboard.indexOf(newPlayer);
 		boolean playerAlreadyPresent = (playerIndexInLeaderboard == -1) ? false : true;
 
@@ -76,7 +76,7 @@ public class Leaderboard {
 
 	}
 
-  private void binarySearchInsert(Player newPlayer) {
+	private void binarySearchInsert(Player newPlayer) {
 		int index = Collections.binarySearch(this.leaderboard, newPlayer, (a, b) -> {
 			return b.getPersonalBest() - a.getPersonalBest();
 		});
@@ -86,8 +86,8 @@ public class Leaderboard {
 
 		this.leaderboard.add(index, newPlayer);
 	}
-  
-  public void clearLeaderboard() {
-    this.leaderboard.clear();
-  }
+
+	public void clearLeaderboard() {
+		this.leaderboard.clear();
+	}
 }
