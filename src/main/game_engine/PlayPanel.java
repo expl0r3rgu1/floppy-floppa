@@ -72,6 +72,10 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		gameStart = new Timestamp(System.currentTimeMillis());
 	}
 
+	private int getMetersTraveled() {
+		return (int) ((gameEnd.getTime() - gameStart.getTime()) / 1000);
+	}
+
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D canvas = (Graphics2D) g;
