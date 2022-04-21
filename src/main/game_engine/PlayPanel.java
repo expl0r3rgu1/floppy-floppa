@@ -46,10 +46,7 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 
 		this.mainMenu = mainMenu;
 
-		map = new Map(gameSettings.getScrollingBackground(),
-				new FixedObstacle(null, new Skin("pipe", CommonMethods.getImageResource("pipe"))),
-				List.of(new MovingObstacle(null, new Skin("Bingus", CommonMethods.getImageResource("Bingus"))),
-						new MovingObstacle(null, new Skin("Walter", CommonMethods.getImageResource("Walter")))));
+		map = new Map(gameSettings.getScrollingBackground());
 
 		refreshRate = new Timer(1000 / Constants.SPEED, this);
 
