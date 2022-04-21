@@ -187,7 +187,7 @@ public class Shop {
 	 * @param line one line of the savings file
 	 * @param list List of purchase statuses of PricedSkin items
 	 */
-	private void getSkinsInfo(String line, List<PurchaseStatus<PricedSkin>> list) {
+	private void getSkinsInfo(String line, List<PurchaseStatus<PricedSkin>> purchaseStatusList) {
 		String[] lineWords = line.split(",");
 
 		for (int i = 0; i < skinsNum; i++) {
@@ -201,7 +201,7 @@ public class Shop {
 				purchaseStatus.purchase();
 			}
 
-			list.add(purchaseStatus);
+			purchaseStatusList.add(purchaseStatus);
 		}
 	}
 
