@@ -31,9 +31,6 @@ public class EOGMenuGUI extends JPanel {
 	private Image background;
 	private MainMenu mainMenu;
 	private EOGMenu eogMenu;
-	private int meters;
-	private int malusTimes;
-	private int boosterTImes;
 
 	/**
 	 * 
@@ -45,11 +42,8 @@ public class EOGMenuGUI extends JPanel {
 	 *                        booster
 	 */
 	public EOGMenuGUI(MainMenu mainMenu, int metersTravelled, int reducerTimes, int incrementTimes) {
-		this.eogMenu = new EOGMenu(metersTravelled, reducerTimes, incrementTimes);
+		this.eogMenu = new EOGMenu(mainMenu.getShop(), metersTravelled, reducerTimes, incrementTimes);
 		this.mainMenu = mainMenu;
-		this.meters = metersTravelled;
-		this.malusTimes = reducerTimes;
-		this.boosterTImes = incrementTimes;
 
 		this.setLayout(new GridBagLayout());
 
