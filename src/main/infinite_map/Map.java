@@ -28,6 +28,7 @@ public class Map {
 																			// FixedObstacle
 	private final TimedMovingObstacleGenerator timedMovingObstacleGenerator; // Timer that manages when to spawn a
 	// MovingObstacle
+	private final TimedStateChangerGenerator timedStateChangerGenerator;
 
 	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle,
 			List<MovingObstacle> movingObstacles) {
@@ -38,6 +39,7 @@ public class Map {
 		this.paintedMovingObstacles = new ArrayList<>();
 		this.timedFixedObstacleGenerator = new TimedFixedObstacleGenerator(this);
 		this.timedMovingObstacleGenerator = new TimedMovingObstacleGenerator(this);
+		this.timedStateChangerGenerator = new TimedStateChangerGenerator(this);
 	}
 
 	public ScrollingBackground getScrollingBackground() {
