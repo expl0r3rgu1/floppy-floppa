@@ -78,6 +78,11 @@ public class Map {
 				this.movingObstacles.get(randomMovingObstacleIndex).getSkin()));
 	}
 
+	private Position getRandomPosition() {
+		return new Position((int) Constants.SCREEN_SIZE.getWidth(), CommonMethods.getRandomNumber(
+				CommonMethods.getPixelsFromPercentageHeight(25), CommonMethods.getPixelsFromPercentageHeight(75)));
+	}
+
 	public void animate(Graphics2D canvas) {
 		this.scrollingBackground.animate(canvas);
 
