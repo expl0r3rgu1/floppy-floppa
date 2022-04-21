@@ -24,7 +24,7 @@ public class Shop {
 
 	private int skinsNum;
 	private int sceneriesNum;
-	private Integer coins;
+	private int coins;
 	private List<String> skinInitialize = new ArrayList<>();
 	private List<String> backgroundInitialize = new ArrayList<>();
 	private List<Integer> prices = Arrays.asList(0, 50, 100, 200, 500);
@@ -51,7 +51,7 @@ public class Shop {
 	/**
 	 * @return the current coins amount
 	 */
-	public Integer getCoins() {
+	public int getCoins() {
 		return coins;
 	}
 
@@ -60,7 +60,7 @@ public class Shop {
 	 * 
 	 * @param coins
 	 */
-	public void setCoins(Integer coins) {
+	public void setCoins(int coins) {
 		this.coins = coins;
 	}
 
