@@ -1,18 +1,13 @@
 package main.menu;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Toolkit;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import main.utilities.CommonMethods;
@@ -31,9 +26,6 @@ public class EOGMenuGUI extends JPanel {
 	private Image background;
 	private MainMenu mainMenu;
 	private EOGMenu eogMenu;
-	private int meters;
-	private int malusTimes;
-	private int boosterTImes;
 
 	/**
 	 * 
@@ -45,11 +37,8 @@ public class EOGMenuGUI extends JPanel {
 	 *                        booster
 	 */
 	public EOGMenuGUI(MainMenu mainMenu, int metersTravelled, int reducerTimes, int incrementTimes) {
-		this.eogMenu = new EOGMenu(metersTravelled, reducerTimes, incrementTimes);
+		this.eogMenu = new EOGMenu(mainMenu.getShop(), metersTravelled, reducerTimes, incrementTimes);
 		this.mainMenu = mainMenu;
-		this.meters = metersTravelled;
-		this.malusTimes = reducerTimes;
-		this.boosterTImes = incrementTimes;
 
 		this.setLayout(new GridBagLayout());
 
@@ -59,6 +48,9 @@ public class EOGMenuGUI extends JPanel {
 
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -84,9 +76,9 @@ public class EOGMenuGUI extends JPanel {
 
 			} else if (i == 1) {
 				GraphicJLabel coins = new GraphicJLabel(
-						"<html><center> Old coins: &emsp &emsp New coins: </center><br><center> "
-								+ eogMenu.getPreviousCoins() + "&emsp &emsp &emsp "
-								+ eogMenu.updateCoins(meters, malusTimes, boosterTImes) + "</center></html>",
+						"<html><center> Old coins: &emsp &emsp New coins: </center> <br> <center> "
+								+ eogMenu.getPreviousCoins() + "&emsp &emsp &emsp " + eogMenu.getNewCoins()
+								+ "</center> </html>",
 						Color.decode("#77DD77"), Color.decode("#007542"), "fipps.otf", 25f);
 				this.add(coins,
 						new GBCSimplified(1, i, CommonMethods.getPixelsFromPercentageWidth(25),
