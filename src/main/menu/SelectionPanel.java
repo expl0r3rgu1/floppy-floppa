@@ -19,9 +19,9 @@ import main.menu.shop.Shop;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.GameSettings;
+import main.utilities.GraphicJButton;
 import main.utilities.GBCSimplified;
 import main.utilities.GraphicJLabel;
-import main.utilities.generateJButton;
 import main.utilities.PricedBackground;
 import main.utilities.PricedSkin;
 import main.utilities.Skin;
@@ -93,7 +93,7 @@ public class SelectionPanel extends JPanel {
 
 			} else if (i == numBackgrounds + numSkins - 1) {
 
-				generateJButton backMenu = new generateJButton("MENU", "fipps.otf", 100, "#FFDD62", "#FF971A");
+				GraphicJButton backMenu = new GraphicJButton("MENU", "fipps.otf", 100, "#FFDD62", "#FF971A");
 				this.add(backMenu,
 						new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageWidth(2)), 0,
 								(CommonMethods.getPixelsFromPercentageWidth(1)), 0)));
@@ -147,7 +147,7 @@ public class SelectionPanel extends JPanel {
 	private void getSelectButton(int i) {
 		for (int j = 0; j < numSkins; j++) {
 			final int index = j;
-			generateJButton selectButton = new generateJButton("SELECT", "fipps.otf", 120, "#FDFD96", "#FFDD62");
+			GraphicJButton selectButton = new GraphicJButton("SELECT", "fipps.otf", 120, "#FDFD96", "#FFDD62");
 
 			bought = (i == 4 ? skinList.get(j).isPurchased() : backgroundList.get(j).isPurchased());
 			selectButton.setEnabled(bought);
@@ -176,7 +176,7 @@ public class SelectionPanel extends JPanel {
 		if (i == 4) {
 
 			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)),
-					Constants.SKIN_DIMENSION, Constants.SKIN_DIMENSION);
+					(int) Constants.SCREEN_SIZE.getHeight() / 12, (int) Constants.SCREEN_SIZE.getHeight() / 12);
 			settings.setSkin(skin);
 
 		} else {
