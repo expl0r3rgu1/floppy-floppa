@@ -7,17 +7,7 @@ public class GBCSimplified extends GridBagConstraints {
 
 	private static final long serialVersionUID = 3822190102776934506L;
 
-	public GBCSimplified(int gridx, int gridy, int ipadx, int ipady, Insets insets) {
-		super();
-		this.gridx = gridx;
-		this.gridy = gridy;
-		this.ipadx = ipadx;
-		this.ipady = ipady;
-		this.insets = insets;
-	}
-
 	public GBCSimplified(int gridx, int gridy, int ipadx, int ipady, Insets insets, int anchor) {
-		super();
 		this.gridx = gridx;
 		this.gridy = gridy;
 		this.ipadx = ipadx;
@@ -26,11 +16,30 @@ public class GBCSimplified extends GridBagConstraints {
 		this.anchor = anchor;
 	}
 
-	public GBCSimplified(int gridx, int gridy, int ipadx, int ipady) {
-		super();
+	public GBCSimplified(int gridx, int gridy, int ipadx, int ipady, int anchor) {
 		this.gridx = gridx;
 		this.gridy = gridy;
 		this.ipadx = ipadx;
 		this.ipady = ipady;
+		this.anchor = anchor;
+	}
+
+	public GBCSimplified(int gridx, int gridy, int ipadx, int ipady, Insets insets) {
+		this.gridx = gridx;
+		this.gridy = gridy;
+		this.ipadx = ipadx;
+		this.ipady = ipady;
+		this.insets = insets;
+	}
+
+	public GBCSimplified(int gridx, int gridy, int ipadx, int ipady) {
+		this.gridx = gridx;
+		this.gridy = gridy;
+		this.ipadx = ipadx;
+		this.ipady = ipady;
+	}
+
+	public GBCSimplified(int anchor) {
+		this.anchor = anchor;
 	}
 }
