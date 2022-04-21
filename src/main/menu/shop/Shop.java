@@ -252,14 +252,14 @@ public class Shop {
 	/**
 	 * The method creates the new line of information for the savings file
 	 * 
-	 * @param <X>  The items type
-	 * @param list List of purchase statuses of generic X items
+	 * @param <X>                The items type
+	 * @param purchaseStatusList List of purchase statuses of generic X items
 	 * @return the line that will be overwritten over an old line to update the
 	 *         savings file
 	 */
-	private <X> String overwritePurchaseStatusLine(List<PurchaseStatus<X>> list) {
+	private <X> String overwritePurchaseStatusLine(List<PurchaseStatus<X>> purchaseStatusList) {
 		String line = "";
-		for (var purchaseStatus : list) {
+		for (var purchaseStatus : purchaseStatusList) {
 			if (purchaseStatus.isPurchased()) {
 				if (line.isEmpty()) {
 					line += "1";
