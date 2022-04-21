@@ -81,9 +81,9 @@ public class EOGMenuGUI extends JPanel {
 
 			} else if (i == 1) {
 				GraphicJLabel coins = new GraphicJLabel(
-						"<html><center> Old coins: &emsp &emsp New coins: </center><br><center> "
-								+ eogMenu.getPreviousCoins() + "&emsp &emsp &emsp "
-								+ eogMenu.updateCoins(meters, malusTimes, boosterTImes) + "</center></html>",
+						"<html><center> Old coins: &emsp &emsp New coins: </center> <br> <center> "
+								+ eogMenu.getPreviousCoins() + "&emsp &emsp &emsp " + eogMenu.getNewCoins()
+								+ "</center> </html>",
 						Color.decode("#77DD77"), Color.decode("#007542"), "fipps.otf", 25f);
 				this.add(coins,
 						new GBCSimplified(1, i, CommonMethods.getPixelsFromPercentageWidth(25),
