@@ -184,8 +184,8 @@ public class Shop {
 	 * Creates skinsNum PurchaseStatus of PricedSkin objects and initializes them,
 	 * checks the line, word by word, to get the current PurchaseStatus
 	 * 
-	 * @param line one line of the savings file
-	 * @param list List of purchase statuses of PricedSkin items
+	 * @param line               one line of the savings file
+	 * @param purchaseStatusList List of purchase statuses of PricedSkin items
 	 */
 	private void getSkinsInfo(String line, List<PurchaseStatus<PricedSkin>> purchaseStatusList) {
 		String[] lineWords = line.split(",");
@@ -210,8 +210,8 @@ public class Shop {
 	 * initializes them, checks the line, word by word, to get the current
 	 * PurchaseStatus
 	 * 
-	 * @param line one line of the savings file
-	 * @param list List of purchase statuses of PricedBackground items
+	 * @param line               one line of the savings file
+	 * @param purchaseStatusList List of purchase statuses of PricedBackground items
 	 */
 	private void getScenerisInfo(String line, List<PurchaseStatus<PricedBackground>> purchaseStatusList) {
 		String[] lineWords = line.split(",");
