@@ -16,15 +16,14 @@ import main.menu.MainMenu;
 import main.utilities.GameSettings;
 
 public class MainFrame extends JFrame {
-	private GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0];
+	private static final long serialVersionUID = -5008443485850327687L;
+	private GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	private final MainMenu mainMenu;
-	private final GameSettings gameSettings;
 
 	public MainFrame() {
 		super("Floppy-Floppa");
 
-		this.gameSettings = new GameSettings();
-		this.mainMenu = new MainMenu(this.gameSettings);
+		this.mainMenu = new MainMenu();
 
 		this.add(mainMenu);
 

@@ -16,14 +16,17 @@ import main.menu.leaderboard.Player;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.GBCSimplified;
+import main.utilities.GameSettings;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJLabel;
 
 public class NicknamePanel extends JPanel {
+	private static final long serialVersionUID = -609955722187373250L;
+
 	public NicknamePanel(PlayPanel playPanel, GameSettings gameSettings) {
 		this.setLayout(new GridBagLayout());
-		this.setPreferredSize(
-				new Dimension(CommonMethods.getPixelsFromPercentage(33), CommonMethods.getPixelsFromPercentage(20)));
+		this.setPreferredSize(new Dimension(CommonMethods.getPixelsFromPercentageWidth(33),
+				CommonMethods.getPixelsFromPercentageHeight(20)));
 		this.setBackground(Color.decode("#80CEE1"));
 		this.setOpaque(true);
 
@@ -49,13 +52,13 @@ public class NicknamePanel extends JPanel {
 		});
 
 		// ADDING THE COMPONENTS TO THE JPANEL
-		this.add(title, new GBCSimplified(0, 0, CommonMethods.getPixelsFromPercentage(8),
-				CommonMethods.getPixelsFromPercentage(1), new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
-		this.add(nicknameField, new GBCSimplified(0, 1, CommonMethods.getPixelsFromPercentage(17),
-				CommonMethods.getPixelsFromPercentage(2), new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
-		this.add(okButton,
-				new GBCSimplified(0, 2, CommonMethods.getPixelsFromPercentage(3),
-						CommonMethods.getPixelsFromPercentage(1),
-						new Insets(CommonMethods.getPixelsFromPercentage(2), 0, 0, 0), GridBagConstraints.CENTER));
+		this.add(title, new GBCSimplified(0, 0, CommonMethods.getPixelsFromPercentageWidth(8),
+				CommonMethods.getPixelsFromPercentageHeight(1), GridBagConstraints.CENTER));
+		this.add(nicknameField, new GBCSimplified(0, 1, CommonMethods.getPixelsFromPercentageWidth(17),
+				CommonMethods.getPixelsFromPercentageHeight(2), GridBagConstraints.CENTER));
+		this.add(okButton, new GBCSimplified(0, 2, CommonMethods.getPixelsFromPercentageWidth(3),
+				CommonMethods.getPixelsFromPercentageHeight(1),
+				new Insets(CommonMethods.getPixelsFromPercentageHeight(2), 0, 0, 0), GridBagConstraints.CENTER));
+
 	}
 }
