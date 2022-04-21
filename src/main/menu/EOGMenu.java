@@ -38,6 +38,13 @@ public class EOGMenu implements Menu {
 	}
 
 	/**
+	 * @return the coins owned after the last game
+	 */
+	public int getNewCoins() {
+		return newCoins;
+	}
+
+	/**
 	 * The method updates the owned coins considering the meters traveled during the
 	 * last game, the CoinsReducer malus and the CoinsIncrement booster
 	 * 
