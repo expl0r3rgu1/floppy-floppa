@@ -24,7 +24,7 @@ public class TutorialPanel extends JPanel {
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.setOpaque(false);
 		this.setLayout(new GridBagLayout());
-		
+
 		this.addTitleLabel();
 		this.addTutorialLabel();
 		this.addMenuButton();
