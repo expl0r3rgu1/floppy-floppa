@@ -176,7 +176,7 @@ public class SelectionPanel extends JPanel {
 		if (i == 4) {
 
 			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)),
-					(int) Constants.SCREEN_SIZE.getHeight() / 12, (int) Constants.SCREEN_SIZE.getHeight() / 12);
+					Constants.SKIN_DIMENSION, Constants.SKIN_DIMENSION);
 			settings.setSkin(skin);
 
 		} else {
