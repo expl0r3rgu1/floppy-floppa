@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -35,7 +36,10 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 	private final MainMenu mainMenu;
 	private final Map map;
 	private final NicknamePanel nicknamePanel;
+	private final GameSettings gameSettings;
 	private final Character character;
+	private Timestamp gameStart;
+	private Timestamp gameEnd;
 
 	public PlayPanel(MainMenu mainMenu, GameSettings gameSettings) {
 		this.setLayout(new GridBagLayout());
@@ -45,6 +49,7 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		this.requestFocus();
 
 		this.mainMenu = mainMenu;
+		this.gameSettings = gameSettings;
 
 		map = new Map(gameSettings.getScrollingBackground(),
 				new FixedObstacle(null, new Skin("pipe", CommonMethods.getImageResource("pipe"))),
@@ -65,6 +70,12 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		this.remove(nicknamePanel);
 		refreshRate.start();
 		map.startTimer();
+
+		gameStart = new Timestamp(System.currentTimeMillis());
+	}
+
+	private int getMetersTraveled() {
+		return (int) ((gameEnd.getTime() - gameStart.getTime()) / 1000);
 	}
 
 	@Override
@@ -82,8 +93,13 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		if (character.isDead()) {
 			refreshRate.stop();
 
-			mainMenu.add(PANEL.EOGMENU.name(), new EOGMenuGUI(mainMenu, 0, 0, 0));
+			gameEnd = new Timestamp(System.currentTimeMillis());
+
+			mainMenu.add(PANEL.EOGMENU.name(), new EOGMenuGUI(mainMenu, getMetersTraveled(), 0, 0));
 			mainMenu.showCard(PANEL.EOGMENU);
+
+			gameSettings.getPlayer().setPersonalBest(getMetersTraveled());
+			mainMenu.getLeaderboard().update(gameSettings.getPlayer());
 		}
 	}
 
