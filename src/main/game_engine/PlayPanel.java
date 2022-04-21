@@ -36,6 +36,7 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 	private final MainMenu mainMenu;
 	private final Map map;
 	private final NicknamePanel nicknamePanel;
+	private final GameSettings gameSettings;
 	private final Character character;
 	private Timestamp gameStart;
 	private Timestamp gameEnd;
@@ -48,6 +49,7 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		this.requestFocus();
 
 		this.mainMenu = mainMenu;
+		this.gameSettings = gameSettings;
 
 		map = new Map(gameSettings.getScrollingBackground(),
 				new FixedObstacle(null, new Skin("pipe", CommonMethods.getImageResource("pipe"))),
