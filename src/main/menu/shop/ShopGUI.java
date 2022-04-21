@@ -38,10 +38,9 @@ public class ShopGUI extends JPanel {
 	/**
 	 * @param mainMenu needed to correctly show card layouts
 	 */
-	public ShopGUI(MainMenu mainMenu) {
-
-		shop = new Shop();
+	public ShopGUI(MainMenu mainMenu, Shop shop) {
 		this.mainMenu = mainMenu;
+		this.shop = shop;
 		this.setLayout(new GridBagLayout());
 		this.setOpaque(false);
 
