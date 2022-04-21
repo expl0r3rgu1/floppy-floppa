@@ -112,15 +112,20 @@ public class Character extends Movable {
 		}
 	}
 
-	public void collideMalus(Malus malus) {
-		// variables to make it more readable
-		int x = malus.getPosition().getX();
-		int y = malus.getPosition().getY();
-		int height = malus.getSkin().getHeight();
-		int width = malus.getSkin().getWidth();
+	public void collideMalus(List<Malus> malusList) {
 
-		if (this.checkCollision(x, y, height, width)) {
-			malus.changeState();
+		for (Malus malus : malusList) {
+
+			// variables to make it more readable
+			int x = malus.getPosition().getX();
+			int y = malus.getPosition().getY();
+			int height = malus.getSkin().getHeight();
+			int width = malus.getSkin().getWidth();
+
+			if (this.checkCollision(x, y, height, width)) {
+				malus.changeState();
+				return;
+			}
 		}
 	}
 
@@ -137,7 +142,7 @@ public class Character extends Movable {
 	}
 
 	public void collideBorders() {
-		
+
 		// variables to make it more readable
 		int characterY = this.getPosition().getY();
 		int characterLowerY = characterY + this.skin.getHeight();
@@ -166,11 +171,11 @@ public class Character extends Movable {
 			// in this if I check the y
 			if ((characterY >= y && characterY <= entityLowerY)
 					|| (characterLowerY >= y && characterLowerY <= entityLowerY)) {
-				
+
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
