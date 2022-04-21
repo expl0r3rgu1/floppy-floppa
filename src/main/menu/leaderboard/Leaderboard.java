@@ -54,7 +54,7 @@ public class Leaderboard {
 		FileWriter leaderboardFileWriter = new FileWriter(leaderboardFile, true);
 
 		for (var player : leaderboard) {
-			leaderboardFileWriter.append(player.toString());
+			leaderboardFileWriter.append(player + "\n";
 		}
 
 		leaderboardFileWriter.close();
