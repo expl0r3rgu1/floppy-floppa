@@ -59,23 +59,16 @@ public class Map {
 
 	// Method that spawns a FixedObstacle cloned from this.fixedObstacle
 	protected void addFixedObstacle() {
-		this.paintedFixedObstacles
-				.add(Constants.OBSTACLE_FACTORY.fixedObstacleFactory(
-						new Position((int) Constants.SCREEN_SIZE.getWidth(),
-								CommonMethods.getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
-										(int) (Constants.SCREEN_SIZE.getHeight() * 0.75))),
-						this.fixedObstacle.getSkin()));
+		this.paintedFixedObstacles.add(Constants.OBSTACLE_FACTORY.fixedObstacleFactory(getRandomPosition(),
+				Constants.FIXED_OBSTACLE.getSkin()));
 	}
 
 	// Method that spawns a random MovingObstacle
 	protected void addMovingObstacle() {
-		int randomMovingObstacleIndex = CommonMethods.getRandomNumber(0, this.movingObstacles.size());
+		int randomMovingObstacleIndex = CommonMethods.getRandomNumber(0, Constants.MOVING_OBSTACLES.size());
 
-		this.paintedMovingObstacles.add(Constants.OBSTACLE_FACTORY.movingObstacleFactory(
-				new Position((int) Constants.SCREEN_SIZE.getWidth(),
-						CommonMethods.getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
-								(int) (Constants.SCREEN_SIZE.getHeight() * 0.75))),
-				this.movingObstacles.get(randomMovingObstacleIndex).getSkin()));
+		this.paintedMovingObstacles.add(Constants.OBSTACLE_FACTORY.movingObstacleFactory(getRandomPosition(),
+				Constants.MOVING_OBSTACLES.get(randomMovingObstacleIndex).getSkin()));
 	}
 
 	private Position getRandomPosition() {
