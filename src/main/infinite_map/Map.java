@@ -107,9 +107,11 @@ public class Map {
 	public void animate(Graphics2D canvas) {
 		this.scrollingBackground.animate(canvas);
 
-		// Repainting on-screen obstacles
+		// Repainting on-screen entities
 		this.paintedFixedObstacles.forEach(obstacle -> obstacle.animate(canvas));
 		this.paintedMovingObstacles.forEach(obstacle -> obstacle.animate(canvas));
+		this.paintedMalus.forEach(malus -> malus.animate(canvas));
+		this.paintedBoosters.forEach(booster -> booster.animate(canvas));
 
 		// Removing obstacles off-screen from set
 		this.paintedFixedObstacles
