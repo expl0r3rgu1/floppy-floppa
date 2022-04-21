@@ -17,10 +17,6 @@ import main.utilities.Position;
 public class Map {
 	// Background and FixedObstacle based on selected scenario
 	private final ScrollingBackground scrollingBackground;
-
-	private final FixedObstacle fixedObstacle;
-	private final List<MovingObstacle> movingObstacles; // Every kind of MovingObstacle available to spawn
-
 	private final List<FixedObstacle> paintedFixedObstacles; // Set of FixedObstacle that need to be or are being
 																// painted
 	private final List<MovingObstacle> paintedMovingObstacles; // Set of MovingObstacle that need to be or are being
@@ -37,8 +33,6 @@ public class Map {
 	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle,
 			List<MovingObstacle> movingObstacles) {
 		this.scrollingBackground = scrollingBackground;
-		this.fixedObstacle = fixedObstacle;
-		this.movingObstacles = movingObstacles;
 		this.paintedFixedObstacles = new ArrayList<>();
 		this.paintedMovingObstacles = new ArrayList<>();
 		this.paintedMalus = new ArrayList<>();
