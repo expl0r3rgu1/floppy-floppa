@@ -1,8 +1,10 @@
 package junit;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Dimension;
+import java.awt.Image;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +20,9 @@ public class TestCommonMethods {
 	final private int SCREEN_HEIGHT = 864;
 	final private int PIXELS_WIDTH_RESULT = 153;
 	final private int PIXELS_HEIGHT_RESULT = 86;
+	final private String IMAGE_NAME = "Background";
+	final private String FONT_NAME = "pixel.TTF";
+	final private String GIF_NAME = "Tutorial";
 	
 	
 	@Test
@@ -31,7 +36,7 @@ public class TestCommonMethods {
 	
 	@Test
 	/**
-	 * Checks if it calculates the right amount of pixels;
+	 * Checks if those methods calculate the right amount of pixels;
 	 * Considering that every screen has a different size, the results of this test are 
 	 * valid only if the width of the screen is 1536 and the height is 864
 	 */
@@ -42,5 +47,13 @@ public class TestCommonMethods {
 		}
 	}
 	
-	
+	@Test
+	/**
+	 * Checks if those methods actually gets the resource
+	 */
+	void getResourceTest() {
+		assertNotNull(CommonMethods.getImageResource(IMAGE_NAME));
+		assertNotNull(CommonMethods.getFontResource(FONT_NAME));
+		assertNotNull(CommonMethods.getGifResource(GIF_NAME));
+	}
 }
