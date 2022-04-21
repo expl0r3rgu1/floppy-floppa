@@ -68,6 +68,8 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		this.remove(nicknamePanel);
 		refreshRate.start();
 		map.startTimer();
+
+		gameStart = new Timestamp(System.currentTimeMillis());
 	}
 
 	@Override
@@ -84,6 +86,8 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 
 		if (character.isDead()) {
 			refreshRate.stop();
+
+			gameEnd = new Timestamp(System.currentTimeMillis());
 
 			mainMenu.add(PANEL.EOGMENU.name(), new EOGMenuGUI(mainMenu, 0, 0, 0));
 			mainMenu.showCard(PANEL.EOGMENU);
