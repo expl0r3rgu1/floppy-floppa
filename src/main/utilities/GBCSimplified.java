@@ -42,4 +42,9 @@ public class GBCSimplified extends GridBagConstraints {
 		this.ipadx = ipadx;
 		this.ipady = ipady;
 	}
+
+	public GBCSimplified(int anchor) {
+		super();
+		this.anchor = anchor;
+	}
 }
