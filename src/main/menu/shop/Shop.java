@@ -134,13 +134,13 @@ public class Shop {
 	 * Finds the Object o in the List list and, if the current coins are enough and
 	 * the item hasn't been previously purchased, it purchases it
 	 * 
-	 * @param o    the object to be purchased
-	 * @param list List of purchase statuses of PricedBackground items
+	 * @param o                 the object to be purchased
+	 * @param purchaseStatusList List of purchase statuses of PricedBackground items
 	 * @return true if the given object gets purchased, false otherwise
 	 */
-	private boolean findAndBuySceneries(Object o, List<PurchaseStatus<PricedBackground>> list) {
+	private boolean findAndBuySceneries(Object o, List<PurchaseStatus<PricedBackground>> purchaseStatusList) {
 		boolean state = false;
-		for (var status : list) {
+		for (var status : purchaseStatusList) {
 			if (status.getX().equals(o)) {
 				if (!status.isPurchased() && status.getX().getPrice() <= this.coins) {
 					status.purchase();
