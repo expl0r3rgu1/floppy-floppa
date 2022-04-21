@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import main.character.Character;
 import main.obstacles.FixedObstacle;
+import main.obstacles.ObstacleFactory;
 import main.obstacles.ObstacleFactoryImpl;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
@@ -15,13 +16,16 @@ import main.utilities.Position;
 import main.utilities.Skin;
 
 public class TestCharacter {
-	final private List<FixedObstacle> FIXED_OBSTACLE_LIST = List
-			.of(new ObstacleFactoryImpl().fixedObstacleFactory(new Position((int) Constants.SCREEN_SIZE.getWidth()/2, (int) Constants.SCREEN_SIZE.getHeight()/2),
-					new Skin("pipe", CommonMethods.getImageResource("pipe"),
-							CommonMethods.getImageResource("pipe").getWidth(null),
-							CommonMethods.getImageResource("pipe").getHeight(null))));
-	final private Position CHARACTER_COLLIDE_UPPER_PIPE = new Position((int) Constants.SCREEN_SIZE.getWidth()/2, (int) Constants.SCREEN_SIZE.getHeight()/5);
-	final private Position CHARACTER_COLLIDE_LOWER_PIPE = new Position((int) Constants.SCREEN_SIZE.getWidth()/2, (int) Constants.SCREEN_SIZE.getHeight()*4/5);
+	private final ObstacleFactory OBSTACLE_FACTORY = new ObstacleFactoryImpl();
+	final private List<FixedObstacle> FIXED_OBSTACLE_LIST = List.of(OBSTACLE_FACTORY.fixedObstacleFactory(
+			new Position((int) Constants.SCREEN_SIZE.getWidth() / 2, (int) Constants.SCREEN_SIZE.getHeight() / 2),
+			new Skin("pipe", CommonMethods.getImageResource("pipe"),
+					CommonMethods.getImageResource("pipe").getWidth(null),
+					CommonMethods.getImageResource("pipe").getHeight(null))));
+	final private Position CHARACTER_COLLIDE_UPPER_PIPE = new Position((int) Constants.SCREEN_SIZE.getWidth() / 2,
+			(int) Constants.SCREEN_SIZE.getHeight() / 5);
+	final private Position CHARACTER_COLLIDE_LOWER_PIPE = new Position((int) Constants.SCREEN_SIZE.getWidth() / 2,
+			(int) Constants.SCREEN_SIZE.getHeight() * 4 / 5);
 
 	@Test
 	/**
@@ -34,7 +38,7 @@ public class TestCharacter {
 						CommonMethods.getImageResource("Floppa").getHeight(null)));
 		characterUp.collideFixedObstacle(FIXED_OBSTACLE_LIST);
 		assertTrue(characterUp.isDead());
-		
+
 		Character characterLo = new Character(CHARACTER_COLLIDE_UPPER_PIPE,
 				new Skin("floppa", CommonMethods.getImageResource("Floppa"),
 						CommonMethods.getImageResource("Floppa").getWidth(null),
