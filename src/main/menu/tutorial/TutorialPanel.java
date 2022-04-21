@@ -42,7 +42,7 @@ public class TutorialPanel extends JPanel {
 	 */
 	private void addTitleLabel() {
 		JLabel titleLabel = new JLabel("TUTORIAL");
-		titleLabel.setFont(CommonMethods.getFontResource("pixel.TTF").deriveFont(50f));
+		titleLabel.setFont(CommonMethods.getFontResource("pixel").deriveFont(50f));
 
 		this.add(titleLabel, new GBCSimplified(0, 0, 0, CommonMethods.getPixelsFromPercentageHeight(1)));
 	}
