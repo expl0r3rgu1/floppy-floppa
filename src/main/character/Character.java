@@ -129,15 +129,20 @@ public class Character extends Movable {
 		}
 	}
 
-	public void collideBooster(Booster booster) {
-		// variables to make it more readable
-		int x = booster.getPosition().getX();
-		int y = booster.getPosition().getY();
-		int height = booster.getSkin().getHeight();
-		int width = booster.getSkin().getWidth();
+	public void collideBooster(List<Booster> boosterList) {
 
-		if (this.checkCollision(x, y, height, width)) {
-			booster.changeState();
+		for (Booster booster : boosterList) {
+
+			// variables to make it more readable
+			int x = booster.getPosition().getX();
+			int y = booster.getPosition().getY();
+			int height = booster.getSkin().getHeight();
+			int width = booster.getSkin().getWidth();
+
+			if (this.checkCollision(x, y, height, width)) {
+				booster.changeState();
+				return;
+			}
 		}
 	}
 
