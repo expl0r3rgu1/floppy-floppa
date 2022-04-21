@@ -26,6 +26,10 @@ import main.utilities.PricedBackground;
 import main.utilities.PricedSkin;
 import main.utilities.Skin;
 
+/**
+ * SelectionPanel is a class that creates the JPanel to select a new icon for
+ * the Character or a new Background
+ */
 public class SelectionPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
@@ -41,6 +45,11 @@ public class SelectionPanel extends JPanel {
 	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
 			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 
+	/**
+	 * @param mainMenu - used to show cardlayouts
+	 * @param settings - to change the Skin of the Character or the Background of
+	 *                 the game
+	 */
 	public SelectionPanel(MainMenu mainMenu, GameSettings settings) {
 
 		shop = new Shop();
@@ -61,6 +70,10 @@ public class SelectionPanel extends JPanel {
 		this.placeComponents();
 	}
 
+	/**
+	 * placeComponents is a method to create and place all the components of the
+	 * JPanel
+	 */
 	private void placeComponents() {
 
 		for (int i = 0; i < numBackgrounds + numSkins; i++) {
@@ -81,8 +94,9 @@ public class SelectionPanel extends JPanel {
 			} else if (i == numBackgrounds + numSkins - 1) {
 
 				generateJButton backMenu = new generateJButton("MENU", "fipps.otf", 100, "#FFDD62", "#FF971A");
-				this.add(backMenu, new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageWidth(2)),
-						0, (CommonMethods.getPixelsFromPercentageWidth(1)), 0)));
+				this.add(backMenu,
+						new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageWidth(2)), 0,
+								(CommonMethods.getPixelsFromPercentageWidth(1)), 0)));
 				backMenu.addActionListener(e -> {
 					mainMenu.showCard(Constants.PANEL.MENU);
 				});
@@ -99,30 +113,49 @@ public class SelectionPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * getLNameImage is a method that thanks to i, using an ArrayList to get the
+	 * names and a for it creates on two lines a firstly a JLabel of the names of
+	 * the various Skins and Backgrounds, using GraphicJLabel, then it creates the
+	 * images from calling the method imageCreation
+	 * 
+	 * @param i - int to get the Skin or the Background by looking at the line
+	 * @return new int line to skip the ones newly made
+	 */
 	private int getLNameImage(int i) {
 		for (int j = 0; j < numSkins; j++) {
 			GraphicJLabel label = new GraphicJLabel((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)),
 					Color.decode("#77DD77"), Color.decode("#007542"), "fipps.otf",
 					(float) Constants.SCREEN_SIZE.getWidth() / 120);
-			this.add(label,
-					new GBCSimplified(j, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageWidth(2)), 0, 0, 0)));
-			this.add(this.imageCreation((i == 1 ? labelNames.get(j) : labelNames.get(j + 5))),
-					new GBCSimplified(j, i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageWidth(2)), 0, 0, 0)));
+			this.add(label, new GBCSimplified(j, i, 0, 0,
+					new Insets((CommonMethods.getPixelsFromPercentageWidth(2)), 0, 0, 0)));
+			this.add(this.imageCreation((i == 1 ? labelNames.get(j) : labelNames.get(j + 5))), new GBCSimplified(j,
+					i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageWidth(2)), 0, 0, 0)));
 		}
 		return i + 1;
 	}
 
+	/**
+	 * getSelectButton is a method that creates a JButton, using generateJButton,
+	 * for every Skin or Background, then by reading in the skinList and the
+	 * backgroundList, it can be checked if the object is been bought by the player,
+	 * and if it bought the button will be enabled and then can be equiped by the
+	 * player
+	 * 
+	 * @param i - int to get the Skin or the Background by looking at the line
+	 */
 	private void getSelectButton(int i) {
 		for (int j = 0; j < numSkins; j++) {
 			final int index = j;
 			generateJButton selectButton = new generateJButton("SELECT", "fipps.otf", 120, "#FDFD96", "#FFDD62");
-			
+
 			bought = (i == 4 ? skinList.get(j).isPurchased() : backgroundList.get(j).isPurchased());
 			selectButton.setEnabled(bought);
+
 			selectButton.addActionListener(e -> {
 				getSelectedIcon(i, index);
 			});
-			
+
 			this.add(selectButton,
 					new GBCSimplified(j, i, (CommonMethods.getPixelsFromPercentageWidth(3)), 0,
 							new Insets((CommonMethods.getPixelsFromPercentageWidth(1)),
@@ -131,12 +164,19 @@ public class SelectionPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * getSelectedIcon is a method that equips the new Skin or the new Background by
+	 * using settings
+	 * 
+	 * @param i - int to get the Skin or the Background by looking at the line
+	 * @param j - int to get from the ArrayList labelName the name of the icon
+	 */
 	private void getSelectedIcon(int i, int j) {
 
 		if (i == 4) {
 
-			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)), Constants.SKIN_DIMENSION,
-					Constants.SKIN_DIMENSION);
+			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)),
+					Constants.SKIN_DIMENSION, Constants.SKIN_DIMENSION);
 			settings.setSkin(skin);
 
 		} else {
@@ -147,15 +187,29 @@ public class SelectionPanel extends JPanel {
 
 	}
 
+	/**
+	 * The method reads an image file and creates the corresponding Image object
+	 * which gets also scaled
+	 * 
+	 * @param fileName
+	 * @return a JLabel containing the newly created Image
+	 */
 	private JLabel imageCreation(String fileName) {
 		JLabel label = null;
 		Image image = CommonMethods.getImageResource(fileName);
-		ImageIcon imageIcon = new ImageIcon(this.scale(image,
-				new Dimension((CommonMethods.getPixelsFromPercentageWidth(8)), (CommonMethods.getPixelsFromPercentageWidth(8)))));
+		ImageIcon imageIcon = new ImageIcon(this.scale(image, new Dimension(
+				(CommonMethods.getPixelsFromPercentageWidth(8)), (CommonMethods.getPixelsFromPercentageWidth(8)))));
 		label = new JLabel(imageIcon);
 		return label;
 	}
 
+	/**
+	 * Returns a scaled version of the image parameter
+	 * 
+	 * @param image - the image to scale
+	 * @param dim   - the Dimension to which to scale the image
+	 * @return a scaled version of the image parameter
+	 */
 	private Image scale(Image image, Dimension dim) {
 		return image.getScaledInstance((int) dim.getWidth(), (int) dim.getHeight(), Image.SCALE_DEFAULT);
 	}
