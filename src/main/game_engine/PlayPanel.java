@@ -51,19 +51,15 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 		this.mainMenu = mainMenu;
 		this.gameSettings = gameSettings;
 
-		map = new Map(gameSettings.getScrollingBackground(),
-				new FixedObstacle(null, new Skin("pipe", CommonMethods.getImageResource("pipe"))),
-				List.of(new MovingObstacle(null, new Skin("Bingus", CommonMethods.getImageResource("Bingus"))),
-						new MovingObstacle(null, new Skin("Walter", CommonMethods.getImageResource("Walter")))));
+		map = new Map(gameSettings.getScrollingBackground());
 
 		refreshRate = new Timer(1000 / Constants.SPEED, this);
 
-		character = new Character(
-				new Position((int) Constants.SCREEN_SIZE.getHeight() / 2, CommonMethods.getPixelsFromPercentage(30)),
-				gameSettings.getSkin());
+		character = new Character(new Position((int) Constants.SCREEN_SIZE.getHeight() / 2,
+				CommonMethods.getPixelsFromPercentageWidth(30)), gameSettings.getSkin());
 
 		this.nicknamePanel = new NicknamePanel(this, gameSettings);
-		this.add(nicknamePanel, new GBCSimplified(0, 0, 0, 0, new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
+		this.add(nicknamePanel, new GBCSimplified(GridBagConstraints.CENTER));
 	}
 
 	public void dismissNicknamePanel() {
