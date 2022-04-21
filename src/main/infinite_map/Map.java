@@ -27,7 +27,6 @@ public class Map {
 																			// FixedObstacle
 	private final TimedMovingObstacleGenerator timedMovingObstacleGenerator; // Timer that manages when to spawn a
 	// MovingObstacle
-	private final ObstacleFactory obstacleFactory;
 
 	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle,
 			List<MovingObstacle> movingObstacles) {
@@ -38,7 +37,6 @@ public class Map {
 		this.paintedMovingObstacles = new ArrayList<>();
 		this.timedFixedObstacleGenerator = new TimedFixedObstacleGenerator(this);
 		this.timedMovingObstacleGenerator = new TimedMovingObstacleGenerator(this);
-		this.obstacleFactory = new ObstacleFactoryImpl();
 	}
 
 	public ScrollingBackground getScrollingBackground() {
@@ -61,7 +59,7 @@ public class Map {
 	// Method that spawns a FixedObstacle cloned from this.fixedObstacle
 	protected void addFixedObstacle() {
 		this.paintedFixedObstacles
-				.add(obstacleFactory.fixedObstacleFactory(
+				.add(Constants.OBSTACLE_FACTORY.fixedObstacleFactory(
 						new Position((int) Constants.SCREEN_SIZE.getWidth(),
 								getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
 										(int) (Constants.SCREEN_SIZE.getHeight() * 0.75))),
@@ -77,7 +75,7 @@ public class Map {
 	protected void addMovingObstacle() {
 		int randomMovingObstacleIndex = getRandomNumber(0, this.movingObstacles.size());
 
-		this.paintedMovingObstacles.add(obstacleFactory.movingObstacleFactory(
+		this.paintedMovingObstacles.add(Constants.OBSTACLE_FACTORY.movingObstacleFactory(
 				new Position((int) Constants.SCREEN_SIZE.getWidth(),
 						getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
 								(int) (Constants.SCREEN_SIZE.getHeight() * 0.75))),
