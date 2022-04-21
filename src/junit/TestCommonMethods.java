@@ -13,12 +13,12 @@ import main.utilities.Constants;
 
 public class TestCommonMethods {
 
-	final private int NUM_MIN = 0;
-	final private int NUM_MAX = 10;
-	final private int PERCENTAGE = 100;
-	final private String IMAGE_NAME = "Background";
-	final private String FONT_NAME = "pixel";
-	final private String GIF_NAME = "Tutorial";
+	private final int NUM_MIN = 0;
+	private final int NUM_MAX = 10;
+	private final int PERCENTAGE = 100;
+	private final String IMAGE_NAME = "Background";
+	private final String FONT_NAME = "pixel";
+	private final String GIF_NAME = "Tutorial";
 
 	@Test
 	/**
