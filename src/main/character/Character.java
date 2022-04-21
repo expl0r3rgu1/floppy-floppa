@@ -27,8 +27,8 @@ import javax.swing.Timer;
  */
 public class Character extends Movable {
 	private Skin skin;
-	private boolean dead; // true if the character is dead
-	private boolean jumping; // true if the character is jumping
+	private boolean dead;
+	private boolean jumping;
 	private Timer timer;
 
 	/**
@@ -103,10 +103,7 @@ public class Character extends Movable {
 	 *                          could collide
 	 */
 	public void collideFixedObstacle(List<FixedObstacle> fixedObstacleList) {
-
 		for (FixedObstacle fixedObstacle : fixedObstacleList) {
-
-			// variables to make it more readable
 			int characterX = this.getPosition().getX();
 			int characterWiderX = characterX + this.skin.getWidth();
 			int characterY = this.getPosition().getY();
@@ -116,11 +113,9 @@ public class Character extends Movable {
 			int obstacleUpperY = fixedObstacle.getPosition().getY() + (int) Constants.SPACE_BETWEEN_PIPES / 2;
 			int obstacleLowerY = fixedObstacle.getPosition().getY() - (int) Constants.SPACE_BETWEEN_PIPES / 2;
 
-			// in this if I check the x
 			if ((characterX >= obstacleX && characterX <= obstacleWiderX)
 					|| (characterWiderX >= obstacleX && characterWiderX <= obstacleWiderX)) {
 
-				// in this if I check the y
 				if ((characterY >= obstacleUpperY || characterY <= obstacleLowerY)
 						|| (characterLowerY >= obstacleUpperY || characterLowerY <= obstacleLowerY)) {
 
@@ -139,10 +134,7 @@ public class Character extends Movable {
 	 *                           could collide
 	 */
 	public void collideMovingObstacle(List<MovingObstacle> movingObstacleList) {
-
 		for (MovingObstacle movingObstacle : movingObstacleList) {
-
-			// variables to make it more readable
 			int x = movingObstacle.getPosition().getX();
 			int y = movingObstacle.getPosition().getY();
 			int height = movingObstacle.getSkin().getHeight();
@@ -162,10 +154,7 @@ public class Character extends Movable {
 	 * @param malusList a list of the maluses that the character could collide
 	 */
 	public void collideMalus(List<Malus> malusList) {
-
 		for (Malus malus : malusList) {
-
-			// variables to make it more readable
 			int x = malus.getPosition().getX();
 			int y = malus.getPosition().getY();
 			int height = malus.getSkin().getHeight();
@@ -185,10 +174,7 @@ public class Character extends Movable {
 	 * @param boosterList a list of the boosters that the character could collide
 	 */
 	public void collideBooster(List<Booster> boosterList) {
-
 		for (Booster booster : boosterList) {
-
-			// variables to make it more readable
 			int x = booster.getPosition().getX();
 			int y = booster.getPosition().getY();
 			int height = booster.getSkin().getHeight();
@@ -205,8 +191,6 @@ public class Character extends Movable {
 	 * Checks if the character collides with the borders of the map
 	 */
 	public void collideBorders() {
-
-		// variables to make it more readable
 		int characterY = this.getPosition().getY();
 		int characterLowerY = characterY + this.skin.getHeight();
 		int upperBorder = 0;
@@ -227,8 +211,6 @@ public class Character extends Movable {
 	 * @return true if the character collides with an entity
 	 */
 	private boolean checkCollision(int x, int y, int height, int width) {
-
-		// variables to make it more readable
 		int characterX = this.getPosition().getX();
 		int characterWiderX = characterX + this.skin.getWidth();
 		int characterY = this.getPosition().getY();
@@ -236,11 +218,9 @@ public class Character extends Movable {
 		int entityWiderX = x + width;
 		int entityLowerY = y + height;
 
-		// in this if I check the x
 		if ((characterX >= x && characterX <= entityWiderX)
 				|| (characterWiderX >= x && characterWiderX <= entityWiderX)) {
-
-			// in this if I check the y
+			
 			if ((characterY >= y && characterY <= entityLowerY)
 					|| (characterLowerY >= y && characterLowerY <= entityLowerY)) {
 
@@ -256,7 +236,6 @@ public class Character extends Movable {
 	 * {@inheritDoc}
 	 */
 	public void animate(Graphics2D canvas) {
-
 		int x = this.getPosition().getX();
 		int y = this.getPosition().getY();
 		int width = this.skin.getWidth();
@@ -269,8 +248,10 @@ public class Character extends Movable {
 		this.updatePosition();
 	}
 
+	/**
+	 * Private method to update the position of the character
+	 */
 	private void updatePosition() {
-
 		int value = this.jumping ? -2 : 1;
 		this.getPosition().setY(this.getPosition().getY() + value * Constants.MOVING_FACTOR);
 
