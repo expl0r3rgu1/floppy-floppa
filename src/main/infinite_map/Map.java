@@ -8,6 +8,8 @@ import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
 import main.obstacles.ObstacleFactory;
 import main.obstacles.ObstacleFactoryImpl;
+import main.state_changers.Booster;
+import main.state_changers.Malus;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
@@ -23,6 +25,8 @@ public class Map {
 																// painted
 	private final List<MovingObstacle> paintedMovingObstacles; // Set of MovingObstacle that need to be or are being
 																// painted
+	private final List<Malus> paintedMalus;
+	private final List<Booster> paintedBoosters;
 
 	private final TimedFixedObstacleGenerator timedFixedObstacleGenerator; // Timer that manages when to spawn a
 																			// FixedObstacle
@@ -37,6 +41,8 @@ public class Map {
 		this.movingObstacles = movingObstacles;
 		this.paintedFixedObstacles = new ArrayList<>();
 		this.paintedMovingObstacles = new ArrayList<>();
+		this.paintedMalus = new ArrayList<>();
+		this.paintedBoosters = new ArrayList<>();
 		this.timedFixedObstacleGenerator = new TimedFixedObstacleGenerator(this);
 		this.timedMovingObstacleGenerator = new TimedMovingObstacleGenerator(this);
 		this.timedStateChangerGenerator = new TimedStateChangerGenerator(this);
