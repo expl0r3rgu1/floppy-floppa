@@ -113,10 +113,12 @@ public class Map {
 		this.paintedMalus.forEach(malus -> malus.animate(canvas));
 		this.paintedBoosters.forEach(booster -> booster.animate(canvas));
 
-		// Removing obstacles off-screen from set
+		// Removing off-screen entities from lists
 		this.paintedFixedObstacles
 				.removeIf(obstacle -> obstacle.getPosition().getX() + obstacle.getSkin().getWidth() < 0);
 		this.paintedMovingObstacles
 				.removeIf(obstacle -> obstacle.getPosition().getX() + obstacle.getSkin().getWidth() < 0);
+		this.paintedMalus.removeIf(malus -> malus.getPosition().getX() + malus.getSkin().getWidth() < 0);
+		this.paintedBoosters.removeIf(booster -> booster.getPosition().getX() + booster.getSkin().getWidth() < 0);
 	}
 }
