@@ -14,7 +14,6 @@ import main.state_changers.Malus;
 
 public class Constants {
 	public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
-	public static final int SKIN_DIMENSION = (int) (Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 12);
 	public static final int MOVING_FACTOR = (int) Math.floor(SCREEN_SIZE.getWidth() / (double) 1000) * 2;
 	public static final int SPEED = 60;
 	public static final double FIXED_OBSTACLE_SPEED = 0.0025;
