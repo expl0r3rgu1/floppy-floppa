@@ -35,6 +35,10 @@ public class TestCharacter {
 	private final Position CHARACTER_COLLIDE_CENTER_MOVING_ENTITY = new Position(
 			(int) (Constants.SCREEN_SIZE.getWidth() / 2 + MOVING_OBSTACLE_LIST.get(0).getSkin().getWidth() / 2),
 			(int) (Constants.SCREEN_SIZE.getHeight() / 2 + MOVING_OBSTACLE_LIST.get(0).getSkin().getHeight() / 2));
+	private final Position CHARACTER_COLLIDE_UPPER_BORDER = new Position((int) Constants.SCREEN_SIZE.getWidth() / 2,
+			-1);
+	private final Position CHARACTER_COLLIDE_LOWER_BORDER = new Position((int) Constants.SCREEN_SIZE.getWidth() / 2,
+			(int) Constants.SCREEN_SIZE.getHeight() + 1);
 
 	@Test
 	/**
@@ -69,5 +73,26 @@ public class TestCharacter {
 						CommonMethods.getImageResource("Floppa").getHeight(null)));
 		character.collideMovingObstacle(MOVING_OBSTACLE_LIST);
 		assertTrue(character.isDead());
+	}
+
+	@Test
+	/**
+	 * Checks if the character collides correctly with the upper and lower border of
+	 * the map
+	 */
+	void collideBordersTest() {
+		Character characterLo = new Character(CHARACTER_COLLIDE_LOWER_BORDER,
+				new Skin("floppa", CommonMethods.getImageResource("Floppa"),
+						CommonMethods.getImageResource("Floppa").getWidth(null),
+						CommonMethods.getImageResource("Floppa").getHeight(null)));
+		characterLo.collideBorders();
+		assertTrue(characterLo.isDead());
+		
+		Character characterUp = new Character(CHARACTER_COLLIDE_UPPER_BORDER,
+				new Skin("floppa", CommonMethods.getImageResource("Floppa"),
+						CommonMethods.getImageResource("Floppa").getWidth(null),
+						CommonMethods.getImageResource("Floppa").getHeight(null)));
+		characterUp.collideBorders();
+		assertTrue(characterLo.isDead());
 	}
 }
