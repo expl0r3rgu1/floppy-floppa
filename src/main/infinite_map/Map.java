@@ -71,6 +71,7 @@ public class Map {
 	public void startTimer() {
 		timedFixedObstacleGenerator.getTimer().start();
 		timedMovingObstacleGenerator.getTimer().start();
+		timedStateChangerGenerator.getTimer().start();
 	}
 
 	// Method that spawns a FixedObstacle cloned from this.fixedObstacle
