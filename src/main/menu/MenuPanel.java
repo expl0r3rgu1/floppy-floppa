@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import main.menu.MainMenu;
 import main.utilities.GraphicJLabel;
 import main.utilities.Constants;
+import main.utilities.Constants.PANEL;
 import main.utilities.GBCSimplified;
 import main.utilities.CommonMethods;
 import java.awt.Font;
@@ -87,7 +88,7 @@ public class MenuPanel extends JPanel {
 	private void addPlayButton() {
 		this.add(generateButton("Play", "PLAY", "fipps.otf"),
 				new GBCSimplified(2, 2, CommonMethods.getPixelsFromPercentageWidth(15),
-						(int) Constants.getPixelsFromPercentageHeight(10), new Insets(0, 0, 0, 0)));
+						(int) CommonMethods.getPixelsFromPercentageHeight(10), new Insets(0, 0, 0, 0)));
 	}
 
 	/**
@@ -117,7 +118,7 @@ public class MenuPanel extends JPanel {
 		String actionListenerName = name.toUpperCase();
 
 		this.add(generateButton(name, actionListenerName, "fipps.otf"), new GBCSimplified(gridx, gridy,
-				CommonMethods.getPixelsFromPercentageWidth(ipadx), (int) Constants.getPixelsFromPercentageHeight(ipady),
+				CommonMethods.getPixelsFromPercentageWidth(ipadx), (int) CommonMethods.getPixelsFromPercentageHeight(ipady),
 				new Insets(CommonMethods.getPixelsFromPercentageWidth(top), CommonMethods.getPixelsFromPercentageWidth(left),
 						CommonMethods.getPixelsFromPercentageWidth(bottom), CommonMethods.getPixelsFromPercentageWidth(right))));
 	}
@@ -146,7 +147,7 @@ public class MenuPanel extends JPanel {
 	private void addImage(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
 			int right) {
 		this.add(this.getImageResource(name), new GBCSimplified(gridx, gridy,
-				CommonMethods.getPixelsFromPercentageWidth(ipadx), (int) Constants.getPixelsFromPercentageHeight(ipady),
+				CommonMethods.getPixelsFromPercentageWidth(ipadx), CommonMethods.getPixelsFromPercentageHeight(ipady),
 				new Insets(CommonMethods.getPixelsFromPercentageWidth(top), CommonMethods.getPixelsFromPercentageWidth(left),
 						CommonMethods.getPixelsFromPercentageWidth(bottom), CommonMethods.getPixelsFromPercentageWidth(right))));
 	}
@@ -190,17 +191,18 @@ public class MenuPanel extends JPanel {
 	 * adHocActionListener method includes the actionListener of all JButtons in the
 	 * menu, depending by the given String panelName
 	 * 
-	 * @param panelName Used to open the jpanel needed by the player
-	 * @return ActionListener needed
+	 * @param panelName - Used to open the jpanel needed by the player
+	 * @return ActionListener
 	 */
 	private ActionListener adHocActionListener(String panelName) {
 
 		if (panelName.equals("PLAY")) {
 			return e -> {
-				MainMenu.cardLayout.show(this.mainMenu, panelName);
+				mainMenu.showCard(PANEL.PLAY);
 			};
 		} else if (panelName.equals("QUIT")) {
 			return e -> {
+				mainMenu.updateSavings();
 				System.exit(0);
 			};
 		} else if (panelName.equals("CLEAR SAVINGS")) {
@@ -209,7 +211,7 @@ public class MenuPanel extends JPanel {
 			};
 		} else {
 			return e -> {
-				MainMenu.cardLayout.show(this.mainMenu, panelName);
+				mainMenu.showCard(PANEL.valueOf(panelName));
 			};
 		}
 	}

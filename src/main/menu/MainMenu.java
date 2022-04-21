@@ -25,6 +25,10 @@ import java.io.IOException;
  */
 public class MainMenu extends JPanel implements Menu {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2807311016014427749L;
 	public static final CardLayout cardLayout = new CardLayout();
 	private final MenuPanel menuPanel;
 	private final Leaderboard leaderboard;
