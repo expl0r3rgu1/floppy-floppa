@@ -18,12 +18,23 @@ import java.util.List;
 
 import javax.swing.Timer;
 
+/**
+ * A class that implements the character, it keeps track of its current status
+ * (if it is dead or alive), it updates its position making it go lower due to
+ * gravity or upper when performing a jump and it checks its collision with the
+ * various entities on the map and with the borders of the map, this class extends
+ * the class Movable
+ */
 public class Character extends Movable {
 	private Skin skin;
 	private boolean dead; // true if the character is dead
 	private boolean jumping; // true if the character is jumping
 	private Timer timer;
 
+	/**
+	 * @param position the initial spawning position of the character
+	 * @param skin     the skin of the character
+	 */
 	public Character(Position position, Skin skin) {
 		super(position);
 		this.skin = skin;
@@ -40,24 +51,42 @@ public class Character extends Movable {
 		});
 	}
 
+	/**
+	 * @return true if the character is dead
+	 */
 	public boolean isDead() {
 		return this.dead;
 	}
 
+	/**
+	 * Makes the status of the character as dead
+	 */
 	public void die() {
 		this.dead = true;
 	}
 
+	/**
+	 * Setter of the character skin
+	 * 
+	 * @param skin
+	 */
 	public void setSkin(Skin skin) {
 		this.skin = skin;
 	}
 
+	/**
+	 * Getter of the character skin
+	 * 
+	 * @return the character skin
+	 */
 	public Skin getSkin() {
 		return this.skin;
 	}
 
+	/**
+	 * Makes the character jump
+	 */
 	public void jump() {
-
 		if (!this.jumping) {
 			this.timer.start();
 			this.jumping = true;
@@ -66,6 +95,13 @@ public class Character extends Movable {
 		}
 	}
 
+	/**
+	 * Checks if the character collides with a fixed obstacle, if it happens it will
+	 * change the character status to dead
+	 * 
+	 * @param fixedObstacleList a list of the fixed obstacles that the character
+	 *                          could collide
+	 */
 	public void collideFixedObstacle(List<FixedObstacle> fixedObstacleList) {
 
 		for (FixedObstacle fixedObstacle : fixedObstacleList) {
@@ -95,6 +131,13 @@ public class Character extends Movable {
 		}
 	}
 
+	/**
+	 * Checks if the character collides with a fixed obstacle, if it happens it will
+	 * change the character status to dead
+	 * 
+	 * @param movingObstacleList a list of the moving obstacles that the character
+	 *                           could collide
+	 */
 	public void collideMovingObstacle(List<MovingObstacle> movingObstacleList) {
 
 		for (MovingObstacle movingObstacle : movingObstacleList) {
@@ -112,6 +155,12 @@ public class Character extends Movable {
 		}
 	}
 
+	/**
+	 * Checks if the character collides with a malus, if it happens it will apply
+	 * the effects of that malus
+	 * 
+	 * @param malusList a list of the maluses that the character could collide
+	 */
 	public void collideMalus(List<Malus> malusList) {
 
 		for (Malus malus : malusList) {
@@ -129,6 +178,12 @@ public class Character extends Movable {
 		}
 	}
 
+	/**
+	 * Checks if the character collides with a booster, if it happens it will apply
+	 * the effects of that booster
+	 * 
+	 * @param boosterList a list of the boosters that the character could collide
+	 */
 	public void collideBooster(List<Booster> boosterList) {
 
 		for (Booster booster : boosterList) {
@@ -146,6 +201,9 @@ public class Character extends Movable {
 		}
 	}
 
+	/**
+	 * Checks if the character collides with the borders of the map
+	 */
 	public void collideBorders() {
 
 		// variables to make it more readable
@@ -159,6 +217,15 @@ public class Character extends Movable {
 		}
 	}
 
+	/**
+	 * Private method to check if the character collides with a moving item
+	 * 
+	 * @param x      the x coordinate of the entity
+	 * @param y      the y coordinate of the entity
+	 * @param height the height of the entity
+	 * @param width  the width of the entity
+	 * @return true if the character collides with an entity
+	 */
 	private boolean checkCollision(int x, int y, int height, int width) {
 
 		// variables to make it more readable
@@ -185,6 +252,9 @@ public class Character extends Movable {
 	}
 
 	@Override
+	/**
+	 * {@inheritDoc}
+	 */
 	public void animate(Graphics2D canvas) {
 
 		int x = this.getPosition().getX();
