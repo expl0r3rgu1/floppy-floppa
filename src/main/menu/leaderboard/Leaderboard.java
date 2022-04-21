@@ -74,4 +74,8 @@ public class Leaderboard {
 			this.leaderboard.add(index, newPlayer);
 		}
 	}
+
+  public void clearLeaderboard() {
+    this.leaderboard.clear();
+  }
 }
