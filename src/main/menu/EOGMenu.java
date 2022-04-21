@@ -19,9 +19,10 @@ public class EOGMenu implements Menu {
 	 * @param incrementTimes  How many times the character hit the CoinsIncrement
 	 *                        booster
 	 */
-	public EOGMenu(int metersTravelled, int reducerTimes, int incrementTimes) {
-		shop = new Shop();
+	public EOGMenu(Shop shop, int metersTravelled, int reducerTimes, int incrementTimes) {
+		this.shop = shop;
 		this.previousCoins = shop.getCoins();
+		this.newCoins = 0;
 		this.updateCoins(metersTravelled, reducerTimes, incrementTimes);
 		coinsReducer = new CoinsReducer(null, null);
 		coinsIncrement = new CoinsIncrement(null, null);
