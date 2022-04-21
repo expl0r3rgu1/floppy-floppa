@@ -6,8 +6,6 @@ import java.util.List;
 
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
-import main.obstacles.ObstacleFactory;
-import main.obstacles.ObstacleFactoryImpl;
 import main.state_changers.Booster;
 import main.state_changers.Malus;
 import main.utilities.CommonMethods;
