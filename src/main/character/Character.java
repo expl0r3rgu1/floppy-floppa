@@ -77,8 +77,8 @@ public class Character extends Movable {
 			int characterLowerY = characterY + this.skin.getHeight();
 			int obstacleX = fixedObstacle.getPosition().getX();
 			int obstacleWiderX = obstacleX + fixedObstacle.getSkin().getWidth();
-			int obstacleUpperY = fixedObstacle.getPosition().getY() + (int) FixedObstacle.space / 2;
-			int obstacleLowerY = fixedObstacle.getPosition().getY() - (int) FixedObstacle.space / 2;
+			int obstacleUpperY = fixedObstacle.getPosition().getY() + (int) Constants.SPACE_BETWEEN_PIPES / 2;
+			int obstacleLowerY = fixedObstacle.getPosition().getY() - (int) Constants.SPACE_BETWEEN_PIPES / 2;
 
 			// in this if I check the x
 			if ((characterX >= obstacleX && characterX <= obstacleWiderX)
