@@ -53,9 +53,9 @@ public class NicknamePanel extends JPanel {
 
 		// ADDING THE COMPONENTS TO THE JPANEL
 		this.add(title, new GBCSimplified(0, 0, CommonMethods.getPixelsFromPercentageWidth(8),
-				CommonMethods.getPixelsFromPercentageHeight(1), new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
+				CommonMethods.getPixelsFromPercentageHeight(1), GridBagConstraints.CENTER));
 		this.add(nicknameField, new GBCSimplified(0, 1, CommonMethods.getPixelsFromPercentageWidth(17),
-				CommonMethods.getPixelsFromPercentageHeight(2), new Insets(0, 0, 0, 0), GridBagConstraints.CENTER));
+				CommonMethods.getPixelsFromPercentageHeight(2), GridBagConstraints.CENTER));
 		this.add(okButton, new GBCSimplified(0, 2, CommonMethods.getPixelsFromPercentageWidth(3),
 				CommonMethods.getPixelsFromPercentageHeight(1),
 				new Insets(CommonMethods.getPixelsFromPercentageHeight(2), 0, 0, 0), GridBagConstraints.CENTER));
