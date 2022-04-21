@@ -16,4 +16,12 @@ public abstract class TimedEntityGenerator implements ActionListener {
 		this.speed = speed;
 		timer = new Timer((int) ((1000 / Constants.SPEED) / speed), this);
 	}
+
+	public void updateSpeed() {
+		if (timer != null) {
+			timer.stop();
+		}
+		timer = new Timer((int) ((1000 / Constants.SPEED) / this.speed), this);
+		timer.start();
+	}
 }
