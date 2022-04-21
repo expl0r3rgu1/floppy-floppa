@@ -20,6 +20,8 @@ import main.utilities.GraphicJButton;
 import main.utilities.GraphicJLabel;
 
 public class NicknamePanel extends JPanel {
+	private static final long serialVersionUID = -609955722187373250L;
+
 	public NicknamePanel(PlayPanel playPanel, GameSettings gameSettings) {
 		this.setLayout(new GridBagLayout());
 		this.setPreferredSize(
