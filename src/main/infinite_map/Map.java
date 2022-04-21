@@ -68,6 +68,12 @@ public class Map {
 		timedStateChangerGenerator.getTimer().start();
 	}
 
+	public void stopTimer() {
+		timedFixedObstacleGenerator.getTimer().stop();
+		timedMovingObstacleGenerator.getTimer().stop();
+		timedStateChangerGenerator.getTimer().stop();
+	}
+
 	// Method that spawns a FixedObstacle cloned from this.fixedObstacle
 	protected void addFixedObstacle() {
 		this.paintedFixedObstacles.add(Constants.OBSTACLE_FACTORY.fixedObstacleFactory(getRandomPosition(),
