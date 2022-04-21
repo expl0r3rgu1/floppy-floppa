@@ -27,7 +27,7 @@ public class Immortality extends Booster {
 		super(position, skin);
 		this.immortal = false;
 
-		this.timer = new javax.swing.Timer(Constants.CHANGED_STATE_TIME, new ActionListener() {
+		this.timer = new Timer(Constants.CHANGED_STATE_TIME, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -58,8 +58,8 @@ public class Immortality extends Booster {
 	 * object moves from right to left
 	 */
 	private void updatePositionX() {
-		setPosition(new Position(getPosition().getX() - Constants.MOVING_FACTOR, getPosition().getY()));
-	}
+		setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR, getPosition().getY()));
+		}
 
 	/**
 	 * {@inheritDoc}
@@ -77,7 +77,7 @@ public class Immortality extends Booster {
 	@Override
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				CommonMethods.getPixelsFromPercentageWidth(4), CommonMethods.getPixelsFromPercentageWidth(4), null);
+				CommonMethods.getPixelsFromPercentageWidth(3), CommonMethods.getPixelsFromPercentageWidth(3), null);
 
 		this.updatePositionX();
 	}

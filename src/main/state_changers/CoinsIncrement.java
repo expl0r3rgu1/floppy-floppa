@@ -3,6 +3,7 @@ package main.state_changers;
 import java.awt.Graphics2D;
 import java.util.Random;
 import main.utilities.CommonMethods;
+import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
 
@@ -29,7 +30,7 @@ public class CoinsIncrement extends Booster {
 	 * object moves from right to left
 	 */
 	private void updatePositionX() {
-		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+		setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR, getPosition().getY()));
 	}
 
 	/**

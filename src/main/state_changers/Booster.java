@@ -22,19 +22,33 @@ public class Booster extends Movable {
 		this.skin = skin;
 	}
 
+	/**
+	 * @return the booster skin
+	 */
 	public Skin getSkin() {
 		return skin;
 	}
 
+	/**
+	 * Sets the booster Skin
+	 * 
+	 * @param skin the booster skin
+	 */
 	public void setSkin(Skin skin) {
 		this.skin = skin;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public Object changeState() {
 		return null;
 		// TO BE IMPLEMENTED IN SUB-CLASSES
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void animate(Graphics2D canvas) {
 		// TO BE IMPLEMENTED IN SUB-CLASSES
