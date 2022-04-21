@@ -24,7 +24,7 @@ public class Shop {
 
 	private int skinsNum;
 	private int sceneriesNum;
-	private Integer coins;
+	private int coins;
 	private List<String> skinInitialize = new ArrayList<>();
 	private List<String> backgroundInitialize = new ArrayList<>();
 	private List<Integer> prices = Arrays.asList(0, 50, 100, 200, 500);
@@ -51,7 +51,7 @@ public class Shop {
 	/**
 	 * @return the current coins amount
 	 */
-	public Integer getCoins() {
+	public int getCoins() {
 		return coins;
 	}
 
@@ -60,7 +60,7 @@ public class Shop {
 	 * 
 	 * @param coins
 	 */
-	public void setCoins(Integer coins) {
+	public void setCoins(int coins) {
 		this.coins = coins;
 	}
 
@@ -112,13 +112,13 @@ public class Shop {
 	 * Finds the Object o in the List list and, if the current coins are enough and
 	 * the item hasn't been previously purchased, it purchases it
 	 * 
-	 * @param o    the object to be purchased
-	 * @param list List of purchase statuses of PricedSkin items
+	 * @param o                  the object to be purchased
+	 * @param purchaseStatusList List of purchase statuses of PricedSkin items
 	 * @return true if the given object gets purchased, false otherwise
 	 */
-	private boolean findAndBuySkins(Object o, List<PurchaseStatus<PricedSkin>> list) {
+	private boolean findAndBuySkins(Object o, List<PurchaseStatus<PricedSkin>> purchaseStatusList) {
 		boolean state = false;
-		for (var status : list) {
+		for (var status : purchaseStatusList) {
 			if (status.getX().equals(o)) {
 				if (!status.isPurchased() && status.getX().getPrice() <= this.coins) {
 					status.purchase();
@@ -134,13 +134,13 @@ public class Shop {
 	 * Finds the Object o in the List list and, if the current coins are enough and
 	 * the item hasn't been previously purchased, it purchases it
 	 * 
-	 * @param o    the object to be purchased
-	 * @param list List of purchase statuses of PricedBackground items
+	 * @param o                  the object to be purchased
+	 * @param purchaseStatusList List of purchase statuses of PricedBackground items
 	 * @return true if the given object gets purchased, false otherwise
 	 */
-	private boolean findAndBuySceneries(Object o, List<PurchaseStatus<PricedBackground>> list) {
+	private boolean findAndBuySceneries(Object o, List<PurchaseStatus<PricedBackground>> purchaseStatusList) {
 		boolean state = false;
-		for (var status : list) {
+		for (var status : purchaseStatusList) {
 			if (status.getX().equals(o)) {
 				if (!status.isPurchased() && status.getX().getPrice() <= this.coins) {
 					status.purchase();
@@ -184,10 +184,10 @@ public class Shop {
 	 * Creates skinsNum PurchaseStatus of PricedSkin objects and initializes them,
 	 * checks the line, word by word, to get the current PurchaseStatus
 	 * 
-	 * @param line one line of the savings file
-	 * @param list List of purchase statuses of PricedSkin items
+	 * @param line               one line of the savings file
+	 * @param purchaseStatusList List of purchase statuses of PricedSkin items
 	 */
-	private void getSkinsInfo(String line, List<PurchaseStatus<PricedSkin>> list) {
+	private void getSkinsInfo(String line, List<PurchaseStatus<PricedSkin>> purchaseStatusList) {
 		String[] lineWords = line.split(",");
 
 		for (int i = 0; i < skinsNum; i++) {
@@ -201,7 +201,7 @@ public class Shop {
 				purchaseStatus.purchase();
 			}
 
-			list.add(purchaseStatus);
+			purchaseStatusList.add(purchaseStatus);
 		}
 	}
 
@@ -210,10 +210,10 @@ public class Shop {
 	 * initializes them, checks the line, word by word, to get the current
 	 * PurchaseStatus
 	 * 
-	 * @param line one line of the savings file
-	 * @param list List of purchase statuses of PricedBackground items
+	 * @param line               one line of the savings file
+	 * @param purchaseStatusList List of purchase statuses of PricedBackground items
 	 */
-	private void getScenerisInfo(String line, List<PurchaseStatus<PricedBackground>> list) {
+	private void getScenerisInfo(String line, List<PurchaseStatus<PricedBackground>> purchaseStatusList) {
 		String[] lineWords = line.split(",");
 
 		for (int i = 0; i < sceneriesNum; i++) {
@@ -226,7 +226,7 @@ public class Shop {
 				purchaseStatus.purchase();
 			}
 
-			list.add(purchaseStatus);
+			purchaseStatusList.add(purchaseStatus);
 		}
 	}
 
@@ -252,14 +252,14 @@ public class Shop {
 	/**
 	 * The method creates the new line of information for the savings file
 	 * 
-	 * @param <X>  The items type
-	 * @param list List of purchase statuses of generic X items
+	 * @param <X>                The items type
+	 * @param purchaseStatusList List of purchase statuses of generic X items
 	 * @return the line that will be overwritten over an old line to update the
 	 *         savings file
 	 */
-	private <X> String overwritePurchaseStatusLine(List<PurchaseStatus<X>> list) {
+	private <X> String overwritePurchaseStatusLine(List<PurchaseStatus<X>> purchaseStatusList) {
 		String line = "";
-		for (var purchaseStatus : list) {
+		for (var purchaseStatus : purchaseStatusList) {
 			if (purchaseStatus.isPurchased()) {
 				if (line.isEmpty()) {
 					line += "1";
@@ -281,8 +281,15 @@ public class Shop {
 	 * Used to clear data from the lists of Purchase Statuses.
 	 */
 	public void clearSavings() {
-		this.skins.clear();
-		this.sceneries.clear();
+		this.skins.forEach(status -> {
+			status.resetPurchase();
+		});
+		skins.get(0).purchase();
+
+		this.sceneries.forEach(status -> {
+			status.resetPurchase();
+		});
+		sceneries.get(0).purchase();
 	}
 
 	/**

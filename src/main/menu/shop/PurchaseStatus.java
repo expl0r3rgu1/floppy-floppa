@@ -45,4 +45,11 @@ public class PurchaseStatus<X> {
 		this.purchased = true;
 	}
 
+	/**
+	 * Sets the purchase field to false
+	 */
+	public void resetPurchase() {
+		this.purchased = false;
+	}
+
 }

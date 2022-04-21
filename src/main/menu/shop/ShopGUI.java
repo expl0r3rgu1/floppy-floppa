@@ -33,13 +33,16 @@ public class ShopGUI extends JPanel {
 	private ArrayList<String> prices = new ArrayList<>(
 			Arrays.asList("0", "50", "100", "200", "500", "0", "50", "100", "200", "500"));
 
-	/**
-	 * @param mainMenu needed to correctly show card layouts
-	 */
-	public ShopGUI(MainMenu mainMenu) {
+	private GraphicJLabel coins;
 
-		shop = new Shop();
+	/**
+	 * @param mainMenu a MainMenu parameter, needed to correctly show card layouts
+	 * @param shop     Shop parameter is passed so that the constructor does not
+	 *                 initializes a new one
+	 */
+	public ShopGUI(MainMenu mainMenu, Shop shop) {
 		this.mainMenu = mainMenu;
+		this.shop = shop;
 		this.setLayout(new GridBagLayout());
 		this.setOpaque(false);
 
@@ -93,8 +96,8 @@ public class ShopGUI extends JPanel {
 		for (int i = 0; i < numBackgrounds + numSkins; i++) {
 			if (i == 0) {
 
-				GraphicJLabel coins = new GraphicJLabel(shop.getCoins() + "", Color.decode("#FFDD62"),
-						Color.decode("#FF971A"), "Arial", Font.BOLD);
+				coins = new GraphicJLabel(shop.getCoins() + "", Color.decode("#FFDD62"), Color.decode("#FF971A"),
+						"Arial", Font.BOLD);
 				this.add(coins, new GBCSimplified(4, i, 0, 0, new Insets(0, 0, 0, 0)));
 
 			} else if (i == 1) {
