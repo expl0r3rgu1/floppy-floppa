@@ -26,4 +26,21 @@ public class GraphicJButton extends JButton {
 		this.setBorder(BorderFactory.createLineBorder(borderColor, 4, true));
 		this.setFont(new Font(font, fontAppearance, (int) Constants.SCREEN_SIZE.getWidth() / 70));
 	}
+
+	/**
+	 * @param name            - text of the JButton
+	 * @param font            - name of the font needed by the text of the JButton
+	 * @param fontDimension   - dimension of the font
+	 * @param ColorBackground - background color of the JButton
+	 * @param ColorBorder     - border color of the JButton
+	 */
+	public GraphicJButton(String name, String font, int fontDimension, String ColorBackground, String ColorBorder) {
+		super(name);
+		this.setFont(CommonMethods.getFontResource(font)
+				.deriveFont((float) Constants.SCREEN_SIZE.getWidth() / fontDimension));
+		this.setBackground(Color.decode(ColorBackground));
+		this.setBorder(BorderFactory.createLineBorder(Color.decode(ColorBorder), 4, true));
+
+	}
+
 }

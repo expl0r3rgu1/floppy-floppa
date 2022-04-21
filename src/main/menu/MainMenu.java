@@ -3,8 +3,11 @@ package main.menu;
 import javax.swing.JPanel;
 
 import main.game_engine.PlayPanel;
+import main.menu.leaderboard.Leaderboard;
 import main.menu.leaderboard.LeaderboardPanel;
+import main.menu.shop.Shop;
 import main.menu.shop.ShopGUI;
+import main.menu.tutorial.TutorialPanel;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Constants.PANEL;
@@ -22,14 +25,20 @@ import java.io.IOException;
  */
 public class MainMenu extends JPanel implements Menu {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2807311016014427749L;
 	public static final CardLayout cardLayout = new CardLayout();
 	private final MenuPanel menuPanel;
-	private final LeaderboardPanel leaderboardPanel;
-	private final PlayPanel playPanel;
-	private final ShopGUI shopGUI;
-	private final EOGMenuGUI EOGMenuGUI;
-	private final Tutorial tutorial;
-	private final SkinSelectionPanel selectionPanel;
+	private final Leaderboard leaderboard;
+	private LeaderboardPanel leaderboardPanel;
+	private PlayPanel playPanel;
+	private final Shop shop;
+	private ShopGUI shopGUI;
+	private final GameSettings gameSettings;
+	private final TutorialPanel tutorial;
+	private final SelectionPanel selectionPanel;
 
 	/**
 	 * @param gameSettings - GameSettings
@@ -49,19 +58,20 @@ public class MainMenu extends JPanel implements Menu {
 			}
 		}
 
+		gameSettings = new GameSettings();
 		menuPanel = new MenuPanel(this);
-		leaderboardPanel = new LeaderboardPanel(this);
+		leaderboard = new Leaderboard();
+		leaderboardPanel = new LeaderboardPanel(this, leaderboard);
 		playPanel = new PlayPanel(this, gameSettings);
-		shopGUI = new ShopGUI(this);
-		EOGMenuGUI = new EOGMenuGUI(this);
-		tutorial = new Tutorial(this);
+		shop = new Shop();
+		shopGUI = new ShopGUI(this, shop);
+		tutorial = new TutorialPanel(this);
 		
 		this.setLayout(cardLayout);
 
 		this.add("MENU", menuPanel);
 		this.add(Constants.PANEL.PLAY.name(), playPanel);
 		this.add(Constants.PANEL.LEADERBOARD.name(), leaderboardPanel);
-		this.add(Constants.PANEL.EOGMENU.name(), EOGMenuGUI);
 		this.add(Constants.PANEL.SHOP.name(), shopGUI);
 		this.add(Constants.PANEL.TUTORIAL.name(), tutorial);
 		this.add(Constants.PANEL.SELECT.name(), selectionPanel);
@@ -84,6 +94,17 @@ public class MainMenu extends JPanel implements Menu {
 	 * @param panel - is the name of the JPanel that needs to be shown
 	 */
 	public void showCard(Constants.PANEL panel) {
+		if (panel.equals(PANEL.SHOP)) {
+			shopGUI = new ShopGUI(this, shop);
+			this.add(PANEL.SHOP.name(), shopGUI);
+		} else if (panel.equals(PANEL.LEADERBOARD)) {
+			leaderboardPanel = new LeaderboardPanel(this, leaderboard);
+			this.add(PANEL.LEADERBOARD.name(), leaderboardPanel);
+		} else if (panel.equals(PANEL.PLAY)) {
+			playPanel = new PlayPanel(this, gameSettings);
+			this.add(PANEL.PLAY.name(), playPanel);
+		}
+
 		cardLayout.show(this, panel.name());
 	}
 
@@ -112,8 +133,16 @@ public class MainMenu extends JPanel implements Menu {
 			e.printStackTrace();
 		}
 
-		this.leaderboardPanel.getLeaderboard().clearLeaderboard();
-		this.shopGUI.getShop().clearSavings();
+		leaderboard.clearLeaderboard();
+		shop.clearSavings();
+	}
+	
+	public Shop getShop() {
+		return this.shop;
+	}
+	
+	public Leaderboard getLeaderboard() {
+		return this.leaderboard;
 	}
 
 }

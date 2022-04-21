@@ -1,33 +1,22 @@
 package main.menu;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import main.menu.MainMenu;
 import main.utilities.GraphicJLabel;
 import main.utilities.Constants;
+import main.utilities.Constants.PANEL;
 import main.utilities.GBCSimplified;
 import main.utilities.CommonMethods;
-import java.awt.Font;
-import java.awt.FontFormatException;
+import main.utilities.generateJButton;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.CardLayout;
 
 /**
  * Menu class implements the panel for the menu
@@ -39,8 +28,7 @@ public class MenuPanel extends JPanel {
 	private MainMenu mainMenu;
 
 	/**
-	 * 
-	 * @param used to show cardlayouts
+	 * @param mainMenu - used to show cardlayouts
 	 * 
 	 */
 	public MenuPanel(MainMenu mainMenu) {
@@ -77,130 +65,126 @@ public class MenuPanel extends JPanel {
 
 		title.setOpaque(false);
 
-		this.add(title, new GBCSimplified(2, 0, 0, 0,
-				new Insets(CommonMethods.getPixelsFromPercentageWidth(3), 0, CommonMethods.getPixelsFromPercentageWidth(3), 0)));
+		this.add(title, new GBCSimplified(2, 0, 0, 0, new Insets(CommonMethods.getPixelsFromPercentageWidth(3), 0,
+				CommonMethods.getPixelsFromPercentageWidth(3), 0)));
 	}
 
 	/**
 	 * addPlayButton is a class method that creates and adds the play button
 	 */
 	private void addPlayButton() {
-		this.add(generateButton("Play", "PLAY", "fipps.otf"),
-				new GBCSimplified(2, 2, CommonMethods.getPixelsFromPercentageWidth(15),
-						(int) Constants.getPixelsFromPercentageHeight(10), new Insets(0, 0, 0, 0)));
+
+		generateJButton jb = new generateJButton("Play", "fipps.otf", 90, "#77DD77", "#007542");
+
+		jb.addActionListener(adHocActionListener("PLAY"));
+
+		this.add(jb, new GBCSimplified(2, 2, CommonMethods.getPixelsFromPercentageWidth(15),
+				(int) CommonMethods.getPixelsFromPercentageHeight(10), new Insets(0, 0, 0, 0)));
 	}
 
 	/**
 	 * addButton is a class method that creates and adds the various buttons of the
 	 * menu
 	 * 
-	 * @param name - The text of the JButton
+	 * @param name   - The text of the JButton
 	 * 
-	 * @param gridx - int for setDimensionObj
+	 * @param gridx  - int for setDimensionObj
 	 * 
-	 * @param gridy - int for setDimensionObj
+	 * @param gridy  - int for setDimensionObj
 	 * 
-	 * @param ipadx - int for setDimensionObj
+	 * @param ipadx  - int for setDimensionObj
 	 * 
-	 * @param ipady - int for setDimensionObj
+	 * @param ipady  - int for setDimensionObj
 	 * 
-	 * @param top - int inset from the top for setDimensionObj
+	 * @param top    - int inset from the top for setDimensionObj
 	 * 
-	 * @param left - int inset from the left for setDimensionObj
+	 * @param left   - int inset from the left for setDimensionObj
 	 * 
 	 * @param bottom - int inset from the bottom for setDimensionObj
 	 * 
-	 * @param right - int inset from the right for setDimensionObj
+	 * @param right  - int inset from the right for setDimensionObj
 	 */
 	private void addButton(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
 			int right) {
 		String actionListenerName = name.toUpperCase();
 
-		this.add(generateButton(name, actionListenerName, "fipps.otf"), new GBCSimplified(gridx, gridy,
-				CommonMethods.getPixelsFromPercentageWidth(ipadx), (int) Constants.getPixelsFromPercentageHeight(ipady),
-				new Insets(CommonMethods.getPixelsFromPercentageWidth(top), CommonMethods.getPixelsFromPercentageWidth(left),
-						CommonMethods.getPixelsFromPercentageWidth(bottom), CommonMethods.getPixelsFromPercentageWidth(right))));
+		if (name.equals("Quit")) {
+			generateJButton jb = new generateJButton(name, "fipps.otf", 110, "#FF0000", "#8B0000");
+
+			jb.addActionListener(adHocActionListener(actionListenerName));
+
+			this.add(jb,
+					new GBCSimplified(gridx, gridy, CommonMethods.getPixelsFromPercentageWidth(ipadx),
+							(int) CommonMethods.getPixelsFromPercentageHeight(ipady),
+							new Insets(CommonMethods.getPixelsFromPercentageWidth(top),
+									CommonMethods.getPixelsFromPercentageWidth(left),
+									CommonMethods.getPixelsFromPercentageWidth(bottom),
+									CommonMethods.getPixelsFromPercentageWidth(right))));
+
+		} else {
+			generateJButton jb = new generateJButton(name, "fipps.otf", 120, "#FFDD62", "#FF971A");
+
+			jb.addActionListener(adHocActionListener(actionListenerName));
+
+			this.add(jb,
+					new GBCSimplified(gridx, gridy, CommonMethods.getPixelsFromPercentageWidth(ipadx),
+							(int) CommonMethods.getPixelsFromPercentageHeight(ipady),
+							new Insets(CommonMethods.getPixelsFromPercentageWidth(top),
+									CommonMethods.getPixelsFromPercentageWidth(left),
+									CommonMethods.getPixelsFromPercentageWidth(bottom),
+									CommonMethods.getPixelsFromPercentageWidth(right))));
+
+		}
 	}
 
 	/**
 	 * class method that creates and adds the images show in the menu
 	 * 
-	 * @param name - The name for getImageResource
+	 * @param name   - The name for getImageResource
 	 * 
-	 * @param gridx - int for setDimensionObj
+	 * @param gridx  - int for setDimensionObj
 	 * 
-	 * @param gridy - int for setDimensionObj
+	 * @param gridy  - int for setDimensionObj
 	 * 
-	 * @param ipadx - int for setDimensionObj
+	 * @param ipadx  - int for setDimensionObj
 	 * 
-	 * @param ipady - int for setDimensionObj
+	 * @param ipady  - int for setDimensionObj
 	 * 
-	 * @param top - int inset from the top for setDimensionObj
+	 * @param top    - int inset from the top for setDimensionObj
 	 * 
-	 * @param left - int inset from the left for setDimensionObj
+	 * @param left   - int inset from the left for setDimensionObj
 	 * 
 	 * @param bottom - int inset from the bottom for setDimensionObj
 	 * 
-	 * @param right - int inset from the right for setDimensionObj
+	 * @param right  - int inset from the right for setDimensionObj
 	 */
 	private void addImage(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
 			int right) {
-		this.add(this.getImageResource(name), new GBCSimplified(gridx, gridy,
-				CommonMethods.getPixelsFromPercentageWidth(ipadx), (int) Constants.getPixelsFromPercentageHeight(ipady),
-				new Insets(CommonMethods.getPixelsFromPercentageWidth(top), CommonMethods.getPixelsFromPercentageWidth(left),
-						CommonMethods.getPixelsFromPercentageWidth(bottom), CommonMethods.getPixelsFromPercentageWidth(right))));
-	}
-
-	/**
-	 * generateButton is a method that creates a JButton and it sets its font and
-	 * color, for its background and corner
-	 * 
-	 * @param name               - The text of the JButton
-	 * @param actionListenerName - The string to pass to the adHocActionListener
-	 *                           method
-	 * @param font               - The name of the font needed by the text of the
-	 *                           JButton
-	 * @return JButton to add to the MenuPanel
-	 */
-	private JButton generateButton(String name, String actionListenerName, String font) {
-		JButton jb = new JButton(name);
-
-		if (name.equals("Play")) {
-			jb.setFont(CommonMethods.getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 90));
-			jb.setBackground(Color.decode("#77DD77"));
-			jb.setBorder(BorderFactory.createLineBorder(Color.decode("#007542"), 4, true));
-		} else {
-			if (name.equals("Quit")) {
-				jb.setFont(
-						CommonMethods.getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 110));
-				jb.setBackground(Color.decode("#FF0000"));
-				jb.setBorder(BorderFactory.createLineBorder(Color.decode("#8B0000"), 4, true));
-			} else {
-				jb.setFont(
-						CommonMethods.getFontResource(font).deriveFont((float) Constants.SCREEN_SIZE.getWidth() / 120));
-				jb.setBackground(Color.decode("#FFDD62"));
-				jb.setBorder(BorderFactory.createLineBorder(Color.decode("#FF971A"), 4, true));
-			}
-		}
-		jb.addActionListener(adHocActionListener(actionListenerName));
-		return jb;
+		this.add(this.getImageResource(name),
+				new GBCSimplified(gridx, gridy, CommonMethods.getPixelsFromPercentageWidth(ipadx),
+						CommonMethods.getPixelsFromPercentageHeight(ipady),
+						new Insets(CommonMethods.getPixelsFromPercentageWidth(top),
+								CommonMethods.getPixelsFromPercentageWidth(left),
+								CommonMethods.getPixelsFromPercentageWidth(bottom),
+								CommonMethods.getPixelsFromPercentageWidth(right))));
 	}
 
 	/**
 	 * adHocActionListener method includes the actionListener of all JButtons in the
 	 * menu, depending by the given String panelName
 	 * 
-	 * @param panelName Used to open the jpanel needed by the player
-	 * @return ActionListener needed
+	 * @param panelName - Used to open the jpanel needed by the player
+	 * @return ActionListener
 	 */
 	private ActionListener adHocActionListener(String panelName) {
 
 		if (panelName.equals("PLAY")) {
 			return e -> {
-				MainMenu.cardLayout.show(this.mainMenu, panelName);
+				mainMenu.showCard(PANEL.PLAY);
 			};
 		} else if (panelName.equals("QUIT")) {
 			return e -> {
+				mainMenu.updateSavings();
 				System.exit(0);
 			};
 		} else if (panelName.equals("CLEAR SAVINGS")) {
@@ -209,7 +193,7 @@ public class MenuPanel extends JPanel {
 			};
 		} else {
 			return e -> {
-				MainMenu.cardLayout.show(this.mainMenu, panelName);
+				mainMenu.showCard(PANEL.valueOf(panelName));
 			};
 		}
 	}
@@ -237,8 +221,8 @@ public class MenuPanel extends JPanel {
 	/**
 	 * Returns a scaled version of the image parameter
 	 * 
-	 * @param image the image to scale
-	 * @param dim   the Dimension to which to scale the image
+	 * @param image - the image to scale
+	 * @param dim   - the Dimension to which to scale the image
 	 * @return a scaled version of the image parameter
 	 */
 	private Image scaleImage(Image image, Dimension dim) {
