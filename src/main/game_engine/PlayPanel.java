@@ -35,6 +35,9 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 	private Timestamp gameStart;
 	private Timestamp gameEnd;
 
+	public static int reducerTimes = 0;
+	public static int incrementTimes = 0;
+
 	public PlayPanel(MainMenu mainMenu, GameSettings gameSettings) {
 		this.setLayout(new GridBagLayout());
 		this.setPreferredSize(Constants.SCREEN_SIZE);
