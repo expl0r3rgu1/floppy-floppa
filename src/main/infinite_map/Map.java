@@ -8,6 +8,7 @@ import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
 import main.obstacles.ObstacleFactory;
 import main.obstacles.ObstacleFactoryImpl;
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
 
@@ -61,23 +62,18 @@ public class Map {
 		this.paintedFixedObstacles
 				.add(Constants.OBSTACLE_FACTORY.fixedObstacleFactory(
 						new Position((int) Constants.SCREEN_SIZE.getWidth(),
-								getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
+								CommonMethods.getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
 										(int) (Constants.SCREEN_SIZE.getHeight() * 0.75))),
 						this.fixedObstacle.getSkin()));
 	}
 
-	// Utility method to generate random integer in range (consider moving it)
-	private int getRandomNumber(int min, int max) {
-		return (int) ((Math.random() * (max - min)) + min);
-	}
-
 	// Method that spawns a random MovingObstacle
 	protected void addMovingObstacle() {
-		int randomMovingObstacleIndex = getRandomNumber(0, this.movingObstacles.size());
+		int randomMovingObstacleIndex = CommonMethods.getRandomNumber(0, this.movingObstacles.size());
 
 		this.paintedMovingObstacles.add(Constants.OBSTACLE_FACTORY.movingObstacleFactory(
 				new Position((int) Constants.SCREEN_SIZE.getWidth(),
-						getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
+						CommonMethods.getRandomNumber((int) (Constants.SCREEN_SIZE.getHeight() * 0.25),
 								(int) (Constants.SCREEN_SIZE.getHeight() * 0.75))),
 				this.movingObstacles.get(randomMovingObstacleIndex).getSkin()));
 	}
