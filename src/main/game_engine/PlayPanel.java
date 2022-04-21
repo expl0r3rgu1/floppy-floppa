@@ -88,6 +88,7 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 
 		if (character.isDead()) {
 			refreshRate.stop();
+			map.stopTimer();
 
 			gameEnd = new Timestamp(System.currentTimeMillis());
 
