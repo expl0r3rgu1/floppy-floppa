@@ -52,6 +52,14 @@ public class Map {
 		return scrollingBackground;
 	}
 
+	public List<FixedObstacle> getPaintedFixedObstacles() {
+		return paintedFixedObstacles;
+	}
+
+	public List<MovingObstacle> getPaintedMovingObstacles() {
+		return paintedMovingObstacles;
+	}
+
 	public List<Malus> getPaintedMalus() {
 		return paintedMalus;
 	}
