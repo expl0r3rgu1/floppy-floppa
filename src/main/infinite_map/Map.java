@@ -60,6 +60,14 @@ public class Map {
 		return movingObstacles;
 	}
 
+	public List<Malus> getPaintedMalus() {
+		return paintedMalus;
+	}
+
+	public List<Booster> getPaintedBoosters() {
+		return paintedBoosters;
+	}
+
 	public void startTimer() {
 		timedFixedObstacleGenerator.getTimer().start();
 		timedMovingObstacleGenerator.getTimer().start();
