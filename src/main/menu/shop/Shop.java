@@ -213,7 +213,7 @@ public class Shop {
 	 * @param line one line of the savings file
 	 * @param list List of purchase statuses of PricedBackground items
 	 */
-	private void getScenerisInfo(String line, List<PurchaseStatus<PricedBackground>> list) {
+	private void getScenerisInfo(String line, List<PurchaseStatus<PricedBackground>> purchaseStatusList) {
 		String[] lineWords = line.split(",");
 
 		for (int i = 0; i < sceneriesNum; i++) {
@@ -226,7 +226,7 @@ public class Shop {
 				purchaseStatus.purchase();
 			}
 
-			list.add(purchaseStatus);
+			purchaseStatusList.add(purchaseStatus);
 		}
 	}
 
