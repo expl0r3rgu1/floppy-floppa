@@ -96,8 +96,8 @@ public class ShopGUI extends JPanel {
 		for (int i = 0; i < numBackgrounds + numSkins; i++) {
 			if (i == 0) {
 
-				GraphicJLabel coins = new GraphicJLabel(shop.getCoins() + "", Color.decode("#FFDD62"),
-						Color.decode("#FF971A"), "Arial", Font.BOLD);
+				coins = new GraphicJLabel(shop.getCoins() + "", Color.decode("#FFDD62"), Color.decode("#FF971A"),
+						"Arial", Font.BOLD);
 				this.add(coins, new GBCSimplified(4, i, 0, 0, new Insets(0, 0, 0, 0)));
 
 			} else if (i == 1) {
