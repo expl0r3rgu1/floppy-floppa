@@ -13,6 +13,8 @@ public class EOGMenu implements Menu {
 	private CoinsIncrement coinsIncrement;
 
 	/**
+	 * @param shop            Shop parameter is passed so that the constructor does
+	 *                        not initializes a new one
 	 * @param metersTravelled The meters that the Character traveled during the game
 	 * @param reducerTimes    How many times the character hit the CoinsReducer
 	 *                        malus
