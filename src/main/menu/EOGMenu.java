@@ -6,8 +6,9 @@ import main.state_changers.CoinsReducer;
 
 public class EOGMenu implements Menu {
 
-	private int previousCoins;
 	private Shop shop;
+	private int previousCoins;
+	private int newCoins;
 	private CoinsReducer coinsReducer;
 	private CoinsIncrement coinsIncrement;
 
