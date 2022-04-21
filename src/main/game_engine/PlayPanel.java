@@ -99,6 +99,7 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 			mainMenu.showCard(PANEL.EOGMENU);
 
 			gameSettings.getPlayer().setPersonalBest(getMetersTraveled());
+			mainMenu.getLeaderboard().update(gameSettings.getPlayer());
 		}
 	}
 
