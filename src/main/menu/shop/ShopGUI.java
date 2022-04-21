@@ -33,6 +33,8 @@ public class ShopGUI extends JPanel {
 	private ArrayList<String> prices = new ArrayList<>(
 			Arrays.asList("0", "50", "100", "200", "500", "0", "50", "100", "200", "500"));
 
+	private GraphicJLabel coins;
+
 	/**
 	 * @param mainMenu needed to correctly show card layouts
 	 */
