@@ -24,4 +24,12 @@ public abstract class TimedEntityGenerator implements ActionListener {
 		timer = new Timer((int) ((1000 / Constants.SPEED) / this.speed), this);
 		timer.start();
 	}
+
+	public Map getMap() {
+		return map;
+	}
+
+	public Timer getTimer() {
+		return timer;
+	}
 }
