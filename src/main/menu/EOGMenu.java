@@ -52,14 +52,11 @@ public class EOGMenu implements Menu {
 	 * @param reducerTimes   How many times the character hit the CoinsReducer malus
 	 * @param incrementTimes How many times the character hit the CoinsIncrement
 	 *                       booster
-	 * @return the newly owned coins
 	 */
-	protected int updateCoins(int meters, int reducerTimes, int incrementTimes) {
-		int newCoins = this.previousCoins + ((int) Math.floor(meters / 5) - this.updateCoinsReduce(reducerTimes)
+	protected void updateCoins(int meters, int reducerTimes, int incrementTimes) {
+		newCoins = this.previousCoins + ((int) Math.floor(meters / 5) - this.updateCoinsReduce(reducerTimes)
 				+ this.updateCoinsIncrease(incrementTimes));
 		shop.setCoins(newCoins);
-		this.previousCoins = newCoins;
-		return newCoins;
 	}
 
 	/**
