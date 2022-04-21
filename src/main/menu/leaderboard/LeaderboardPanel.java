@@ -21,17 +21,16 @@ import main.utilities.GraphicJButton;
 
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
-	private final Leaderboard leaderboard;
+	private Leaderboard leaderboard;
 	private final MainMenu mainMenu;
 
-	public LeaderboardPanel(MainMenu mainMenu) {
+	public LeaderboardPanel(MainMenu mainMenu, Leaderboard leaderboard) {
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.setLayout(new GridBagLayout());
 		this.setOpaque(false);
 
 		this.mainMenu = mainMenu;
-
-		leaderboard = new Leaderboard();
+		this.leaderboard = leaderboard;
 
 		// TITLE
 		addTitle();
