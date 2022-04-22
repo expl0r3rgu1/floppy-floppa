@@ -49,10 +49,9 @@ public class Immortality extends Booster {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Object changeState() {
-		this.immortal = true;
+	public void changeState() {
+		Character.immortal = true;
 		timer.start();
-		return immortal;
 	}
 
 	/**
