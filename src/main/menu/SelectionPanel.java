@@ -79,14 +79,14 @@ public class SelectionPanel extends JPanel {
 	private void placeComponents() {
 
 		for (int i = 0; i < numBackgrounds + numSkins; i++) {
-			if (i == 1) {
+			if (i == 0) {
 
 				GraphicJLabel skins = new GraphicJLabel("SKINS", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"fipps", (float) Constants.SCREEN_SIZE.getWidth() / 100);
 				this.add(skins, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentageWidth(2)), 0,
 						new Insets((CommonMethods.getPixelsFromPercentageHeight(1)), 0, 0, 0)));
 
-			} else if (i == 5) {
+			} else if (i == 4) {
 
 				GraphicJLabel backgrounds = new GraphicJLabel("BACKGROUNDS", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "fipps", (float) Constants.SCREEN_SIZE.getWidth() / 100);
@@ -126,7 +126,7 @@ public class SelectionPanel extends JPanel {
 	 */
 	private int getLNameImage(int i) {
 		for (int j = 0; j < numSkins; j++) {
-			GraphicJLabel label = new GraphicJLabel((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)),
+			GraphicJLabel label = new GraphicJLabel((i == 1 ? labelNames.get(j) : labelNames.get(j + 5)),
 					Color.decode("#77DD77"), Color.decode("#007542"), "fipps",
 					(float) Constants.SCREEN_SIZE.getWidth() / 120);
 			this.add(label, new GBCSimplified(j, i, 0, 0,
@@ -138,8 +138,8 @@ public class SelectionPanel extends JPanel {
 	}
 
 	/**
-	 * getSelectButton is a method that creates a JButton, using GraphicJButton,
-	 * for every Skin or Background, then by reading in the skinList and the
+	 * getSelectButton is a method that creates a JButton, using GraphicJButton, for
+	 * every Skin or Background, then by reading in the skinList and the
 	 * backgroundList, it can be checked if the object is been bought by the player,
 	 * and if it bought the button will be enabled and then can be equiped by the
 	 * player
@@ -151,7 +151,7 @@ public class SelectionPanel extends JPanel {
 			final int index = j;
 			GraphicJButton selectButton = new GraphicJButton("SELECT", "fipps", 120, "#FDFD96", "#FFDD62");
 
-			bought = (i == 4 ? skinList.get(j).isPurchased() : backgroundList.get(j).isPurchased());
+			bought = (i == 3 ? skinList.get(j).isPurchased() : backgroundList.get(j).isPurchased());
 			selectButton.setEnabled(bought);
 
 			selectButton.addActionListener(e -> {
@@ -175,7 +175,7 @@ public class SelectionPanel extends JPanel {
 	 */
 	private void getSelectedIcon(int i, int j) {
 
-		if (i == 4) {
+		if (i == 3) {
 
 			Skin skin = new Skin(labelNames.get(j), CommonMethods.getImageResource(labelNames.get(j)),
 					(int) Constants.SCREEN_SIZE.getHeight() / 12, (int) Constants.SCREEN_SIZE.getHeight() / 12);
@@ -190,8 +190,8 @@ public class SelectionPanel extends JPanel {
 	}
 
 	/**
-	 * getJLabelImage is a method that reads an image file and creates the corresponding Image object
-	 * which gets also scaled
+	 * getJLabelImage is a method that reads an image file and creates the
+	 * corresponding Image object which gets also scaled
 	 * 
 	 * @param fileName
 	 * @return a JLabel containing the newly created Image
@@ -199,7 +199,7 @@ public class SelectionPanel extends JPanel {
 	private JLabel getJLabelImage(String fileName) {
 		JLabel label = null;
 		try {
-			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
+			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName + ".png"));
 			ImageIcon imageIcon = new ImageIcon(this.scale(image, new Dimension(
 					(CommonMethods.getPixelsFromPercentageWidth(8)), (CommonMethods.getPixelsFromPercentageWidth(8)))));
 			label = new JLabel(imageIcon);
