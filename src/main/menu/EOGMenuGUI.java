@@ -65,7 +65,7 @@ public class EOGMenuGUI extends JPanel {
 		for (int i = 0; i < 3; i++) {
 			if (i == 0) {
 				GraphicJLabel EOGtitle = new GraphicJLabel("G A M E    O V E R", Color.decode("#FF675F"),
-						Color.decode("#FF392E"), "pixel.TTF", 50f);
+						Color.decode("#FF392E"), "pixel", 50f);
 				this.add(EOGtitle,
 						new GBCSimplified(1, i, CommonMethods.getPixelsFromPercentageWidth(10),
 								CommonMethods.getPixelsFromPercentageHeight(5),
@@ -76,7 +76,7 @@ public class EOGMenuGUI extends JPanel {
 						"<html><center> Old coins: &emsp &emsp New coins: </center> <br> <center> "
 								+ eogMenu.getPreviousCoins() + "&emsp &emsp &emsp " + eogMenu.getNewCoins()
 								+ "</center> </html>",
-						Color.decode("#77DD77"), Color.decode("#007542"), "fipps.otf", 25f);
+						Color.decode("#77DD77"), Color.decode("#007542"), "fipps", 25f);
 				this.add(coins,
 						new GBCSimplified(1, i, CommonMethods.getPixelsFromPercentageWidth(25),
 								CommonMethods.getPixelsFromPercentageHeight(15),
