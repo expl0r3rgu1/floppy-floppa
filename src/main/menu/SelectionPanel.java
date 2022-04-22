@@ -82,21 +82,21 @@ public class SelectionPanel extends JPanel {
 				GraphicJLabel skins = new GraphicJLabel("SKINS", Color.decode("#FFDD62"), Color.decode("#FF971A"),
 						"fipps", (float) Constants.SCREEN_SIZE.getWidth() / 100);
 				this.add(skins, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentageWidth(2)), 0,
-						new Insets((CommonMethods.getPixelsFromPercentageWidth(1)), 0, 0, 0)));
+						new Insets((CommonMethods.getPixelsFromPercentageHeight(1)), 0, 0, 0)));
 
 			} else if (i == 5) {
 
 				GraphicJLabel backgrounds = new GraphicJLabel("BACKGROUNDS", Color.decode("#FFDD62"),
 						Color.decode("#FF971A"), "fipps", (float) Constants.SCREEN_SIZE.getWidth() / 100);
 				this.add(backgrounds, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentageWidth(2)), 0,
-						new Insets((CommonMethods.getPixelsFromPercentageWidth(3)), 0, 0, 0)));
+						new Insets((CommonMethods.getPixelsFromPercentageHeight(3)), 0, 0, 0)));
 
 			} else if (i == numBackgrounds + numSkins - 1) {
 
 				GraphicJButton backMenu = new GraphicJButton("MENU", "fipps", 100, "#FFDD62", "#FF971A");
 				this.add(backMenu,
-						new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageWidth(2)), 0,
-								(CommonMethods.getPixelsFromPercentageWidth(1)), 0)));
+						new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0,
+								(CommonMethods.getPixelsFromPercentageHeight(1)), 0)));
 				backMenu.addActionListener(e -> {
 					mainMenu.showCard(Constants.PANEL.MENU);
 				});
@@ -128,9 +128,9 @@ public class SelectionPanel extends JPanel {
 					Color.decode("#77DD77"), Color.decode("#007542"), "fipps",
 					(float) Constants.SCREEN_SIZE.getWidth() / 120);
 			this.add(label, new GBCSimplified(j, i, 0, 0,
-					new Insets((CommonMethods.getPixelsFromPercentageWidth(2)), 0, 0, 0)));
+					new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
 			this.add(this.imageCreation((i == 1 ? labelNames.get(j) : labelNames.get(j + 5))), new GBCSimplified(j,
-					i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageWidth(2)), 0, 0, 0)));
+					i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
 		}
 		return i + 1;
 	}
@@ -158,9 +158,9 @@ public class SelectionPanel extends JPanel {
 
 			this.add(selectButton,
 					new GBCSimplified(j, i, (CommonMethods.getPixelsFromPercentageWidth(3)), 0,
-							new Insets((CommonMethods.getPixelsFromPercentageWidth(1)),
-									(CommonMethods.getPixelsFromPercentageWidth(5)), 0,
-									(CommonMethods.getPixelsFromPercentageWidth(5)))));
+							new Insets((CommonMethods.getPixelsFromPercentageHeight(1)),
+									(CommonMethods.getPixelsFromPercentageHeight(5)), 0,
+									(CommonMethods.getPixelsFromPercentageHeight(5)))));
 		}
 	}
 
