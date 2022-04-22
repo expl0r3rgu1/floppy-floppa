@@ -10,6 +10,8 @@ import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
 
+import static org.junit.Assert.assertTrue;
+
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -17,6 +19,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.Timer;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * A class that implements the character, it keeps track of its current status
@@ -257,9 +261,34 @@ public class Character extends Movable {
 		this.getPosition().setY(this.getPosition().getY() + value * Constants.MOVING_FACTOR);
 
 	}
-	
-	public class TestUpdatePosition {
-		
+
+	public static class TestUpdatePosition {
+
+		private final Position CHARACTER_INITIAL_POSITION = new Position((int) Constants.SCREEN_SIZE.getWidth() / 2,
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		private final Position CHARACTER_AFTER_FALLING_POSITION = new Position(
+				(int) Constants.SCREEN_SIZE.getWidth() / 2,
+				(int) Constants.SCREEN_SIZE.getHeight() / 2 + Constants.MOVING_FACTOR);
+		private final Position CHARACTER_AFTER_JUMPING_POSITION = new Position(
+				(int) Constants.SCREEN_SIZE.getWidth() / 2,
+				CHARACTER_AFTER_FALLING_POSITION.getY() - Constants.MOVING_FACTOR * 2);
+
+		@Test
+		/**
+		 * Checks if the position is updated correctly when the character falls or jumps
+		 */
+		void updatePositionTest() {
+			Character character = new Character(CHARACTER_INITIAL_POSITION,
+					new Skin("floppa", CommonMethods.getImageResource("Floppa"),
+							CommonMethods.getImageResource("Floppa").getWidth(null),
+							CommonMethods.getImageResource("Floppa").getHeight(null)));
+			character.updatePosition();
+			assertTrue(character.getPosition().equals(CHARACTER_AFTER_FALLING_POSITION));
+			
+			character.jump();
+			character.updatePosition();
+			assertTrue(character.getPosition().equals(CHARACTER_AFTER_JUMPING_POSITION));
+		}
 	}
 
 }
