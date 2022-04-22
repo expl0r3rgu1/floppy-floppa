@@ -138,6 +138,6 @@ public class Constants {
 	 * The names of the different panels of the game
 	 */
 	public static enum PANEL {
-		MENU, PLAY, LEADERBOARD, SHOP, TUTORIAL, EOGMENU
+		MENU, PLAY, LEADERBOARD, SHOP, TUTORIAL, EOGMENU, SELECT
 	}
 }
