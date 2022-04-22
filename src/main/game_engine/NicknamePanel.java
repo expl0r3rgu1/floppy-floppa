@@ -46,7 +46,12 @@ public class NicknamePanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				gameSettings.setPlayer(new Player(nicknameField.getText(), 0));
+				if(nicknameField.getText().equals("")) {
+					gameSettings.setPlayer(new Player("guest", 0));
+				} else {
+					gameSettings.setPlayer(new Player(nicknameField.getText(), 0));
+				}
+				
 				playPanel.dismissNicknamePanel();
 			}
 		});
