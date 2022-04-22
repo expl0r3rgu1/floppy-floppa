@@ -32,6 +32,9 @@ import org.junit.jupiter.api.Test;
 public class Character extends Movable {
 	private Skin skin;
 	private boolean dead;
+	/**
+	 * if it is true the character is immune from death, its default value is false
+	 */
 	public static boolean immortal = false;
 	private boolean jumping;
 	private Timer timer;
@@ -284,7 +287,7 @@ public class Character extends Movable {
 							CommonMethods.getImageResource("Floppa").getHeight(null)));
 			character.updatePosition();
 			assertTrue(character.getPosition().equals(CHARACTER_AFTER_FALLING_POSITION));
-			
+
 			character.jump();
 			character.updatePosition();
 			assertTrue(character.getPosition().equals(CHARACTER_AFTER_JUMPING_POSITION));
