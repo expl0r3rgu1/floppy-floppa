@@ -2,6 +2,8 @@ package main.state_changers;
 
 import java.awt.Graphics2D;
 import java.util.Random;
+
+import main.game_engine.PlayPanel;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
@@ -36,8 +38,9 @@ public class CoinsIncrement extends Booster {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Integer changeState() {
-		return (int) rand.nextInt(100);
+	public void changeState() {
+		PlayPanel.incrementTimes++;
+		moveOffScreen();
 	}
 
 	/**
