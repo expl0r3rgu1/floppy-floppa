@@ -20,9 +20,20 @@ import main.utilities.GameSettings;
 import main.utilities.GraphicJButton;
 import main.utilities.GraphicJLabel;
 
+/**
+ * JPanel that is prompted when starting a game. It lets the user choose their
+ * nickname that will then be displayed in LeaderboardPanel
+ */
 public class NicknamePanel extends JPanel {
 	private static final long serialVersionUID = -609955722187373250L;
 
+	/**
+	 * 
+	 * @param playPanel    the only existing instance of PlayPanel used to call
+	 *                     PlayPanel.dismissNicknamePanel()
+	 * @param gameSettings the only existing instance of GameSettings used to call
+	 *                     GameSettings.setPlayer(Player player)
+	 */
 	public NicknamePanel(PlayPanel playPanel, GameSettings gameSettings) {
 		this.setLayout(new GridBagLayout());
 		this.setPreferredSize(new Dimension(CommonMethods.getPixelsFromPercentageWidth(33),
@@ -46,12 +57,12 @@ public class NicknamePanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(nicknameField.getText().equals("")) {
+				if (nicknameField.getText().equals("")) {
 					gameSettings.setPlayer(new Player("guest", 0));
 				} else {
 					gameSettings.setPlayer(new Player(nicknameField.getText(), 0));
 				}
-				
+
 				playPanel.dismissNicknamePanel();
 			}
 		});

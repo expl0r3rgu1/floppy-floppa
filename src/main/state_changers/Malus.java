@@ -7,9 +7,10 @@ import main.utilities.Position;
 import main.utilities.Skin;
 
 /**
- * A class that implements an object that hampers the character in different ways
+ * A class that implements an object that hampers the character in different
+ * ways
  */
-public class Malus extends Movable {
+public abstract class Malus extends Movable {
 
 	private Skin skin;
 
@@ -40,13 +41,17 @@ public class Malus extends Movable {
 		this.skin = skin;
 	}
 
-	public Object changeState() {
-		return null;
-		// TO BE IMPLEMENTED IN SUB-CLASSES
-	}
+	/**
+	 * changeState is the method that changes a state of the Character or of the
+	 * game
+	 */
+	public abstract void changeState();
 
-	@Override
-	public void animate(Graphics2D canvas) {
-		// TO BE IMPLEMENTED IN SUB-CLASSES
+	/**
+	 * moveOffScreen is the method that spawns the Malus out of the Screen after
+	 * been used one time
+	 */
+	public void moveOffScreen() {
+		setPosition(new Position(-getSkin().getWidth(), getPosition().getY()));
 	}
 }

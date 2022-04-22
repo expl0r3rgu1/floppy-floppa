@@ -82,6 +82,15 @@ public class MovingObstacle extends Movable implements ActionListener {
 		this.direction = -this.direction;
 	}
 	
+  /**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		MovingObstacle other = (MovingObstacle)obj;
+		return super.equals(other) && this.skin.equals(other.skin);
+  }
+  
 	public static class TestMovingObstacle {
 
 		final private Position POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth()),
@@ -108,6 +117,7 @@ public class MovingObstacle extends Movable implements ActionListener {
 			assertTrue(movingObstacle1.getPosition().getX() == (HALFWAY_POSITION.getX() - 3 * Constants.MOVING_FACTOR));
 			assertTrue(movingObstacle1.getPosition().getY() == (HALFWAY_POSITION.getY() + direction * Constants.MOVING_FACTOR));
 		}
+
 	}
 
 }
