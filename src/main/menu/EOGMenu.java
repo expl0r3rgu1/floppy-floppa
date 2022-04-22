@@ -1,5 +1,7 @@
 package main.menu;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 import main.game_engine.PlayPanel;
@@ -20,6 +22,7 @@ public class EOGMenu implements Menu {
 		this.shop = shop;
 		this.previousCoins = shop.getCoins();
 		this.newCoins = 0;
+		this.updateCoins(metersTravelled);
 	}
 
 	/**
@@ -59,12 +62,10 @@ public class EOGMenu implements Menu {
 	 * 
 	 * @return the sum of coins that need to be subtracted
 	 */
-	private int updateCoinsReduce(int times) {
-		int sum = 0;
-		for (int i = 0; i < times; i++) {
-			sum += coinsReducer.changeState();
-		}
-		return sum;
+	private int updateCoinsReduce() {
+		ArrayList<Integer> malus = new ArrayList<Integer>(Arrays.asList(5, 10, 20, 30, 40, 50));
+
+		return PlayPanel.reducerTimes * malus.get((int) (Math.random() * (malus.size())));
 	}
 
 	/**
