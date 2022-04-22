@@ -1,10 +1,8 @@
 package main.state_changers;
 
 import java.awt.Graphics2D;
-import java.util.Random;
 
 import main.game_engine.PlayPanel;
-import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
@@ -14,8 +12,6 @@ import main.utilities.Skin;
  * gifts coins to the main character every time they hit this booster.
  */
 public class CoinsIncrement extends Booster {
-
-	private Random rand;
 
 	/**
 	 * @param position The CoinsIncrement initial position
