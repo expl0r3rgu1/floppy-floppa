@@ -49,8 +49,6 @@ public class ShopGUI extends JPanel {
 		numSkins = shop.getSkinsNum();
 		numBackgrounds = shop.getSceneriesNum();
 
-		CommonMethods.getImageResource("Background");
-
 		this.placeGUIComponents();
 	}
 
