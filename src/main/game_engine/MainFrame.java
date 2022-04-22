@@ -23,6 +23,9 @@ public class MainFrame extends JFrame {
 	private GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	private final MainMenu mainMenu;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public MainFrame() {
 		super("Floppy-Floppa");
 
