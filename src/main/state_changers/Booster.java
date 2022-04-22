@@ -38,19 +38,9 @@ public abstract class Booster extends Movable {
 		this.skin = skin;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Object changeState() {
-		return null;
-		// TO BE IMPLEMENTED IN SUB-CLASSES
-	}
+	public abstract void changeState();
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void animate(Graphics2D canvas) {
-		// TO BE IMPLEMENTED IN SUB-CLASSES
+	public void moveOffScreen() {
+		setPosition(new Position(-getSkin().getWidth(), getPosition().getY()));
 	}
 }
