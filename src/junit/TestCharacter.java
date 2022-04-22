@@ -17,8 +17,7 @@ import main.utilities.Position;
 import main.utilities.Skin;
 
 public class TestCharacter {
-	private final ObstacleFactory OBSTACLE_FACTORY = new ObstacleFactoryImpl();
-	private final List<FixedObstacle> FIXED_OBSTACLE_LIST = List.of(OBSTACLE_FACTORY.fixedObstacleFactory(
+	private final List<FixedObstacle> FIXED_OBSTACLE_LIST = List.of(Constants.OBSTACLE_FACTORY.fixedObstacleFactory(
 			new Position((int) Constants.SCREEN_SIZE.getWidth() / 2, (int) Constants.SCREEN_SIZE.getHeight() / 2),
 			new Skin("pipe", CommonMethods.getImageResource("pipe"),
 					CommonMethods.getImageResource("pipe").getWidth(null),
@@ -27,7 +26,7 @@ public class TestCharacter {
 			(int) Constants.SCREEN_SIZE.getHeight() / 5);
 	private final Position CHARACTER_COLLIDE_LOWER_PIPE = new Position((int) Constants.SCREEN_SIZE.getWidth() / 2,
 			(int) Constants.SCREEN_SIZE.getHeight() * 4 / 5);
-	private final List<MovingObstacle> MOVING_OBSTACLE_LIST = List.of(OBSTACLE_FACTORY.movingObstacleFactory(
+	private final List<MovingObstacle> MOVING_OBSTACLE_LIST = List.of(Constants.OBSTACLE_FACTORY.movingObstacleFactory(
 			new Position((int) Constants.SCREEN_SIZE.getWidth() / 2, (int) Constants.SCREEN_SIZE.getHeight() / 2),
 			new Skin("Bingus", CommonMethods.getImageResource("Bingus"),
 					CommonMethods.getImageResource("Bingus").getWidth(null),
