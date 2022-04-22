@@ -1,7 +1,14 @@
 package main.state_changers;
 
+import static org.junit.Assert.assertTrue;
+
 import java.awt.Graphics2D;
 
+import java.util.Random;
+
+import org.junit.jupiter.api.Test;
+
+import main.utilities.CommonMethods;
 import main.game_engine.PlayPanel;
 import main.utilities.Constants;
 import main.utilities.Position;
@@ -48,5 +55,31 @@ public class CoinsIncrement extends Booster {
 				getSkin().getHeight(), null);
 
 		this.updatePositionX();
+	}
+
+	public static class TestCoinsIncrement {
+		final private Position POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth()),
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		final private Position HALFWAY_POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth() / 2),
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		final private Skin SKIN = new Skin("coinsincrement", CommonMethods.getImageResource("coinsincrement"),
+				(int) this.POSITION.getX(), (int) this.POSITION.getY());
+
+		@Test
+		/**
+		 * Check if the moving pattern of the booster works correctly
+		 */
+		void coinsIncrementBoosterMovement() {
+			CoinsIncrement coinsIncrement1 = new CoinsIncrement(this.POSITION, this.SKIN);
+			coinsIncrement1.updatePositionX();
+			assertTrue(coinsIncrement1.getPosition().getX() == POSITION.getX()- 3 * Constants.MOVING_FACTOR);
+			assertTrue(coinsIncrement1.getPosition().getY() == POSITION.getY());
+
+			CoinsIncrement coinsIncrement2 = new CoinsIncrement(this.HALFWAY_POSITION, this.SKIN);
+			coinsIncrement2.updatePositionX();
+			assertTrue(coinsIncrement2.getPosition().getX() == HALFWAY_POSITION.getX()- 3 * Constants.MOVING_FACTOR);
+			assertTrue(coinsIncrement2.getPosition().getY() == HALFWAY_POSITION.getY());
+
+		}
 	}
 }
