@@ -13,6 +13,8 @@ import main.state_changers.CoinsIncrement;
 import main.state_changers.CoinsReducer;
 import main.state_changers.Immortality;
 import main.state_changers.Malus;
+import main.state_changers.StateChangerFactory;
+import main.state_changers.StateChangerFactoryImpl;
 
 public class Constants {
 	public static final Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
@@ -32,6 +34,7 @@ public class Constants {
 	public static final int CHARACTER_JUMP_TIMEOUT = 30000;
 
 	public static final ObstacleFactory OBSTACLE_FACTORY = new ObstacleFactoryImpl();
+	public static final StateChangerFactory STATE_CHANGER_FACTORY = new StateChangerFactoryImpl();
 
 	public static final List<Malus> MALUS = List.of(
 			new BlackStain(null, new Skin("blackstains", CommonMethods.getImageResource("blackstains"),
