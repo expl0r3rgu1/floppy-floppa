@@ -48,8 +48,8 @@ public class CoinsIncrement extends Booster {
 	 */
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				CommonMethods.getPixelsFromPercentageWidth(3), CommonMethods.getPixelsFromPercentageWidth(3), null);
+		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(), getSkin().getWidth(),
+				getSkin().getHeight(), null);
 
 		this.updatePositionX();
 	}
