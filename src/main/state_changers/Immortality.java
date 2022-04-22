@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
+import main.character.Character;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
@@ -16,7 +17,6 @@ import main.utilities.Skin;
  */
 public class Immortality extends Booster {
 
-	private boolean immortal;
 	private Timer timer;
 
 	/**
@@ -25,13 +25,13 @@ public class Immortality extends Booster {
 	 */
 	public Immortality(Position position, Skin skin) {
 		super(position, skin);
-		this.immortal = false;
+		Character.immortal = false;
 
-		this.timer = new Timer(Constants.CHANGED_STATE_TIME, new ActionListener() {
+		this.timer = new Timer(Constants.IMMORTALITY_TIMEOUT, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				immortal = false;
+				Character.immortal = false;
 			}
 		});
 	}
@@ -59,7 +59,7 @@ public class Immortality extends Booster {
 	 */
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR, getPosition().getY()));
-		}
+	}
 
 	/**
 	 * {@inheritDoc}
