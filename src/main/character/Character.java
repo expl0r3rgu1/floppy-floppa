@@ -32,6 +32,9 @@ import org.junit.jupiter.api.Test;
 public class Character extends Movable {
 	private Skin skin;
 	private boolean dead;
+	/**
+	 * if it is true the character is immune from death
+	 */
 	public static boolean immortal = false;
 	private boolean jumping;
 	private Timer timer;
