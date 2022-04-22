@@ -9,25 +9,16 @@ public class EOGMenu implements Menu {
 	private Shop shop;
 	private int previousCoins;
 	private int newCoins;
-	private CoinsReducer coinsReducer;
-	private CoinsIncrement coinsIncrement;
 
 	/**
 	 * @param shop            Shop parameter is passed so that the constructor does
 	 *                        not initializes a new one
 	 * @param metersTravelled The meters that the Character traveled during the game
-	 * @param reducerTimes    How many times the character hit the CoinsReducer
-	 *                        malus
-	 * @param incrementTimes  How many times the character hit the CoinsIncrement
-	 *                        booster
 	 */
-	public EOGMenu(Shop shop, int metersTravelled, int reducerTimes, int incrementTimes) {
+	public EOGMenu(Shop shop, int metersTravelled) {
 		this.shop = shop;
 		this.previousCoins = shop.getCoins();
 		this.newCoins = 0;
-		this.updateCoins(metersTravelled, reducerTimes, incrementTimes);
-		coinsReducer = new CoinsReducer(null, null);
-		coinsIncrement = new CoinsIncrement(null, null);
 	}
 
 	/**
