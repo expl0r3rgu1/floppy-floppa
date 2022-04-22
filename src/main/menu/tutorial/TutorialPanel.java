@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.Image;
+import java.awt.Insets;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -72,7 +73,9 @@ public class TutorialPanel extends JPanel {
 			mainMenu.showCard(Constants.PANEL.MENU);
 		});
 
-		this.add(menuButton, new GBCSimplified(0, 2, CommonMethods.getPixelsFromPercentageWidth(25),
-				CommonMethods.getPixelsFromPercentageHeight(1)));
+		this.add(menuButton,
+				new GBCSimplified(0, 2, CommonMethods.getPixelsFromPercentageWidth(25),
+						CommonMethods.getPixelsFromPercentageHeight(1),
+						new Insets(CommonMethods.getPixelsFromPercentageHeight(1), 0, 0, 0)));
 	}
 }
