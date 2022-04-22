@@ -7,7 +7,6 @@ import java.awt.Image;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -40,7 +39,7 @@ public class CommonMethods {
 	public static Font getFontResource(String fontName) {
 		try {
 			return Font.createFont(Font.TRUETYPE_FONT,
-					new File(CommonMethods.class.getResource("/resources/fonts/" + fontName).getFile()));
+					CommonMethods.class.getResourceAsStream("/resources/fonts/" + fontName + ".ttf"));
 		} catch (FontFormatException | IOException e) {
 			e.printStackTrace();
 		}
