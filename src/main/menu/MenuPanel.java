@@ -57,7 +57,7 @@ public class MenuPanel extends JPanel {
 	}
 
 	/**
-	 * addTitle is a class method that creates and adds the title label of the menu
+	 * addTitle is a class method that creates and adds the title label of the menu using GraphicJLabel
 	 */
 	private void addTitle() {
 		GraphicJLabel title = new GraphicJLabel("Floppy Floppa", Color.decode("#8EDCFB"), Color.decode("#3288FE"),
@@ -70,7 +70,7 @@ public class MenuPanel extends JPanel {
 	}
 
 	/**
-	 * addPlayButton is a class method that creates and adds the play button
+	 * addPlayButton is a class method that creates and adds the play button using GraphicJButton
 	 */
 	private void addPlayButton() {
 
@@ -84,7 +84,7 @@ public class MenuPanel extends JPanel {
 
 	/**
 	 * addButton is a class method that creates and adds the various buttons of the
-	 * menu
+	 * menu using GraphicJButton
 	 * 
 	 * @param name   - The text of the JButton
 	 * 
@@ -138,7 +138,7 @@ public class MenuPanel extends JPanel {
 	}
 
 	/**
-	 * class method that creates and adds the images show in the menu
+	 * addImage is a class method that creates and adds the images show in the menu
 	 * 
 	 * @param name   - The name for getImageResource
 	 * 
@@ -160,7 +160,7 @@ public class MenuPanel extends JPanel {
 	 */
 	private void addImage(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
 			int right) {
-		this.add(this.getImageResource(name),
+		this.add(this.getJLabelImage(name),
 				new GBCSimplified(gridx, gridy, CommonMethods.getPixelsFromPercentageWidth(ipadx),
 						CommonMethods.getPixelsFromPercentageHeight(ipady),
 						new Insets(CommonMethods.getPixelsFromPercentageWidth(top),
@@ -199,13 +199,13 @@ public class MenuPanel extends JPanel {
 	}
 
 	/**
-	 * The method reads an image file and creates the corresponding Image object
+	 * getJLabelImage is a method that reads an image file and creates the corresponding Image object
 	 * which gets also scaled
 	 * 
 	 * @param fileName
 	 * @return a JLabel containing the newly created Image
 	 */
-	private JLabel getImageResource(String fileName) {
+	private JLabel getJLabelImage(String fileName) {
 		JLabel label = null;
 		try {
 			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
@@ -219,7 +219,7 @@ public class MenuPanel extends JPanel {
 	}
 
 	/**
-	 * Returns a scaled version of the image parameter
+	 * scaleImage returns a scaled version of the image parameter
 	 * 
 	 * @param image - the image to scale
 	 * @param dim   - the Dimension to which to scale the image
