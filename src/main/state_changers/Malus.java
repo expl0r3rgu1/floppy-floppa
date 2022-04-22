@@ -41,8 +41,16 @@ public abstract class Malus extends Movable {
 		this.skin = skin;
 	}
 
+	/**
+	 * changeState is the method that changes a state of the Character or of the
+	 * game
+	 */
 	public abstract void changeState();
 
+	/**
+	 * moveOffScreen is the method that spawns the Malus out of the Screen after
+	 * been used one time
+	 */
 	public void moveOffScreen() {
 		setPosition(new Position(-getSkin().getWidth(), getPosition().getY()));
 	}
