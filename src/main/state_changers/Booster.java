@@ -9,7 +9,7 @@ import main.utilities.Skin;
 /**
  * A class that implements an object that helps the character in different ways
  */
-public class Booster extends Movable {
+public abstract class Booster extends Movable {
 
 	private Skin skin;
 
