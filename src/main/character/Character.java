@@ -28,6 +28,7 @@ import javax.swing.Timer;
 public class Character extends Movable {
 	private Skin skin;
 	private boolean dead;
+	public static boolean immortal = false;
 	private boolean jumping;
 	private Timer timer;
 
@@ -62,7 +63,7 @@ public class Character extends Movable {
 	 * Makes the status of the character as dead
 	 */
 	public void die() {
-		this.dead = true;
+		this.dead = (Character.immortal) ? false : true;
 	}
 
 	/**
