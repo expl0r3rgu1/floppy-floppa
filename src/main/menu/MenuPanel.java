@@ -15,7 +15,6 @@ import main.utilities.Constants.PANEL;
 import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 import main.utilities.CommonMethods;
-import main.utilities.generateJButton;
 import java.awt.Color;
 import java.awt.Dimension;
 
