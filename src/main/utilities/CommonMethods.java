@@ -1,6 +1,7 @@
 package main.utilities;
 
 import java.awt.Font;
+
 import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -12,20 +13,49 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+/**
+ * This class contains usefull methods used in more classes
+ */
 public class CommonMethods {
-	// Utility method to generate random integer in range (consider moving it)
+	/**
+	 * Utility method to generate random integer in range
+	 * 
+	 * @param min the lowest number that can be generated
+	 * @param max the biggest number that can be generated
+	 * @return a random number between min and max
+	 */
 	public static int getRandomNumber(int min, int max) {
 		return (int) ((Math.random() * (max - min)) + min);
 	}
 
+	/**
+	 * Method that calculates how many pixels the percentage of the screen width
+	 * corresponds to
+	 * 
+	 * @param percentage the percentage of the screen
+	 * @return the pixels that correspond to the percentage
+	 */
 	public static int getPixelsFromPercentageWidth(int percentage) {
 		return (int) Constants.SCREEN_SIZE.getWidth() * percentage / 100;
 	}
 
+	/**
+	 * Method that calculates how many pixels the percentage of the screen height
+	 * corresponds to
+	 * 
+	 * @param percentage the percentage of the screen
+	 * @return the pixels that correspond to the percentage
+	 */
 	public static int getPixelsFromPercentageHeight(int percentage) {
 		return (int) Constants.SCREEN_SIZE.getHeight() * percentage / 100;
 	}
 
+	/**
+	 * Method that gets an image from the resources
+	 * 
+	 * @param imageName the name of the image to get
+	 * @return the image
+	 */
 	public static Image getImageResource(String imageName) {
 		try {
 			return ImageIO.read(CommonMethods.class.getResource("/resources/images/" + imageName + ".png"));
@@ -36,6 +66,12 @@ public class CommonMethods {
 		return null;
 	}
 
+	/**
+	 * Method that gets a font from the resources
+	 * 
+	 * @param fontName the name of the font to get
+	 * @return the font
+	 */
 	public static Font getFontResource(String fontName) {
 		try {
 			return Font.createFont(Font.TRUETYPE_FONT,
@@ -47,10 +83,23 @@ public class CommonMethods {
 		return null;
 	}
 
+	/**
+	 * Method that gets a gif from the resources
+	 * 
+	 * @param gifName the name of the gif to get
+	 * @return the ImageIcon of the gif
+	 */
 	public static ImageIcon getGifResource(String gifName) {
 		return new ImageIcon(CommonMethods.class.getResource("/resources/gifs/" + gifName + ".gif"));
 	}
 
+	/**
+	 * Utility method to rotate an image of a given angle
+	 * 
+	 * @param image   the image to be rotated
+	 * @param degrees the degrees of the angle
+	 * @return the image rotated
+	 */
 	public static Image getAngledImage(Image image, int degrees) {
 		double rotationRequired = Math.toRadians(degrees);
 		double locationX = image.getWidth(null) / 2;
@@ -61,6 +110,12 @@ public class CommonMethods {
 		return op.filter(toBufferedImage(image), null);
 	}
 
+	/**
+	 * Utility method to get a BufferedImage from an image
+	 * 
+	 * @param img the image to change
+	 * @return the image transformed in a BufferedImage
+	 */
 	private static BufferedImage toBufferedImage(Image img) {
 		if (img instanceof BufferedImage) {
 			return (BufferedImage) img;
