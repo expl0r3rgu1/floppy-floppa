@@ -257,5 +257,9 @@ public class Character extends Movable {
 		this.getPosition().setY(this.getPosition().getY() + value * Constants.MOVING_FACTOR);
 
 	}
+	
+	public class TestUpdatePosition {
+		
+	}
 
 }
