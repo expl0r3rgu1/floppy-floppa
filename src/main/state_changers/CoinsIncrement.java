@@ -3,11 +3,13 @@ package main.state_changers;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Graphics2D;
+
 import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
 import main.utilities.CommonMethods;
+import main.game_engine.PlayPanel;
 import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
@@ -18,15 +20,12 @@ import main.utilities.Skin;
  */
 public class CoinsIncrement extends Booster {
 
-	private Random rand;
-
 	/**
 	 * @param position The CoinsIncrement initial position
 	 * @param skin     The CoinsIncrement skin
 	 */
 	public CoinsIncrement(Position position, Skin skin) {
 		super(position, skin);
-		rand = new Random();
 	}
 
 	/**
@@ -42,8 +41,9 @@ public class CoinsIncrement extends Booster {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Integer changeState() {
-		return (int) rand.nextInt(100);
+	public void changeState() {
+		PlayPanel.incrementTimes++;
+		moveOffScreen();
 	}
 
 	/**
@@ -51,8 +51,8 @@ public class CoinsIncrement extends Booster {
 	 */
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				CommonMethods.getPixelsFromPercentageWidth(3), CommonMethods.getPixelsFromPercentageWidth(3), null);
+		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(), getSkin().getWidth(),
+				getSkin().getHeight(), null);
 
 		this.updatePositionX();
 	}
