@@ -4,7 +4,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Dimension;
-import java.awt.Image;
 
 import org.junit.jupiter.api.Test;
 
