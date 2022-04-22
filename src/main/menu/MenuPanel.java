@@ -13,6 +13,7 @@ import main.utilities.GraphicJLabel;
 import main.utilities.Constants;
 import main.utilities.Constants.PANEL;
 import main.utilities.GBCSimplified;
+import main.utilities.GraphicJButton;
 import main.utilities.CommonMethods;
 import main.utilities.generateJButton;
 import java.awt.Color;
@@ -74,7 +75,7 @@ public class MenuPanel extends JPanel {
 	 */
 	private void addPlayButton() {
 
-		generateJButton jb = new generateJButton("Play", "fipps.otf", 90, "#77DD77", "#007542");
+		GraphicJButton jb = new GraphicJButton("Play", "fipps.otf", 90, "#77DD77", "#007542");
 
 		jb.addActionListener(adHocActionListener("PLAY"));
 
@@ -109,7 +110,7 @@ public class MenuPanel extends JPanel {
 		String actionListenerName = name.toUpperCase();
 
 		if (name.equals("Quit")) {
-			generateJButton jb = new generateJButton(name, "fipps.otf", 110, "#FF0000", "#8B0000");
+			GraphicJButton jb = new GraphicJButton(name, "fipps.otf", 110, "#FF0000", "#8B0000");
 
 			jb.addActionListener(adHocActionListener(actionListenerName));
 
@@ -122,7 +123,7 @@ public class MenuPanel extends JPanel {
 									CommonMethods.getPixelsFromPercentageWidth(right))));
 
 		} else {
-			generateJButton jb = new generateJButton(name, "fipps.otf", 120, "#FFDD62", "#FF971A");
+			GraphicJButton jb = new GraphicJButton(name, "fipps.otf", 120, "#FFDD62", "#FF971A");
 
 			jb.addActionListener(adHocActionListener(actionListenerName));
 
