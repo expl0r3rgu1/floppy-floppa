@@ -27,8 +27,7 @@ public class Map {
 	// MovingObstacle
 	private final TimedStateChangerGenerator timedStateChangerGenerator;
 
-	public Map(ScrollingBackground scrollingBackground, FixedObstacle fixedObstacle,
-			List<MovingObstacle> movingObstacles) {
+	public Map(ScrollingBackground scrollingBackground) {
 		this.scrollingBackground = scrollingBackground;
 		this.paintedFixedObstacles = new ArrayList<>();
 		this.paintedMovingObstacles = new ArrayList<>();
