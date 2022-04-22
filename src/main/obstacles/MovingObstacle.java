@@ -1,11 +1,18 @@
 package main.obstacles;
 
+import static org.junit.Assert.assertTrue;
+
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.Timer;
 
+import org.junit.jupiter.api.Test;
+
+import junit.framework.TestCase;
+import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Movable;
 import main.utilities.Position;
@@ -75,6 +82,34 @@ public class MovingObstacle extends Movable implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.direction = -this.direction;
+	}
+	
+	public static class TestMovingObstacle {
+
+		final private Position POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth()),
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		final private Position HALFWAY_POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth() / 2),
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		final private Skin SKIN = new Skin("Bingus", CommonMethods.getImageResource("Bingus"),
+				(int) this.POSITION.getX(), (int) this.POSITION.getY());
+		private int direction = -1;
+		
+		@Test
+		/**
+		 * Check if the moving pattern of the moving obstacle works correctly
+		 */
+		public void movingObstacleMovement() {
+			MovingObstacle movingObstacle = new MovingObstacle(this.POSITION, this.SKIN);
+			movingObstacle.updatePosition();
+			
+			assertTrue(movingObstacle.getPosition().getX() == (POSITION.getX() - 3 * Constants.MOVING_FACTOR));
+			assertTrue(movingObstacle.getPosition().getY() == (POSITION.getY() + direction * Constants.MOVING_FACTOR));
+
+			MovingObstacle movingObstacle1 = new MovingObstacle(this.HALFWAY_POSITION, this.SKIN);
+			movingObstacle1.updatePosition();
+			assertTrue(movingObstacle1.getPosition().getX() == (HALFWAY_POSITION.getX() - 3 * Constants.MOVING_FACTOR));
+			assertTrue(movingObstacle1.getPosition().getY() == (HALFWAY_POSITION.getY() + direction * Constants.MOVING_FACTOR));
+		}
 	}
 
 }
