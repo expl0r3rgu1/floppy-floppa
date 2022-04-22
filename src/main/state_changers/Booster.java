@@ -1,7 +1,5 @@
 package main.state_changers;
 
-import java.awt.Graphics2D;
-
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
@@ -9,7 +7,7 @@ import main.utilities.Skin;
 /**
  * A class that implements an object that helps the character in different ways
  */
-public class Booster extends Movable {
+public abstract class Booster extends Movable {
 
 	private Skin skin;
 
@@ -39,18 +37,15 @@ public class Booster extends Movable {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * This method simulates the effect of the booster
 	 */
-	public Object changeState() {
-		return null;
-		// TO BE IMPLEMENTED IN SUB-CLASSES
-	}
+	public abstract void changeState();
 
 	/**
-	 * {@inheritDoc}
+	 * Used to move the booster off screen so that there is only one effective
+	 * collision
 	 */
-	@Override
-	public void animate(Graphics2D canvas) {
-		// TO BE IMPLEMENTED IN SUB-CLASSES
+	public void moveOffScreen() {
+		setPosition(new Position(-getSkin().getWidth(), getPosition().getY()));
 	}
 }
