@@ -4,8 +4,6 @@ import java.util.Random;
 
 import main.game_engine.PlayPanel;
 import main.menu.shop.Shop;
-import main.state_changers.CoinsIncrement;
-import main.state_changers.CoinsReducer;
 
 public class EOGMenu implements Menu {
 
