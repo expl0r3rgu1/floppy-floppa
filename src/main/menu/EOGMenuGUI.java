@@ -76,7 +76,7 @@ public class EOGMenuGUI extends JPanel {
 						"<html><center> Old coins: &emsp &emsp New coins: </center> <br> <center> "
 								+ eogMenu.getPreviousCoins() + "&emsp &emsp &emsp " + eogMenu.getNewCoins()
 								+ "</center> </html>",
-						Color.decode("#77DD77"), Color.decode("#007542"), "fipps", 25f);
+						Color.decode("#77DD77"), Color.decode("#007542"), "pois", 50f);
 				this.add(coins,
 						new GBCSimplified(1, i, CommonMethods.getPixelsFromPercentageWidth(25),
 								CommonMethods.getPixelsFromPercentageHeight(15),
