@@ -10,34 +10,17 @@ import main.utilities.Position;
 public class Background extends Movable {
 	private String name;
 	private Image image;
-	private int movingFactor; // Makes the background skip movingFactor pixels at each update
 
 	public Background(String name, Image image) {
 		super(new Position(0, 0));
 		this.name = name;
 		this.image = image;
-		this.movingFactor = 1;
 	}
 
 	public Background(String name, Image image, Position position) {
 		super(position);
 		this.name = name;
 		this.image = image;
-		this.movingFactor = 1;
-	}
-
-	public Background(String name, Image image, int movingFactor) {
-		super(new Position(0, 0));
-		this.name = name;
-		this.image = image;
-		this.movingFactor = movingFactor;
-	}
-
-	public Background(String name, Image image, Position position, int movingFactor) {
-		super(position);
-		this.name = name;
-		this.image = image;
-		this.movingFactor = movingFactor;
 	}
 
 	public String getName() {
@@ -62,21 +45,15 @@ public class Background extends Movable {
 		canvas.drawImage(image, getPosition().getX(), getPosition().getY(), (int) Constants.SCREEN_SIZE.getWidth(),
 				(int) Constants.SCREEN_SIZE.getHeight(), null);
 
-		updatePosition(movingFactor);
+		updatePosition();
 
 		if (isOffStageLeft()) {
 			moveToSideOfSecondBackground();
 		}
 	}
 
-	private void updatePosition(int movingFactor) {
-		// Checking the width of the screen to decide if to use double the movingFactor
-		// or not
-		if (Constants.SCREEN_SIZE.getWidth() > 2000) {
-			movingFactor *= 2;
-		}
-
-		getPosition().setX(getPosition().getX() - movingFactor);
+	private void updatePosition() {
+		getPosition().setX(getPosition().getX() - Constants.MOVING_FACTOR);
 	}
 
 	private boolean isOffStageLeft() {
@@ -89,5 +66,11 @@ public class Background extends Movable {
 
 	private void moveToSideOfSecondBackground() {
 		getPosition().setX(getPosition().getX() + (int) Constants.SCREEN_SIZE.getWidth() * 2);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Background other = (Background) obj;
+		return super.equals(other) && this.name.equals(other.getName()) && this.image.equals(other.getImage());
 	}
 }

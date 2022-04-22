@@ -6,8 +6,6 @@ import java.util.List;
 
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
-import main.obstacles.ObstacleFactory;
-import main.obstacles.ObstacleFactoryImpl;
 import main.state_changers.Booster;
 import main.state_changers.Malus;
 import main.utilities.CommonMethods;
@@ -15,7 +13,6 @@ import main.utilities.Constants;
 import main.utilities.Position;
 
 public class Map {
-	// Background and FixedObstacle based on selected scenario
 	private final ScrollingBackground scrollingBackground;
 	private final List<FixedObstacle> paintedFixedObstacles; // Set of FixedObstacle that need to be or are being
 																// painted
