@@ -6,6 +6,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -50,7 +51,7 @@ public class LeaderboardPanel extends JPanel {
 
 	private void addTitle() {
 		JLabel title = new JLabel("LEADERBOARD", SwingConstants.CENTER);
-		title.setFont(CommonMethods.getFontResource("pixel.TTF").deriveFont(50f));
+		title.setFont(CommonMethods.getFontResource("pixel").deriveFont(50f));
 
 		this.add(title, new GBCSimplified(0, 0, 0, 0,
 				new Insets(0, 0, CommonMethods.getPixelsFromPercentageHeight(2), 0), GridBagConstraints.PAGE_START));
@@ -65,7 +66,7 @@ public class LeaderboardPanel extends JPanel {
 			JLabel score = new JLabel(
 					placeNumber + " - " + player.getNickname() + " - " + player.getPersonalBest() + " m",
 					SwingConstants.CENTER);
-			score.setFont(CommonMethods.getFontResource("fipps.otf").deriveFont(20f));
+			score.setFont(CommonMethods.getFontResource("fipps").deriveFont(20f));
 			score.setForeground(Color.lightGray);
 			scorePanel.add(score);
 
