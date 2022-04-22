@@ -31,13 +31,10 @@ public class EOGMenuGUI extends JPanel {
 	 * 
 	 * @param mainMenu        Used to show card layouts
 	 * @param metersTravelled The meters that the Character traveled during the game
-	 * @param reducerTimes    How many times the character hit the CoinsReducer
-	 *                        malus
-	 * @param incrementTimes  How many times the character hit the CoinsIncrement
-	 *                        booster
+	 * 
 	 */
-	public EOGMenuGUI(MainMenu mainMenu, int metersTravelled, int reducerTimes, int incrementTimes) {
-		this.eogMenu = new EOGMenu(mainMenu.getShop(), metersTravelled, reducerTimes, incrementTimes);
+	public EOGMenuGUI(MainMenu mainMenu, int metersTravelled) {
+		this.eogMenu = new EOGMenu(mainMenu.getShop(), metersTravelled);
 		this.mainMenu = mainMenu;
 
 		this.setLayout(new GridBagLayout());
