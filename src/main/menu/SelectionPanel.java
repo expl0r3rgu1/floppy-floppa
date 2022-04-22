@@ -129,7 +129,7 @@ public class SelectionPanel extends JPanel {
 					(float) Constants.SCREEN_SIZE.getWidth() / 120);
 			this.add(label, new GBCSimplified(j, i, 0, 0,
 					new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
-			this.add(this.imageCreation((i == 1 ? labelNames.get(j) : labelNames.get(j + 5))), new GBCSimplified(j,
+			this.add(this.getJLabelImage((i == 1 ? labelNames.get(j) : labelNames.get(j + 5))), new GBCSimplified(j,
 					i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
 		}
 		return i + 1;
@@ -194,7 +194,7 @@ public class SelectionPanel extends JPanel {
 	 * @param fileName
 	 * @return a JLabel containing the newly created Image
 	 */
-	private JLabel imageCreation(String fileName) {
+	private JLabel getJLabelImage(String fileName) {
 		JLabel label = null;
 		Image image = CommonMethods.getImageResource(fileName);
 		ImageIcon imageIcon = new ImageIcon(this.scale(image, new Dimension(
