@@ -7,6 +7,7 @@ import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
+import main.character.Character;
 import main.state_changers.Immortality;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
@@ -50,16 +51,6 @@ public class TestImmortality {
 	void coinsIncrementChangeState() {
 		Immortality immortality = new Immortality(this.POSITION, this.SKIN);
 		immortality.changeState();
-		assertTrue(immortality.isImmortal());
-
-		immortality.setImmortal(false);
-		assertFalse(immortality.isImmortal());
-		immortality.changeState();
-		assertTrue(immortality.isImmortal());
-
-		immortality.setImmortal(false);
-		assertFalse(immortality.isImmortal());
-		immortality.changeState();
-		assertTrue(immortality.isImmortal());
+		assertTrue(Character.immortal);
 	}
 }
