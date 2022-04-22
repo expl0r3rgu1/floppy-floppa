@@ -39,14 +39,15 @@ public class EOGMenu implements Menu {
 	 * The method updates the owned coins considering the meters traveled during the
 	 * last game, the CoinsReducer malus and the CoinsIncrement booster
 	 * 
-	 * @param meters         The meters that the Character traveled during the game
-	 * @param reducerTimes   How many times the character hit the CoinsReducer malus
-	 * @param incrementTimes How many times the character hit the CoinsIncrement
-	 *                       booster
+	 * @param meters The meters that the Character traveled during the game
 	 */
-	protected void updateCoins(int meters, int reducerTimes, int incrementTimes) {
-		newCoins = this.previousCoins + ((int) Math.floor(meters / 5) - this.updateCoinsReduce(reducerTimes)
-				+ this.updateCoinsIncrease(incrementTimes));
+	private void updateCoins(int meters) {
+		newCoins = this.previousCoins + ((int) Math.floor(meters / 5)) - this.updateCoinsReduce()
+				+ this.updateCoinsIncrease();
+
+		if (newCoins < 0) {
+			newCoins = 0;
+		}
 		shop.setCoins(newCoins);
 	}
 
