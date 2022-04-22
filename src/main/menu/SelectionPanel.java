@@ -80,20 +80,20 @@ public class SelectionPanel extends JPanel {
 			if (i == 1) {
 
 				GraphicJLabel skins = new GraphicJLabel("SKINS", Color.decode("#FFDD62"), Color.decode("#FF971A"),
-						"fipps.otf", (float) Constants.SCREEN_SIZE.getWidth() / 100);
+						"fipps", (float) Constants.SCREEN_SIZE.getWidth() / 100);
 				this.add(skins, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentageWidth(2)), 0,
 						new Insets((CommonMethods.getPixelsFromPercentageWidth(1)), 0, 0, 0)));
 
 			} else if (i == 5) {
 
 				GraphicJLabel backgrounds = new GraphicJLabel("BACKGROUNDS", Color.decode("#FFDD62"),
-						Color.decode("#FF971A"), "fipps.otf", (float) Constants.SCREEN_SIZE.getWidth() / 100);
+						Color.decode("#FF971A"), "fipps", (float) Constants.SCREEN_SIZE.getWidth() / 100);
 				this.add(backgrounds, new GBCSimplified(0, i, (CommonMethods.getPixelsFromPercentageWidth(2)), 0,
 						new Insets((CommonMethods.getPixelsFromPercentageWidth(3)), 0, 0, 0)));
 
 			} else if (i == numBackgrounds + numSkins - 1) {
 
-				GraphicJButton backMenu = new GraphicJButton("MENU", "fipps.otf", 100, "#FFDD62", "#FF971A");
+				GraphicJButton backMenu = new GraphicJButton("MENU", "fipps", 100, "#FFDD62", "#FF971A");
 				this.add(backMenu,
 						new GBCSimplified(4, i, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageWidth(2)), 0,
 								(CommonMethods.getPixelsFromPercentageWidth(1)), 0)));
@@ -125,7 +125,7 @@ public class SelectionPanel extends JPanel {
 	private int getLNameImage(int i) {
 		for (int j = 0; j < numSkins; j++) {
 			GraphicJLabel label = new GraphicJLabel((i == 2 ? labelNames.get(j) : labelNames.get(j + 5)),
-					Color.decode("#77DD77"), Color.decode("#007542"), "fipps.otf",
+					Color.decode("#77DD77"), Color.decode("#007542"), "fipps",
 					(float) Constants.SCREEN_SIZE.getWidth() / 120);
 			this.add(label, new GBCSimplified(j, i, 0, 0,
 					new Insets((CommonMethods.getPixelsFromPercentageWidth(2)), 0, 0, 0)));
@@ -147,7 +147,7 @@ public class SelectionPanel extends JPanel {
 	private void getSelectButton(int i) {
 		for (int j = 0; j < numSkins; j++) {
 			final int index = j;
-			GraphicJButton selectButton = new GraphicJButton("SELECT", "fipps.otf", 120, "#FDFD96", "#FFDD62");
+			GraphicJButton selectButton = new GraphicJButton("SELECT", "fipps", 120, "#FDFD96", "#FFDD62");
 
 			bought = (i == 4 ? skinList.get(j).isPurchased() : backgroundList.get(j).isPurchased());
 			selectButton.setEnabled(bought);
