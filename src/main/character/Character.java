@@ -120,8 +120,8 @@ public class Character extends Movable {
 				if ((characterY >= obstacleUpperY || characterY <= obstacleLowerY)
 						|| (characterLowerY >= obstacleUpperY || characterLowerY <= obstacleLowerY)) {
 
-					this.dead = true;
-					return;
+					this.die();
+					break;
 				}
 			}
 		}
@@ -142,8 +142,8 @@ public class Character extends Movable {
 			int width = movingObstacle.getSkin().getWidth();
 
 			if (this.checkCollision(x, y, height, width)) {
-				this.dead = true;
-				return;
+				this.die();
+				break;
 			}
 		}
 	}
@@ -163,7 +163,7 @@ public class Character extends Movable {
 
 			if (this.checkCollision(x, y, height, width)) {
 				malus.changeState();
-				return;
+				break;
 			}
 		}
 	}
@@ -183,7 +183,7 @@ public class Character extends Movable {
 
 			if (this.checkCollision(x, y, height, width)) {
 				booster.changeState();
-				return;
+				break;
 			}
 		}
 	}
@@ -198,7 +198,7 @@ public class Character extends Movable {
 		int lowerBorder = (int) Constants.SCREEN_SIZE.getHeight();
 
 		if (characterY <= upperBorder || characterLowerY >= lowerBorder) {
-			this.dead = true;
+			this.die();
 		}
 	}
 
@@ -215,7 +215,7 @@ public class Character extends Movable {
 		int characterX = this.getPosition().getX();
 		int characterWiderX = characterX + this.skin.getWidth();
 		int characterY = this.getPosition().getY();
-		int characterLowerY = characterY + this.getSkin().getHeight();
+		int characterLowerY = characterY + this.skin.getHeight();
 		int entityWiderX = x + width;
 		int entityLowerY = y + height;
 
