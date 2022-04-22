@@ -42,6 +42,6 @@ public class Constants {
 					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))));
 
 	public static enum PANEL {
-		MENU, PLAY, LEADERBOARD, SHOP, TUTORIAL, EOGMENU
+		MENU, PLAY, LEADERBOARD, SHOP, TUTORIAL, EOGMENU, SELECT
 	}
 }
