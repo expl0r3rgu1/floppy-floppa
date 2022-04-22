@@ -21,7 +21,6 @@ public class CoinsIncrement extends Booster {
 	 */
 	public CoinsIncrement(Position position, Skin skin) {
 		super(position, skin);
-		rand = new Random();
 	}
 
 	/**
