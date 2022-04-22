@@ -56,12 +56,12 @@ public class Shop {
 	}
 
 	/**
-	 * Sets the coins field
+	 * Sets the coins field and it makes sure that the coins cannot be negative
 	 * 
 	 * @param coins
 	 */
 	public void setCoins(int coins) {
-		this.coins = coins;
+		this.coins = (coins < 0) ? 0 : coins;
 	}
 
 	/**
