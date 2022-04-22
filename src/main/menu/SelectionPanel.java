@@ -5,10 +5,12 @@ import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -196,10 +198,14 @@ public class SelectionPanel extends JPanel {
 	 */
 	private JLabel getJLabelImage(String fileName) {
 		JLabel label = null;
-		Image image = CommonMethods.getImageResource(fileName);
-		ImageIcon imageIcon = new ImageIcon(this.scale(image, new Dimension(
-				(CommonMethods.getPixelsFromPercentageWidth(8)), (CommonMethods.getPixelsFromPercentageWidth(8)))));
-		label = new JLabel(imageIcon);
+		try {
+			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
+			ImageIcon imageIcon = new ImageIcon(this.scale(image, new Dimension(
+					(CommonMethods.getPixelsFromPercentageWidth(8)), (CommonMethods.getPixelsFromPercentageWidth(8)))));
+			label = new JLabel(imageIcon);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return label;
 	}
 
