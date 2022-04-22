@@ -1,5 +1,8 @@
 package main.menu;
 
+import java.util.Random;
+
+import main.game_engine.PlayPanel;
 import main.menu.shop.Shop;
 import main.state_changers.CoinsIncrement;
 import main.state_changers.CoinsReducer;
@@ -52,9 +55,10 @@ public class EOGMenu implements Menu {
 	}
 
 	/**
-	 * Calculates how many coins need to be subtracted
+	 * Calculates how many coins need to be subtracted to the total amount
+	 * (previously owned coins + won coins in the last game). The coins subtracted
+	 * are represented by an int randomly chosen from an ArrayList.
 	 * 
-	 * @param times How many times the character hit the CoinsReducer malus
 	 * @return the sum of coins that need to be subtracted
 	 */
 	private int updateCoinsReduce(int times) {
@@ -66,16 +70,15 @@ public class EOGMenu implements Menu {
 	}
 
 	/**
-	 * Calculates how many coins need to be subtracted
+	 * Calculates how many coins need to be added to the total amount (previously
+	 * owned coins + won coins in the last game). The coins added are represented by
+	 * a random int that can go from 0 to 100.
 	 * 
-	 * @param times How many times the character hit the CoinsReducer malus
-	 * @return the sum of coins that need to be subtracted
+	 * @return the sum of coins that need to be added
 	 */
-	private int updateCoinsIncrease(int times) {
-		int sum = 0;
-		for (int i = 0; i < times; i++) {
-			sum += coinsIncrement.changeState();
-		}
-		return sum;
+	private int updateCoinsIncrease() {
+		Random randomIncrease = new Random();
+
+		return PlayPanel.incrementTimes * randomIncrease.nextInt(100);
 	}
 }
