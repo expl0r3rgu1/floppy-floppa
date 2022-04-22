@@ -117,7 +117,7 @@ public class SelectionPanel extends JPanel {
 	 * getLNameImage is a method that thanks to i, using an ArrayList to get the
 	 * names and a for it creates on two lines a firstly a JLabel of the names of
 	 * the various Skins and Backgrounds, using GraphicJLabel, then it creates the
-	 * images from calling the method imageCreation
+	 * images from calling the method getJLabelImage
 	 * 
 	 * @param i - int to get the Skin or the Background by looking at the line
 	 * @return new int line to skip the ones newly made
@@ -136,7 +136,7 @@ public class SelectionPanel extends JPanel {
 	}
 
 	/**
-	 * getSelectButton is a method that creates a JButton, using generateJButton,
+	 * getSelectButton is a method that creates a JButton, using GraphicJButton,
 	 * for every Skin or Background, then by reading in the skinList and the
 	 * backgroundList, it can be checked if the object is been bought by the player,
 	 * and if it bought the button will be enabled and then can be equiped by the
@@ -188,7 +188,7 @@ public class SelectionPanel extends JPanel {
 	}
 
 	/**
-	 * The method reads an image file and creates the corresponding Image object
+	 * getJLabelImage is a method that reads an image file and creates the corresponding Image object
 	 * which gets also scaled
 	 * 
 	 * @param fileName
@@ -204,7 +204,7 @@ public class SelectionPanel extends JPanel {
 	}
 
 	/**
-	 * Returns a scaled version of the image parameter
+	 * scale returns a scaled version of the image parameter
 	 * 
 	 * @param image - the image to scale
 	 * @param dim   - the Dimension to which to scale the image
