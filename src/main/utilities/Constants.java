@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.List;
 
+import main.obstacles.FixedObstacle;
 import main.obstacles.ObstacleFactory;
 import main.obstacles.ObstacleFactoryImpl;
 import main.state_changers.BlackStain;
@@ -35,6 +36,9 @@ public class Constants {
 
 	public static final ObstacleFactory OBSTACLE_FACTORY = new ObstacleFactoryImpl();
 	public static final StateChangerFactory STATE_CHANGER_FACTORY = new StateChangerFactoryImpl();
+
+	public static final FixedObstacle FIXED_OBSTACLE = OBSTACLE_FACTORY.fixedObstacleFactory(null, new Skin("pipe",
+			CommonMethods.getImageResource("pipe"), CommonMethods.getPixelsFromPercentageWidth(10), 0));
 
 	public static final List<Malus> MALUS = List.of(
 			new BlackStain(null, new Skin("blackstains", CommonMethods.getImageResource("blackstains"),
