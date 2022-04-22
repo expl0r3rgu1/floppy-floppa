@@ -62,7 +62,7 @@ public class MenuPanel extends JPanel {
 	 */
 	private void addTitle() {
 		GraphicJLabel title = new GraphicJLabel("Floppy Floppa", Color.decode("#8EDCFB"), Color.decode("#3288FE"),
-				"pixel.TTF", (float) Constants.SCREEN_SIZE.getWidth() / 25);
+				"pixel", (float) Constants.SCREEN_SIZE.getWidth() / 25);
 
 		title.setOpaque(false);
 
@@ -75,7 +75,7 @@ public class MenuPanel extends JPanel {
 	 */
 	private void addPlayButton() {
 
-		GraphicJButton jb = new GraphicJButton("Play", "fipps.otf", 90, "#77DD77", "#007542");
+		GraphicJButton jb = new GraphicJButton("Play", "fipps", 90, "#77DD77", "#007542");
 
 		jb.addActionListener(adHocActionListener("PLAY"));
 
@@ -110,7 +110,7 @@ public class MenuPanel extends JPanel {
 		String actionListenerName = name.toUpperCase();
 
 		if (name.equals("Quit")) {
-			GraphicJButton jb = new GraphicJButton(name, "fipps.otf", 110, "#FF0000", "#8B0000");
+			GraphicJButton jb = new GraphicJButton(name, "fipps", 110, "#FF0000", "#8B0000");
 
 			jb.addActionListener(adHocActionListener(actionListenerName));
 
@@ -123,7 +123,7 @@ public class MenuPanel extends JPanel {
 									CommonMethods.getPixelsFromPercentageWidth(right))));
 
 		} else {
-			GraphicJButton jb = new GraphicJButton(name, "fipps.otf", 120, "#FFDD62", "#FF971A");
+			GraphicJButton jb = new GraphicJButton(name, "fipps", 120, "#FFDD62", "#FF971A");
 
 			jb.addActionListener(adHocActionListener(actionListenerName));
 
