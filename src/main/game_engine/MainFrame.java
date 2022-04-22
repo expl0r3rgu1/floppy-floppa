@@ -15,6 +15,9 @@ import javax.swing.JFrame;
 import main.menu.MainMenu;
 import main.utilities.GameSettings;
 
+/**
+ * The JFrame that contains the whole game in fullscreen
+ */
 public class MainFrame extends JFrame {
 	private static final long serialVersionUID = -5008443485850327687L;
 	private GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
@@ -37,6 +40,9 @@ public class MainFrame extends JFrame {
 		this.setVisible(true);
 	}
 
+	/**
+	 * Generates a new Thread that plays the soundtrack of the game
+	 */
 	public static synchronized void playSoundtrack() {
 		File audioFile = new File(MainFrame.class.getResource("/resources/sounds/soundtrack.wav").getFile());
 
