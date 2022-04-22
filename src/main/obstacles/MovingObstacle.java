@@ -5,13 +5,11 @@ import static org.junit.Assert.assertTrue;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 import javax.swing.Timer;
 
 import org.junit.jupiter.api.Test;
 
-import junit.framework.TestCase;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Movable;
