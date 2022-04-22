@@ -76,5 +76,14 @@ public class MovingObstacle extends Movable implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		this.direction = -this.direction;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		MovingObstacle other = (MovingObstacle)obj;
+		return super.equals(other) && this.skin.equals(other.skin);
+	}
 
 }
