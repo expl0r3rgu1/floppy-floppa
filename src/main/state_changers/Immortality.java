@@ -37,22 +37,6 @@ public class Immortality extends Booster {
 	}
 
 	/**
-	 * @return immortal, true if the character has hit the booster, false otherwise
-	 */
-	public boolean isImmortal() {
-		return immortal;
-	}
-
-	/**
-	 * Sets the immortal parameter of the Immortality booster class
-	 * 
-	 * @param immortal
-	 */
-	public void setImmortal(boolean immortal) {
-		this.immortal = immortal;
-	}
-
-	/**
 	 * The method gives the Immortality booster a new Position that leaves the Y
 	 * position unchanged, while the X position decreases by one pixel so that the
 	 * object moves from right to left
