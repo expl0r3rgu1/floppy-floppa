@@ -40,7 +40,7 @@ public class CommonMethods {
 	public static Font getFontResource(String fontName) {
 		try {
 			return Font.createFont(Font.TRUETYPE_FONT,
-					new File(CommonMethods.class.getResource("/resources/fonts/" + fontName).getFile()));
+					CommonMethods.class.getResourceAsStream("/resources/fonts/" + fontName + ".ttf"));
 		} catch (FontFormatException | IOException e) {
 			e.printStackTrace();
 		}
