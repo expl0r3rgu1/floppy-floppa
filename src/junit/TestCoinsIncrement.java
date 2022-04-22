@@ -40,15 +40,4 @@ public class TestCoinsIncrement {
 		xPos = this.RANDOM_POSITION.getX();
 		assertTrue(coinsIncrement.getPosition().getX() == xPos--);
 	}
-
-	@Test
-	/**
-	 * Checks if the booster actually returns an int between 0 and 100
-	 */
-	void coinsIncrementChangeState() {
-		CoinsIncrement coinsIncrement = new CoinsIncrement(this.POSITION, this.SKIN);
-		for (int i = 0; i < 100; i++) {
-			assertTrue(coinsIncrement.changeState() >= 0 && coinsIncrement.changeState() <= 100);
-		}
-	}
 }
