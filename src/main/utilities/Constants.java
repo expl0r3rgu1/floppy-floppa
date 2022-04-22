@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.List;
 
+import main.obstacles.ObstacleFactory;
+import main.obstacles.ObstacleFactoryImpl;
 import main.state_changers.BlackStain;
 import main.state_changers.BlindBlock;
 import main.state_changers.Booster;
@@ -28,6 +30,8 @@ public class Constants {
 	public static final int LEADERBOARD_FILE_LINE_START = 3;
 	public static final int CHANGE_DIRECTION_TIMEOUT = 60000;
 	public static final int CHARACTER_JUMP_TIMEOUT = 30000;
+
+	public static final ObstacleFactory OBSTACLE_FACTORY = new ObstacleFactoryImpl();
 
 	public static final List<Malus> MALUS = List.of(
 			new BlackStain(null, new Skin("blackstains", CommonMethods.getImageResource("blackstains"),
