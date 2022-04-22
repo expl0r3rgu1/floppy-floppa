@@ -18,7 +18,7 @@ public class TestCommonMethods {
 	private final int PERCENTAGE = 100;
 	private final String IMAGE_NAME = "Background";
 	private final String FONT_NAME = "pixel";
-	private final String GIF_NAME = "Tutorial";
+	private final String GIF_NAME = "tutorial";
 
 	@Test
 	/**
