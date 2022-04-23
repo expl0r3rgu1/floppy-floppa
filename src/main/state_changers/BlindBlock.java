@@ -16,8 +16,8 @@ import main.utilities.Skin;
 
 /**
  * A class that extends Malus class and implements an entity that makes appear a
- * black block on the screen, blocking the players vision of part of the right side of
- * the screen, every time they hit this malus
+ * black block on the screen, blocking the players vision of part of the right
+ * side of the screen, every time they hit this malus
  */
 public class BlindBlock extends Malus implements ActionListener {
 
@@ -51,7 +51,7 @@ public class BlindBlock extends Malus implements ActionListener {
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR, getPosition().getY()));
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -61,14 +61,14 @@ public class BlindBlock extends Malus implements ActionListener {
 				getSkin().getHeight(), null);
 
 		this.updatePositionX();
-		
+
 		if (collided) {
 			canvas.drawImage(getSkin().getImage(), (int) Constants.SCREEN_SIZE.getWidth() / 3, 0,
 					CommonMethods.getPixelsFromPercentageWidth(33), (int) Constants.SCREEN_SIZE.getHeight(), null);
 		}
-		
+
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -77,7 +77,10 @@ public class BlindBlock extends Malus implements ActionListener {
 		this.collided = false;
 		timer.stop();
 	}
-
+	
+	/**
+	 * TestBlindBlock is a class that tests the updatePosition of BlindBlock
+	 */
 	public static class TestBlindBlock {
 		final private Position POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth()),
 				(int) Constants.SCREEN_SIZE.getHeight() / 2);
@@ -88,7 +91,7 @@ public class BlindBlock extends Malus implements ActionListener {
 
 		@Test
 		/**
-		 * Check if the moving pattern of the booster works correctly
+		 * Check if the moving pattern of the malus works correctly
 		 */
 		void coinsIncrementBoosterMovement() {
 			BlindBlock blindBlock1 = new BlindBlock(this.POSITION, this.SKIN);
@@ -103,5 +106,6 @@ public class BlindBlock extends Malus implements ActionListener {
 
 		}
 	}
-	
+
 }
+
