@@ -38,8 +38,7 @@ public class SelectionPanel extends JPanel {
 	private boolean bought = false;
 	private final List<PurchaseStatus<PricedSkin>> skinList;
 	private final List<PurchaseStatus<PricedBackground>> backgroundList;
-	private final ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
-			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
+	private final ArrayList<String> labelNames;
 
 	/**
 	 * @param mainMenu - used to show cardlayouts
@@ -51,10 +50,10 @@ public class SelectionPanel extends JPanel {
 		this.mainMenu = mainMenu;
 		this.settings = settings;
 		shop = new Shop();
+		labelNames = shop.getLabelNames();
+
 		grid = new GridBagLayout();
 		this.setLayout(grid);
-
-		CommonMethods.getImageResource("Background");
 
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.setOpaque(false);
@@ -126,8 +125,9 @@ public class SelectionPanel extends JPanel {
 					(float) Constants.SCREEN_SIZE.getWidth() / 120);
 			this.add(label, new GBCSimplified(j, i, 0, 0,
 					new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
-			this.add(CommonMethods.getJLabelImage((i == 1 ? labelNames.get(j) : labelNames.get(j + 5)), 8), new GBCSimplified(j,
-					i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
+			this.add(CommonMethods.getJLabelImage((i == 1 ? labelNames.get(j) : labelNames.get(j + 5)), 8),
+					new GBCSimplified(j, i + 1, 0, 0,
+							new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
 		}
 		return i + 1;
 	}
