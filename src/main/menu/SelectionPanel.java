@@ -156,7 +156,7 @@ public class SelectionPanel extends JPanel {
 			this.add(selectButton,
 					new GBCSimplified(j, i, (CommonMethods.getPixelsFromPercentageWidth(3)), 0,
 							new Insets((CommonMethods.getPixelsFromPercentageHeight(1)),
-									(CommonMethods.getPixelsFromPercentageHeight(5)), 0,
+									(CommonMethods.getPixelsFromPercentageWidth(5)), 0,
 									(CommonMethods.getPixelsFromPercentageHeight(5)))));
 		}
 	}
