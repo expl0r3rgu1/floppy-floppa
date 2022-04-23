@@ -19,6 +19,7 @@ import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
+import main.utilities.Constants.PANEL;
 
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
@@ -50,7 +51,7 @@ public class LeaderboardPanel extends JPanel {
 	// GRAPHIC COMPONENTS
 
 	private void addTitle() {
-		JLabel title = new JLabel("LEADERBOARD", SwingConstants.CENTER);
+		JLabel title = new JLabel(PANEL.LEADERBOARD.name(), SwingConstants.CENTER);
 		title.setFont(CommonMethods.getFontResource("pixel").deriveFont(50f));
 
 		this.add(title, new GBCSimplified(0, 0, 0, 0,
