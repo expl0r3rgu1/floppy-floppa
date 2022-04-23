@@ -28,15 +28,6 @@ public abstract class Booster extends Movable {
 	}
 
 	/**
-	 * Sets the booster Skin
-	 * 
-	 * @param skin the booster skin
-	 */
-	public void setSkin(Skin skin) {
-		this.skin = skin;
-	}
-
-	/**
 	 * This method simulates the effect of the booster
 	 */
 	public abstract void changeState();
