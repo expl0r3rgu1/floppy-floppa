@@ -37,7 +37,7 @@ public class Character extends Movable {
 	 */
 	public static boolean immortal = false;
 	private boolean jumping;
-	private Timer timer;
+	private final Timer timer;
 
 	/**
 	 * @param position the initial spawning position of the character
