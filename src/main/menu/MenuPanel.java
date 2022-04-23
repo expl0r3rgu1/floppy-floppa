@@ -62,7 +62,7 @@ public class MenuPanel extends JPanel {
 		title.setOpaque(false);
 
 		this.add(title,
-				new GBCSimplified(2, 0, 0, 0, new Insets(0, 0, CommonMethods.getPixelsFromPercentageWidth(3), 0)));
+				new GBCSimplified(2, 0, 0, 0, new Insets(0, 0, CommonMethods.getPixelsFromPercentageHeight(3), 0)));
 	}
 
 	/**
@@ -183,9 +183,9 @@ public class MenuPanel extends JPanel {
 		this.add(CommonMethods.getJLabelImage(name, 20),
 				new GBCSimplified(gridx, gridy, CommonMethods.getPixelsFromPercentageWidth(ipadx),
 						CommonMethods.getPixelsFromPercentageHeight(ipady),
-						new Insets(CommonMethods.getPixelsFromPercentageWidth(top),
+						new Insets(CommonMethods.getPixelsFromPercentageHeight(top),
 								CommonMethods.getPixelsFromPercentageWidth(left),
-								CommonMethods.getPixelsFromPercentageWidth(bottom),
+								CommonMethods.getPixelsFromPercentageHeight(bottom),
 								CommonMethods.getPixelsFromPercentageWidth(right))));
 	}
 
