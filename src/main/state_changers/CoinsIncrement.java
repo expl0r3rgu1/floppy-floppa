@@ -4,8 +4,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.awt.Graphics2D;
 
-import java.util.Random;
-
 import org.junit.jupiter.api.Test;
 
 import main.utilities.CommonMethods;
