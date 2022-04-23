@@ -4,13 +4,11 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import main.character.Character;
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
-import main.obstacles.ObstacleFactory;
-import main.obstacles.ObstacleFactoryImpl;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
@@ -43,7 +41,7 @@ public class TestCharacter {
 	/**
 	 * Checks if the character collides correctly with a fixed obstacle
 	 */
-	void collideFixedObstacleTest() {
+	public void collideFixedObstacleTest() {
 		Character characterUp = new Character(CHARACTER_COLLIDE_LOWER_PIPE,
 				new Skin("floppa", CommonMethods.getImageResource("Floppa"),
 						CommonMethods.getImageResource("Floppa").getWidth(null),
@@ -65,7 +63,7 @@ public class TestCharacter {
 	 * obstacle, malus and booster), I only test for moving obstacle because the
 	 * different methods for the entities all use the same private method
 	 */
-	void collideMovingEntityTest() {
+	public void collideMovingEntityTest() {
 		Character character = new Character(CHARACTER_COLLIDE_CENTER_MOVING_ENTITY,
 				new Skin("floppa", CommonMethods.getImageResource("Floppa"),
 						CommonMethods.getImageResource("Floppa").getWidth(null),
@@ -79,7 +77,7 @@ public class TestCharacter {
 	 * Checks if the character collides correctly with the upper and lower border of
 	 * the map
 	 */
-	void collideBordersTest() {
+	public void collideBordersTest() {
 		Character characterLo = new Character(CHARACTER_COLLIDE_LOWER_BORDER,
 				new Skin("floppa", CommonMethods.getImageResource("Floppa"),
 						CommonMethods.getImageResource("Floppa").getWidth(null),

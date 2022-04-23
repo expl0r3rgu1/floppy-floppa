@@ -5,11 +5,10 @@ import static org.junit.Assert.assertTrue;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 import javax.swing.Timer;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import main.character.Character;
 import main.utilities.CommonMethods;
@@ -23,7 +22,7 @@ import main.utilities.Skin;
  */
 public class Immortality extends Booster {
 
-	private Timer timer;
+	private final Timer timer;
 
 	/**
 	 * @param position The CoinsIncrement initial position
@@ -84,7 +83,7 @@ public class Immortality extends Booster {
 		/**
 		 * Check if the moving pattern of the booster works correctly
 		 */
-		void immortalityBoosterMovement() {
+		public void immortalityBoosterMovement() {
 			Immortality immortality1 = new Immortality(this.POSITION, this.SKIN);
 			immortality1.updatePositionX();
 			assertTrue(immortality1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
@@ -100,7 +99,7 @@ public class Immortality extends Booster {
 		/**
 		 * Checks if the booster actually sets the Immortality field to true
 		 */
-		void coinsIncrementChangeState() {
+		public void coinsIncrementChangeState() {
 			Immortality immortality = new Immortality(this.POSITION, this.SKIN);
 			immortality.changeState();
 			assertTrue(Character.immortal);

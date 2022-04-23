@@ -22,7 +22,7 @@ import main.utilities.Skin;
 public class BlindBlock extends Malus implements ActionListener {
 
 	private boolean collided = false;
-	private Timer timer;
+	private final Timer timer;
 
 	/**
 	 * @param position - The CoinsReducer initial position

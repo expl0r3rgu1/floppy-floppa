@@ -1,13 +1,8 @@
 package main.menu;
 
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import main.utilities.GraphicJLabel;
 import main.utilities.Constants;
@@ -16,7 +11,6 @@ import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 import main.utilities.CommonMethods;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 
 /**
@@ -25,9 +19,9 @@ import java.awt.GridBagConstraints;
 public class MenuPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
-	private GridBagLayout grid = new GridBagLayout();
-	JPanel panel = new JPanel(new GridBagLayout());
-	private MainMenu mainMenu;
+	private final GridBagLayout grid;
+	private final JPanel panel;
+	private final MainMenu mainMenu;
 
 	/**
 	 * @param mainMenu - used to show cardlayouts
@@ -36,7 +30,9 @@ public class MenuPanel extends JPanel {
 	public MenuPanel(MainMenu mainMenu) {
 
 		this.mainMenu = mainMenu;
+		grid = new GridBagLayout();
 		this.setLayout(grid);
+		panel = new JPanel(grid);
 
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.setOpaque(false);
@@ -66,7 +62,7 @@ public class MenuPanel extends JPanel {
 		title.setOpaque(false);
 
 		this.add(title,
-				new GBCSimplified(2, 0, 0, 0, new Insets(0, 0, CommonMethods.getPixelsFromPercentageWidth(3), 0)));
+				new GBCSimplified(2, 0, 0, 0, new Insets(0, 0, CommonMethods.getPixelsFromPercentageHeight(3), 0)));
 	}
 
 	/**
@@ -162,7 +158,7 @@ public class MenuPanel extends JPanel {
 	}
 
 	/**
-	 * class method that creates and adds the images show in the menu
+	 * addImage is a class method that creates and adds the images show in the menu
 	 * 
 	 * @param name   - The name for getImageResource
 	 * 
@@ -184,7 +180,7 @@ public class MenuPanel extends JPanel {
 	 */
 	private void addImage(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
 			int right) {
-		this.add(this.getImageResource(name),
+		this.add(CommonMethods.getJLabelImage(name, 20),
 				new GBCSimplified(gridx, gridy, CommonMethods.getPixelsFromPercentageWidth(ipadx),
 						CommonMethods.getPixelsFromPercentageHeight(ipady),
 						new Insets(CommonMethods.getPixelsFromPercentageHeight(top),
@@ -220,37 +216,6 @@ public class MenuPanel extends JPanel {
 				mainMenu.showCard(PANEL.valueOf(panelName));
 			};
 		}
-	}
-
-	/**
-	 * The method reads an image file and creates the corresponding Image object
-	 * which gets also scaled
-	 * 
-	 * @param fileName
-	 * @return a JLabel containing the newly created Image
-	 */
-	private JLabel getImageResource(String fileName) {
-		JLabel label = null;
-		try {
-			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
-			ImageIcon imageIcon = new ImageIcon(this.scaleImage(image, new Dimension(
-					CommonMethods.getPixelsFromPercentageWidth(20), CommonMethods.getPixelsFromPercentageWidth(20))));
-			label = new JLabel(imageIcon);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return label;
-	}
-
-	/**
-	 * Returns a scaled version of the image parameter
-	 * 
-	 * @param image - the image to scale
-	 * @param dim   - the Dimension to which to scale the image
-	 * @return a scaled version of the image parameter
-	 */
-	private Image scaleImage(Image image, Dimension dim) {
-		return image.getScaledInstance((int) dim.getWidth(), (int) dim.getHeight(), Image.SCALE_DEFAULT);
 	}
 
 }

@@ -25,16 +25,19 @@ public class Shop {
 	private int skinsNum;
 	private int sceneriesNum;
 	private int coins;
-	private List<String> skinInitialize = new ArrayList<>();
-	private List<String> backgroundInitialize = new ArrayList<>();
-	private List<Integer> prices = Arrays.asList(0, 50, 100, 200, 500);
-	private List<PurchaseStatus<PricedSkin>> skins;
-	private List<PurchaseStatus<PricedBackground>> sceneries;
-	private File savingsFile;
+	private final List<String> skinInitialize;
+	private final List<String> backgroundInitialize;
+	private final List<Integer> prices;
+	private final List<PurchaseStatus<PricedSkin>> skins;
+	private final List<PurchaseStatus<PricedBackground>> sceneries;
+	private final File savingsFile;
 
 	public Shop() {
 		this.initializeStrings();
 		this.coins = 0;
+		this.skinInitialize = new ArrayList<>();
+		this.backgroundInitialize = new ArrayList<>();
+		this.prices  = Arrays.asList(0, 50, 100, 200, 500);
 
 		skins = new ArrayList<>();
 		sceneries = new ArrayList<>();

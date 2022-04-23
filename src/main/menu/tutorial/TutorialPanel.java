@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import main.menu.MainMenu;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
+import main.utilities.Constants.PANEL;
 import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 
@@ -22,7 +23,7 @@ import main.utilities.GraphicJButton;
  */
 public class TutorialPanel extends JPanel {
 	private static final long serialVersionUID = 3621436339823195193L;
-	private MainMenu mainMenu;
+	private final MainMenu mainMenu;
 
 	/**
 	 * @param mainMenu it is necessary to use correctly the card layout
@@ -42,7 +43,7 @@ public class TutorialPanel extends JPanel {
 	 * Creates and adds the label that contains the title of this panel
 	 */
 	private void addTitleLabel() {
-		JLabel titleLabel = new JLabel("TUTORIAL");
+		JLabel titleLabel = new JLabel(PANEL.TUTORIAL.name());
 		titleLabel.setFont(CommonMethods.getFontResource("pixel").deriveFont(50f));
 
 		this.add(titleLabel, new GBCSimplified(0, 0, 0, CommonMethods.getPixelsFromPercentageHeight(1)));
@@ -66,11 +67,11 @@ public class TutorialPanel extends JPanel {
 	 * Creates and adds the button to go back to the main menu
 	 */
 	private void addMenuButton() {
-		GraphicJButton menuButton = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
-				"Arial", Font.BOLD);
+		GraphicJButton menuButton = new GraphicJButton(PANEL.MENU.name(), Color.decode("#FFDD62"),
+				Color.decode("#FF971A"), "Arial", Font.BOLD);
 
 		menuButton.addActionListener(e -> {
-			mainMenu.showCard(Constants.PANEL.MENU);
+			mainMenu.showCard(PANEL.MENU);
 		});
 
 		this.add(menuButton,

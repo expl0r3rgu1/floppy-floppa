@@ -71,7 +71,7 @@ public class FixedObstacle extends Movable {
 		return super.equals(other) && this.skin.equals(other.skin);
 	}
 
-	/**
+  /**
 	 * TestFixedObstacle is a class that tests the updatePosition of fixedObstacle
 	 */
 	public static class TestFixedObstacle {
@@ -98,5 +98,5 @@ public class FixedObstacle extends Movable {
 		}
 
 	}
-
+  
 }

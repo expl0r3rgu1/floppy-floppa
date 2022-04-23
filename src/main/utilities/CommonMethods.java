@@ -1,5 +1,6 @@
 package main.utilities;
 
+import java.awt.Dimension;
 import java.awt.Font;
 
 import java.awt.FontFormatException;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  * This class contains usefull methods used in more classes
@@ -66,6 +68,33 @@ public class CommonMethods {
 		return null;
 	}
 
+	/**
+	 * getJLabelImage is a method that reads an image file and creates the
+	 * corresponding Image object which gets also scaled
+	 * 
+	 * @param fileName
+	 * @return a JLabel containing the newly created Image
+	 */
+	public static JLabel getJLabelImage(String fileName, int dimension) {
+		JLabel label = null;
+		Image image = getImageResource(fileName);
+		ImageIcon imageIcon = new ImageIcon(scale(image, new Dimension(
+				(CommonMethods.getPixelsFromPercentageWidth(dimension)), (CommonMethods.getPixelsFromPercentageWidth(dimension)))));
+		label = new JLabel(imageIcon);
+		return label;
+	}
+	
+	/**
+	 * scale returns a scaled version of the image parameter
+	 * 
+	 * @param image - the image to scale
+	 * @param dim   - the Dimension to which to scale the image
+	 * @return a scaled version of the image parameter
+	 */
+	private static Image scale(Image image, Dimension dim) {
+		return image.getScaledInstance((int) dim.getWidth(), (int) dim.getHeight(), Image.SCALE_DEFAULT);
+	}
+	
 	/**
 	 * Method that gets a font from the resources
 	 * 
