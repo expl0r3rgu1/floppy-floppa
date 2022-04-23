@@ -62,4 +62,29 @@ public class TestTimedEntityGenerator {
 
 		assertTrue(map.getPaintedMovingObstacles().size() == 1);
 	}
+
+	@Test
+	public void testTimedStateChangerGenerator() {
+		Map map = new Map(null);
+		assertTrue(map.getPaintedMalus().size() == 0 && map.getPaintedBoosters().size() == 0);
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				TimedStateChangerGenerator timedStateChangerGenerator = new TimedStateChangerGenerator(map);
+				timedStateChangerGenerator.getTimer().start();
+				while (timedStateChangerGenerator.getTimer().isRunning())
+					;
+			}
+		}).start();
+
+		try {
+			Thread.sleep((int) ((1000 / Constants.SPEED) / Constants.STATE_CHANGER_SPEED) + TIMEOUT_SUPPLEMENT);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		assertTrue(map.getPaintedMalus().size() == 1 ^ map.getPaintedBoosters().size() == 1);
+	}
 }
