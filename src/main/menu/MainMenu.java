@@ -29,7 +29,7 @@ public class MainMenu extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 2807311016014427749L;
-	private final CardLayout cardLayout = new CardLayout();
+	private final CardLayout cardLayout;
 	private final MenuPanel menuPanel;
 	private final Leaderboard leaderboard;
 	private LeaderboardPanel leaderboardPanel;
@@ -38,13 +38,14 @@ public class MainMenu extends JPanel{
 	private ShopGUI shopGUI;
 	private final GameSettings gameSettings;
 	private final TutorialPanel tutorialPanel;
-	private final SelectionPanel selectionPanel;
+	private SelectionPanel selectionPanel;
 
 	/**
 	 * @param gameSettings - GameSettings
 	 */
 	public MainMenu(GameSettings gameSettings) {
 
+		cardLayout = new CardLayout();
 		this.setLayout(cardLayout);
 		
 		File savingsFile = new File(Constants.SAVINGS_FILE_PATH);
@@ -70,7 +71,7 @@ public class MainMenu extends JPanel{
 		tutorialPanel = new TutorialPanel(this);
 		selectionPanel = new SelectionPanel(this, gameSettings);
 
-		this.add("MENU", menuPanel);
+		this.add(PANEL.MENU.name(), menuPanel);
 		this.add(PANEL.PLAY.name(), playPanel);
 		this.add(PANEL.LEADERBOARD.name(), leaderboardPanel);
 		this.add(PANEL.SHOP.name(), shopGUI);
@@ -105,6 +106,9 @@ public class MainMenu extends JPanel{
 		} else if (panel.equals(PANEL.PLAY)) {
 			playPanel = new PlayPanel(this, gameSettings);
 			this.add(PANEL.PLAY.name(), playPanel);
+		} else if (panel.equals(PANEL.SELECT)) {
+			selectionPanel = new SelectionPanel(this, gameSettings);
+			this.add(PANEL.SELECT.name(), selectionPanel);
 		}
 
 		cardLayout.show(this, panel.name());
@@ -138,11 +142,11 @@ public class MainMenu extends JPanel{
 		leaderboard.clearLeaderboard();
 		shop.clearSavings();
 	}
-	
+
 	public Shop getShop() {
 		return this.shop;
 	}
-	
+
 	public Leaderboard getLeaderboard() {
 		return this.leaderboard;
 	}
