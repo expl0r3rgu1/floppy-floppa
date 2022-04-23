@@ -23,9 +23,9 @@ import main.utilities.GraphicJLabel;
 public class EOGMenuGUI extends JPanel {
 
 	private static final long serialVersionUID = -6834009314888626973L;
-	private Image background;
-	private MainMenu mainMenu;
-	private EOGMenu eogMenu;
+	private final Image background;
+	private final MainMenu mainMenu;
+	private final EOGMenu eogMenu;
 
 	/**
 	 * 
