@@ -51,7 +51,7 @@ public class MenuPanel extends JPanel {
 		addButton("Tutorial", 1, 3, 7, 5, 2, 0, 0, 0);
 
 		addImage("Floppa.png", 1, 2, 0, 0, 0, 0, 0, 2);
-	        addImage("Bingus.png", 3, 2, 0, 0, 0, 2, 0, 0);
+		addImage("Bingus.png", 3, 2, 0, 0, 0, 2, 0, 0);
 
 		this.setVisible(true);
 	}
@@ -223,8 +223,8 @@ public class MenuPanel extends JPanel {
 	}
 
 	/**
-	 * getJLabelImage is a method that reads an image file and creates the corresponding Image object
-	 * which gets also scaled
+	 * getJLabelImage is a method that reads an image file and creates the
+	 * corresponding Image object which gets also scaled
 	 * 
 	 * @param fileName
 	 * @return a JLabel containing the newly created Image
