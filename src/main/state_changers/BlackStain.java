@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * A class that extends Malus class and implements an entity that makes appear a
@@ -92,7 +92,7 @@ public class BlackStain extends Malus implements ActionListener {
 		/**
 		 * Check if the moving pattern of the malus works correctly
 		 */
-		void coinsReducerMalusMovement() {
+		public void coinsReducerMalusMovement() {
 			BlackStain blackStain1 = new BlackStain(this.POSITION, this.SKIN);
 			blackStain1.updatePositionX();
 			assertTrue(blackStain1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
