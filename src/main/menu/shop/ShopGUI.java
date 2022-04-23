@@ -28,8 +28,6 @@ public class ShopGUI extends JPanel {
 	private int numBackgrounds;
 	private MainMenu mainMenu;
 	private Shop shop;
-	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
-			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 	private ArrayList<String> prices = new ArrayList<>(
 			Arrays.asList("0", "50", "100", "200", "500", "0", "50", "100", "200", "500"));
 
@@ -146,15 +144,17 @@ public class ShopGUI extends JPanel {
 	private int placeGUIComponentsSupport(int i) {
 		for (int j = 0; j < numSkins; j++) {
 			GraphicJLabel label = new GraphicJLabel(
-					(i == 2 ? labelNames.get(j) + " : " + prices.get(j)
-							: labelNames.get(j + 5) + " : " + prices.get(j + 5)),
+					(i == 2 ? Constants.SKIN_BACKGROUND_NAMES.get(j) + " : " + prices.get(j)
+							: Constants.SKIN_BACKGROUND_NAMES.get(j + 5) + " : " + prices.get(j + 5)),
 					Color.decode("#77DD77"), Color.decode("#007542"), "Arial", Font.PLAIN);
 
 			this.add(label, new GBCSimplified(j, i, 0, 0,
 					new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
 
-			this.add(this.imageCreation((i == 2 ? labelNames.get(j) : labelNames.get(j + 5))), new GBCSimplified(j,
-					i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
+			this.add(this.imageCreation(
+					(i == 2 ? Constants.SKIN_BACKGROUND_NAMES.get(j) : Constants.SKIN_BACKGROUND_NAMES.get(j + 5))),
+					new GBCSimplified(j, i + 1, 0, 0,
+							new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
 
 			GraphicJButtonWithObject buyButton = new GraphicJButtonWithObject("BUY", Color.decode("#FDFD96"),
 					Color.decode("#FFDD62"), "Arial", Font.PLAIN,
