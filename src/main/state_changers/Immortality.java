@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import main.character.Character;
 import main.utilities.CommonMethods;
@@ -83,7 +83,7 @@ public class Immortality extends Booster {
 		/**
 		 * Check if the moving pattern of the booster works correctly
 		 */
-		void immortalityBoosterMovement() {
+		public void immortalityBoosterMovement() {
 			Immortality immortality1 = new Immortality(this.POSITION, this.SKIN);
 			immortality1.updatePositionX();
 			assertTrue(immortality1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
@@ -99,7 +99,7 @@ public class Immortality extends Booster {
 		/**
 		 * Checks if the booster actually sets the Immortality field to true
 		 */
-		void coinsIncrementChangeState() {
+		public void coinsIncrementChangeState() {
 			Immortality immortality = new Immortality(this.POSITION, this.SKIN);
 			immortality.changeState();
 			assertTrue(Character.immortal);
