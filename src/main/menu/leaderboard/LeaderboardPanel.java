@@ -100,7 +100,8 @@ public class LeaderboardPanel extends JPanel {
 	}
 
 	private void addMenuButton() {
-		GraphicJButton menuButton = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
+		GraphicJButton menuButton = new GraphicJButton(PANEL.MENU.name(), Color.decode("#FFDD62"),
+				Color.decode("#FF971A"),
 				"Arial", Font.PLAIN);
 
 		menuButton.addActionListener(e -> {
