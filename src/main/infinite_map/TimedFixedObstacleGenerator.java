@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import main.utilities.Constants;
 
 /**
- * TimedEntityGenerator customized for FixedObstacles
+ * TimedEntityGenerator customized for FixedObstacle
  */
 public class TimedFixedObstacleGenerator extends TimedObstacleGenerator {
 
