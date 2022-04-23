@@ -28,7 +28,8 @@ public class Map {
 																			// FixedObstacle
 	private final TimedMovingObstacleGenerator timedMovingObstacleGenerator; // Timer that manages when to spawn a
 	// MovingObstacle
-	private final TimedStateChangerGenerator timedStateChangerGenerator; // Timer that manages when to spawn a random StateChanger
+	private final TimedStateChangerGenerator timedStateChangerGenerator; // Timer that manages when to spawn a random
+																			// StateChanger
 
 	/**
 	 * @param scrollingBackground The ScrollingBackground to be shown in the Map
@@ -121,8 +122,11 @@ public class Map {
 	}
 
 	/**
-	 * Animates the ScrollingBackground and the lists of: FixedObstacle, MovingObstacle, Malus, Booster.
-	 * it also removes the entities from their respective lists when they go offScreen
+	 * Animates the ScrollingBackground and the lists of: FixedObstacle,
+	 * MovingObstacle, Malus, Booster.
+	 * it also removes the entities from their respective lists when they go
+	 * offScreen
+	 * 
 	 * @param canvas A Graphics2D canvas to animate the entities onto
 	 */
 	public void animate(Graphics2D canvas) {
