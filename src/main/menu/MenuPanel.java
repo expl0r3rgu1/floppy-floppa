@@ -186,7 +186,7 @@ public class MenuPanel extends JPanel {
 	 */
 	private void addImage(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
 			int right) {
-		this.add(this.getJLabelImage(name),
+		this.add(CommonMethods.getJLabelImage(name, 20),
 				new GBCSimplified(gridx, gridy, CommonMethods.getPixelsFromPercentageWidth(ipadx),
 						CommonMethods.getPixelsFromPercentageHeight(ipady),
 						new Insets(CommonMethods.getPixelsFromPercentageWidth(top),
@@ -222,37 +222,6 @@ public class MenuPanel extends JPanel {
 				mainMenu.showCard(PANEL.valueOf(panelName));
 			};
 		}
-	}
-
-	/**
-	 * getJLabelImage is a method that reads an image file and creates the
-	 * corresponding Image object which gets also scaled
-	 * 
-	 * @param fileName
-	 * @return a JLabel containing the newly created Image
-	 */
-	private JLabel getJLabelImage(String fileName) {
-		JLabel label = null;
-		try {
-			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
-			ImageIcon imageIcon = new ImageIcon(this.scaleImage(image, new Dimension(
-					CommonMethods.getPixelsFromPercentageWidth(20), CommonMethods.getPixelsFromPercentageWidth(20))));
-			label = new JLabel(imageIcon);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return label;
-	}
-
-	/**
-	 * scaleImage returns a scaled version of the image parameter
-	 * 
-	 * @param image - the image to scale
-	 * @param dim   - the Dimension to which to scale the image
-	 * @return a scaled version of the image parameter
-	 */
-	private Image scaleImage(Image image, Dimension dim) {
-		return image.getScaledInstance((int) dim.getWidth(), (int) dim.getHeight(), Image.SCALE_DEFAULT);
 	}
 
 }
