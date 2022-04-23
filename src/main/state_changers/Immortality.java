@@ -22,7 +22,7 @@ import main.utilities.Skin;
  */
 public class Immortality extends Booster {
 
-	private Timer timer;
+	private final Timer timer;
 
 	/**
 	 * @param position The CoinsIncrement initial position
