@@ -17,7 +17,7 @@ import main.utilities.Skin;
  */
 public class FixedObstacle extends Movable {
 
-	private Skin skin;
+	private final Skin skin;
 
 	/**
 	 * @param position - the obstacle initial position
@@ -30,27 +30,11 @@ public class FixedObstacle extends Movable {
 
 	/*
 	 * getter method for Skin
+	 * 
+	 * @return skin
 	 */
 	public Skin getSkin() {
 		return skin;
-	}
-
-	/**
-	 * setter method for Skin
-	 */
-	public void setSkin(Skin skin) {
-		this.skin = skin;
-	}
-
-	@Override
-	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), getPosition().getX(), (int) (getPosition().getY() + (Constants.SPACE_BETWEEN_PIPES) / 2),
-				(int) (Constants.SCREEN_SIZE.getWidth()) / 10,
-				(int) (Constants.SCREEN_SIZE.getHeight() - (getPosition().getY() + (Constants.SPACE_BETWEEN_PIPES) / 2)), null);
-		canvas.drawImage(CommonMethods.getAngledImage(getSkin().getImage(), 180), getPosition().getX(), 0,
-				(int) (Constants.SCREEN_SIZE.getWidth()) / 10, (int) (getPosition().getY() - (Constants.SPACE_BETWEEN_PIPES) / 2), null);
-
-		updatePosition();
 	}
 
 	/**
@@ -58,7 +42,24 @@ public class FixedObstacle extends Movable {
 	 * of the fixedobstacle
 	 */
 	private void updatePosition() {
-		getPosition().setX(getPosition().getX() - Constants.MOVING_FACTOR);
+		this.setPosition(new Position(this.getPosition().getX() - Constants.MOVING_FACTOR, this.getPosition().getY()));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void animate(Graphics2D canvas) {
+		canvas.drawImage(getSkin().getImage(), getPosition().getX(),
+				(int) (getPosition().getY() + (Constants.SPACE_BETWEEN_PIPES) / 2),
+				(int) (Constants.SCREEN_SIZE.getWidth()) / 10, (int) (Constants.SCREEN_SIZE.getHeight()
+						- (getPosition().getY() + (Constants.SPACE_BETWEEN_PIPES) / 2)),
+				null);
+		canvas.drawImage(CommonMethods.getAngledImage(getSkin().getImage(), 180), getPosition().getX(), 0,
+				(int) (Constants.SCREEN_SIZE.getWidth()) / 10,
+				(int) (getPosition().getY() - (Constants.SPACE_BETWEEN_PIPES) / 2), null);
+
+		updatePosition();
 	}
 	
 	/**
