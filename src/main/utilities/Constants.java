@@ -2,6 +2,8 @@ package main.utilities;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import main.obstacles.FixedObstacle;
@@ -89,6 +91,12 @@ public class Constants {
 	 * changeState is applied
 	 */
 	public static final int IMMORTALITY_TIMEOUT = 10000;
+	
+	/**
+	 * This Array contains the names of all Skin objects and Background objects used  
+	 */
+	public static final List<String> SKIN_BACKGROUND_NAMES = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
+			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 
 	/**
 	 * Used to instantiate ObstacleFactoryImpl
