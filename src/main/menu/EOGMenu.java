@@ -9,8 +9,8 @@ import main.menu.shop.Shop;
 
 public class EOGMenu {
 
-	private Shop shop;
-	private int previousCoins;
+	private final Shop shop;
+	private final int previousCoins;
 	private int newCoins;
 
 	/**
