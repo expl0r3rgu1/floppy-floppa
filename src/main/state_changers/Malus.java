@@ -1,7 +1,5 @@
 package main.state_changers;
 
-import java.awt.Graphics2D;
-
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
