@@ -30,7 +30,7 @@ import org.junit.jupiter.api.Test;
  * extends the class Movable
  */
 public class Character extends Movable {
-	private Skin skin;
+	private final Skin skin;
 	private boolean dead;
 	/**
 	 * if it is true the character is immune from death, its default value is false
