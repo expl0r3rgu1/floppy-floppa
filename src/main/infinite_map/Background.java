@@ -7,30 +7,51 @@ import main.utilities.Constants;
 import main.utilities.Movable;
 import main.utilities.Position;
 
+/**
+ * A still background that fills the whole screen
+ */
 public class Background extends Movable {
 	private final String name;
 	private final Image image;
 
+	/**
+	 * @param name The name of the Background
+	 * @param image The image that will be displayed
+	 */
 	public Background(String name, Image image) {
 		super(new Position(0, 0));
 		this.name = name;
 		this.image = image;
 	}
 
+	/**
+	 * @param name The name of the Background
+	 * @param image The image that will be displayed
+	 * @param position The starting position the image will be displayed at
+	 */
 	public Background(String name, Image image, Position position) {
 		super(position);
 		this.name = name;
 		this.image = image;
 	}
 
+	/**
+	 * @return The name of the Background
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * @return The image of the Background
+	 */
 	public Image getImage() {
 		return image;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void animate(Graphics2D canvas) {
 		// Drawing the background on the canvas to fill it completely
@@ -38,10 +59,16 @@ public class Background extends Movable {
 				(int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
 
+	/**
+	 * Moves the Background to the left by Constants.MOVING_FACTOR pixels
+	 */
 	public void updatePosition() {
 		getPosition().setX(getPosition().getX() - Constants.MOVING_FACTOR);
 	}
 
+	/**
+	 * @return True if the image is completely off-screen left
+	 */
 	public boolean isOffStageLeft() {
 		if (getPosition().getX() <= -1 * Constants.SCREEN_SIZE.getWidth()) {
 			return true;
@@ -50,10 +77,16 @@ public class Background extends Movable {
 		}
 	}
 
+	/**
+	 * Moves the Background to the right screen edge
+	 */
 	public void moveToRightScreenEdge() {
 		getPosition().setX(getPosition().getX() + (int) Constants.SCREEN_SIZE.getWidth() * 2);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		Background other = (Background) obj;
