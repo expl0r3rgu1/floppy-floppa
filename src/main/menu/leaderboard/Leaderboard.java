@@ -11,15 +11,15 @@ import java.util.Scanner;
 import main.utilities.Constants;
 
 public class Leaderboard {
-	private final File leaderboardFile = new File(Constants.SAVINGS_FILE_PATH);
+	private final File leaderboardFile;
 	private final ArrayList<Player> leaderboard;
 
 	public Leaderboard() {
+		leaderboardFile = new File(Constants.SAVINGS_FILE_PATH);
+		leaderboard = new ArrayList<>();
 		try {
 			Scanner leaderboardFileScanner = new Scanner(leaderboardFile);
 			this.skipToLeaderboardStart(leaderboardFileScanner);
-
-			leaderboard = new ArrayList<>();
 
 			while (leaderboardFileScanner.hasNextLine()) {
 				var line = leaderboardFileScanner.nextLine();
