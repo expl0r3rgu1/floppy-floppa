@@ -38,10 +38,6 @@ public class Map {
 		this.timedStateChangerGenerator = new TimedStateChangerGenerator(this);
 	}
 
-	public ScrollingBackground getScrollingBackground() {
-		return scrollingBackground;
-	}
-
 	public List<FixedObstacle> getPaintedFixedObstacles() {
 		return paintedFixedObstacles;
 	}
