@@ -2,7 +2,7 @@ package junit;
 
 import static org.junit.Assert.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
@@ -24,7 +24,7 @@ public class TestFactoryObstacleImpl {
 			this.POSITION.getX(), this.POSITION.getY());
 
 	@Test
-	void testFactoryFixedObstacle() {
+	public void testFactoryFixedObstacle() {
 		ObstacleFactoryImpl factory = new ObstacleFactoryImpl();
 		FixedObstacle fixedO = new FixedObstacle(POSITION, SKIN_FIXEDOBSTACLE);
 
@@ -32,7 +32,7 @@ public class TestFactoryObstacleImpl {
 	}
 
 	@Test
-	void testFactoryMovingObstacle() {
+	public void testFactoryMovingObstacle() {
 		ObstacleFactoryImpl factory = new ObstacleFactoryImpl();
 		MovingObstacle movingO = new MovingObstacle(POSITION, SKIN_MOVINGOBSTACLE);
 
