@@ -81,7 +81,16 @@ public class MovingObstacle extends Movable implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		this.direction = -this.direction;
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		MovingObstacle other = (MovingObstacle) obj;
+		return super.equals(other) && this.skin.equals(other.skin);
+	}
+
 	public static class TestMovingObstacle {
 
 		final private Position POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth()),
@@ -91,7 +100,7 @@ public class MovingObstacle extends Movable implements ActionListener {
 		final private Skin SKIN = new Skin("Bingus", CommonMethods.getImageResource("Bingus"),
 				(int) this.POSITION.getX(), (int) this.POSITION.getY());
 		private int direction = -1;
-		
+
 		@Test
 		/**
 		 * Check if the moving pattern of the moving obstacle works correctly
@@ -99,15 +108,17 @@ public class MovingObstacle extends Movable implements ActionListener {
 		public void movingObstacleMovement() {
 			MovingObstacle movingObstacle = new MovingObstacle(this.POSITION, this.SKIN);
 			movingObstacle.updatePosition();
-			
+
 			assertTrue(movingObstacle.getPosition().getX() == (POSITION.getX() - 3 * Constants.MOVING_FACTOR));
 			assertTrue(movingObstacle.getPosition().getY() == (POSITION.getY() + direction * Constants.MOVING_FACTOR));
 
 			MovingObstacle movingObstacle1 = new MovingObstacle(this.HALFWAY_POSITION, this.SKIN);
 			movingObstacle1.updatePosition();
 			assertTrue(movingObstacle1.getPosition().getX() == (HALFWAY_POSITION.getX() - 3 * Constants.MOVING_FACTOR));
-			assertTrue(movingObstacle1.getPosition().getY() == (HALFWAY_POSITION.getY() + direction * Constants.MOVING_FACTOR));
+			assertTrue(movingObstacle1.getPosition()
+					.getY() == (HALFWAY_POSITION.getY() + direction * Constants.MOVING_FACTOR));
 		}
+
 	}
 
 }

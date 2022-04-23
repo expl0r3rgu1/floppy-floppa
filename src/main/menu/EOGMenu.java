@@ -1,33 +1,28 @@
 package main.menu;
 
-import main.menu.shop.Shop;
-import main.state_changers.CoinsIncrement;
-import main.state_changers.CoinsReducer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
-public class EOGMenu implements Menu {
+import main.game_engine.PlayPanel;
+import main.menu.shop.Shop;
+
+public class EOGMenu {
 
 	private Shop shop;
 	private int previousCoins;
 	private int newCoins;
-	private CoinsReducer coinsReducer;
-	private CoinsIncrement coinsIncrement;
 
 	/**
 	 * @param shop            Shop parameter is passed so that the constructor does
 	 *                        not initializes a new one
 	 * @param metersTravelled The meters that the Character traveled during the game
-	 * @param reducerTimes    How many times the character hit the CoinsReducer
-	 *                        malus
-	 * @param incrementTimes  How many times the character hit the CoinsIncrement
-	 *                        booster
 	 */
-	public EOGMenu(Shop shop, int metersTravelled, int reducerTimes, int incrementTimes) {
+	public EOGMenu(Shop shop, int metersTravelled) {
 		this.shop = shop;
 		this.previousCoins = shop.getCoins();
 		this.newCoins = 0;
-		this.updateCoins(metersTravelled, reducerTimes, incrementTimes);
-		coinsReducer = new CoinsReducer(null, null);
-		coinsIncrement = new CoinsIncrement(null, null);
+		this.updateCoins(metersTravelled);
 	}
 
 	/**
@@ -48,42 +43,41 @@ public class EOGMenu implements Menu {
 	 * The method updates the owned coins considering the meters traveled during the
 	 * last game, the CoinsReducer malus and the CoinsIncrement booster
 	 * 
-	 * @param meters         The meters that the Character traveled during the game
-	 * @param reducerTimes   How many times the character hit the CoinsReducer malus
-	 * @param incrementTimes How many times the character hit the CoinsIncrement
-	 *                       booster
+	 * @param meters The meters that the Character traveled during the game
 	 */
-	protected void updateCoins(int meters, int reducerTimes, int incrementTimes) {
-		newCoins = this.previousCoins + ((int) Math.floor(meters / 5) - this.updateCoinsReduce(reducerTimes)
-				+ this.updateCoinsIncrease(incrementTimes));
+	private void updateCoins(int meters) {
+		newCoins = this.previousCoins + ((int) Math.floor(meters / 5)) - this.updateCoinsReduce()
+				+ this.updateCoinsIncrease();
+
+		if (newCoins < 0) {
+			newCoins = 0;
+		}
 		shop.setCoins(newCoins);
 	}
 
 	/**
-	 * Calculates how many coins need to be subtracted
+	 * Calculates how many coins need to be subtracted to the total amount
+	 * (previously owned coins + won coins in the last game). The coins subtracted
+	 * are represented by an int randomly chosen from an ArrayList.
 	 * 
-	 * @param times How many times the character hit the CoinsReducer malus
 	 * @return the sum of coins that need to be subtracted
 	 */
-	private int updateCoinsReduce(int times) {
-		int sum = 0;
-		for (int i = 0; i < times; i++) {
-			sum += coinsReducer.changeState();
-		}
-		return sum;
+	private int updateCoinsReduce() {
+		ArrayList<Integer> malus = new ArrayList<Integer>(Arrays.asList(5, 10, 20, 30, 40, 50));
+
+		return PlayPanel.reducerTimes * malus.get((int) (Math.random() * (malus.size())));
 	}
 
 	/**
-	 * Calculates how many coins need to be subtracted
+	 * Calculates how many coins need to be added to the total amount (previously
+	 * owned coins + won coins in the last game). The coins added are represented by
+	 * a random int that can go from 0 to 100.
 	 * 
-	 * @param times How many times the character hit the CoinsReducer malus
-	 * @return the sum of coins that need to be subtracted
+	 * @return the sum of coins that need to be added
 	 */
-	private int updateCoinsIncrease(int times) {
-		int sum = 0;
-		for (int i = 0; i < times; i++) {
-			sum += coinsIncrement.changeState();
-		}
-		return sum;
+	private int updateCoinsIncrease() {
+		Random randomIncrease = new Random();
+
+		return PlayPanel.incrementTimes * randomIncrease.nextInt(100);
 	}
 }

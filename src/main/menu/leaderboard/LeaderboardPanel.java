@@ -17,14 +17,25 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import main.menu.MainMenu;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
+import main.utilities.Constants.PANEL;
 import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 
+/**
+ * The JPanel encharged to show the Leaderboard
+ */
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
-	private Leaderboard leaderboard;
+	private final Leaderboard leaderboard;
 	private final MainMenu mainMenu;
 
+	/**
+	 * Initializes the view of the JPanel
+	 * 
+	 * @param mainMenu    The instance of the MainMenu used to call
+	 *                    MainMenu.showCard(PANEL panel)
+	 * @param leaderboard The Leaderboard to get contents from
+	 */
 	public LeaderboardPanel(MainMenu mainMenu, Leaderboard leaderboard) {
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.setLayout(new GridBagLayout());
@@ -43,14 +54,10 @@ public class LeaderboardPanel extends JPanel {
 		addMenuButton();
 	}
 
-	public Leaderboard getLeaderboard() {
-		return leaderboard;
-	}
-
 	// GRAPHIC COMPONENTS
 
 	private void addTitle() {
-		JLabel title = new JLabel("LEADERBOARD", SwingConstants.CENTER);
+		JLabel title = new JLabel(PANEL.LEADERBOARD.name(), SwingConstants.CENTER);
 		title.setFont(CommonMethods.getFontResource("pixel").deriveFont(50f));
 
 		this.add(title, new GBCSimplified(0, 0, 0, 0,
@@ -82,7 +89,7 @@ public class LeaderboardPanel extends JPanel {
 		scrollablePane.getViewport().setBackground(new Color(0, 0, 0, .5f));
 		scrollablePane.getViewport().setOpaque(true);
 		scrollablePane.setBorder(BorderFactory.createEmptyBorder());
-
+		scrollablePane.getVerticalScrollBar().setUnitIncrement(15);
 		// SCROLLBAR CUSTOMIZATION
 		scrollablePane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
 			@Override
@@ -99,7 +106,8 @@ public class LeaderboardPanel extends JPanel {
 	}
 
 	private void addMenuButton() {
-		GraphicJButton menuButton = new GraphicJButton("MENU", Color.decode("#FFDD62"), Color.decode("#FF971A"),
+		GraphicJButton menuButton = new GraphicJButton(PANEL.MENU.name(), Color.decode("#FFDD62"),
+				Color.decode("#FF971A"),
 				"Arial", Font.PLAIN);
 
 		menuButton.addActionListener(e -> {

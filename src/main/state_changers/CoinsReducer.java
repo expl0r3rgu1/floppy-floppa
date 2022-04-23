@@ -1,11 +1,7 @@
 package main.state_changers;
 
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import main.utilities.Constants;
-import main.utilities.CommonMethods;
+import main.game_engine.PlayPanel;
 import main.utilities.Position;
 import main.utilities.Skin;
 
@@ -14,9 +10,6 @@ import main.utilities.Skin;
  * away coins to the main character every time they hit this malus
  */
 public class CoinsReducer extends Malus {
-
-	// Lose coins
-	ArrayList<Integer> malus = new ArrayList<Integer>(Arrays.asList(5, 10, 20, 30, 40, 50));
 
 	/**
 	 * @param position - The CoinsReducer initial position
@@ -27,13 +20,13 @@ public class CoinsReducer extends Malus {
 	}
 
 	/**
-	 * changeState is a method that returns the minus value of the CoinsReducer
-	 * malus, that will be applied to the player's coins
-	 * 
-	 * @return malus - Integer that represent the value of the CoinsReducer malus
+	 * changeState is a method that calls PlayPanel.reducerTimes increases it by
+	 * one, applying the CoinsReducer malus to the player's coins, and then it moves
+	 * the malus off screen
 	 */
-	public Integer changeState() {
-		return malus.get((int) (Math.random() * (malus.size())));
+	public void changeState() {
+		PlayPanel.reducerTimes++;
+		moveOffScreen();
 	}
 
 	/**
@@ -45,9 +38,13 @@ public class CoinsReducer extends Malus {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public void animate(Graphics2D canvas) {
 		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				CommonMethods.getPixelsFromPercentageWidth(3), CommonMethods.getPixelsFromPercentageWidth(3), null);
+				getSkin().getWidth(), getSkin().getHeight(), null);
 
 		this.updatePositionX();
 	}

@@ -5,9 +5,9 @@ package main.utilities;
  * various entities on the map
  */
 public class Position {
-	private int x; 
+	private int x;
 	private int y;
-	
+
 	/**
 	 * @param x the x coordinate on the map
 	 * @param y the y coordinate on the map
@@ -16,7 +16,7 @@ public class Position {
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	/**
 	 * Getter of the x coordinate
 	 * 
@@ -25,7 +25,7 @@ public class Position {
 	public int getX() {
 		return this.x;
 	}
-	
+
 	/**
 	 * Setter of the x coordinate
 	 * 
@@ -34,7 +34,7 @@ public class Position {
 	public void setX(int x) {
 		this.x = x;
 	}
-	
+
 	/**
 	 * Getter of the y coordinate
 	 * 
@@ -43,7 +43,7 @@ public class Position {
 	public int getY() {
 		return this.y;
 	}
-	
+
 	/**
 	 * Setter of the y coordinate
 	 * 
@@ -52,7 +52,7 @@ public class Position {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
+
 	@Override
 	/**
 	 * {@inheritDoc}
