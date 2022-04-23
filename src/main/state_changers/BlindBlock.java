@@ -1,16 +1,8 @@
 package main.state_changers;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import main.utilities.CommonMethods;
@@ -20,8 +12,8 @@ import main.utilities.Skin;
 
 /**
  * A class that extends Malus class and implements an entity that makes appear a
- * black block on the screen, blocking the players vision of part of the right side of
- * the screen, every time they hit this malus
+ * black block on the screen, blocking the players vision of part of the right
+ * side of the screen, every time they hit this malus
  */
 public class BlindBlock extends Malus implements ActionListener {
 
@@ -55,7 +47,7 @@ public class BlindBlock extends Malus implements ActionListener {
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR, getPosition().getY()));
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -65,14 +57,14 @@ public class BlindBlock extends Malus implements ActionListener {
 				getSkin().getHeight(), null);
 
 		this.updatePositionX();
-		
+
 		if (collided) {
 			canvas.drawImage(getSkin().getImage(), (int) Constants.SCREEN_SIZE.getWidth() / 3, 0,
 					CommonMethods.getPixelsFromPercentageWidth(33), (int) Constants.SCREEN_SIZE.getHeight(), null);
 		}
-		
+
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
