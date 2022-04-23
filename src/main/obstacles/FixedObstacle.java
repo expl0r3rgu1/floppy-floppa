@@ -71,18 +71,21 @@ public class FixedObstacle extends Movable {
 		return super.equals(other) && this.skin.equals(other.skin);
 	}
 
+	/**
+	 * TestFixedObstacle is a class that tests the updatePosition of fixedObstacle
+	 */
 	public static class TestFixedObstacle {
 
 		final private Position POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth()),
 				(int) Constants.SCREEN_SIZE.getHeight() / 2);
 		final private Position HALFWAY_POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth() / 2),
 				(int) Constants.SCREEN_SIZE.getHeight() / 2);
-		final private Skin SKIN = new Skin("pipe", CommonMethods.getImageResource("pipe"),
-				(int) this.POSITION.getX(), (int) this.POSITION.getY());
+		final private Skin SKIN = new Skin("pipe", CommonMethods.getImageResource("pipe"), (int) this.POSITION.getX(),
+				(int) this.POSITION.getY());
 
 		@Test
 		/**
-		 * Check if the moving pattern of the moving obstacle works correctly
+		 * Check if the moving pattern of the fixed obstacle works correctly
 		 */
 		public void fixedObstacleMovement() {
 			FixedObstacle fixedObstacle1 = new FixedObstacle(this.POSITION, this.SKIN);
