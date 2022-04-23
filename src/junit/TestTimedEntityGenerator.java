@@ -37,4 +37,29 @@ public class TestTimedEntityGenerator {
 
 		assertTrue(map.getPaintedFixedObstacles().size() == 1);
 	}
+
+	@Test
+	public void testTimedMovingObstacleGenerator() {
+		Map map = new Map(null);
+		assertTrue(map.getPaintedMovingObstacles().size() == 0);
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				TimedMovingObstacleGenerator timedMovingObstacleGenerator = new TimedMovingObstacleGenerator(map);
+				timedMovingObstacleGenerator.getTimer().start();
+				while (timedMovingObstacleGenerator.getTimer().isRunning())
+					;
+			}
+		}).start();
+
+		try {
+			Thread.sleep((int) ((1000 / Constants.SPEED) / Constants.MOVING_OBSTACLE_SPEED) + TIMEOUT_SUPPLEMENT);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		assertTrue(map.getPaintedMovingObstacles().size() == 1);
+	}
 }
