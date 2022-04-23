@@ -132,7 +132,7 @@ public class SelectionPanel extends JPanel {
 					(float) Constants.SCREEN_SIZE.getWidth() / 120);
 			this.add(label, new GBCSimplified(j, i, 0, 0,
 					new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
-			this.add(this.getJLabelImage((i == 1 ? labelNames.get(j) : labelNames.get(j + 5))), new GBCSimplified(j,
+			this.add(CommonMethods.getJLabelImage((i == 1 ? labelNames.get(j) : labelNames.get(j + 5)), 8), new GBCSimplified(j,
 					i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
 		}
 		return i + 1;
@@ -188,37 +188,6 @@ public class SelectionPanel extends JPanel {
 			settings.setScrollingBackground(scenario);
 		}
 
-	}
-
-	/**
-	 * getJLabelImage is a method that reads an image file and creates the
-	 * corresponding Image object which gets also scaled
-	 * 
-	 * @param fileName
-	 * @return a JLabel containing the newly created Image
-	 */
-	private JLabel getJLabelImage(String fileName) {
-		JLabel label = null;
-		try {
-			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName + ".png"));
-			ImageIcon imageIcon = new ImageIcon(this.scale(image, new Dimension(
-					(CommonMethods.getPixelsFromPercentageWidth(8)), (CommonMethods.getPixelsFromPercentageWidth(8)))));
-			label = new JLabel(imageIcon);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return label;
-	}
-
-	/**
-	 * scale returns a scaled version of the image parameter
-	 * 
-	 * @param image - the image to scale
-	 * @param dim   - the Dimension to which to scale the image
-	 * @return a scaled version of the image parameter
-	 */
-	private Image scale(Image image, Dimension dim) {
-		return image.getScaledInstance((int) dim.getWidth(), (int) dim.getHeight(), Image.SCALE_DEFAULT);
 	}
 
 }
