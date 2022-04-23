@@ -13,7 +13,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 
 import main.menu.MainMenu;
-import main.utilities.GameSettings;
 
 /**
  * The JFrame that contains the whole game in fullscreen
