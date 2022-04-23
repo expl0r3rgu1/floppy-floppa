@@ -29,7 +29,7 @@ import main.utilities.Position;
  */
 public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 	private static final long serialVersionUID = 4739973632599419506L;
-	private Timer refreshRate;
+	private final Timer refreshRate;
 	private final MainMenu mainMenu;
 	private final Map map;
 	private final NicknamePanel nicknamePanel;
@@ -49,6 +49,7 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 
 	/**
 	 * Starts a new game and initilizes all the necessary components
+	 * 
 	 * @param mainMenu     The only existing MainMenu instance used to call
 	 *                     MainMenu.showCard(PANEL panel)
 	 * @param gameSettings The only existing GameSettings instance used to set the
@@ -76,7 +77,8 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 	}
 
 	/**
-	 * Removes nicknamePanel from the PlayPanel. Then it starts the refreshRate Timer and calls Map.startTimer()
+	 * Removes nicknamePanel from the PlayPanel. Then it starts the refreshRate
+	 * Timer and calls Map.startTimer()
 	 * It initializes to 0 PlayPanel.reducerTimes and PlayPanel.incrementTimes.
 	 * it saves in gameStart the Timestamp of the start of the game
 	 */
