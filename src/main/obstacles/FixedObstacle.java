@@ -76,26 +76,21 @@ public class FixedObstacle extends Movable {
 				(int) Constants.SCREEN_SIZE.getHeight() / 2);
 		final private Position HALFWAY_POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth() / 2),
 				(int) Constants.SCREEN_SIZE.getHeight() / 2);
-		final private Skin SKIN = new Skin("Bingus", CommonMethods.getImageResource("Bingus"),
+		final private Skin SKIN = new Skin("pipe", CommonMethods.getImageResource("pipe"),
 				(int) this.POSITION.getX(), (int) this.POSITION.getY());
-		private int direction = -1;
 
 		@Test
 		/**
-		 * Check if the moving pattern of the fixed obstacle works correctly
+		 * Check if the moving pattern of the moving obstacle works correctly
 		 */
-		public void movingObstacleMovement() {
+		public void fixedObstacleMovement() {
 			FixedObstacle fixedObstacle1 = new FixedObstacle(this.POSITION, this.SKIN);
 			fixedObstacle1.updatePosition();
-
-			assertTrue(fixedObstacle1.getPosition().getX() == (POSITION.getX() - 3 * Constants.MOVING_FACTOR));
-			assertTrue(fixedObstacle1.getPosition().getY() == (POSITION.getY() + direction * Constants.MOVING_FACTOR));
+			assertTrue(fixedObstacle1.getPosition().getX() == (POSITION.getX() - Constants.MOVING_FACTOR));
 
 			FixedObstacle fixedObstacle2 = new FixedObstacle(this.HALFWAY_POSITION, this.SKIN);
 			fixedObstacle2.updatePosition();
-			assertTrue(fixedObstacle2.getPosition().getX() == (HALFWAY_POSITION.getX() - 3 * Constants.MOVING_FACTOR));
-			assertTrue(fixedObstacle2.getPosition()
-					.getY() == (HALFWAY_POSITION.getY() + direction * Constants.MOVING_FACTOR));
+			assertTrue(fixedObstacle2.getPosition().getX() == (HALFWAY_POSITION.getX() - Constants.MOVING_FACTOR));
 		}
 
 	}
