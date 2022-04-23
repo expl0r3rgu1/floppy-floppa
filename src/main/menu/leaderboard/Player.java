@@ -1,7 +1,7 @@
 package main.menu.leaderboard;
 
 public class Player {
-	private String nickname;
+	private final String nickname;
 	private int personalBest;
 
 	public Player(String nickname, int personalBest) {
@@ -15,10 +15,6 @@ public class Player {
 		return nickname;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
 	public int getPersonalBest() {
 		return personalBest;
 	}
@@ -28,13 +24,13 @@ public class Player {
 			this.personalBest = personalBest;
 		}
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		Player other = (Player) obj;
 		return this.nickname.equals(other.getNickname());
 	}
-	
+
 	@Override
 	public String toString() {
 		return nickname + "," + personalBest;
