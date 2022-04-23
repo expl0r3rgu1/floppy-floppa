@@ -9,8 +9,6 @@ import org.junit.jupiter.api.Test;
 import main.character.Character;
 import main.obstacles.FixedObstacle;
 import main.obstacles.MovingObstacle;
-import main.obstacles.ObstacleFactory;
-import main.obstacles.ObstacleFactoryImpl;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
