@@ -23,7 +23,7 @@ import java.io.IOException;
 /**
  * MainMenu is the container for CardLayout
  */
-public class MainMenu extends JPanel implements Menu {
+public class MainMenu extends JPanel{
 
 	/**
 	 * 
@@ -47,7 +47,7 @@ public class MainMenu extends JPanel implements Menu {
 
 		File savingsFile = new File(Constants.SAVINGS_FILE_PATH);
 		if (!savingsFile.exists()) {
-			// showCard(PANEL.TUTORIAL);
+			 showCard(PANEL.TUTORIAL);
 			try {
 				savingsFile.createNewFile();
 				FileWriter savingsFileWriter = new FileWriter(savingsFile);
@@ -58,7 +58,7 @@ public class MainMenu extends JPanel implements Menu {
 			}
 		}
 
-		gameSettings = new GameSettings();
+		this.gameSettings = new GameSettings();
 		menuPanel = new MenuPanel(this);
 		leaderboard = new Leaderboard();
 		leaderboardPanel = new LeaderboardPanel(this, leaderboard);
@@ -66,22 +66,24 @@ public class MainMenu extends JPanel implements Menu {
 		shop = new Shop();
 		shopGUI = new ShopGUI(this, shop);
 		tutorial = new TutorialPanel(this);
+		selectionPanel = new SelectionPanel(this, gameSettings);
 		
 		this.setLayout(cardLayout);
 
 		this.add("MENU", menuPanel);
-		this.add(Constants.PANEL.PLAY.name(), playPanel);
-		this.add(Constants.PANEL.LEADERBOARD.name(), leaderboardPanel);
-		this.add(Constants.PANEL.SHOP.name(), shopGUI);
-		this.add(Constants.PANEL.TUTORIAL.name(), tutorial);
-		this.add(Constants.PANEL.SELECT.name(), selectionPanel);
+		this.add(PANEL.PLAY.name(), playPanel);
+		this.add(PANEL.LEADERBOARD.name(), leaderboardPanel);
+		this.add(PANEL.SHOP.name(), shopGUI);
+		this.add(PANEL.TUTORIAL.name(), tutorial);
+		this.add(PANEL.SELECT.name(), selectionPanel);
 
 	}
 
 	/**
-	 * paintComponent is a method to put the background in the JPanel
+	 * {@inheritDoc}
 	 */
-	protected void paintComponent(Graphics g) {
+	@Override
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D canvas = (Graphics2D) g;
 		canvas.drawImage(CommonMethods.getImageResource("Background"), 0, 0, (int) Constants.SCREEN_SIZE.getWidth(),
