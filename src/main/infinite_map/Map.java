@@ -12,6 +12,9 @@ import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
 
+/**
+ * The Infinite Scrollable Map of the game
+ */
 public class Map {
 	private final ScrollingBackground scrollingBackground;
 	private final List<FixedObstacle> paintedFixedObstacles; // Set of FixedObstacle that need to be or are being
@@ -25,8 +28,11 @@ public class Map {
 																			// FixedObstacle
 	private final TimedMovingObstacleGenerator timedMovingObstacleGenerator; // Timer that manages when to spawn a
 	// MovingObstacle
-	private final TimedStateChangerGenerator timedStateChangerGenerator;
+	private final TimedStateChangerGenerator timedStateChangerGenerator; // Timer that manages when to spawn a random StateChanger
 
+	/**
+	 * @param scrollingBackground The ScrollingBackground to be shown in the Map
+	 */
 	public Map(ScrollingBackground scrollingBackground) {
 		this.scrollingBackground = scrollingBackground;
 		this.paintedFixedObstacles = new ArrayList<>();
@@ -38,28 +44,46 @@ public class Map {
 		this.timedStateChangerGenerator = new TimedStateChangerGenerator(this);
 	}
 
+	/**
+	 * @return The list of currently animated FixedObstacle instances
+	 */
 	public List<FixedObstacle> getPaintedFixedObstacles() {
 		return paintedFixedObstacles;
 	}
 
+	/**
+	 * @return The list of currently animated MovingObstacle instances
+	 */
 	public List<MovingObstacle> getPaintedMovingObstacles() {
 		return paintedMovingObstacles;
 	}
 
+	/**
+	 * @return The list of currently animated Malus instances
+	 */
 	public List<Malus> getPaintedMalus() {
 		return paintedMalus;
 	}
 
+	/**
+	 * @return The list of currently animated Booster instances
+	 */
 	public List<Booster> getPaintedBoosters() {
 		return paintedBoosters;
 	}
 
+	/**
+	 * Starts the spawning timers
+	 */
 	public void startTimer() {
 		timedFixedObstacleGenerator.getTimer().start();
 		timedMovingObstacleGenerator.getTimer().start();
 		timedStateChangerGenerator.getTimer().start();
 	}
 
+	/**
+	 * Stops the spawning timers
+	 */
 	public void stopTimer() {
 		timedFixedObstacleGenerator.getTimer().stop();
 		timedMovingObstacleGenerator.getTimer().stop();
@@ -96,6 +120,11 @@ public class Map {
 				CommonMethods.getPixelsFromPercentageHeight(25), CommonMethods.getPixelsFromPercentageHeight(75)));
 	}
 
+	/**
+	 * Animates the ScrollingBackground and the lists of: FixedObstacle, MovingObstacle, Malus, Booster.
+	 * it also removes the entities from their respective lists when they go offScreen
+	 * @param canvas A Graphics2D canvas to animate the entities onto
+	 */
 	public void animate(Graphics2D canvas) {
 		this.scrollingBackground.animate(canvas);
 
