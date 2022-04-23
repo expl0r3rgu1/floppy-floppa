@@ -20,10 +20,9 @@ public class CoinsReducer extends Malus {
 	}
 
 	/**
-	 * changeState is a method that calls PlayPanel.reducerTimes increases it by
-	 * one, applying the CoinsReducer malus to the player's coins, and then it moves
-	 * the malus off screen
+	 * {@inheritDoc}
 	 */
+	@Override
 	public void changeState() {
 		PlayPanel.reducerTimes++;
 		moveOffScreen();
@@ -31,8 +30,8 @@ public class CoinsReducer extends Malus {
 
 	/**
 	 * The method gives the CoinsReducer malus a new Position that leaves the Y
-	 * position unchanged, while the X position decreases by one pixel so that the
-	 * object moves from right to left
+	 * position unchanged, while the X position decreases so that the object moves
+	 * from right to left
 	 */
 	private void updatePositionX() {
 		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
