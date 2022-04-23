@@ -51,7 +51,7 @@ public class MenuPanel extends JPanel {
 		addButton("Tutorial", 1, 3, 7, 5, 2, 0, 0, 0);
 
 		addImage("Floppa.png", 1, 2, 0, 0, 0, 0, 0, 2);
-		addImage("Bingus.png", 3, 2, 0, 0, 0, 2, 0, 0);
+	        addImage("Bingus.png", 3, 2, 0, 0, 0, 2, 0, 0);
 
 		this.setVisible(true);
 	}
@@ -162,7 +162,7 @@ public class MenuPanel extends JPanel {
 	}
 
 	/**
-	 * class method that creates and adds the images show in the menu
+	 * addImage is a class method that creates and adds the images show in the menu
 	 * 
 	 * @param name   - The name for getImageResource
 	 * 
@@ -184,12 +184,12 @@ public class MenuPanel extends JPanel {
 	 */
 	private void addImage(String name, int gridx, int gridy, int ipadx, int ipady, int top, int left, int bottom,
 			int right) {
-		this.add(this.getImageResource(name),
+		this.add(this.getJLabelImage(name),
 				new GBCSimplified(gridx, gridy, CommonMethods.getPixelsFromPercentageWidth(ipadx),
 						CommonMethods.getPixelsFromPercentageHeight(ipady),
-						new Insets(CommonMethods.getPixelsFromPercentageHeight(top),
+						new Insets(CommonMethods.getPixelsFromPercentageWidth(top),
 								CommonMethods.getPixelsFromPercentageWidth(left),
-								CommonMethods.getPixelsFromPercentageHeight(bottom),
+								CommonMethods.getPixelsFromPercentageWidth(bottom),
 								CommonMethods.getPixelsFromPercentageWidth(right))));
 	}
 
@@ -223,13 +223,13 @@ public class MenuPanel extends JPanel {
 	}
 
 	/**
-	 * The method reads an image file and creates the corresponding Image object
+	 * getJLabelImage is a method that reads an image file and creates the corresponding Image object
 	 * which gets also scaled
 	 * 
 	 * @param fileName
 	 * @return a JLabel containing the newly created Image
 	 */
-	private JLabel getImageResource(String fileName) {
+	private JLabel getJLabelImage(String fileName) {
 		JLabel label = null;
 		try {
 			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName));
@@ -243,7 +243,7 @@ public class MenuPanel extends JPanel {
 	}
 
 	/**
-	 * Returns a scaled version of the image parameter
+	 * scaleImage returns a scaled version of the image parameter
 	 * 
 	 * @param image - the image to scale
 	 * @param dim   - the Dimension to which to scale the image
