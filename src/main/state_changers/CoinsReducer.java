@@ -2,6 +2,7 @@ package main.state_changers;
 
 import java.awt.Graphics2D;
 import main.game_engine.PlayPanel;
+import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
 
@@ -34,7 +35,7 @@ public class CoinsReducer extends Malus {
 	 * from right to left
 	 */
 	private void updatePositionX() {
-		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+		setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR, getPosition().getY()));
 	}
 
 	/**
