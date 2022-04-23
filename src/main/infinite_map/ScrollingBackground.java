@@ -24,5 +24,13 @@ public class ScrollingBackground {
 
 		backOne.updatePosition();
 		backTwo.updatePosition();
+
+		if (backOne.isOffStageLeft()) {
+			backOne.moveToRightScreenEdge();
+		}
+
+		if (backTwo.isOffStageLeft()) {
+			backTwo.moveToRightScreenEdge();
+		}
 	}
 }
