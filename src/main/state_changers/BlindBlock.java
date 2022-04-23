@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
@@ -93,7 +93,7 @@ public class BlindBlock extends Malus implements ActionListener {
 		/**
 		 * Check if the moving pattern of the malus works correctly
 		 */
-		void coinsIncrementBoosterMovement() {
+		public void coinsIncrementBoosterMovement() {
 			BlindBlock blindBlock1 = new BlindBlock(this.POSITION, this.SKIN);
 			blindBlock1.updatePositionX();
 			assertTrue(blindBlock1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
