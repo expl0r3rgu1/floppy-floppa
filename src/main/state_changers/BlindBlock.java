@@ -1,17 +1,13 @@
 package main.state_changers;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
+import static org.junit.Assert.assertTrue;
+
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import org.junit.jupiter.api.Test;
 
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
@@ -82,4 +78,30 @@ public class BlindBlock extends Malus implements ActionListener {
 		timer.stop();
 	}
 
+	public static class TestBlindBlock {
+		final private Position POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth()),
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		final private Position HALFWAY_POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth() / 2),
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		final private Skin SKIN = new Skin("coinsreducer", CommonMethods.getImageResource("coinsreducer"),
+				(int) this.POSITION.getX(), (int) this.POSITION.getY());
+
+		@Test
+		/**
+		 * Check if the moving pattern of the malus works correctly
+		 */
+		void coinsReducerMalusMovement() {
+			CoinsReducer coinsReducer1 = new CoinsReducer(this.POSITION, this.SKIN);
+			coinsReducer1.updatePositionX();
+			assertTrue(coinsReducer1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
+			assertTrue(coinsReducer1.getPosition().getY() == POSITION.getY());
+
+			CoinsReducer coinsReducer2 = new CoinsReducer(this.HALFWAY_POSITION, this.SKIN);
+			coinsReducer2.updatePositionX();
+			assertTrue(coinsReducer2.getPosition().getX() == HALFWAY_POSITION.getX() - 3 * Constants.MOVING_FACTOR);
+			assertTrue(coinsReducer2.getPosition().getY() == HALFWAY_POSITION.getY());
+
+		}
+	}
+	
 }
