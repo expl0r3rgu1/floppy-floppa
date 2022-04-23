@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.awt.Graphics2D;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import main.game_engine.PlayPanel;
 import main.utilities.CommonMethods;
@@ -70,7 +70,7 @@ public class CoinsReducer extends Malus {
 		/**
 		 * Check if the moving pattern of the malus works correctly
 		 */
-		void coinsIncrementBoosterMovement() {
+		public void coinsIncrementBoosterMovement() {
 			CoinsReducer coinsReducer1 = new CoinsReducer(this.POSITION, this.SKIN);
 			coinsReducer1.updatePositionX();
 			assertTrue(coinsReducer1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
