@@ -33,7 +33,7 @@ public class Constants {
 	/**
 	 * The dimension of the skin
 	 */
-	public static final int SKIN_DIMENSION = (int) (SCREEN_SIZE.getHeight() / 12);
+	public static final int SKIN_DIMENSION = CommonMethods.getPixelsFromPercentageHeight(8);
 	/**
 	 * The dimension of the state changers
 	 */
