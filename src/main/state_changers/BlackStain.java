@@ -81,7 +81,7 @@ public class BlackStain extends Malus implements ActionListener {
 				(int) Constants.SCREEN_SIZE.getHeight() / 2);
 		final private Position HALFWAY_POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth() / 2),
 				(int) Constants.SCREEN_SIZE.getHeight() / 2);
-		final private Skin SKIN = new Skin("blackstain", CommonMethods.getImageResource("blackstain"),
+		final private Skin SKIN = new Skin("blackstains", CommonMethods.getImageResource("blackstains"),
 				(int) this.POSITION.getX(), (int) this.POSITION.getY());
 
 		@Test
