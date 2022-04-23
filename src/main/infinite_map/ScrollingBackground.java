@@ -21,5 +21,8 @@ public class ScrollingBackground {
 	public void animate(Graphics2D canvas) {
 		backOne.animate(canvas);
 		backTwo.animate(canvas);
+
+		backOne.updatePosition();
+		backTwo.updatePosition();
 	}
 }
