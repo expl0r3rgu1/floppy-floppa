@@ -12,6 +12,9 @@ import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
 
+/**
+ * TestFactoryObstacleImpl is a class that tests ObstacleFactoryImpl
+ */
 public class TestFactoryObstacleImpl {
 	final private Position POSITION = new Position((int) Constants.SCREEN_SIZE.getWidth(),
 			(int) Constants.SCREEN_SIZE.getHeight());
