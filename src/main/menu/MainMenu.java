@@ -119,8 +119,8 @@ public class MainMenu extends JPanel {
 	 */
 	public void updateSavings() {
 		try {
-			getShop().fileUpdate();
-			getLeaderboard().writeToFile();
+			this.shop.fileUpdate();
+			this.leaderboard.writeToFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
