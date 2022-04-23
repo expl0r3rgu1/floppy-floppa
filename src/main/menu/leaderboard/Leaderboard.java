@@ -12,7 +12,7 @@ import main.utilities.Constants;
 
 public class Leaderboard {
 	private final File leaderboardFile = new File(Constants.SAVINGS_FILE_PATH);
-	private ArrayList<Player> leaderboard;
+	private final ArrayList<Player> leaderboard;
 
 	public Leaderboard() {
 		try {
