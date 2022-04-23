@@ -38,11 +38,11 @@ public class Background extends Movable {
 				(int) Constants.SCREEN_SIZE.getHeight(), null);
 	}
 
-	private void updatePosition() {
+	public void updatePosition() {
 		getPosition().setX(getPosition().getX() - Constants.MOVING_FACTOR);
 	}
 
-	private boolean isOffStageLeft() {
+	public boolean isOffStageLeft() {
 		if (getPosition().getX() <= -1 * Constants.SCREEN_SIZE.getWidth()) {
 			return true;
 		} else {
@@ -50,7 +50,7 @@ public class Background extends Movable {
 		}
 	}
 
-	private void moveToSideOfSecondBackground() {
+	public void moveToSideOfSecondBackground() {
 		getPosition().setX(getPosition().getX() + (int) Constants.SCREEN_SIZE.getWidth() * 2);
 	}
 
