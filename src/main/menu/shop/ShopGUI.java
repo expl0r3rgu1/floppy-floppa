@@ -51,13 +51,6 @@ public class ShopGUI extends JPanel {
 	}
 
 	/**
-	 * @return The Shop associated with the GUI
-	 */
-	public Shop getShop() {
-		return shop;
-	}
-
-	/**
 	 * Main class method, it correctly creates and placed the various GUI components
 	 */
 	private void placeGUIComponents() {
