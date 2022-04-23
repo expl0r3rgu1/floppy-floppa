@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
 public class BlackStain extends Malus implements ActionListener {
 
 	private boolean collided = false;
-	private Timer timer = new Timer(Constants.CHANGED_STATE_TIME, this);
+	private Timer timer;
 
 	/**
 	 * @param position - The CoinsReducer initial position
@@ -30,6 +30,7 @@ public class BlackStain extends Malus implements ActionListener {
 	 */
 	public BlackStain(Position position, Skin skin) {
 		super(position, skin);
+		timer = new Timer(Constants.CHANGED_STATE_TIME, this);
 	}
 
 	/**
@@ -66,7 +67,7 @@ public class BlackStain extends Malus implements ActionListener {
 					(int) Constants.SCREEN_SIZE.getHeight(), null);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -75,7 +76,10 @@ public class BlackStain extends Malus implements ActionListener {
 		this.collided = false;
 		this.timer.stop();
 	}
-
+	
+	/**
+	 * TestBlackStain is a class that tests the updatePosition of BlackStain
+	 */
 	public static class TestBlackStain {
 		final private Position POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth()),
 				(int) Constants.SCREEN_SIZE.getHeight() / 2);
@@ -101,5 +105,5 @@ public class BlackStain extends Malus implements ActionListener {
 
 		}
 	}
-	
+
 }
