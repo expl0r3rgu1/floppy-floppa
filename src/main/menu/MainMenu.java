@@ -23,7 +23,7 @@ import java.io.IOException;
 /**
  * MainMenu is the container for CardLayout
  */
-public class MainMenu extends JPanel{
+public class MainMenu extends JPanel {
 
 	/**
 	 * 
@@ -47,10 +47,10 @@ public class MainMenu extends JPanel{
 
 		cardLayout = new CardLayout();
 		this.setLayout(cardLayout);
-		
+
 		File savingsFile = new File(Constants.SAVINGS_FILE_PATH);
 		if (!savingsFile.exists()) {
-			 showCard(PANEL.TUTORIAL);
+			showCard(PANEL.TUTORIAL);
 			try {
 				savingsFile.createNewFile();
 				FileWriter savingsFileWriter = new FileWriter(savingsFile);
@@ -141,14 +141,6 @@ public class MainMenu extends JPanel{
 
 		leaderboard.clearLeaderboard();
 		shop.clearSavings();
-	}
-
-	public Shop getShop() {
-		return this.shop;
-	}
-
-	public Leaderboard getLeaderboard() {
-		return this.leaderboard;
 	}
 
 }
