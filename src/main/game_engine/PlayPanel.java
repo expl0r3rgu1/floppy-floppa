@@ -84,6 +84,10 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 	 */
 	public void dismissNicknamePanel() {
 		this.remove(nicknamePanel);
+		this.startGame();
+	}
+
+	private void startGame() {
 		refreshRate.start();
 		map.startTimer();
 
