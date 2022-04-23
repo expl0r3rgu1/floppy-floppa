@@ -21,11 +21,21 @@ import main.utilities.Constants.PANEL;
 import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 
+/**
+ * The JPanel encharged to show the Leaderboard
+ */
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
 	private final Leaderboard leaderboard;
 	private final MainMenu mainMenu;
 
+	/**
+	 * Initializes the view of the JPanel
+	 * 
+	 * @param mainMenu    The instance of the MainMenu used to call
+	 *                    MainMenu.showCard(PANEL panel)
+	 * @param leaderboard The Leaderboard to get contents from
+	 */
 	public LeaderboardPanel(MainMenu mainMenu, Leaderboard leaderboard) {
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.setLayout(new GridBagLayout());
