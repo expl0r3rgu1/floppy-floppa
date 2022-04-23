@@ -20,7 +20,7 @@ import java.util.List;
 
 import javax.swing.Timer;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * A class that implements the character, it keeps track of its current status
