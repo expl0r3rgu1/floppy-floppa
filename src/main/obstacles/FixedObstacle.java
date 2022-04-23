@@ -37,7 +37,7 @@ public class FixedObstacle extends Movable {
 	 * of the fixedobstacle
 	 */
 	private void updatePosition() {
-		getPosition().setX(getPosition().getX() - Constants.MOVING_FACTOR);
+		this.setPosition(new Position(this.getPosition().getX() - Constants.MOVING_FACTOR, this.getPosition().getY()));
 	}
 
 	/**
