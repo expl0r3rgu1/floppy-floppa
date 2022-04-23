@@ -35,7 +35,7 @@ import main.utilities.Skin;
 public class SelectionPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
-	private final GridBagLayout grid = new GridBagLayout();
+	private final GridBagLayout grid;
 	private final GameSettings settings;
 	private final MainMenu mainMenu;
 	private final Shop shop;
@@ -54,9 +54,10 @@ public class SelectionPanel extends JPanel {
 	 */
 	public SelectionPanel(MainMenu mainMenu, GameSettings settings) {
 
-		shop = new Shop();
 		this.mainMenu = mainMenu;
 		this.settings = settings;
+		shop = new Shop();
+		grid = new GridBagLayout();
 		this.setLayout(grid);
 
 		CommonMethods.getImageResource("Background");
