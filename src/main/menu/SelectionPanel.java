@@ -1,18 +1,12 @@
 package main.menu;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.infinite_map.ScrollingBackground;
