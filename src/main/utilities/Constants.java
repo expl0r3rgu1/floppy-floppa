@@ -35,6 +35,10 @@ public class Constants {
 	 */
 	public static final int SKIN_DIMENSION = (int) (SCREEN_SIZE.getHeight() / 12);
 	/**
+	 * The dimension of the state changers
+	 */
+	public static final int STATE_CHANGER_DIMENSION = CommonMethods.getPixelsFromPercentageHeight(6);
+	/**
 	 * The factor that regulates the movement of every entity that moves
 	 */
 	public static final int MOVING_FACTOR = (int) Math.floor(SCREEN_SIZE.getWidth() / (double) 1000) * 2;
