@@ -17,9 +17,9 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import main.menu.MainMenu;
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
+import main.utilities.Constants.PANEL;
 import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
-import main.utilities.Constants.PANEL;
 
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
@@ -83,7 +83,7 @@ public class LeaderboardPanel extends JPanel {
 		scrollablePane.getViewport().setBackground(new Color(0, 0, 0, .5f));
 		scrollablePane.getViewport().setOpaque(true);
 		scrollablePane.setBorder(BorderFactory.createEmptyBorder());
-
+		scrollablePane.getVerticalScrollBar().setUnitIncrement(15);
 		// SCROLLBAR CUSTOMIZATION
 		scrollablePane.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
 			@Override
