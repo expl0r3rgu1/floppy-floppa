@@ -271,7 +271,7 @@ public class Character extends Movable {
 		/**
 		 * Checks if the position is updated correctly when the character falls or jumps
 		 */
-		void updatePositionTest() {
+		public void updatePositionTest() {
 			Character character = new Character(CHARACTER_INITIAL_POSITION,
 					new Skin("floppa", CommonMethods.getImageResource("Floppa"),
 							CommonMethods.getImageResource("Floppa").getWidth(null),
