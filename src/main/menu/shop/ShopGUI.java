@@ -4,8 +4,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.menu.MainMenu;
