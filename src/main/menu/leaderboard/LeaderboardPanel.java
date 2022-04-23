@@ -44,10 +44,6 @@ public class LeaderboardPanel extends JPanel {
 		addMenuButton();
 	}
 
-	public Leaderboard getLeaderboard() {
-		return leaderboard;
-	}
-
 	// GRAPHIC COMPONENTS
 
 	private void addTitle() {
