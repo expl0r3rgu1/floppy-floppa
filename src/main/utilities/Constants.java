@@ -122,21 +122,24 @@ public class Constants {
 	 * List of the different Malus of the game
 	 */
 	public static final List<Malus> MALUS = List.of(
-			new BlackStain(null, new Skin("blackstains", CommonMethods.getImageResource("blackstains"),
-					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))),
-			new BlindBlock(null, new Skin("blindblock", CommonMethods.getImageResource("blindblock"),
-					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))),
+			new BlackStain(null,
+					new Skin("blackstains", CommonMethods.getImageResource("blackstains"), STATE_CHANGER_DIMENSION,
+							STATE_CHANGER_DIMENSION)),
+			new BlindBlock(null,
+					new Skin("blindblock", CommonMethods.getImageResource("blindblock"), STATE_CHANGER_DIMENSION,
+							STATE_CHANGER_DIMENSION)),
 			new CoinsReducer(null, new Skin("coinsreducer", CommonMethods.getImageResource("coinsreducer"),
-					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))));
+					STATE_CHANGER_DIMENSION, STATE_CHANGER_DIMENSION)));
 
 	/**
 	 * List of the different Booster of the game
 	 */
 	public static final List<Booster> BOOSTERS = List.of(
-			new Immortality(null, new Skin("immortality", CommonMethods.getImageResource("immortality"),
-					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))),
+			new Immortality(null,
+					new Skin("immortality", CommonMethods.getImageResource("immortality"), STATE_CHANGER_DIMENSION,
+							STATE_CHANGER_DIMENSION)),
 			new CoinsIncrement(null, new Skin("coinsincrement", CommonMethods.getImageResource("coinsincrement"),
-					CommonMethods.getPixelsFromPercentageWidth(8), CommonMethods.getPixelsFromPercentageHeight(8))));
+					STATE_CHANGER_DIMENSION, STATE_CHANGER_DIMENSION)));
 
 	/**
 	 * The names of the different panels of the game
