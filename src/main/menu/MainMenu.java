@@ -119,8 +119,8 @@ public class MainMenu extends JPanel {
 	 */
 	public void updateSavings() {
 		try {
-			shopGUI.getShop().fileUpdate();
-			leaderboardPanel.getLeaderboard().writeToFile();
+			this.shop.fileUpdate();
+			this.leaderboard.writeToFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -141,6 +141,14 @@ public class MainMenu extends JPanel {
 
 		leaderboard.clearLeaderboard();
 		shop.clearSavings();
+	}
+	
+	public Shop getShop() {
+		return this.shop;
+	}
+
+	public Leaderboard getLeaderboard() {
+		return this.leaderboard;
 	}
 
 }
