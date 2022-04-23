@@ -31,15 +31,6 @@ public abstract class Malus extends Movable {
 	}
 
 	/**
-	 * setter method for Skin
-	 * 
-	 * @param skin
-	 */
-	public void setSkin(Skin skin) {
-		this.skin = skin;
-	}
-
-	/**
 	 * changeState is the method that changes a state of the Character or of the
 	 * game
 	 */
