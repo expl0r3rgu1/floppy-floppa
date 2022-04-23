@@ -1,18 +1,12 @@
 package main.menu;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import main.infinite_map.ScrollingBackground;
@@ -35,17 +29,16 @@ import main.utilities.Skin;
 public class SelectionPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
-	private GridBagLayout grid = new GridBagLayout();
-	private GameSettings settings;
-	private MainMenu mainMenu;
-	private Shop shop;
-	private int numSkins;
-	private int numBackgrounds;
+	private final GridBagLayout grid;
+	private final GameSettings settings;
+	private final MainMenu mainMenu;
+	private final Shop shop;
+	private final int numSkins;
+	private final int numBackgrounds;
 	private boolean bought = false;
-	private List<PurchaseStatus<PricedSkin>> skinList;
-	private List<PurchaseStatus<PricedBackground>> backgroundList;
-	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
-			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
+	private final List<PurchaseStatus<PricedSkin>> skinList;
+	private final List<PurchaseStatus<PricedBackground>> backgroundList;
+	private final ArrayList<String> labelNames;
 
 	/**
 	 * @param mainMenu - used to show cardlayouts
@@ -54,12 +47,13 @@ public class SelectionPanel extends JPanel {
 	 */
 	public SelectionPanel(MainMenu mainMenu, GameSettings settings) {
 
-		shop = new Shop();
 		this.mainMenu = mainMenu;
 		this.settings = settings;
-		this.setLayout(grid);
+		shop = new Shop();
+		labelNames = shop.getLabelNames();
 
-		CommonMethods.getImageResource("Background");
+		grid = new GridBagLayout();
+		this.setLayout(grid);
 
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.setOpaque(false);
@@ -131,8 +125,9 @@ public class SelectionPanel extends JPanel {
 					(float) Constants.SCREEN_SIZE.getWidth() / 120);
 			this.add(label, new GBCSimplified(j, i, 0, 0,
 					new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
-			this.add(this.getJLabelImage((i == 1 ? labelNames.get(j) : labelNames.get(j + 5))), new GBCSimplified(j,
-					i + 1, 0, 0, new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
+			this.add(CommonMethods.getJLabelImage((i == 1 ? labelNames.get(j) : labelNames.get(j + 5)), 8),
+					new GBCSimplified(j, i + 1, 0, 0,
+							new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
 		}
 		return i + 1;
 	}
@@ -161,7 +156,7 @@ public class SelectionPanel extends JPanel {
 			this.add(selectButton,
 					new GBCSimplified(j, i, (CommonMethods.getPixelsFromPercentageWidth(3)), 0,
 							new Insets((CommonMethods.getPixelsFromPercentageHeight(1)),
-									(CommonMethods.getPixelsFromPercentageHeight(5)), 0,
+									(CommonMethods.getPixelsFromPercentageWidth(5)), 0,
 									(CommonMethods.getPixelsFromPercentageHeight(5)))));
 		}
 	}
@@ -187,37 +182,6 @@ public class SelectionPanel extends JPanel {
 			settings.setScrollingBackground(scenario);
 		}
 
-	}
-
-	/**
-	 * getJLabelImage is a method that reads an image file and creates the
-	 * corresponding Image object which gets also scaled
-	 * 
-	 * @param fileName
-	 * @return a JLabel containing the newly created Image
-	 */
-	private JLabel getJLabelImage(String fileName) {
-		JLabel label = null;
-		try {
-			Image image = ImageIO.read(getClass().getResource("/resources/images/" + fileName + ".png"));
-			ImageIcon imageIcon = new ImageIcon(this.scale(image, new Dimension(
-					(CommonMethods.getPixelsFromPercentageWidth(8)), (CommonMethods.getPixelsFromPercentageWidth(8)))));
-			label = new JLabel(imageIcon);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return label;
-	}
-
-	/**
-	 * scale returns a scaled version of the image parameter
-	 * 
-	 * @param image - the image to scale
-	 * @param dim   - the Dimension to which to scale the image
-	 * @return a scaled version of the image parameter
-	 */
-	private Image scale(Image image, Dimension dim) {
-		return image.getScaledInstance((int) dim.getWidth(), (int) dim.getHeight(), Image.SCALE_DEFAULT);
 	}
 
 }
