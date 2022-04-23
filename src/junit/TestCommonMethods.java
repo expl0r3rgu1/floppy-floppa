@@ -23,7 +23,7 @@ public class TestCommonMethods {
 	/**
 	 * Checks if the number is actually in the given range
 	 */
-	void getRandomNumberTest() {
+	public void getRandomNumberTest() {
 		int randomNum = CommonMethods.getRandomNumber(NUM_MIN, NUM_MAX);
 		assertTrue(randomNum <= NUM_MAX && randomNum >= NUM_MIN);
 	}
@@ -32,7 +32,7 @@ public class TestCommonMethods {
 	/**
 	 * Checks if those methods calculate the right amount of pixels
 	 */
-	void getPixelsFromPercentageTest() {
+	public void getPixelsFromPercentageTest() {
 		assertTrue(Constants.SCREEN_SIZE.equals(new Dimension(CommonMethods.getPixelsFromPercentageWidth(PERCENTAGE),
 				CommonMethods.getPixelsFromPercentageHeight(PERCENTAGE))));
 	}
@@ -41,7 +41,7 @@ public class TestCommonMethods {
 	/**
 	 * Checks if those methods actually gets the resource
 	 */
-	void getResourceTest() {
+	public void getResourceTest() {
 		assertNotNull(CommonMethods.getImageResource(IMAGE_NAME));
 		assertNotNull(CommonMethods.getFontResource(FONT_NAME));
 		assertNotNull(CommonMethods.getGifResource(GIF_NAME));
