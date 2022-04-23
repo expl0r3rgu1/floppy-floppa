@@ -43,7 +43,7 @@ public class MainMenu extends JPanel {
 	/**
 	 * @param gameSettings - GameSettings
 	 */
-	public MainMenu(GameSettings gameSettings) {
+	public MainMenu() {
 
 		cardLayout = new CardLayout();
 		this.setLayout(cardLayout);
