@@ -5,14 +5,13 @@ import main.menu.leaderboard.Player;
 
 public class GameSettings {
 	
-	public static final int dimension = (Constants.SCREEN_SIZE.getHeight()) / 12;
 	private ScrollingBackground scrollingBackground;
 	private Skin skin;
 	private Player player;
 
 	public GameSettings() {
 		this.scrollingBackground = new ScrollingBackground("Default", CommonMethods.getImageResource("Classic"));
-		this.skin = new Skin("Floppa", CommonMethods.getImageResource("Floppa"), dimension, dimension);
+		this.skin = new Skin("Floppa", CommonMethods.getImageResource("Floppa"), Constants.SKIN_DIMENSION, Constants.SKIN_DIMENSION);
 	}
 
 	public ScrollingBackground getScrollingBackground() {
