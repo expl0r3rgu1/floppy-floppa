@@ -38,7 +38,7 @@ public class SelectionPanel extends JPanel {
 	private boolean bought = false;
 	private final List<PurchaseStatus<PricedSkin>> skinList;
 	private final List<PurchaseStatus<PricedBackground>> backgroundList;
-	private final ArrayList<String> labelNames;
+	private final List<String> labelNames;
 
 	/**
 	 * @param mainMenu - used to show cardlayouts
@@ -50,7 +50,7 @@ public class SelectionPanel extends JPanel {
 		this.mainMenu = mainMenu;
 		this.settings = settings;
 		shop = new Shop();
-		labelNames = shop.getLabelNames();
+		labelNames = Constants.SKIN_BACKGROUND_NAMES;
 
 		grid = new GridBagLayout();
 		this.setLayout(grid);
