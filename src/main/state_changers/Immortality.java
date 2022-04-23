@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 import javax.swing.Timer;
 
