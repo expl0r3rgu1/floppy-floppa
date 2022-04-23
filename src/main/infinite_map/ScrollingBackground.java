@@ -9,8 +9,8 @@ import main.utilities.Position;
 public class ScrollingBackground {
 
 	// Two copies of the background image to scroll
-	private Background backOne;
-	private Background backTwo;
+	private final Background backOne;
+	private final Background backTwo;
 
 	public ScrollingBackground(String name, Image image) {
 		backOne = new Background(name, image);
