@@ -24,4 +24,5 @@ public interface StateChangerFactory {
 	 * @return Booster
 	 */
 	public Booster boosterFactory(Position position);
+
 }

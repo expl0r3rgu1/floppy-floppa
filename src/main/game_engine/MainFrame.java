@@ -13,7 +13,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 
 import main.menu.MainMenu;
-import main.utilities.GameSettings;
 
 /**
  * The JFrame that contains the whole game in fullscreen
@@ -47,15 +46,14 @@ public class MainFrame extends JFrame {
 	 * Generates a new Thread that plays the soundtrack of the game
 	 */
 	public static synchronized void playSoundtrack() {
-		File audioFile = new File(MainFrame.class.getResource("/resources/sounds/soundtrack.wav").getFile());
-
 		new Thread(new Runnable() {
 
 			@Override
 			public void run() {
 				Clip clip = null;
 				try {
-					AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+					AudioInputStream audioStream = AudioSystem
+							.getAudioInputStream(MainFrame.class.getResource("/resources/sounds/soundtrack.wav"));
 					clip = AudioSystem.getClip();
 					clip.open(audioStream);
 				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {

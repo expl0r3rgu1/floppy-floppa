@@ -4,9 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.awt.Graphics2D;
 
-import java.util.Random;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import main.utilities.CommonMethods;
 import main.game_engine.PlayPanel;
@@ -69,7 +67,7 @@ public class CoinsIncrement extends Booster {
 		/**
 		 * Check if the moving pattern of the booster works correctly
 		 */
-		void coinsIncrementBoosterMovement() {
+		public void coinsIncrementBoosterMovement() {
 			CoinsIncrement coinsIncrement1 = new CoinsIncrement(this.POSITION, this.SKIN);
 			coinsIncrement1.updatePositionX();
 			assertTrue(coinsIncrement1.getPosition().getX() == POSITION.getX()- 3 * Constants.MOVING_FACTOR);

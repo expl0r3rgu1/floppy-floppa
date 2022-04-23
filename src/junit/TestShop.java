@@ -3,24 +3,25 @@ package junit;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.junit.Test;
 
 import main.menu.shop.Shop;
+import main.utilities.Constants;
 
 public class TestShop {
-	
+
 	final private int ENOUGH_COINS = 1000;
 	final private int NOT_ENOUGH_COINS = 0;
 
 	@Test
 	/**
-	 * Checks if the Shop correctly reads info from the savings file. The Shop class
-	 * only reads the file at the beginning, when the program is launched, so to
-	 * initialize its data structures of Purchase Statuses. If the JUnit test is
-	 * lunched after, when the savings file has been modified, the JUnit results are
-	 * wrong.
+	 * Checks if the Shop correctly reads info from the savings file. 
 	 */
-	void fileReading() {
+	public void fileReading() {
 		Shop shop = new Shop();
 
 		for (int i = 0; i < shop.getSkinsNum(); i++) {
@@ -43,7 +44,8 @@ public class TestShop {
 	/**
 	 * Checks if the Shop correctly buys items
 	 */
-	void buying() {
+	public void buying() {
+		this.createFile();
 		Shop shop = new Shop();
 
 		shop.setCoins(this.NOT_ENOUGH_COINS);
@@ -72,6 +74,19 @@ public class TestShop {
 			assertTrue(shop.getCoins() < prevCoins);
 			prevCoins = shop.getCoins();
 			assertTrue(shop.getSceneries().get(i).isPurchased());
+		}
+	}
+
+	private void createFile() {
+		File savingsFile = new File(Constants.SAVINGS_FILE_PATH);
+
+		try {
+			savingsFile.createNewFile();
+			FileWriter writer = new FileWriter(savingsFile);
+			writer.write(Constants.SAVINGS_FILE_START_CONTENT);
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

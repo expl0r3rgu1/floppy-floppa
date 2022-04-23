@@ -1,6 +1,5 @@
 package main.state_changers;
 
-import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
@@ -22,7 +21,7 @@ import org.junit.jupiter.api.Test;
 public class BlackStain extends Malus implements ActionListener {
 
 	private boolean collided = false;
-	private Timer timer;
+	private final Timer timer;
 
 	/**
 	 * @param position - The CoinsReducer initial position

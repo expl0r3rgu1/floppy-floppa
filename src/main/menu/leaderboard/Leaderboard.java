@@ -10,16 +10,22 @@ import java.util.Scanner;
 
 import main.utilities.Constants;
 
+/**
+ * The list of Player instances ordered by Player.personalBest.
+ */
 public class Leaderboard {
-	private final File leaderboardFile = new File(Constants.SAVINGS_FILE_PATH);
-	private ArrayList<Player> leaderboard;
+	private final File leaderboardFile;
+	private final ArrayList<Player> leaderboard;
 
+	/**
+	 * Initialized the leaderboard by reading the savings File
+	 */
 	public Leaderboard() {
+		leaderboardFile = new File(Constants.SAVINGS_FILE_PATH);
+		leaderboard = new ArrayList<>();
 		try {
 			Scanner leaderboardFileScanner = new Scanner(leaderboardFile);
 			this.skipToLeaderboardStart(leaderboardFileScanner);
-
-			leaderboard = new ArrayList<>();
 
 			while (leaderboardFileScanner.hasNextLine()) {
 				var line = leaderboardFileScanner.nextLine();
@@ -36,10 +42,9 @@ public class Leaderboard {
 		}
 	}
 
-	public Player getBestPlayer() {
-		return leaderboard.get(0);
-	}
-
+	/**
+	 * @return The ArrayList of Player instances that played the game
+	 */
 	public ArrayList<Player> getLeaderboard() {
 		return leaderboard;
 	}
@@ -50,6 +55,11 @@ public class Leaderboard {
 		}
 	}
 
+	/**
+	 * Saves the current leaderboard in the savings File
+	 * 
+	 * @throws IOException
+	 */
 	public void writeToFile() throws IOException {
 		FileWriter leaderboardFileWriter = new FileWriter(leaderboardFile, true);
 
@@ -60,6 +70,12 @@ public class Leaderboard {
 		leaderboardFileWriter.close();
 	}
 
+	/**
+	 * Updates the leaderboard with a new Player
+	 * 
+	 * @param newPlayer A new Player or an already existing Player with a different
+	 *                  Player.personalBest (Score)
+	 */
 	public void update(Player newPlayer) {
 		int playerIndexInLeaderboard = this.leaderboard.indexOf(newPlayer);
 		boolean playerAlreadyPresent = (playerIndexInLeaderboard == -1) ? false : true;
@@ -87,6 +103,9 @@ public class Leaderboard {
 		this.leaderboard.add(index, newPlayer);
 	}
 
+	/**
+	 * Clears the leaderboard ArrayList
+	 */
 	public void clearLeaderboard() {
 		this.leaderboard.clear();
 	}

@@ -7,10 +7,10 @@ import java.util.Random;
 import main.game_engine.PlayPanel;
 import main.menu.shop.Shop;
 
-public class EOGMenu implements Menu {
+public class EOGMenu {
 
-	private Shop shop;
-	private int previousCoins;
+	private final Shop shop;
+	private final int previousCoins;
 	private int newCoins;
 
 	/**
