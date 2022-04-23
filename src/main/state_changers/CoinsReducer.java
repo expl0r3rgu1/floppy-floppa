@@ -2,6 +2,7 @@ package main.state_changers;
 
 import java.awt.Graphics2D;
 import main.game_engine.PlayPanel;
+import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
 
@@ -20,10 +21,9 @@ public class CoinsReducer extends Malus {
 	}
 
 	/**
-	 * changeState is a method that calls PlayPanel.reducerTimes increases it by
-	 * one, applying the CoinsReducer malus to the player's coins, and then it moves
-	 * the malus off screen
+	 * {@inheritDoc}
 	 */
+	@Override
 	public void changeState() {
 		PlayPanel.reducerTimes++;
 		moveOffScreen();
@@ -31,11 +31,11 @@ public class CoinsReducer extends Malus {
 
 	/**
 	 * The method gives the CoinsReducer malus a new Position that leaves the Y
-	 * position unchanged, while the X position decreases by one pixel so that the
-	 * object moves from right to left
+	 * position unchanged, while the X position decreases so that the object moves
+	 * from right to left
 	 */
 	private void updatePositionX() {
-		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+		setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR, getPosition().getY()));
 	}
 
 	/**
@@ -43,8 +43,8 @@ public class CoinsReducer extends Malus {
 	 */
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(),
-				getSkin().getWidth(), getSkin().getHeight(), null);
+		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(), getSkin().getWidth(),
+				getSkin().getHeight(), null);
 
 		this.updatePositionX();
 	}

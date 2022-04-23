@@ -1,20 +1,11 @@
 package main.state_changers;
 
-import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
@@ -25,7 +16,7 @@ import javax.swing.Timer;
 public class BlackStain extends Malus implements ActionListener {
 
 	private boolean collided = false;
-	private Timer timer = new Timer(Constants.CHANGED_STATE_TIME, this);
+	private final Timer timer;
 
 	/**
 	 * @param position - The CoinsReducer initial position
@@ -33,6 +24,7 @@ public class BlackStain extends Malus implements ActionListener {
 	 */
 	public BlackStain(Position position, Skin skin) {
 		super(position, skin);
+		timer = new Timer(Constants.CHANGED_STATE_TIME, this);
 	}
 
 	/**
@@ -69,7 +61,7 @@ public class BlackStain extends Malus implements ActionListener {
 					(int) Constants.SCREEN_SIZE.getHeight(), null);
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

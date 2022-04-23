@@ -1,7 +1,5 @@
 package main.state_changers;
 
-import java.awt.Graphics2D;
-
 import main.utilities.Movable;
 import main.utilities.Position;
 import main.utilities.Skin;
@@ -30,15 +28,6 @@ public abstract class Malus extends Movable {
 	 */
 	public Skin getSkin() {
 		return skin;
-	}
-
-	/**
-	 * setter method for Skin
-	 * 
-	 * @param skin
-	 */
-	public void setSkin(Skin skin) {
-		this.skin = skin;
 	}
 
 	/**
