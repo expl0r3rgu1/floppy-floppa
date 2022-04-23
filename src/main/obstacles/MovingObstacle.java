@@ -46,15 +46,6 @@ public class MovingObstacle extends Movable implements ActionListener {
 	}
 
 	/**
-	 * Sets the MovingObstacle Skin
-	 * 
-	 * @param skin
-	 */
-	public void setSkin(Skin skin) {
-		this.skin = skin;
-	}
-
-	/**
 	 * The main method to update the MovingObstacle position, in the map, through
 	 * time
 	 */
