@@ -15,7 +15,7 @@ public class Background extends Movable {
 	private final Image image;
 
 	/**
-	 * @param name The name of the Background
+	 * @param name  The name of the Background
 	 * @param image The image that will be displayed
 	 */
 	public Background(String name, Image image) {
@@ -25,8 +25,8 @@ public class Background extends Movable {
 	}
 
 	/**
-	 * @param name The name of the Background
-	 * @param image The image that will be displayed
+	 * @param name     The name of the Background
+	 * @param image    The image that will be displayed
 	 * @param position The starting position the image will be displayed at
 	 */
 	public Background(String name, Image image, Position position) {
