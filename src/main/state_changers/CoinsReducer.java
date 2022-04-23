@@ -27,10 +27,9 @@ public class CoinsReducer extends Malus {
 	}
 
 	/**
-	 * changeState is a method that calls PlayPanel.reducerTimes increases it by
-	 * one, applying the CoinsReducer malus to the player's coins, and then it moves
-	 * the malus off screen
+	 * {@inheritDoc}
 	 */
+	@Override
 	public void changeState() {
 		PlayPanel.reducerTimes++;
 		moveOffScreen();
@@ -38,11 +37,11 @@ public class CoinsReducer extends Malus {
 
 	/**
 	 * The method gives the CoinsReducer malus a new Position that leaves the Y
-	 * position unchanged, while the X position decreases by one pixel so that the
-	 * object moves from right to left
+	 * position unchanged, while the X position decreases so that the object moves
+	 * from right to left
 	 */
 	private void updatePositionX() {
-		setPosition(new Position(getPosition().getX() - 1, getPosition().getY()));
+		setPosition(new Position(getPosition().getX() - 3 * Constants.MOVING_FACTOR, getPosition().getY()));
 	}
 
 	/**
@@ -55,7 +54,10 @@ public class CoinsReducer extends Malus {
 
 		this.updatePositionX();
 	}
-
+	
+	/**
+	 * TestCoinsReducer is a class that tests the updatePosition of CoinsReducer
+	 */
 	public static class TestCoinsReducer {
 		final private Position POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth()),
 				(int) Constants.SCREEN_SIZE.getHeight() / 2);
@@ -68,7 +70,7 @@ public class CoinsReducer extends Malus {
 		/**
 		 * Check if the moving pattern of the malus works correctly
 		 */
-		void coinsReducerMalusMovement() {
+		void coinsIncrementBoosterMovement() {
 			CoinsReducer coinsReducer1 = new CoinsReducer(this.POSITION, this.SKIN);
 			coinsReducer1.updatePositionX();
 			assertTrue(coinsReducer1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
