@@ -36,10 +36,6 @@ public class Leaderboard {
 		}
 	}
 
-	public Player getBestPlayer() {
-		return leaderboard.get(0);
-	}
-
 	public ArrayList<Player> getLeaderboard() {
 		return leaderboard;
 	}
