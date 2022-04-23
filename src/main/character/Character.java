@@ -74,15 +74,6 @@ public class Character extends Movable {
 	}
 
 	/**
-	 * Setter of the character skin
-	 * 
-	 * @param skin the new skin of the character
-	 */
-	public void setSkin(Skin skin) {
-		this.skin = skin;
-	}
-
-	/**
 	 * Getter of the character skin
 	 * 
 	 * @return the character skin
