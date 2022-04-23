@@ -50,7 +50,7 @@ public class Background extends Movable {
 		}
 	}
 
-	public void moveToSideOfSecondBackground() {
+	public void moveToRightScreenEdge() {
 		getPosition().setX(getPosition().getX() + (int) Constants.SCREEN_SIZE.getWidth() * 2);
 	}
 
