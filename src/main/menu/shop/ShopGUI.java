@@ -58,33 +58,6 @@ public class ShopGUI extends JPanel {
 	}
 
 	/**
-	 * Returns a scaled version of the image parameter
-	 * 
-	 * @param image the image to scale
-	 * @param dim   the Dimension to which to scale the image
-	 * @return a scaled version of the image parameter
-	 */
-	private Image scale(Image image, Dimension dim) {
-		return image.getScaledInstance((int) dim.getWidth(), (int) dim.getHeight(), Image.SCALE_DEFAULT);
-	}
-
-	/**
-	 * The method reads an image file and creates the corresponding Image object
-	 * which gets also scaled
-	 * 
-	 * @param fileName
-	 * @return a JLabel containing the newly created Image
-	 */
-	private JLabel imageCreation(String fileName) {
-		JLabel label = null;
-		Image image = CommonMethods.getImageResource(fileName);
-		ImageIcon imageIcon = new ImageIcon(this.scale(image, new Dimension(
-				(CommonMethods.getPixelsFromPercentageHeight(8)), (CommonMethods.getPixelsFromPercentageHeight(8)))));
-		label = new JLabel(imageIcon);
-		return label;
-	}
-
-	/**
 	 * Main class method, it correctly creates and placed the various GUI components
 	 */
 	private void placeGUIComponents() {
@@ -151,8 +124,8 @@ public class ShopGUI extends JPanel {
 			this.add(label, new GBCSimplified(j, i, 0, 0,
 					new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
 
-			this.add(this.imageCreation(
-					(i == 2 ? Constants.SKIN_BACKGROUND_NAMES.get(j) : Constants.SKIN_BACKGROUND_NAMES.get(j + 5))),
+			this.add(CommonMethods.getJLabelImage(
+					(i == 2 ? Constants.SKIN_BACKGROUND_NAMES.get(j) : Constants.SKIN_BACKGROUND_NAMES.get(j + 5)), 8),
 					new GBCSimplified(j, i + 1, 0, 0,
 							new Insets((CommonMethods.getPixelsFromPercentageHeight(2)), 0, 0, 0)));
 
