@@ -14,6 +14,15 @@ import main.menu.leaderboard.Player;
 import main.utilities.Constants;
 
 public class TestLeaderboard {
+	@Test
+	public void testLeaderboardInitialization() {
+		createFile();
+
+		Leaderboard leaderboard = new Leaderboard();
+
+		assertNotNull(leaderboard.getLeaderboard());
+		assertTrue(leaderboard.getLeaderboard().size() == 0);
+	}
 
 	private void createFile() {
 		File savingsFile = new File(Constants.SAVINGS_FILE_PATH);
