@@ -8,8 +8,8 @@ import main.utilities.Movable;
 import main.utilities.Position;
 
 public class Background extends Movable {
-	private String name;
-	private Image image;
+	private final String name;
+	private final Image image;
 
 	public Background(String name, Image image) {
 		super(new Position(0, 0));
@@ -27,16 +27,8 @@ public class Background extends Movable {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Image getImage() {
 		return image;
-	}
-
-	public void setImage(Image image) {
-		this.image = image;
 	}
 
 	@Override
