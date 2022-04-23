@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.awt.Dimension;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
