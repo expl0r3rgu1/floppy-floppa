@@ -35,16 +35,16 @@ import main.utilities.Skin;
 public class SelectionPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
-	private GridBagLayout grid = new GridBagLayout();
-	private GameSettings settings;
-	private MainMenu mainMenu;
-	private Shop shop;
-	private int numSkins;
-	private int numBackgrounds;
+	private final GridBagLayout grid = new GridBagLayout();
+	private final GameSettings settings;
+	private final MainMenu mainMenu;
+	private final Shop shop;
+	private final int numSkins;
+	private final int numBackgrounds;
 	private boolean bought = false;
-	private List<PurchaseStatus<PricedSkin>> skinList;
-	private List<PurchaseStatus<PricedBackground>> backgroundList;
-	private ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
+	private final List<PurchaseStatus<PricedSkin>> skinList;
+	private final List<PurchaseStatus<PricedBackground>> backgroundList;
+	private final ArrayList<String> labelNames = new ArrayList<>(Arrays.asList("Floppa", "Sogga", "Capibara", "Quokka",
 			"Buding", "Classic", "Beach", "Woods", "Space", "NeonCity"));
 
 	/**
