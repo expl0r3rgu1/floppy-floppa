@@ -20,7 +20,7 @@ import java.util.List;
 
 import javax.swing.Timer;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * A class that implements the character, it keeps track of its current status
@@ -37,7 +37,7 @@ public class Character extends Movable {
 	 */
 	public static boolean immortal = false;
 	private boolean jumping;
-	private Timer timer;
+	private final Timer timer;
 
 	/**
 	 * @param position the initial spawning position of the character
@@ -271,7 +271,7 @@ public class Character extends Movable {
 		/**
 		 * Checks if the position is updated correctly when the character falls or jumps
 		 */
-		void updatePositionTest() {
+		public void updatePositionTest() {
 			Character character = new Character(CHARACTER_INITIAL_POSITION,
 					new Skin("floppa", CommonMethods.getImageResource("Floppa"),
 							CommonMethods.getImageResource("Floppa").getWidth(null),
