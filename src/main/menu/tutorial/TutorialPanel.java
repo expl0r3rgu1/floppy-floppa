@@ -23,7 +23,7 @@ import main.utilities.GraphicJButton;
  */
 public class TutorialPanel extends JPanel {
 	private static final long serialVersionUID = 3621436339823195193L;
-	private MainMenu mainMenu;
+	private final MainMenu mainMenu;
 
 	/**
 	 * @param mainMenu it is necessary to use correctly the card layout
