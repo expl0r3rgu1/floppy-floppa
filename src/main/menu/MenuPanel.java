@@ -1,13 +1,8 @@
 package main.menu;
 
 import java.awt.GridBagLayout;
-import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import main.utilities.GraphicJLabel;
 import main.utilities.Constants;
@@ -16,7 +11,6 @@ import main.utilities.GBCSimplified;
 import main.utilities.GraphicJButton;
 import main.utilities.CommonMethods;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 
 /**
