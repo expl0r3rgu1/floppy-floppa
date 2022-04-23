@@ -36,12 +36,6 @@ public class Background extends Movable {
 		// Drawing the background on the canvas to fill it completely
 		canvas.drawImage(image, getPosition().getX(), getPosition().getY(), (int) Constants.SCREEN_SIZE.getWidth(),
 				(int) Constants.SCREEN_SIZE.getHeight(), null);
-
-		updatePosition();
-
-		if (isOffStageLeft()) {
-			moveToSideOfSecondBackground();
-		}
 	}
 
 	private void updatePosition() {
