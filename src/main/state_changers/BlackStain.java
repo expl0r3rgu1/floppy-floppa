@@ -4,18 +4,15 @@ import main.utilities.CommonMethods;
 import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
+
+import static org.junit.Assert.assertTrue;
+
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * A class that extends Malus class and implements an entity that makes appear a
@@ -79,4 +76,30 @@ public class BlackStain extends Malus implements ActionListener {
 		this.timer.stop();
 	}
 
+	public static class TestBlackStain {
+		final private Position POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth()),
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		final private Position HALFWAY_POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth() / 2),
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		final private Skin SKIN = new Skin("blackstain", CommonMethods.getImageResource("blackstain"),
+				(int) this.POSITION.getX(), (int) this.POSITION.getY());
+
+		@Test
+		/**
+		 * Check if the moving pattern of the malus works correctly
+		 */
+		void coinsReducerMalusMovement() {
+			BlackStain blackStain1 = new BlackStain(this.POSITION, this.SKIN);
+			blackStain1.updatePositionX();
+			assertTrue(blackStain1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
+			assertTrue(blackStain1.getPosition().getY() == POSITION.getY());
+
+			BlackStain blackStain2 = new BlackStain(this.HALFWAY_POSITION, this.SKIN);
+			blackStain2.updatePositionX();
+			assertTrue(blackStain2.getPosition().getX() == HALFWAY_POSITION.getX() - 3 * Constants.MOVING_FACTOR);
+			assertTrue(blackStain2.getPosition().getY() == HALFWAY_POSITION.getY());
+
+		}
+	}
+	
 }
