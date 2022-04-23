@@ -24,6 +24,22 @@ public class TestLeaderboard {
 		assertTrue(leaderboard.getLeaderboard().size() == 0);
 	}
 
+	@Test
+	public void testLeaderboardAddPlayer() {
+		createFile();
+
+		Leaderboard leaderboard = new Leaderboard();
+		assertNotNull(leaderboard.getLeaderboard());
+		assertTrue(leaderboard.getLeaderboard().size() == 0);
+
+		Player newPlayer = new Player("expl0r3rgu1", 50);
+		leaderboard.update(newPlayer);
+
+		assertTrue(leaderboard.getLeaderboard().size() == 1);
+		assertNotNull(leaderboard.getLeaderboard().get(0));
+		assertNotNull(leaderboard.getLeaderboard().indexOf(newPlayer));
+	}
+
 	private void createFile() {
 		File savingsFile = new File(Constants.SAVINGS_FILE_PATH);
 
