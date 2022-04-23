@@ -7,8 +7,8 @@ import javax.swing.Timer;
 import main.utilities.Constants;
 
 public abstract class TimedEntityGenerator implements ActionListener {
-	private Timer timer;
-	private Map map;
+	private final Timer timer;
+	private final Map map;
 
 	public TimedEntityGenerator(Map map, double speed) {
 		this.map = map;
