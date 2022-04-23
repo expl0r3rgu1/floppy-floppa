@@ -25,8 +25,8 @@ import java.awt.GridBagConstraints;
 public class MenuPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
-	private final GridBagLayout grid = new GridBagLayout();
-	private final JPanel panel = new JPanel(new GridBagLayout());
+	private final GridBagLayout grid;
+	private final JPanel panel;
 	private final MainMenu mainMenu;
 
 	/**
@@ -36,7 +36,9 @@ public class MenuPanel extends JPanel {
 	public MenuPanel(MainMenu mainMenu) {
 
 		this.mainMenu = mainMenu;
+		grid = new GridBagLayout();
 		this.setLayout(grid);
+		panel = new JPanel(grid);
 
 		this.setPreferredSize(Constants.SCREEN_SIZE);
 		this.setOpaque(false);
