@@ -22,7 +22,7 @@ import main.utilities.GraphicJButton;
 
 public class LeaderboardPanel extends JPanel {
 	private static final long serialVersionUID = -2850654943551437120L;
-	private Leaderboard leaderboard;
+	private final Leaderboard leaderboard;
 	private final MainMenu mainMenu;
 
 	public LeaderboardPanel(MainMenu mainMenu, Leaderboard leaderboard) {
