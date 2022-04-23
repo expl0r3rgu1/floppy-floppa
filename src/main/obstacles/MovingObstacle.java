@@ -22,8 +22,8 @@ import main.utilities.Skin;
  */
 public class MovingObstacle extends Movable implements ActionListener {
 
-	private Timer timer;
-	private Skin skin;
+	private final Timer timer;
+	private final Skin skin;
 	private int direction = -1;
 
 	/**
