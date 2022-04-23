@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
