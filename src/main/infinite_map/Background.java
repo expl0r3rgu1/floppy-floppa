@@ -7,56 +7,69 @@ import main.utilities.Constants;
 import main.utilities.Movable;
 import main.utilities.Position;
 
+/**
+ * A still background that fills the whole screen
+ */
 public class Background extends Movable {
-	private String name;
-	private Image image;
+	private final String name;
+	private final Image image;
 
+	/**
+	 * @param name  The name of the Background
+	 * @param image The image that will be displayed
+	 */
 	public Background(String name, Image image) {
 		super(new Position(0, 0));
 		this.name = name;
 		this.image = image;
 	}
 
+	/**
+	 * @param name     The name of the Background
+	 * @param image    The image that will be displayed
+	 * @param position The starting position the image will be displayed at
+	 */
 	public Background(String name, Image image, Position position) {
 		super(position);
 		this.name = name;
 		this.image = image;
 	}
 
+	/**
+	 * @return The name of the Background
+	 */
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	/**
+	 * @return The image of the Background
+	 */
 	public Image getImage() {
 		return image;
 	}
 
-	public void setImage(Image image) {
-		this.image = image;
-	}
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void animate(Graphics2D canvas) {
 		// Drawing the background on the canvas to fill it completely
 		canvas.drawImage(image, getPosition().getX(), getPosition().getY(), (int) Constants.SCREEN_SIZE.getWidth(),
 				(int) Constants.SCREEN_SIZE.getHeight(), null);
-
-		updatePosition();
-
-		if (isOffStageLeft()) {
-			moveToSideOfSecondBackground();
-		}
 	}
 
-	private void updatePosition() {
+	/**
+	 * Moves the Background to the left by Constants.MOVING_FACTOR pixels
+	 */
+	public void updatePosition() {
 		getPosition().setX(getPosition().getX() - Constants.MOVING_FACTOR);
 	}
 
-	private boolean isOffStageLeft() {
+	/**
+	 * @return True if the image is completely off-screen left
+	 */
+	public boolean isOffStageLeft() {
 		if (getPosition().getX() <= -1 * Constants.SCREEN_SIZE.getWidth()) {
 			return true;
 		} else {
@@ -64,10 +77,16 @@ public class Background extends Movable {
 		}
 	}
 
-	private void moveToSideOfSecondBackground() {
+	/**
+	 * Moves the Background to the right screen edge
+	 */
+	public void moveToRightScreenEdge() {
 		getPosition().setX(getPosition().getX() + (int) Constants.SCREEN_SIZE.getWidth() * 2);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		Background other = (Background) obj;
