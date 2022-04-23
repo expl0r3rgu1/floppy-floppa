@@ -40,6 +40,26 @@ public class TestLeaderboard {
 		assertNotNull(leaderboard.getLeaderboard().indexOf(newPlayer));
 	}
 
+	@Test
+	public void testLeaderboardUpdatePlayer() {
+		createFile();
+
+		Leaderboard leaderboard = new Leaderboard();
+		assertNotNull(leaderboard.getLeaderboard());
+		assertTrue(leaderboard.getLeaderboard().size() == 0);
+
+		String nickname = "expl0r3rgu1";
+
+		Player player = new Player(nickname, 50);
+		leaderboard.update(player);
+
+		Player updatedPlayer = new Player(nickname, 60);
+
+		leaderboard.update(updatedPlayer);
+
+		assertTrue(leaderboard.getLeaderboard().size() == 1);
+	}
+
 	private void createFile() {
 		File savingsFile = new File(Constants.SAVINGS_FILE_PATH);
 
