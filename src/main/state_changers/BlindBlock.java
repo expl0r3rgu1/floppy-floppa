@@ -88,9 +88,9 @@ public class BlindBlock extends Malus implements ActionListener {
 
 		@Test
 		/**
-		 * Check if the moving pattern of the malus works correctly
+		 * Check if the moving pattern of the booster works correctly
 		 */
-		void coinsReducerMalusMovement() {
+		void coinsIncrementBoosterMovement() {
 			BlindBlock blindBlock1 = new BlindBlock(this.POSITION, this.SKIN);
 			blindBlock1.updatePositionX();
 			assertTrue(blindBlock1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
