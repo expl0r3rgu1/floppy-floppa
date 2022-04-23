@@ -25,9 +25,9 @@ import java.awt.GridBagConstraints;
 public class MenuPanel extends JPanel {
 
 	private static final long serialVersionUID = -7631305128085484196L;
-	private GridBagLayout grid = new GridBagLayout();
-	JPanel panel = new JPanel(new GridBagLayout());
-	private MainMenu mainMenu;
+	private final GridBagLayout grid = new GridBagLayout();
+	private final JPanel panel = new JPanel(new GridBagLayout());
+	private final MainMenu mainMenu;
 
 	/**
 	 * @param mainMenu - used to show cardlayouts
