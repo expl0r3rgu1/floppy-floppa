@@ -93,7 +93,7 @@ public class BlackStain extends Malus implements ActionListener {
 		/**
 		 * Check if the moving pattern of the malus works correctly
 		 */
-		public void coinsReducerMalusMovement() {
+		public void blackStainMalusMovement() {
 			BlackStain blackStain1 = new BlackStain(this.POSITION, this.SKIN);
 			blackStain1.updatePositionX();
 			assertTrue(blackStain1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
