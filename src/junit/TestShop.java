@@ -9,8 +9,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import main.menu.shop.Shop;
-import main.utilities.Constants;
+import main.controller.menu.shop.Shop;
+import main.model.utilities.Constants;
 
 public class TestShop {
 

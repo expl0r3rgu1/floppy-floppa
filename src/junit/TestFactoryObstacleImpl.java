@@ -4,13 +4,13 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import main.obstacles.FixedObstacle;
-import main.obstacles.MovingObstacle;
-import main.obstacles.ObstacleFactoryImpl;
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.Position;
-import main.utilities.Skin;
+import main.model.obstacles.FixedObstacle;
+import main.model.obstacles.MovingObstacle;
+import main.model.obstacles.ObstacleFactoryImpl;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Position;
+import main.model.utilities.Skin;
 
 /**
  * TestFactoryObstacleImpl is a class that tests ObstacleFactoryImpl

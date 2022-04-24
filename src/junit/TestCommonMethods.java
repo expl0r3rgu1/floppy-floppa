@@ -7,8 +7,8 @@ import java.awt.Dimension;
 
 import org.junit.Test;
 
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
 
 public class TestCommonMethods {
 

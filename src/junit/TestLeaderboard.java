@@ -9,9 +9,9 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import main.menu.leaderboard.Leaderboard;
-import main.menu.leaderboard.Player;
-import main.utilities.Constants;
+import main.controller.menu.leaderboard.Leaderboard;
+import main.model.leaderboard.Player;
+import main.model.utilities.Constants;
 
 public class TestLeaderboard {
 	@Test
