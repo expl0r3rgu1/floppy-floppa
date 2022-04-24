@@ -47,6 +47,9 @@ public class PricedSkin extends Skin {
 		return super.equals(other) && this.price == other.getPrice();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode() {
 		return super.hashCode();

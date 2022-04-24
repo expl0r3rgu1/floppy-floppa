@@ -82,6 +82,9 @@ public class MovingObstacle extends Movable implements ActionListener {
 		return super.equals(other) && this.skin.equals(other.skin);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode() {
 		return super.hashCode();

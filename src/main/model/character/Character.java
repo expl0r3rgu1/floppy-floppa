@@ -73,10 +73,16 @@ public class Character extends Movable {
 		this.dead = (Character.immortal) ? false : true;
 	}
 
+	/**
+	 * Method to make the character immortal
+	 */
 	public static void setImmortal() {
 		Character.immortal = true;
 	}
 	
+	/**
+	 * Method to make the character to its normal state
+	 */
 	public static void unSetImmortal() {
 		Character.immortal = false;
 	}

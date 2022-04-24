@@ -61,6 +61,9 @@ public class Player {
 		return nickname + "," + personalBest;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode() {
 		return super.hashCode();

@@ -71,6 +71,9 @@ public class FixedObstacle extends Movable {
 		return super.equals(other) && this.skin.equals(other.skin);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode() {
 		return super.hashCode();

@@ -111,6 +111,9 @@ public class Skin {
 				&& this.width == other.getWidth() && this.height == other.getHeight();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode() {
 		return super.hashCode();

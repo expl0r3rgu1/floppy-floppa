@@ -97,6 +97,9 @@ public class Constants {
 	 */
 	public static final int IMMORTALITY_TIMEOUT = 10000;
 	
+	/**
+	 * Instantiates a Random object
+	 */
 	public static final Random RANDOM = new Random();
 	
 	/**
