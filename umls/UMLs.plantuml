@@ -1,0 +1,464 @@
+@startuml Analisi
+!theme plain
+
+interface Map {
+    +getPaintedFixedObstacles(): List<FixedObstacle>
+    +getPaintedMovingObstacles(): List<MovingObstacles>
+    +getPaintedMalus(): List<Malus>
+    +getPaintedBoosters(): List<Booster>
+    +startTimer(): void
+    +stopTimer(): void
+    +animate(canvas: Graphics2D): void
+}
+
+
+Map --* Obstacle
+
+interface Obstacle
+
+Obstacle -- FixedObstacle
+
+interface FixedObstacle {
+    +getSkin(): Skin
+}
+
+Obstacle -- MovingObstacle
+
+interface MovingObstacle {
+    +getSkin(): Skin
+}
+
+Map --* Character
+
+interface Character {
+    +isDead(): boolean
+    +die(): void
+    +getSkin(): Skin
+    +jump(): void
+    +collideFixedObstalce(fixedObstacleList: List<FixedObstacle>): void
+    +collideMovingObstacle(movingObstacleList: List<MovingObstacle>): void
+    +collideMalus(malusList: List<Malus>): void
+    +collideBooster(boosterList: List<Booster>): void
+    +collideBorders(): void
+}
+
+Map --* StateChanger
+
+interface StateChanger 
+
+StateChanger -- Malus
+
+interface Malus {
+    +getSkin(): Skin
+    +changeState(): void
+    +moveOffScreen(): void
+}
+
+StateChanger -- Booster
+
+interface Booster {
+    +getSkin(): Skin
+    +changeState(): void
+    +moveOffScreen(): void
+}
+
+@enduml
+
+
+@startuml Architettura
+!theme plain
+
+interface View
+
+View -[hidden]-> Model
+
+View -[hidden]-> Controller
+
+interface MainFrame implements View 
+
+interface MenuPanel implements View
+
+interface PlayPanel implements View
+
+View -- Controller
+
+
+interface Controller
+
+interface Launcher implements Controller
+
+interface MainMenu implements Controller {
+    +showCard(panel: PANEL): void
+    +updateSavings(): void
+    +clearSavings(): void
+}
+
+interface Map implements Controller {
+    +startTimer(): void
+    +stopTimer(): void
+    +addFixedObstacle(): void
+    +addMovingObstacle(): void
+    +addStateChanger(): void
+    +animate(canvas: Graphics2D): void
+}
+
+Controller -- Model
+
+interface Model
+
+interface Character implements Model {
+    +isDead(): boolean
+    +die(): void
+    +jump(): void
+    +collide(): void
+}
+
+interface Player implements Model {
+    +getPersonalBest(): Integer
+}
+
+interface ScrollingBackground implements Model {
+    +animate(canvas: Graphics2D): void
+}
+
+interface ObstacleFactory implements Model {
+    +fixedObstacleFactory(position: Position, skin: Skin): FixedObstacle
+    +movingObstacleFactory(position: Position, skin: Skin): MovingObstacle
+}
+
+interface StateChangerFactory implements Model {
+    +malusFactory(position: Position): Malus
+    +boosterFactory(position: Position): Booster
+}
+
+ScrollingBackground -[hidden]-> ObstacleFactory
+Player -[hidden]-> StateChangerFactory
+Character -[hidden]-> Player
+
+@enduml
+
+@startuml Movable_Position_Character
+!theme plain
+
+class Position {
+    -x: Integer
+    -y: Integer
+    +getX(): Integer 
+    +setX(x: Integer): void
+    +getY(): Integer
+    +setY(y: Integer): void
+}
+
+Position -- Movable
+
+abstract class Movable {
+    -position: Position
+    +getPosition(): Position
+    +setPosition(position: Position): void
+    +{abstract} animate(canvas: Graphics2D): void
+}
+
+Movable <|-- Character
+
+class Character {
+    +{static} immortal: boolean
+    -skin: Skin
+    -dead: boolean
+    -jumping: boolean
+    -timer: Timer
+    +isDead(): boolean
+    +die(): void
+    +getSkin(): Skin
+    +jump(): void
+    +collideFixedObstacle(fixedObstacleList: List<FixedObstacle>): void
+    +collideMovingObstacle(movingObstacleList: List<MovingObstacle>): void
+    +collideMalus(malusList: List<Malus>): void
+    +collideBooster(boosterList: List<Booster>): void
+    +collideBorders(): void
+    -checkCollision(x: Integer, y: Integer, height: Integer, width: Integer): boolean
+    -updatePosition(): void
+}
+
+@enduml
+
+@startuml TutorialPanel
+!theme plain
+
+class TutorialPanel {
+    -mainMenu: MainMenu
+    -addTitleLabel(): void
+    -addTutorialLabel(): void
+    -addMenuButton(): void
+}
+
+@enduml
+
+@startuml Skin_PricedSkin
+!theme plain
+
+class Skin {
+    -name: String
+    -image: Image
+    -width: Integer
+    -heigt: Integer
+    +getName(): String
+    +setName(name: String): void
+    +getImage(): Image
+    +setImage(image: Image): void
+    +getWidth(): Integer
+    +setWidth(width: Integer): void
+    +getHeigth(): Integer
+    +setHeight(height: Integer): void
+
+}
+
+class PricedSkin extends Skin
+
+class PricedSkin {
+    -price: Integer
+    +getPrice(): Integer
+    +setPrice(price: Integer)
+}
+
+@enduml
+
+@startuml PricedBackground
+!theme plain
+
+class Background{
+    -name: String
+    -image: Image
+    +getName(): String
+    +setName(name: String): void
+    +getImage(): Image
+    +setImage(image: Image): void
+    -updatePosition(): void
+    -isOffStageLeft(): boolean
+    -moveToSideOfSecondBackground(): void
+}
+
+class PricedBackground extends Background
+
+class PricedBackground{
+    -price: Integer
+    +getPrice(): Integer
+    +setPrice(price: Integer)
+}
+
+@enduml
+
+@startuml MovingObstacle
+!theme plain
+
+interface ObstacleFactory{
+    +fixedObstacleFactory(position: Position, skin: Skin): FixedObstacle
+    +movingObstacleFactory(position: Position, skin: Skin): MovingObstacle
+}
+
+
+class ObstacleFactoryImpl implements ObstacleFactory
+
+
+ObstacleFactoryImpl -- FixedObstacle
+
+class FixedObstacle{
+    -skin: Skin
+    +getSkin(): Skin
+    -updatePosition(): void
+}
+
+ObstacleFactoryImpl -- MovingObstacle
+
+class MovingObstacle{
+    -skin: Skin
+    -timer: Timer
+    -direction: Integer
+    +getSkin(): Skin
+    -updatePosition(): void
+}
+
+@enduml
+
+@startuml GraphicJButton_GraphicJButtonWithObject
+!theme plain
+
+class GraphicJButton
+
+class GraphicJButtonWithObject extends GraphicJButton
+
+class GraphicJButtonWithObject {
+    -object: Object
+    +getObject(): Object
+}
+
+@enduml
+
+@startuml Malus
+!theme plain
+
+interface StateChangerFactory {
+    +malusFactory(position: Position): Malus
+    +boosterFactory(position: Position): Booster
+}
+
+class StateChangerFactoryImpl implements StateChangerFactory
+
+StateChangerFactoryImpl -- Malus
+StateChangerFactoryImpl -- Booster
+
+class Malus {
+    -skin: Skin
+    +getSkin(): Skin
+    +{abstract}changeState(): void;
+    +moveOffScreen(): void;
+}
+
+class BlackStains extends Malus
+
+class BlackStains {
+    -collided: boolean
+    -timer: Timer
+    -updatePositionX(): void
+}
+
+class CoinsReducer extends Malus
+
+class CoinsReducer {
+    -updatePositionX(): void
+}
+
+class BlindBlock extends Malus
+
+class BlindBlock {
+    -collided: boolean
+    -timer: Timer
+    -updatePositionX(): void
+}
+
+class Booster{
+    -skin: Skin
+    +getSkin(): Skin
+    +{abstract}changeState(): void;
+    +moveOffScreen(): void;
+}
+
+@enduml
+
+@startuml Booster
+!theme plain
+
+interface StateChangerFactory {
+    +malusFactory(position: Position): Malus
+    +boosterFactory(position: Position): Booster
+}
+
+class StateChangerFactoryImpl implements StateChangerFactory
+
+StateChangerFactoryImpl -- Malus
+StateChangerFactoryImpl -- Booster
+
+class Malus {
+    -skin: Skin
+    +getSkin(): Skin
+    +{abstract}changeState(): void;
+    +moveOffScreen(): void;
+}
+
+class Immortality extends Booster
+
+class Immortality {
+    -timer: Timer
+    -updatePositionX(): void
+}
+
+class CoinsIncrement extends Booster
+
+class CoinsIncrement{
+    -updatePositionX(): void
+}
+
+class Booster{
+    -skin: Skin
+    +getSkin(): Skin
+    +{abstract}changeState(): void;
+    +moveOffScreen(): void;
+}
+@enduml
+
+@startuml Background_ScrollingBackground
+!theme plain
+
+abstract class Movable {
+    -position: Position
+    +getPosition(): Position
+    +setPosition(position: Position): void
+    +{abstract} animate(canvas: Graphics2D): void
+}
+
+class Background extends Movable
+
+class Background {
+    -name: String
+    -image: Image
+    +getName(): String
+    +getImage(): Image
+    +updatePosition(): void
+    +isOffStageLeft(): boolean
+    +moveToRightScreenEdge(): void
+}
+
+Background -- ScrollingBackground
+
+class ScrollingBackground {
+    -backOne: Background
+    -backTwo: Background
+    +animate(canvas: Graphics2D): void
+}
+@enduml
+
+@startuml TimedGenerator
+!theme plain
+
+abstract class TimedEntityGenerator {
+    -timer: Timer
+    -map: Map
+    +getMap(): Map
+    +getTimer(): Timer
+}
+
+class TimedFixedObstacleGenerator extends TimedObstacleGenerator
+
+class TimedMovingObstacleGenerator extends TimedObstacleGenerator
+
+abstract class TimedObstacleGenerator extends TimedEntityGenerator
+
+class TimedStateChangerGenerator extends TimedEntityGenerator
+
+@enduml
+
+
+@startuml Leaderboard_Player
+!theme plain
+
+class Leaderboard {
+    -leaderboardFile: File
+    -leaderboard: File
+    +getLeaderboard(): ArrayList<Player>
+    -skipToLeaderboardStart(scanner: Scanner): void
+    +writeToFile(): void
+    +update(newPlayer: Player): void
+    -binarySearchInsert(newPlayer: Player): void
+    +clearLeaderboard(): void
+}
+
+Leaderboard -- Player
+
+class Player {
+    -nickname: String
+    -personalBest: Integer
+    +getNickname(): String
+    +getPersonalBest(): Integer
+    +setPersonalBest(personalBest: Integer): void
+}
+
+@enduml
