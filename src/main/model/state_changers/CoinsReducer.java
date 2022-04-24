@@ -70,7 +70,7 @@ public class CoinsReducer extends Malus {
 		/**
 		 * Check if the moving pattern of the malus works correctly
 		 */
-		public void coinsIncrementBoosterMovement() {
+		public void coinsReducerMalusMovement() {
 			CoinsReducer coinsReducer1 = new CoinsReducer(this.POSITION, this.SKIN);
 			coinsReducer1.updatePositionX();
 			assertTrue(coinsReducer1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
