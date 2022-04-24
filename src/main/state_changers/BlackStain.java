@@ -3,10 +3,15 @@ package main.state_changers;
 import main.utilities.Constants;
 import main.utilities.Position;
 import main.utilities.Skin;
+
+import static org.junit.Assert.assertTrue;
+
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+
+import org.junit.Test;
 
 /**
  * A class that extends Malus class and implements an entity that makes appear a
@@ -69,6 +74,35 @@ public class BlackStain extends Malus implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		this.collided = false;
 		this.timer.stop();
+	}
+	
+	/**
+	 * TestBlackStain is a class that tests the updatePosition of BlackStain
+	 */
+	public static class TestBlackStain {
+		final private Position POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth()),
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		final private Position HALFWAY_POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth() / 2),
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		final private Skin SKIN = new Skin("blackstains", CommonMethods.getImageResource("blackstains"),
+				(int) this.POSITION.getX(), (int) this.POSITION.getY());
+
+		@Test
+		/**
+		 * Check if the moving pattern of the malus works correctly
+		 */
+		public void coinsReducerMalusMovement() {
+			BlackStain blackStain1 = new BlackStain(this.POSITION, this.SKIN);
+			blackStain1.updatePositionX();
+			assertTrue(blackStain1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
+			assertTrue(blackStain1.getPosition().getY() == POSITION.getY());
+
+			BlackStain blackStain2 = new BlackStain(this.HALFWAY_POSITION, this.SKIN);
+			blackStain2.updatePositionX();
+			assertTrue(blackStain2.getPosition().getX() == HALFWAY_POSITION.getX() - 3 * Constants.MOVING_FACTOR);
+			assertTrue(blackStain2.getPosition().getY() == HALFWAY_POSITION.getY());
+
+		}
 	}
 
 }

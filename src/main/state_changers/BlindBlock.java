@@ -1,9 +1,13 @@
 package main.state_changers;
 
+import static org.junit.Assert.assertTrue;
+
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+
+import org.junit.Test;
 
 import main.utilities.CommonMethods;
 import main.utilities.Constants;
@@ -73,5 +77,35 @@ public class BlindBlock extends Malus implements ActionListener {
 		this.collided = false;
 		timer.stop();
 	}
+	
+	/**
+	 * TestBlindBlock is a class that tests the updatePosition of BlindBlock
+	 */
+	public static class TestBlindBlock {
+		final private Position POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth()),
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		final private Position HALFWAY_POSITION = new Position((int) (Constants.SCREEN_SIZE.getWidth() / 2),
+				(int) Constants.SCREEN_SIZE.getHeight() / 2);
+		final private Skin SKIN = new Skin("blindblock", CommonMethods.getImageResource("blindblock"),
+				(int) this.POSITION.getX(), (int) this.POSITION.getY());
+
+		@Test
+		/**
+		 * Check if the moving pattern of the malus works correctly
+		 */
+		public void coinsIncrementBoosterMovement() {
+			BlindBlock blindBlock1 = new BlindBlock(this.POSITION, this.SKIN);
+			blindBlock1.updatePositionX();
+			assertTrue(blindBlock1.getPosition().getX() == POSITION.getX() - 3 * Constants.MOVING_FACTOR);
+			assertTrue(blindBlock1.getPosition().getY() == POSITION.getY());
+
+			BlindBlock blindBlock2 = new BlindBlock(this.HALFWAY_POSITION, this.SKIN);
+			blindBlock2.updatePositionX();
+			assertTrue(blindBlock2.getPosition().getX() == HALFWAY_POSITION.getX() - 3 * Constants.MOVING_FACTOR);
+			assertTrue(blindBlock2.getPosition().getY() == HALFWAY_POSITION.getY());
+
+		}
+	}
 
 }
+
