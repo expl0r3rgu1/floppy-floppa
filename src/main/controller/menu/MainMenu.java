@@ -49,6 +49,11 @@ public class MainMenu extends JPanel {
 
 		cardLayout = new CardLayout();
 		this.setLayout(cardLayout);
+		menuPanel = new MenuPanel(this);
+		tutorialPanel = new TutorialPanel(this);
+
+		this.add(PANEL.MENU.name(), menuPanel);
+		this.add(PANEL.TUTORIAL.name(), tutorialPanel);
 
 		File savingsFile = new File(Constants.SAVINGS_FILE_PATH);
 		if (!savingsFile.exists()) {
@@ -64,20 +69,16 @@ public class MainMenu extends JPanel {
 		}
 
 		this.gameSettings = new GameSettings();
-		menuPanel = new MenuPanel(this);
 		leaderboard = new Leaderboard();
 		leaderboardPanel = new LeaderboardPanel(this, leaderboard);
 		playPanel = new PlayPanel(this, gameSettings);
 		shop = new Shop();
 		shopGUI = new ShopGUI(this, shop);
-		tutorialPanel = new TutorialPanel(this);
 		selectionPanel = new SelectionPanel(this, gameSettings);
 
-		this.add(PANEL.MENU.name(), menuPanel);
 		this.add(PANEL.PLAY.name(), playPanel);
 		this.add(PANEL.LEADERBOARD.name(), leaderboardPanel);
 		this.add(PANEL.SHOP.name(), shopGUI);
-		this.add(PANEL.TUTORIAL.name(), tutorialPanel);
 		this.add(PANEL.SELECT.name(), selectionPanel);
 
 	}
@@ -144,7 +145,7 @@ public class MainMenu extends JPanel {
 		leaderboard.clearLeaderboard();
 		shop.clearSavings();
 	}
-	
+
 	public Shop getShop() {
 		return this.shop;
 	}
