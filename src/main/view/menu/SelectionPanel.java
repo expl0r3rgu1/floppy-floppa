@@ -48,7 +48,7 @@ public class SelectionPanel extends JPanel {
 
 		this.mainMenu = mainMenu;
 		this.settings = settings;
-		shop = new Shop();
+		this.shop = mainMenu.getShop();
 		labelNames = Constants.SKIN_BACKGROUND_NAMES;
 
 		grid = new GridBagLayout();
