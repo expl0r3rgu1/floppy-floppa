@@ -70,6 +70,11 @@ public class FixedObstacle extends Movable {
 		FixedObstacle other = (FixedObstacle) obj;
 		return super.equals(other) && this.skin.equals(other.skin);
 	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 
   /**
 	 * TestFixedObstacle is a class that tests the updatePosition of fixedObstacle

@@ -47,6 +47,9 @@ public class Player {
 	@Override
 	public boolean equals(Object obj) {
 		Player other = (Player) obj;
+		if(other == null) {
+			return false;
+		}
 		return this.nickname.equals(other.getNickname());
 	}
 
@@ -56,5 +59,10 @@ public class Player {
 	@Override
 	public String toString() {
 		return nickname + "," + personalBest;
+	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 }

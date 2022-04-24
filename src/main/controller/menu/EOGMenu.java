@@ -2,9 +2,9 @@ package main.controller.menu;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
 import main.controller.menu.shop.Shop;
+import main.model.utilities.Constants;
 import main.view.game_engine.PlayPanel;
 
 public class EOGMenu {
@@ -76,8 +76,7 @@ public class EOGMenu {
 	 * @return the sum of coins that need to be added
 	 */
 	private int updateCoinsIncrease() {
-		Random randomIncrease = new Random();
 
-		return PlayPanel.incrementTimes * randomIncrease.nextInt(100);
+		return PlayPanel.incrementTimes * Constants.RANDOM.nextInt(100);
 	}
 }

@@ -81,6 +81,11 @@ public class MovingObstacle extends Movable implements ActionListener {
 		MovingObstacle other = (MovingObstacle) obj;
 		return super.equals(other) && this.skin.equals(other.skin);
 	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 
 	public static class TestMovingObstacle {
 

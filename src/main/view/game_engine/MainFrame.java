@@ -59,7 +59,9 @@ public class MainFrame extends JFrame {
 					e.printStackTrace();
 				}
 
-				clip.loop(Clip.LOOP_CONTINUOUSLY);
+				if (clip != null) {
+					clip.loop(Clip.LOOP_CONTINUOUSLY);
+				}
 			}
 		}).start();
 	}

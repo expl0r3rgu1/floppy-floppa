@@ -92,4 +92,9 @@ public class Background extends Movable {
 		Background other = (Background) obj;
 		return super.equals(other) && this.name.equals(other.getName()) && this.image.equals(other.getImage());
 	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 }

@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import main.model.obstacles.FixedObstacle;
 import main.model.obstacles.MovingObstacle;
@@ -95,6 +96,8 @@ public class Constants {
 	 * changeState is applied
 	 */
 	public static final int IMMORTALITY_TIMEOUT = 10000;
+	
+	public static final Random RANDOM = new Random();
 	
 	/**
 	 * This Array contains the names of all Skin objects and Background objects used  

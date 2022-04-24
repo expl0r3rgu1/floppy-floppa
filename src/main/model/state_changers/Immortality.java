@@ -30,13 +30,13 @@ public class Immortality extends Booster {
 	 */
 	public Immortality(Position position, Skin skin) {
 		super(position, skin);
-		Character.immortal = false;
+		Character.unSetImmortal();
 
 		this.timer = new Timer(Constants.IMMORTALITY_TIMEOUT, new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Character.immortal = false;
+				Character.unSetImmortal();
 			}
 		});
 	}
@@ -55,7 +55,7 @@ public class Immortality extends Booster {
 	 */
 	@Override
 	public void changeState() {
-		Character.immortal = true;
+		Character.setImmortal();
 		timer.start();
 	}
 

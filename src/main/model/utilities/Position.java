@@ -53,12 +53,21 @@ public class Position {
 		this.y = y;
 	}
 
-	@Override
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean equals(Object obj) {
 		Position other = (Position) obj;
+
+		if (other == null) {
+			return false;
+		}
 		return this.x == other.getX() && this.y == other.getY();
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 }

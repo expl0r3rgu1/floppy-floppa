@@ -40,12 +40,22 @@ public abstract class Movable {
 	 */
 	public abstract void animate(Graphics2D canvas);
 
-	@Override
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean equals(Object obj) {
 		Movable other = (Movable) obj;
+
+		if (other == null) {
+			return false;
+		}
+
 		return this.position.equals(other.position);
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 }

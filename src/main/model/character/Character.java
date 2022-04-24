@@ -73,6 +73,14 @@ public class Character extends Movable {
 		this.dead = (Character.immortal) ? false : true;
 	}
 
+	public static void setImmortal() {
+		Character.immortal = true;
+	}
+	
+	public static void unSetImmortal() {
+		Character.immortal = false;
+	}
+
 	/**
 	 * Getter of the character skin
 	 * 

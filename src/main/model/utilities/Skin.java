@@ -96,14 +96,23 @@ public class Skin {
 		this.height = height;
 	}
 
-	@Override
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public boolean equals(Object obj) {
 		Skin other = (Skin) obj;
 
+		if (other == null) {
+			return false;
+		}
+
 		return this.name.equals(other.getName()) && this.image.equals(other.getImage())
 				&& this.width == other.getWidth() && this.height == other.getHeight();
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 }
