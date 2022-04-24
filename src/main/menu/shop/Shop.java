@@ -33,14 +33,14 @@ public class Shop {
 	private final File savingsFile;
 
 	public Shop() {
-		this.initializeStrings();
 		this.coins = 0;
-		this.skinInitialize = new ArrayList<>();
-		this.backgroundInitialize = new ArrayList<>();
-		this.prices  = Arrays.asList(0, 50, 100, 200, 500);
-
 		skins = new ArrayList<>();
 		sceneries = new ArrayList<>();
+		this.skinInitialize = new ArrayList<>();
+		this.backgroundInitialize = new ArrayList<>();
+		this.prices = Arrays.asList(0, 50, 100, 200, 500);
+
+		this.initializeStrings();
 
 		this.savingsFile = new File(Constants.SAVINGS_FILE_PATH);
 
