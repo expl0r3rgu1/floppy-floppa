@@ -1,8 +1,8 @@
-package main.utilities;
+package main.model.utilities;
 
 import java.awt.Image;
 
-import main.infinite_map.Background;
+import main.model.infinite_map.Background;
 
 /**
  * A class that extends Background class and shapes a Background object equipped

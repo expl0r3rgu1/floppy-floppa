@@ -1,4 +1,4 @@
-package main.game_engine;
+package main.view.game_engine;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -13,16 +13,16 @@ import java.sql.Timestamp;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import main.character.Character;
-import main.infinite_map.Map;
-import main.menu.EOGMenuGUI;
-import main.menu.MainMenu;
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.Constants.PANEL;
-import main.utilities.GBCSimplified;
-import main.utilities.GameSettings;
-import main.utilities.Position;
+import main.controller.infinite_map.Map;
+import main.controller.menu.MainMenu;
+import main.model.character.Character;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Constants.PANEL;
+import main.model.utilities.GBCSimplified;
+import main.model.utilities.GameSettings;
+import main.model.utilities.Position;
+import main.view.menu.EOGMenuGUI;
 
 /**
  * The JPanel that starts a game
@@ -78,9 +78,9 @@ public class PlayPanel extends JPanel implements ActionListener, KeyListener {
 
 	/**
 	 * Removes nicknamePanel from the PlayPanel. Then it starts the refreshRate
-	 * Timer and calls Map.startTimer()
-	 * It initializes to 0 PlayPanel.reducerTimes and PlayPanel.incrementTimes.
-	 * it saves in gameStart the Timestamp of the start of the game
+	 * Timer and calls Map.startTimer() It initializes to 0 PlayPanel.reducerTimes
+	 * and PlayPanel.incrementTimes. it saves in gameStart the Timestamp of the
+	 * start of the game
 	 */
 	public void dismissNicknamePanel() {
 		this.remove(nicknamePanel);

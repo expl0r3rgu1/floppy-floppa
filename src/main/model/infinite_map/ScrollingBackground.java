@@ -1,10 +1,10 @@
-package main.infinite_map;
+package main.model.infinite_map;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-import main.utilities.Constants;
-import main.utilities.Position;
+import main.model.utilities.Constants;
+import main.model.utilities.Position;
 
 /**
  * A Decorator of Background that makes of two still Backgrounds a scrollable

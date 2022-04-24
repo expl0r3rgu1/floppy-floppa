@@ -1,16 +1,17 @@
-package main.infinite_map;
+package main.controller.infinite_map;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.obstacles.FixedObstacle;
-import main.obstacles.MovingObstacle;
-import main.state_changers.Booster;
-import main.state_changers.Malus;
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.Position;
+import main.model.infinite_map.ScrollingBackground;
+import main.model.obstacles.FixedObstacle;
+import main.model.obstacles.MovingObstacle;
+import main.model.state_changers.Booster;
+import main.model.state_changers.Malus;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Position;
 
 /**
  * The Infinite Scrollable Map of the game
@@ -123,9 +124,8 @@ public class Map {
 
 	/**
 	 * Animates the ScrollingBackground and the lists of: FixedObstacle,
-	 * MovingObstacle, Malus, Booster.
-	 * it also removes the entities from their respective lists when they go
-	 * offScreen
+	 * MovingObstacle, Malus, Booster. it also removes the entities from their
+	 * respective lists when they go offScreen
 	 * 
 	 * @param canvas A Graphics2D canvas to animate the entities onto
 	 */

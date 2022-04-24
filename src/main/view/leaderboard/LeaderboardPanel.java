@@ -1,4 +1,4 @@
-package main.menu.leaderboard;
+package main.view.leaderboard;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,12 +14,13 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
-import main.menu.MainMenu;
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.Constants.PANEL;
-import main.utilities.GBCSimplified;
-import main.utilities.GraphicJButton;
+import main.controller.menu.MainMenu;
+import main.controller.menu.leaderboard.Leaderboard;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Constants.PANEL;
+import main.model.utilities.GBCSimplified;
+import main.model.utilities.GraphicJButton;
 
 /**
  * The JPanel encharged to show the Leaderboard

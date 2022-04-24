@@ -1,6 +1,6 @@
-package main.state_changers;
+package main.model.state_changers;
 
-import main.utilities.Position;
+import main.model.utilities.Position;
 
 /**
  * StateChangerFactory is an interface for the factory of a StateChanger

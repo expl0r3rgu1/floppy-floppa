@@ -1,4 +1,4 @@
-package main.utilities;
+package main.model.utilities;
 
 /**
  * A class that implements an object to keep track of the position of the

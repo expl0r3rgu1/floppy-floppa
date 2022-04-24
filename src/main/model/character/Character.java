@@ -1,14 +1,4 @@
-package main.character;
-
-import main.obstacles.FixedObstacle;
-import main.obstacles.MovingObstacle;
-import main.state_changers.Booster;
-import main.state_changers.Malus;
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.Movable;
-import main.utilities.Position;
-import main.utilities.Skin;
+package main.model.character;
 
 import static org.junit.Assert.assertTrue;
 
@@ -21,6 +11,16 @@ import java.util.List;
 import javax.swing.Timer;
 
 import org.junit.Test;
+
+import main.model.obstacles.FixedObstacle;
+import main.model.obstacles.MovingObstacle;
+import main.model.state_changers.Booster;
+import main.model.state_changers.Malus;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Movable;
+import main.model.utilities.Position;
+import main.model.utilities.Skin;
 
 /**
  * A class that implements the character, it keeps track of its current status

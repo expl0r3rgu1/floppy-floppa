@@ -1,8 +1,8 @@
-package main.state_changers;
+package main.model.state_changers;
 
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.Position;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Position;
 
 /**
  * StateChangerFactoryImpl is a class that implements the interface

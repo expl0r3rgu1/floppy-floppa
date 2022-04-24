@@ -1,4 +1,4 @@
-package main.utilities;
+package main.model.utilities;
 
 import java.awt.Color;
 

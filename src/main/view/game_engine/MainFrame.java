@@ -1,8 +1,7 @@
-package main.game_engine;
+package main.view.game_engine;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.io.File;
 import java.io.IOException;
 
 import javax.sound.sampled.AudioInputStream;
@@ -12,7 +11,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 
-import main.menu.MainMenu;
+import main.controller.menu.MainMenu;
 
 /**
  * The JFrame that contains the whole game in fullscreen

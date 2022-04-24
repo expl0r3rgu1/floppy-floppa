@@ -1,4 +1,4 @@
-package main.menu.shop;
+package main.controller.menu.shop;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,10 +9,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.PricedBackground;
-import main.utilities.PricedSkin;
+import main.model.shop.PurchaseStatus;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.PricedBackground;
+import main.model.utilities.PricedSkin;
 
 /**
  * A class that keeps track of the items' current purchase status and that has

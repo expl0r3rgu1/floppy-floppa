@@ -1,4 +1,4 @@
-package main.game_engine;
+package main.view.game_engine;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,13 +12,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import main.menu.leaderboard.Player;
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.GBCSimplified;
-import main.utilities.GameSettings;
-import main.utilities.GraphicJButton;
-import main.utilities.GraphicJLabel;
+import main.model.leaderboard.Player;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.GBCSimplified;
+import main.model.utilities.GameSettings;
+import main.model.utilities.GraphicJButton;
+import main.model.utilities.GraphicJLabel;
 
 /**
  * JPanel that is prompted when starting a game. It lets the user choose their

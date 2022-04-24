@@ -6,13 +6,13 @@ import java.util.List;
 
 import org.junit.Test;
 
-import main.character.Character;
-import main.obstacles.FixedObstacle;
-import main.obstacles.MovingObstacle;
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.Position;
-import main.utilities.Skin;
+import main.model.character.Character;
+import main.model.obstacles.FixedObstacle;
+import main.model.obstacles.MovingObstacle;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Position;
+import main.model.utilities.Skin;
 
 public class TestCharacter {
 	private final List<FixedObstacle> FIXED_OBSTACLE_LIST = List.of(Constants.OBSTACLE_FACTORY.fixedObstacleFactory(

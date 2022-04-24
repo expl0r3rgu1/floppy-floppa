@@ -1,17 +1,20 @@
-package main.menu;
+package main.view.menu;
 
+import java.awt.Color;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
-import main.utilities.GraphicJLabel;
-import main.utilities.Constants;
-import main.utilities.Constants.PANEL;
-import main.utilities.GBCSimplified;
-import main.utilities.GraphicJButton;
-import main.utilities.CommonMethods;
-import java.awt.Color;
-import java.awt.GridBagConstraints;
+
+import main.controller.menu.MainMenu;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Constants.PANEL;
+import main.model.utilities.GBCSimplified;
+import main.model.utilities.GraphicJButton;
+import main.model.utilities.GraphicJLabel;
 
 /**
  * Menu class implements the panel for the menu

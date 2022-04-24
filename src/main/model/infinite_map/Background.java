@@ -1,11 +1,11 @@
-package main.infinite_map;
+package main.model.infinite_map;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-import main.utilities.Constants;
-import main.utilities.Movable;
-import main.utilities.Position;
+import main.model.utilities.Constants;
+import main.model.utilities.Movable;
+import main.model.utilities.Position;
 
 /**
  * A still background that fills the whole screen

@@ -4,11 +4,11 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import main.infinite_map.Map;
-import main.infinite_map.TimedFixedObstacleGenerator;
-import main.infinite_map.TimedMovingObstacleGenerator;
-import main.infinite_map.TimedStateChangerGenerator;
-import main.utilities.Constants;
+import main.controller.infinite_map.Map;
+import main.controller.infinite_map.TimedFixedObstacleGenerator;
+import main.controller.infinite_map.TimedMovingObstacleGenerator;
+import main.controller.infinite_map.TimedStateChangerGenerator;
+import main.model.utilities.Constants;
 
 public class TestTimedEntityGenerator {
 	private final int TIMEOUT_SUPPLEMENT = 350;

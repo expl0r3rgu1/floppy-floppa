@@ -1,4 +1,4 @@
-package main.menu;
+package main.view.menu;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,11 +10,13 @@ import java.awt.Insets;
 
 import javax.swing.JPanel;
 
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.GBCSimplified;
-import main.utilities.GraphicJButton;
-import main.utilities.GraphicJLabel;
+import main.controller.menu.EOGMenu;
+import main.controller.menu.MainMenu;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.GBCSimplified;
+import main.model.utilities.GraphicJButton;
+import main.model.utilities.GraphicJLabel;
 
 /**
  * The End Of Game class implements the panel shown at the end of a game

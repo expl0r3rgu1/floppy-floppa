@@ -1,4 +1,4 @@
-package main.state_changers;
+package main.model.state_changers;
 
 import static org.junit.Assert.assertTrue;
 
@@ -6,13 +6,11 @@ import java.awt.Graphics2D;
 
 import org.junit.Test;
 
-import main.game_engine.PlayPanel;
-
-import main.utilities.CommonMethods;
-
-import main.utilities.Constants;
-import main.utilities.Position;
-import main.utilities.Skin;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Position;
+import main.model.utilities.Skin;
+import main.view.game_engine.PlayPanel;
 
 /**
  * A class that extends Malus class and implements an entity that randomly takes

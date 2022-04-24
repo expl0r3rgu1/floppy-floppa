@@ -1,17 +1,4 @@
-package main.menu;
-
-import javax.swing.JPanel;
-
-import main.game_engine.PlayPanel;
-import main.menu.leaderboard.Leaderboard;
-import main.menu.leaderboard.LeaderboardPanel;
-import main.menu.shop.Shop;
-import main.menu.shop.ShopGUI;
-import main.menu.tutorial.TutorialPanel;
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.Constants.PANEL;
-import main.utilities.GameSettings;
+package main.controller.menu;
 
 import java.awt.CardLayout;
 import java.awt.Graphics;
@@ -19,6 +6,21 @@ import java.awt.Graphics2D;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import javax.swing.JPanel;
+
+import main.controller.menu.leaderboard.Leaderboard;
+import main.controller.menu.shop.Shop;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Constants.PANEL;
+import main.model.utilities.GameSettings;
+import main.view.game_engine.PlayPanel;
+import main.view.leaderboard.LeaderboardPanel;
+import main.view.menu.MenuPanel;
+import main.view.menu.SelectionPanel;
+import main.view.shop.ShopGUI;
+import main.view.tutorial.TutorialPanel;
 
 /**
  * MainMenu is the container for CardLayout

@@ -1,4 +1,4 @@
-package main.menu.leaderboard;
+package main.controller.menu.leaderboard;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-import main.utilities.Constants;
+import main.model.leaderboard.Player;
+import main.model.utilities.Constants;
 
 /**
  * The list of Player instances ordered by Player.personalBest.

@@ -1,17 +1,19 @@
-package main.state_changers;
-
-import main.utilities.Constants;
-import main.utilities.Position;
-import main.utilities.Skin;
+package main.model.state_changers;
 
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.Timer;
 
 import org.junit.Test;
+
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Position;
+import main.model.utilities.Skin;
 
 /**
  * A class that extends Malus class and implements an entity that makes appear a

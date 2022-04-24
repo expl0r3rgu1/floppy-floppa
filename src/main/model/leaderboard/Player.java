@@ -1,4 +1,4 @@
-package main.menu.leaderboard;
+package main.model.leaderboard;
 
 /**
  * The user that is playing the game

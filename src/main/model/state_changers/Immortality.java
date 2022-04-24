@@ -1,4 +1,4 @@
-package main.state_changers;
+package main.model.state_changers;
 
 import static org.junit.Assert.assertTrue;
 
@@ -10,11 +10,11 @@ import javax.swing.Timer;
 
 import org.junit.Test;
 
-import main.character.Character;
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.Position;
-import main.utilities.Skin;
+import main.model.character.Character;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Position;
+import main.model.utilities.Skin;
 
 /**
  * A class that extends Booster class and implements an entity that makes the

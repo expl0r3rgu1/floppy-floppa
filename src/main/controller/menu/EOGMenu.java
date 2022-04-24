@@ -1,11 +1,11 @@
-package main.menu;
+package main.controller.menu;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-import main.game_engine.PlayPanel;
-import main.menu.shop.Shop;
+import main.controller.menu.shop.Shop;
+import main.view.game_engine.PlayPanel;
 
 public class EOGMenu {
 

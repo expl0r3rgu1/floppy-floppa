@@ -1,4 +1,4 @@
-package main.menu.tutorial;
+package main.view.tutorial;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,12 +10,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import main.menu.MainMenu;
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.Constants.PANEL;
-import main.utilities.GBCSimplified;
-import main.utilities.GraphicJButton;
+import main.controller.menu.MainMenu;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Constants.PANEL;
+import main.model.utilities.GBCSimplified;
+import main.model.utilities.GraphicJButton;
 
 /**
  * A class that shows the initial tutorial, this class extends the java class

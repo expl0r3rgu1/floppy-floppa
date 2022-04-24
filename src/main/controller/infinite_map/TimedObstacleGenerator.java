@@ -1,4 +1,4 @@
-package main.infinite_map;
+package main.controller.infinite_map;
 
 /**
  * TimedEntityGenerator customized for Obstacle (FixedObstacle or

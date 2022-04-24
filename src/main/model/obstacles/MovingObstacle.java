@@ -1,4 +1,4 @@
-package main.obstacles;
+package main.model.obstacles;
 
 import static org.junit.Assert.assertTrue;
 
@@ -10,11 +10,11 @@ import javax.swing.Timer;
 
 import org.junit.Test;
 
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.Movable;
-import main.utilities.Position;
-import main.utilities.Skin;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Movable;
+import main.model.utilities.Position;
+import main.model.utilities.Skin;
 
 /**
  * A class that implements an Obstacle that changes its position on the map

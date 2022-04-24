@@ -1,8 +1,8 @@
-package main.infinite_map;
+package main.controller.infinite_map;
 
 import java.awt.event.ActionEvent;
 
-import main.utilities.Constants;
+import main.model.utilities.Constants;
 
 /**
  * TimedEntityGenerator customized for MovingObstacle

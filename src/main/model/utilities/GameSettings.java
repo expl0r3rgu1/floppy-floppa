@@ -1,7 +1,7 @@
-package main.utilities;
+package main.model.utilities;
 
-import main.infinite_map.ScrollingBackground;
-import main.menu.leaderboard.Player;
+import main.model.infinite_map.ScrollingBackground;
+import main.model.leaderboard.Player;
 
 /**
  * GameSettings is the class that sets the Skin for the Character and the

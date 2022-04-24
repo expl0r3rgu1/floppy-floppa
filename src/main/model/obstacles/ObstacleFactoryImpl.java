@@ -1,7 +1,7 @@
-package main.obstacles;
+package main.model.obstacles;
 
-import main.utilities.Position;
-import main.utilities.Skin;
+import main.model.utilities.Position;
+import main.model.utilities.Skin;
 
 /**
  * ObstacleFactoryImpl is a class that implements the interface ObstacleFactory

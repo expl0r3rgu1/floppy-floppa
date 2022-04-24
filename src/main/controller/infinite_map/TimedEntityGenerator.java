@@ -1,10 +1,10 @@
-package main.infinite_map;
+package main.controller.infinite_map;
 
 import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import main.utilities.Constants;
+import main.model.utilities.Constants;
 
 /**
  * The base of all the entity generators such as TimedFixedObstacleGenerator,

@@ -1,4 +1,4 @@
-package main.utilities;
+package main.model.utilities;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -6,19 +6,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import main.obstacles.FixedObstacle;
-import main.obstacles.MovingObstacle;
-import main.obstacles.ObstacleFactory;
-import main.obstacles.ObstacleFactoryImpl;
-import main.state_changers.BlackStain;
-import main.state_changers.BlindBlock;
-import main.state_changers.Booster;
-import main.state_changers.CoinsIncrement;
-import main.state_changers.CoinsReducer;
-import main.state_changers.Immortality;
-import main.state_changers.Malus;
-import main.state_changers.StateChangerFactory;
-import main.state_changers.StateChangerFactoryImpl;
+import main.model.obstacles.FixedObstacle;
+import main.model.obstacles.MovingObstacle;
+import main.model.obstacles.ObstacleFactory;
+import main.model.obstacles.ObstacleFactoryImpl;
+import main.model.state_changers.BlackStain;
+import main.model.state_changers.BlindBlock;
+import main.model.state_changers.Booster;
+import main.model.state_changers.CoinsIncrement;
+import main.model.state_changers.CoinsReducer;
+import main.model.state_changers.Immortality;
+import main.model.state_changers.Malus;
+import main.model.state_changers.StateChangerFactory;
+import main.model.state_changers.StateChangerFactoryImpl;
 
 /**
  * A class that contains all the constants used

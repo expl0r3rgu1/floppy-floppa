@@ -1,8 +1,8 @@
-package main.state_changers;
+package main.model.state_changers;
 
-import main.utilities.Movable;
-import main.utilities.Position;
-import main.utilities.Skin;
+import main.model.utilities.Movable;
+import main.model.utilities.Position;
+import main.model.utilities.Skin;
 
 /**
  * A class that implements an object that hampers the character in different

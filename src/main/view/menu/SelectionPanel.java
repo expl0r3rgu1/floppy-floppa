@@ -1,26 +1,25 @@
-package main.menu;
+package main.view.menu;
 
 import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JPanel;
 
-import main.infinite_map.ScrollingBackground;
-import main.menu.shop.PurchaseStatus;
-import main.menu.shop.Shop;
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.GameSettings;
-import main.utilities.GraphicJButton;
-import main.utilities.GBCSimplified;
-import main.utilities.GraphicJLabel;
-import main.utilities.PricedBackground;
-import main.utilities.PricedSkin;
-import main.utilities.Skin;
+import main.controller.menu.MainMenu;
+import main.controller.menu.shop.Shop;
+import main.model.infinite_map.ScrollingBackground;
+import main.model.shop.PurchaseStatus;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.GBCSimplified;
+import main.model.utilities.GameSettings;
+import main.model.utilities.GraphicJButton;
+import main.model.utilities.GraphicJLabel;
+import main.model.utilities.PricedBackground;
+import main.model.utilities.PricedSkin;
+import main.model.utilities.Skin;
 
 /**
  * SelectionPanel is a class that creates the JPanel to select a new icon for

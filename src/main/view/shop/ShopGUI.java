@@ -1,18 +1,24 @@
-package main.menu.shop;
+package main.view.shop;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.JPanel;
 
-import main.menu.MainMenu;
-import main.utilities.CommonMethods;
-import main.utilities.Constants;
-import main.utilities.GBCSimplified;
-import main.utilities.GraphicJButton;
-import main.utilities.GraphicJButtonWithObject;
-import main.utilities.GraphicJLabel;
+import main.controller.menu.MainMenu;
+import main.controller.menu.shop.Shop;
+import main.model.utilities.CommonMethods;
+import main.model.utilities.Constants;
+import main.model.utilities.Constants.PANEL;
+import main.model.utilities.GBCSimplified;
+import main.model.utilities.GraphicJButton;
+import main.model.utilities.GraphicJButtonWithObject;
+import main.model.utilities.GraphicJLabel;
 
 /**
  * A class that shows Shop
@@ -88,7 +94,7 @@ public class ShopGUI extends JPanel {
 				this.add(backMenu, new GBCSimplified(4, i, 0, 0,
 						new Insets((CommonMethods.getPixelsFromPercentageHeight(3)), 0, 0, 0)));
 				backMenu.addActionListener(e -> {
-					mainMenu.showCard(Constants.PANEL.MENU);
+					mainMenu.showCard(PANEL.MENU);
 				});
 
 			} else if (i == 2 || i == 6) {

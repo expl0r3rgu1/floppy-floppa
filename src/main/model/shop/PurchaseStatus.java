@@ -1,4 +1,4 @@
-package main.menu.shop;
+package main.model.shop;
 
 /**
  * A class that keeps track of the current purchase status of an object X
