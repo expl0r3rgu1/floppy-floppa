@@ -64,8 +64,9 @@ public class BlindBlock extends Malus implements ActionListener {
 		this.updatePositionX();
 
 		if (collided) {
-			canvas.drawImage(getSkin().getImage(), (int) CommonMethods.getPixelsFromPercentageWidth(66), 0,
-					CommonMethods.getPixelsFromPercentageWidth(34), (int) Constants.SCREEN_SIZE.getHeight(), null);
+			canvas.drawImage(getSkin().getImage(), CommonMethods.getPixelsFromPercentageWidth(66), 0,
+					(int) (Constants.SCREEN_SIZE.getWidth() - CommonMethods.getPixelsFromPercentageWidth(66)),
+					(int) Constants.SCREEN_SIZE.getHeight(), null);
 		}
 
 	}
