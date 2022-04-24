@@ -46,8 +46,8 @@ public class MenuPanel extends JPanel {
 		addButton("Shop", 3, 3, 7, 5, 2, 0, 0, 0);
 		addButton("Tutorial", 1, 3, 7, 5, 2, 0, 0, 0);
 
-		addImage("Floppa.png", 1, 2, 0, 0, 0, 0, 0, 2);
-		addImage("Bingus.png", 3, 2, 0, 0, 0, 2, 0, 0);
+		addImage("Floppa", 1, 2, 0, 0, 0, 0, 0, 2);
+		addImage("Bingus", 3, 2, 0, 0, 0, 2, 0, 0);
 
 		this.setVisible(true);
 	}
