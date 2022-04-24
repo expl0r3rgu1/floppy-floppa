@@ -64,8 +64,10 @@ public class Immortality extends Booster {
 	 */
 	@Override
 	public void animate(Graphics2D canvas) {
-		canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(), getSkin().getWidth(),
-				getSkin().getHeight(), null);
+		if (!Character.immortal) {
+			canvas.drawImage(getSkin().getImage(), getPosition().getX(), getPosition().getY(), getSkin().getWidth(),
+					getSkin().getHeight(), null);
+		}
 
 		this.updatePositionX();
 	}
